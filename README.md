@@ -92,7 +92,19 @@ That means, nobody beside me has access to actual source of this Boilerplate (wh
 So it is a uni-directional Sequence of Pull-instances, where one depends on the previous that looks like
 > [Overleaf-Origin-Project] -> [GitHub-Repository] -> [Overleaf-Project-DeepCopy]
 
-By this, the Overleaf-Project for access by others has just ordinary hard-copies of the initially linked files, i.e. works standalone and after fork is independent of things I might be doing somewhen later on.
+By this, the Overleaf-Project for access by others has just ordinary hard-copies of the initially linked files, i.e. works standalone and after fork is independent of things I might be doing sometime later on.<br/>
+The ReadOnly-Link to the Overleaf-Project for further Use:<br/>
+> [https://www.overleaf.com/read/qfpqgxzmryqt](https://www.overleaf.com/read/qfpqgxzmryqt "DenKr Latex Paper/Poster-Boilerplate - Overleaf ReadOnly-Link to Deep-Copy'd Project")
+<br/>
+
+```
+What we are now all doing, is either:
+1. Work with the GitHub-Repository: Download and work locally with your own LaTeX Editor or Download as .zip and use this with "Upload Project" to create an Overleaf-Project
+2. Take the ReadOnly-Link to the Deep-Copy Overleaf-Project. By that, this Project is added to your Account (as Read-Only). And then just copy this Project to have a a detached standalone new one, fully free to your disposal.
+```
+<br/>
+
+Note to myself: The Deep-Copy Project is to only be pulled, never make changes inside that project or push from it. Only copy
 
 
 ## Overleaf
