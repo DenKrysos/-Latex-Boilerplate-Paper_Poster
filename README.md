@@ -71,6 +71,7 @@ So when finished with the manuscript, I can easily compile a preprint and a vers
 That might be not the most elegant solution, conceivable in principle, because then you have two distinct copies of your content, but in such a case that cannot be avoided anyways. Because a preprint has to be done and this cannot be performed within the submission-project. Hence, one may as well directly start with the "preprint-Version", which can be done through my Boilerplate and then only for final submission, the two Projects diverge.<br/>
 When then coming back for revising the manuscript after review, I do prepare the follow-up version again in the preprint-document and then update the submission-version.
 
+
 ## Project Divergence
 A lot of Files in here are linked from other Projects.<br/>
 When working "Git-based", this won't be an issue anytime, because then already distinct standalone copies of these files are created.<br/>
@@ -78,10 +79,20 @@ When working "Git-based", this won't be an issue anytime, because then already d
 But when working with an Overleaf-Project that you created as a Copy of this Overleaf-Project directly inside Overleaf, the files are still links. This is partly cool, because then you always have updates right at hand, whenever I perform such. But on the other hand, sometimes you might want to change things, like Package-Options. And it appears like that's not possible, because you can't modify linked files.<br/>
 In that case, create the project divergence yourself: Go into the file in question (e.g. "./0organization/1main/2includes/packages/figure_subfigure_caption.tex"), copy its content, remove (delete) the linked file, create a new one with the same file-name and paste the content into. Then adjust to your needs (e.g. modify the caption formatting).
 
+
 ### Recommendation
 Actually, for most cases, I would recommend performing a "Deep Copy" of the Project. I.e. not taking over the links referring to files in other projects, but having own duplicates so that the new Project works fully standalone.<br/>
 
 You can achieve this for example via downloading the Project as .zip from the GitHub-Repository, then in Overleaf choose "New Project -> Upload Project" and give the downloaded .zip.
+
+#### Deep Copy'd Overleaf-Project
+Now it might become a little confusing, but bear with me, it actually makes it easier for all of us, including you. Above, I talked about stuff like "originating Overleaf Project" and "linked to GitHub" and "linked Files".<br/>
+Actually, all that stuff hasn't to concern you at all. I found a solution to make it most easy for third users of my Boilerplate. I created yet another Overleaf-Project!<br/>
+That means, nobody beside me has access to actual source of this Boilerplate (which is the Overleaf Project in first instance). A second Overleaf-Project now originates form the GitHub-Repo (which in turn is a Fork of the actual origin) and has the Name-Suffix "-DC" (for Deep-Copy).<br/>
+So it is a uni-directional Sequence of Pull-instances, where one depends on the previous that looks like
+> [Overleaf-Origin-Project] -> [GitHub-Repository] -> [Overleaf-Project-DeepCopy]
+
+By this, the Overleaf-Project for access by others has just ordinary hard-copies of the initially linked files, i.e. works standalone and after fork is independent of things I might be doing somewhen later on.
 
 
 ## Overleaf
