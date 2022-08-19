@@ -4,11 +4,11 @@ A quite nice Boilerplate/Template together with some Macros and ready-to-use set
 Fit for writing an Article-alike Manuscript (like scientific poster) or a Poster.
 
 This one here is quite sophisticated. A simplified one can be found:<br/>
-> [https://github.com/DenKrysos/-Latex-Boilerplate_Paper-Modest](https://github.com/DenKrysos/-Latex-Boilerplate_Paper-Modest "DenKr Latex Paper-Boilerplate Modest")
+> [https://github.com/DenKrysos/-Latex-Boilerplate-Paper-Modest](https://github.com/DenKrysos/-Latex-Boilerplate-Paper-Modest "DenKr Latex Paper-Boilerplate Modest")
 <br/>
 
 Just saying, there is also another Boilerplate for Book-type Documents:<br/>
-> [https://github.com/DenKrysos/-Latex-Boilerplate_Book](https://github.com/DenKrysos/-Latex-Boilerplate_Book "DenKr Latex Book-Boilerplate")
+> [https://github.com/DenKrysos/-Latex-Boilerplate-Book](https://github.com/DenKrysos/-Latex-Boilerplate-Book "DenKr Latex Book-Boilerplate")
 
 ## Description
 * Layout and Skeleton Setup is well separated from the content
