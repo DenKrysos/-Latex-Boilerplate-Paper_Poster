@@ -1,0 +1,371 @@
+%________________________________________________________________________
+%------------------------------------------------------------------------
+%							listings - Setup. Source-Code Einbindung.
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+\newcommand{\lstC}[1]{\lstinline[language=C,breaklines=true,basicstyle=\listingsfontinline]$#1$}
+% Colors etc. to get the Eclipse Look
+% \newfontfamily\listingsfont[Scale=0.7]{Courier} 
+% \newfontfamily\listingsfontinline[Scale=0.8]{Courier New} 
+\definecolor{eclipse_comment}{rgb}{0.12, 0.38, 0.18 } %adjusted, in Eclipse: {0.25, 0.42, 0.30 } = #3F6A4D
+\definecolor{eclipse_keyword1}{RGB}{128, 0, 40}  % red
+\definecolor{eclipse_keyword2}{RGB}{155,40,128} %purple
+\definecolor{eclipse_keyword3}{RGB}{0,120,10} %green
+\definecolor{eclipse_string}{rgb}{0.06, 0.10, 0.98} % #101AF9
+\def\lstsmallmath{\leavevmode\ifmmode \scriptstyle \else  \fi}
+\def\lstsmallmathend{\leavevmode\ifmmode  \else  \fi}
+%-----------
+\definecolor{lstbg}{RGB}{230,230,230}
+\lstset{language=C,texcl=true}
+% Basic lstset (optical settings)
+% \lstset{
+% 	numbers=left,
+% 	numberstyle=\tiny,
+% 	numbersep=5pt,
+% 	tabsize=4,
+% 	xleftmargin=0em,
+% 	backgroundcolor=\color{lstbg},
+% 	keywordstyle=\bfseries\ttfamily\color{blue},
+% 	stringstyle=\color{green}\ttfamily,
+% 	commentstyle=\color{gray}\ttfamily,
+% }
+% lstset for Look like Eclipse
+\lstset{
+    rulecolor=\color{ipython_frame},
+    frame=single,%shadowbox, single
+    frameround={t}{t}{t}{t},
+    framexleftmargin=3mm,% 3mm
+    xleftmargin=3mm,% 3mm
+% 	xrightmargin=0.3em,
+    numbers=left,% left, none
+    numberstyle=\tiny\color{halfgray},
+% 	numberstyle=\tiny,
+    %
+% 	backgroundcolor=\color{lstbg},
+    backgroundcolor=\color{ipython_bg},
+    basicstyle=\scriptsize,% \scriptsize, \listingsfont, \fontsize{11}{13}\selectfont\ttfamily
+    %
+	numbersep=5pt,
+	showtabs=false,
+	tabsize=2,
+	breaklines=true,
+    sensitive=true
+    keepspaces=true,
+    showspaces=false,
+    showstringspaces=false,
+	captionpos=b,
+	keywordstyle=\color{eclipse_keyword1}\bfseries,
+	keywordstyle=[2]\color{eclipse_keyword2}\bfseries,
+	keywordstyle=[3]\color{eclipse_keyword3}\bfseries,
+	keywordstyle=[9]\color{red}\bfseries,
+	stringstyle=\color{eclipse_string},
+	commentstyle=\color{eclipse_comment}\itshape,
+	escapebegin={\lstsmallmath}, escapeend={\lstsmallmathend},
+    escapechar=\¢,
+    %escapebegin=\color{ipython_green},
+}
+\lstset{%
+	inputencoding=utf8,%
+	extendedchars=true,%
+	literate=%
+		{ß}{{\ss}}2%
+		{ö}{{\"o}}1%
+		{ä}{{\"a}}1%
+		{ü}{{\"u}}1%
+		{Ö}{{\"O}}1%
+		{Ä}{{\"A}}1%
+		{Ü}{{\"U}}1%
+		{>>}{{\guillemotright}}1%
+		{»}{{\guillemotright}}1%
+		{<<}{{\guillemotleft}}1%
+		{«}{{\guillemotleft}}1,%
+}%
+%
+\lstloadlanguages{ % Check documentation for further languages ...
+    % [Visual]Basic,
+    % Pascal,
+    % C,
+    % C++,
+    % XML,
+    % HTML,
+    % Java,
+    Python
+}
+%
+% Zusätzliche Hervorherbungen (for every language)
+\lstset{
+	emph={%  
+    	critical,
+    	section
+    },
+    emphstyle={\color{red}\bfseries}%\underbar}%
+}%
+\lstdefinelanguage{C_var}
+{
+	language=C,
+	morecomment=[l]{//},
+	morekeywords={
+		strlen,
+	},
+	morekeywords=[2]{
+	    main,
+		malloc,
+		free,
+		recv,
+		send,
+		sem_init,
+		sem_wait,
+		sem_post,
+		sem_getvalue,
+		sem_destroy,
+		raise,
+		signal,
+		pthread_create,
+		pthread_join,
+		pthread_detach,
+		pthread_cancel,
+		pthread_setcancelstate,
+		pcap_breakloop,
+		pcap_close
+	},
+	morekeywords=[3]{
+		int8_t,
+		uint8_t,
+		int16_t,
+		uint16_t,
+		int32_t,
+		uint32_t,
+		int64_t,
+		uint64_t,
+		int128_t,
+		uint128_t,
+		uintptr_t,
+		sem_t,
+		pthread_t
+	},
+	morekeywords=[9]{
+		critical section
+	},
+	%
+	keywordstyle=\color{eclipse_keyword1}\bfseries,
+	keywordstyle=[2]\color{eclipse_keyword2}\bfseries,
+	keywordstyle=[3]\color{eclipse_keyword3}\bfseries,
+	keywordstyle=[9]\color{red}\bfseries,
+	stringstyle=\color{eclipse_string},
+	commentstyle=\color{eclipse_comment}\itshape,
+}
+\lstdefinelanguage{C_var_old}
+{
+	language=C,
+	morecomment=[l]{//},
+	morekeywords={
+		strlen,
+	},
+	morekeywords=[2]{
+		malloc,
+		recv,
+		send,
+		sem_init,
+		sem_wait,
+		sem_post,
+		sem_getvalue,
+		sem_destroy,
+		raise,
+		signal,
+		pthread_create,
+		pthread_join,
+		pthread_detach,
+		pthread_cancel,
+		pthread_setcancelstate,
+		pcap_breakloop,
+		pcap_close
+	},
+	morekeywords=[3]{
+		int8_t,
+		uint8_t,
+		int16_t,
+		uint16_t,
+		int32_t,
+		uint32_t,
+		int64_t,
+		uint64_t,
+		int128_t,
+		uint128_t,
+		uintptr_t,
+		sem_t,
+		pthread_t
+	},
+	morekeywords=[9]{
+		critical section
+	},
+}
+%Additional languages with keywords
+\lstdefinelanguage{semaphore}
+{
+	morekeywords={
+		type,
+		record,
+		end,
+		if,
+		then,
+		else,
+		loop
+	},
+	morekeywords=[2]{
+		wait,
+		signal,
+		await,
+		advance,
+		sem_wait,
+		sem_post,
+		sem_init,
+		sem_getvalue
+	},
+	morekeywords=[3]{
+		val
+	},
+	morekeywords=[4]{
+		ticket
+	},
+	sensitive=true,
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	morestring=[b]",
+	morestring=[b]',
+	keywordstyle=\bfseries\ttfamily\color{blue},
+	keywordstyle=[2]\bfseries\ttfamily\color{teal},
+	keywordstyle=[3]\bfseries\ttfamily\color{olive},
+	keywordstyle=[4]\bfseries\ttfamily\color{olive},
+	stringstyle=\color{green}\ttfamily,
+}
+%
+
+\definecolor{maroon}{cmyk}{0, 0.87, 0.68, 0.32}
+\definecolor{halfgray}{gray}{0.55}
+\definecolor{ipython_frame}{RGB}{207, 207, 207}
+\definecolor{ipython_bg}{RGB}{247, 247, 247}
+\definecolor{ipython_red}{RGB}{186, 33, 33}
+\definecolor{ipython_green}{RGB}{0, 128, 0}
+\definecolor{ipython_cyan}{RGB}{64, 128, 128}
+\definecolor{ipython_purple}{RGB}{170, 34, 255}
+% - - - -
+\lstdefinelanguage{Python_var}{
+    morekeywords={access,and,break,class,continue,def,del,elif,else,except,exec,finally,for,from,global,if,import,in,is,lambda,not,or,pass,print,raise,return,try,while},%
+    %
+    % Built-ins
+    morekeywords=[2]{abs,all,any,basestring,bin,bool,bytearray,callable,chr,classmethod,cmp,compile,complex,delattr,dict,dir,divmod,enumerate,eval,execfile,file,filter,float,format,frozenset,getattr,globals,hasattr,hash,help,hex,id,input,int,isinstance,issubclass,iter,len,list,locals,long,map,max,memoryview,min,next,object,oct,open,ord,pow,property,range,raw_input,reduce,reload,repr,reversed,round,set,setattr,slice,sorted,staticmethod,str,sum,super,tuple,type,unichr,unicode,vars,xrange,zip,apply,buffer,coerce,intern},%
+    %
+    sensitive=true,%
+    morecomment=[l]\#,%
+    morestring=[b]',%
+    morestring=[b]",%
+    %
+    morestring=[s]{'''}{'''},% used for documentation text (mulitiline strings)
+    morestring=[s]{"""}{"""},% added by Philipp Matthias Hahn
+    %
+    morestring=[s]{r'}{'},% `raw' strings
+    morestring=[s]{r"}{"},%
+    morestring=[s]{r'''}{'''},%
+    morestring=[s]{r"""}{"""},%
+    morestring=[s]{u'}{'},% unicode strings
+    morestring=[s]{u"}{"},%
+    morestring=[s]{u'''}{'''},%
+    morestring=[s]{u"""}{"""},%
+    %
+    % {replace}{replacement}{lenght of replace}
+    % *{-}{-}{1} will not replace in comments and so on
+    literate=
+    {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+    {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+    {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+    {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+    {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+    {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+    {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+    {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+    {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+    {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+    {€}{{\EUR}}1 {£}{{\pounds}}1
+    %
+    {^}{{{\color{ipython_purple}\^{}}}}1
+    {=}{{{\color{ipython_purple}=}}}1
+    %
+    {+}{{{\color{ipython_purple}+}}}1
+    {*}{{{\color{ipython_purple}$^\ast$}}}1
+    {/}{{{\color{ipython_purple}/}}}1
+    %
+    {+=}{{{+=}}}1
+    {-=}{{{-=}}}1
+    {*=}{{{$^\ast$=}}}1
+    {/=}{{{/=}}}1,
+    literate=
+    *{-}{{{\color{ipython_purple}-}}}1,
+    %
+    identifierstyle=\color{black}\ttfamily,
+    commentstyle=\color{ipython_cyan}\ttfamily,
+    stringstyle=\color{ipython_red}\ttfamily,
+    keepspaces=true,
+    showspaces=false,
+    showstringspaces=false,
+    %
+    rulecolor=\color{ipython_frame},
+    frame=single,
+    frameround={t}{t}{t}{t},
+    framexleftmargin=6mm,
+    numbers=left,
+    numberstyle=\tiny\color{halfgray},
+    %
+    %
+    backgroundcolor=\color{ipython_bg},
+    %   extendedchars=true,
+    basicstyle=\scriptsize,
+    keywordstyle=\color{ipython_green}\ttfamily,
+    escapechar=\¢,escapebegin=\color{ipython_green},
+}
+%
+\definecolor{js_purple}{rgb}{0.65, 0.12, 0.82}
+\definecolor{js_blue}{RGB}{0,119,170}
+\definecolor{js_red}{RGB}{221,74,104}
+\definecolor{js_green}{RGB}{102,153,0}
+\definecolor{js_function}{RGB}{155,40,128} %purple
+\lstdefinelanguage{JavaScript_var}{
+    keywords={
+        break, case, catch, continue, debugger, default, delete, do, else, false, finally, for, function, if, in, instanceof, new, null, return, switch, this, throw, true, try, typeof, var, void, while, with
+    },
+	morekeywords=[2]{
+    	class, export, boolean, throw, implements, import, this, extends
+    },
+	morekeywords=[3]{
+    	each, constructor
+    },
+    morecomment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    morestring=[b]',
+    morestring=[b]",
+    keywordstyle=\color{js_blue}\bfseries,
+    keywordstyle=[2]\color{blue}\bfseries,
+    keywordstyle=[3]\color{js_red}\bfseries,
+    identifierstyle=\color{black},
+    % commentstyle=\color{js_purple}\ttfamily,
+    commentstyle=\color{eclipse_comment}\ttfamily,
+    stringstyle=\color{js_green}\ttfamily,
+    sensitive=true
+    keepspaces=true,
+    showspaces=false,
+    showstringspaces=false,
+	tabsize=2,
+    %
+    rulecolor=\color{ipython_frame},
+    frame=single,
+    frameround={t}{t}{t}{t},
+    framexleftmargin=3mm,
+    xleftmargin=3mm,
+    numbers=left,
+    numberstyle=\tiny\color{halfgray},
+    %
+    backgroundcolor=\color{ipython_bg},
+    basicstyle=\scriptsize,
+}
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%							Listings fertig
+%------------------------------------------------------------------------
+%________________________________________________________________________

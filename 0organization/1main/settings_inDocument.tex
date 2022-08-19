@@ -1,0 +1,56 @@
+%
+%
+%
+%
+%________________________________________________________________________
+%------------------------------------------------------------------------
+%							Setups für enumitem
+%					Lists - (itemize, enumerate, description)
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+% \setlist[1]{\labelindent=\parindent} % < Usually a good idea
+%\setlist[description]{font=\sffamily\bfseries} % the Default
+\setlist[description]{%
+    topsep=0ex,itemsep=0ex,parsep=0ex,%
+    labelindent=0pt,%
+    leftmargin=0pt%
+}%
+\setlist[itemize]{%
+    topsep=0ex,itemsep=0ex,parsep=0ex,%
+    leftmargin=1em%
+}%
+\setlist[enumerate]{%
+    topsep=0ex,itemsep=0ex,parsep=0ex,%
+    leftmargin=1.5em%
+}%
+%\renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\normalfont\textbf{#1}:}%
+\renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\normalfont\textit{#1}:}%
+%
+% %  Additional new List-Style, "Enumeration-Inline-Roman" for enumerating with lower-case roman letters inline
+\newlist{enuminlrom}{enumerate*}{1}%
+\setlist[enuminlrom]{label=\textit{(\roman*)}}%
+%
+%
+% - - Templates
+%       For Templates, have a look into the corresponding File inside the "8templates" Directory
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%							enumitem fertig
+%------------------------------------------------------------------------
+%________________________________________________________________________
+%
+%
+%
+%
+%
+%
+%
+%________________________________________________________________________
+%------------------------------------------------------------------------
+%							Setups für Glossaries
+%       (Additionally defined cmds/macros are included "pre-Document")
+%       (Additional added keys are included in Preamble, with the package)
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+\input{"\DenKrLayoutMainRootDir/3settings/4customization/glossaries_style".tex}%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%							Glossaries fertig
+%------------------------------------------------------------------------
+%________________________________________________________________________

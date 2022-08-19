@@ -1,0 +1,31 @@
+%________________________________________________________________________
+%------------------------------------------------------------------------
+%				Citation, References  /  Zitate, Quellen  (biblatex, bibtex, biber)
+%                   --- Begin biblatex ---
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+\usepackage[%
+	backend=biber,%
+	style=ieee,%
+	isbn=false,%
+% 	style=apa,%
+% 	apabackref=true,%
+	hyperref=\DenKrHyperrefUsageState,%
+  	%minbibnames=4,%
+  	maxbibnames=3,%
+	sorting=none,%
+	natbib=true,%
+	language=\DenKrLanguageStringCmd,%
+	defernumbers=true,%
+]{biblatex}%
+% \DeclareLanguageMapping{ngerman}{ngerman-apa}%
+\renewcommand*{\bibfont}{\normalfont\footnotesize}%
+\DeclareFieldFormat{sentencecase}{\csname bbx@colon@search\endcsname#1}% Therewith capital letters stay capitals, when using 'style=ieee'
+%   One might also want to take a look at 'titlecase', when using 'style=ieee'
+%\addbibresource{\DenKrLiteratureDir/literature.bib}%
+\addbibresource{\DenKrLiteratureDir/literature_own.bib}%
+\addbibresource{\DenKrLiteratureDir/literature_misc.bib}%
+\addbibresource{\DenKrLiteratureDir/literature_thirdParty.bib}%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%               --- END biblatex ---
+%------------------------------------------------------------------------
+%________________________________________________________________________

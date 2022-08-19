@@ -1,0 +1,226 @@
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+% \usepackage{etex}%
+% \reserveinserts{32}%
+\usepackage{etoolbox}%
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+%
+%
+%
+%
+%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%				Basic Language depending Packages
+%________________________________________________________________________
+% alongside setting of 'figurename, tablename...'
+\input{"\DenKrLayoutMainRootDir/2includes/language_font_setting/\DenKrCompiler/\DenKrLayoutLanguage".tex}%
+%________________________________________________________________________
+%				END Basic Language
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%
+%
+%
+%
+%
+\input{"\DenKrLayoutRootDir/preamble_2_boilerplate".tex}%
+%
+%
+%
+%
+%
+%========================================================================
+% Package Includes - maybe some immediate with options
+%========================================================================
+%
+%
+%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%				Font/Schriftarten Setup
+%________________________________________________________________________
+% Inter alia: A command to format as typewrite with enabled hyphenation
+\input{"\DenKrLayoutMainRootDir/3settings/font".tex}%
+% Real Font Set-Up
+\input{"\DenKrLayoutMainRootDir/2includes/language_font_setting/\DenKrCompiler/font".tex}%
+%________________________________________________________________________
+%				END Font/Schriftarten
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%
+%
+%
+%
+%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%				Some 'Specials', one might want/like
+%________________________________________________________________________
+\expandafter\ifstrequal\expandafter{\DenKrLayout}{acmart}{}{%
+\input{"\DenKrLayoutMainRootDir/2includes/packages/microtype".tex}%
+}%
+%
+\input{"\DenKrLayoutMainRootDir/2includes/packages/compilation_1_veryBasic".tex}%
+%________________________________________________________________________
+%				END 'Specials'
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%
+%
+%
+%
+%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%				Subfigure, Subfig, Subcaption, Caption
+%________________________________________________________________________
+% % Most of the times, links & bookmarks are not allowed for conference articles
+% % .pdf Bookmarks are created here by this
+\input{"\DenKrLayoutMainRootDir/2includes/packages/figure_subfigure_caption".tex}%
+%________________________________________________________________________
+%				END Subfigure, Subfig, Subcaption, Caption
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%
+%
+%
+%
+%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%				Hyperref
+%________________________________________________________________________
+% % Most of the times, links & bookmarks are not allowed for conference articles
+% % .pdf Bookmarks are created here by this
+\input{"\DenKrLayoutMainRootDir/2includes/packages/hyperref".tex}%
+%________________________________________________________________________
+%				END Hyperref
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%
+%
+%
+%
+%
+\ifdef{\DenKrTikzStandaloneNotInclude}{}{%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%				Citation, References  /  Zitate, Quellen  (biblatex, bibtex, biber)
+%                   --- Begin biblatex ---
+%________________________________________________________________________
+\input{"\DenKrLayoutMainRootDir/2includes/packages/biblatex".tex}%
+%________________________________________________________________________
+%               --- END biblatex ---
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+}%
+%
+%
+%
+%
+%
+% \ifdef{\DenKrTikzStandaloneNotInclude}{}{%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%				Acronyms, Abbreviations, Glossary  /  Abkürzungen, Glossar und weiteres
+%                   --- Begin glossaries ---
+%________________________________________________________________________
+\input{"\DenKrLayoutMainRootDir/2includes/packages/glossaries".tex}%
+%________________________________________________________________________
+%               --- END glossaries ---
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+% }%
+%
+%
+%
+%
+%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%				Tables - tabular, tabular*, tabularx, tabulary, makecell, diagbox
+%________________________________________________________________________
+\input{"\DenKrLayoutMainRootDir/2includes/packages/table".tex}%
+%________________________________________________________________________
+%               END Tables
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%
+%
+%
+%
+%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%				Source-Code, Listings, minted
+%________________________________________________________________________
+\input{"\DenKrLayoutMainRootDir/2includes/packages/listings".tex}%
+%________________________________________________________________________
+%               END Listings
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%
+%
+%
+%
+%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%				Algorithms, (Key-Word Formatted Pseudo-Code)
+%       (This is actually nothing too special. In case, you would expect something like a well defined Algorithm Description Language. There is no such thing. Just Typesetting assistance exist, to provide stylistic enhancements over a uniform style with which constructs (Key-Words) are visually separated from other text.)
+%________________________________________________________________________
+\input{"\DenKrLayoutMainRootDir/2includes/packages/algorithm".tex}%
+%________________________________________________________________________
+%               END Algorithms
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%
+%
+%
+%
+%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%				tikz
+%  (Not here, but one Level higher, just because of Input-Levels (max_in_open = 15) )
+%________________________________________________________________________
+%\input{"\DenKrLayoutMainRootDir/2includes/packages/tikz".tex}
+%________________________________________________________________________
+%               END tikz
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%
+%
+%
+%
+%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%				Various (Basic) & Additional Packages
+%________________________________________________________________________
+\input{"\DenKrLayoutMainRootDir/2includes/packages/compilation_2_BasicAndAdditional".tex}%
+%________________________________________________________________________
+%				END Additional
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%
+%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%				Some more worthy Packages
+%________________________________________________________________________
+\input{"\DenKrLayoutMainRootDir/2includes/packages/compilation_3_worthyAddition".tex}%
+%________________________________________________________________________
+%				END Worthy
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%
+%
+%
+\input{"\DenKrLayoutRootDir/preamble_3_packages".tex}%
+%
+\input{"\DenKrLayoutRootDir/preamble_9_finishing".tex}%
+%
+%
+%
+%
+%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%				Optional packages. Maybe some times beneficial in temporary use
+%				    (e.g. to temporary overlay a transparent "DRAFT" print)
+%________________________________________________________________________
+\input{"\DenKrLayoutMainRootDir/2includes/packages/optional".tex}%
+%________________________________________________________________________
+%				END Optional / Temporary
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%
+%
+%
+%==================================================================================
+% ----  Some Stuff to help during working state
+%----------------------------------------------------------------------------------
+% Enables you this infamous comments that helps gratuitously while concurrent working / reviewing among several Co-Authors.
+\input{"\DenKrLayoutMainRootDir/2includes/setup/DenKr_comments__sty".tex}%
+%!!! !!!  Have a look into the File to adjust it to your project.  !!! !!!
+\input{"\DenKrSupplyRootDir/DenKr_comments".tex}%
+% - - Set in "main-File", before including the above two files: - - - - - - - - - -
+% % % \newcommand{\DenKrCommentsUsage}{1}% 1: Enabled  |  0: Disabled, Comment-Macros don't do anything
+%----------------------------------------------------------------------------------
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%==================================================================================

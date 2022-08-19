@@ -1,0 +1,91 @@
+%________________________________________________________________________
+%------------------------------------------------------------------------
+%					TikZ
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+% --        & Standalone for assisting Tikz
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+% 	!!! IMPORTANT !!!
+% 	Never forget -shell-escape
+% 	as argument for pdflatex
+% 	when using standalone
+\newcommand{\includestandalonedefaultmode}{buildnew}%
+\newcommand{\tikzFilesPath}{\DenKrTikzRootDir}%
+\usepackage[%
+	group=true,%
+	mode=\includestandalonedefaultmode,%
+% 	subpreambles=true,%
+% 	build={%
+% 		latexoptions=-interaction=batchmode -shell-escape -jobname ’\buildjobname’%
+% 	},%
+	]{standalone}%
+\usepackage{tikz}%
+\usetikzlibrary{calc}%
+\usetikzlibrary{matrix}%
+\usetikzlibrary{fit}%
+\usetikzlibrary{positioning}%
+\usetikzlibrary{shapes}%
+\usetikzlibrary{shapes.geometric}%
+\usetikzlibrary{decorations}%
+\usetikzlibrary{decorations.markings}%
+\usetikzlibrary{decorations.pathmorphing}%
+\usetikzlibrary{arrows}%
+\usetikzlibrary{arrows.meta}%
+\usetikzlibrary{shadows}%
+\usetikzlibrary{shadows.blur}%
+\usetikzlibrary{fadings}%
+\usetikzlibrary{shadings}%
+\usetikzlibrary{external}
+\usetikzlibrary{backgrounds}%
+\usetikzlibrary{patterns}%
+%
+\usepackage{pgfplots}%
+\pgfplotsset{compat=1.11}%
+\usepgfplotslibrary{dateplot}%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%					TikZ End
+%------------------------------------------------------------------------
+%________________________________________________________________________
+%
+%
+%
+%
+%________________________________________________________________________
+%------------------------------------------------------------------------
+%							TikZ / PGF
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%\tikzset{
+%	fontscale/.style = {font=\relsize{#1}}
+%	}
+%\counterwithin{figure}{section}
+% PSTricks standart umgebung:
+%\psset{xunit=0.5\textwidth,yunit=0.5\textwidth,runit=0.5\textwidth}
+%
+%Remark that PGF-Layers should be declared and set outside of tikz-pictures
+%  Consider using 'standalone' for "Big Pictures" (\documentclass{standalone}\usepackage{tikz}\usetikzlibrary{positioning, shapes}\pgfdeclarelayer{background}\pgfdeclarelayer{foreground}\pgfsetlayers{background,main,foreground}\begin{document}\begin{tikzpicture}[remember picture])
+% And apply a global configuration for "Small Stuff" like 'inline aka [baseline]' drawings
+\pgfdeclarelayer{backgroundlayer}%
+\pgfdeclarelayer{background}%
+\pgfdeclarelayer{mainlayer}%
+\pgfdeclarelayer{main}%
+\pgfdeclarelayer{notelayer}%
+\pgfdeclarelayer{note}%
+\pgfdeclarelayer{mindmaplayer}%
+\pgfdeclarelayer{linelayer}%
+\pgfdeclarelayer{line}%
+\pgfdeclarelayer{foreground}%
+\pgfdeclarelayer{foregroundlayer}%
+\pgfdeclarelayer{Layer1}%
+\pgfdeclarelayer{Layer2}%
+\pgfdeclarelayer{Layer3}%
+\pgfdeclarelayer{Layer4}%
+\pgfdeclarelayer{Layer5}%
+\pgfdeclarelayer{Layer6}%
+\pgfdeclarelayer{Layer7}%
+\pgfdeclarelayer{Layer8}%
+\pgfdeclarelayer{Layer9}%
+\pgfdeclarelayer{Layer10}%
+\pgfsetlayers{backgroundlayer,background,mainlayer,main,notelayer,note,mindmaplayer,linelayer,line,foregroundlayer,foreground,Layer1,Layer2,Layer3,Layer4,Layer5,Layer6,Layer7,Layer8,Layer9,Layer10}%
+%\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+%							TikZ / PGF fertig
+%------------------------------------------------------------------------
+%________________________________________________________________________

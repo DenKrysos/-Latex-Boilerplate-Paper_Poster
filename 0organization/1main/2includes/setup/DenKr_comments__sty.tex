@@ -1,0 +1,65 @@
+%==================================================================================
+% --  Required basic, initial stuff to Set-Up the DenKr-Comments
+%----------------------------------------------------------------------------------
+%
+%
+%
+%==================================================================================
+% ----  Some Stuff to help during working state
+%----------------------------------------------------------------------------------
+% Disable-Wrapper. Helps to disable everything with just one Step. Remember to use it ;oP
+\expandafter\ifstrequal\expandafter{\DenKrCommentsUsage}{0}{%
+    \newcommand{\disablewr}[1]{}%
+}{%
+	\newcommand{\disablewr}[1]{#1}%
+}%
+\newcommand{\newcommanddisw}[3]{\newcommand{#1}[1]{\disablewr{{\color{#2}#3}}}}%
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+%
+%
+%
+%==================================================================================
+% ----  Some Colors for the Comments
+%----------------------------------------------------------------------------------
+\definecolor{todocol}{named}{red}
+\definecolor{notecol}{named}{gray}
+% - - - - - -
+\definecolor{denkrComCol1}{named}{violet}%
+\definecolor{denkrComCol2}{named}{purple}%
+\definecolor{denkrComCol3}{named}{blue}%
+\definecolor{denkrComCol4}{named}{ForestGreen}%
+\definecolor{denkrComCol5}{named}{orange}%
+\definecolor{denkrComCol6}{named}{brown}%
+\definecolor{denkrComCol7}{named}{Emerald}%
+\definecolor{denkrComCol8}{named}{Thistle}%
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+%
+%
+%
+%==================================================================================
+% ----  General Macros
+%----------------------------------------------------------------------------------
+\newcommanddisw{\todo}{todocol}{ToDo: #1}%
+%\renewcommand{\todo}[1]{}%% Disable comments [selectively this]
+%
+\newcommanddisw{\notice}{notecol}{Notice: #1}%
+%\renewcommand{\notice}[1]{}%% Disable comments [selectively this]
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+%
+%
+%
+%==================================================================================
+% ----  Template/Example for defining additional Comment-Cmds per Person
+%----------------------------------------------------------------------------------
+% \definecolor{denkrComCol1}{named}{purple}%
+% \newcommanddisw{\dekrcom}{denkrComCol1}{{\#}DenKr: #1}%
+% \newcommanddisw{\dekrhigh}{denkrComCol1}{#1}%
+% \renewcommand{\denkrcom}[1]{}%% Disable comments [selectively this]
+% \renewcommand{\denkrhigh}[1]{#1}%% Disable highlighting of text [selectively this]
+% \renewcommand{\denkrhigh}[1]{}%% Completely disable this kind of text [selectively this]
+% \newcommand{\dkc}[1]{\dekrcom{#1}}
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =

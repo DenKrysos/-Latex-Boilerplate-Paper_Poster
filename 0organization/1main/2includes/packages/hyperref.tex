@@ -1,0 +1,46 @@
+%________________________________________________________________________
+% Hyperref Usage-Wrapper
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+\expandafter\ifstrequal\expandafter{\DenKrLayoutUseHyperref}{1}{%
+%
+%
+\newcommand{\DenKrHyperrefUsageState}{true}%
+%________________________________________________________________________
+%------------------------------------------------------------------------
+%                   --- Begin hyperref ---
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+% Usually, hyperref has to be loaded as THE LAST of all packages or at least as one of latest. (Some specials like glossaries rather prefer to be loaded even after hyperref)
+% Because of that \AtEndPreamble{} is used.
+% But be aware that Biblatex does some things different whether or not hyperref is loaded. Hence, Biblatex checks for hyperref and thus the presence of hyperref must be known prior to that checks. One way to ensure this is via this combination: Use \AtEndPreamble{} to load hyperref, but paste this BEFORE \usepackage{biblatex}
+%
+% See PassOptions for url on Top
+% % Most of the times, links & bookmarks are not allowed for conference articles
+% % .pdf Bookmarks are created here by this
+\AtEndPreamble{%
+\usepackage[%
+	pdfborder={0 0 0},%
+	colorlinks=false,%
+	urlcolor=black,%
+	linkcolor=black,%
+    %citecolor=citegreen,%
+	citecolor=black,%
+	filecolor=black,%
+	breaklinks,%
+	%bookmarks=false,%
+	]{hyperref}%
+}%
+\AtEndPreamble{%
+\usepackage{url}%
+}%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%                   --- End hyperref ---
+%------------------------------------------------------------------------
+%________________________________________________________________________
+%
+%
+}{%
+\newcommand{\DenKrHyperrefUsageState}{false}%
+}%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+% END Usage-Wrapper
+%________________________________________________________________________

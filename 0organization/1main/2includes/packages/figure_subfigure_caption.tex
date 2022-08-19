@@ -1,0 +1,46 @@
+%________________________________________________________________________
+%------------------------------------------------------------------------
+%					Subfigure, Subfig, Subcaption, Caption
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+% In my personal opinion, package subcaption.sty (part of caption.sty) is preferable
+%  While subfigure.sty is pretty much end-of-life, subfig.sty & subcaption.sty do both have their right to exist.
+%  But in my personal opinion, subcaption.sty is superior in more regards than subfig.sty is
+%
+%           % \usepackage{subfigure}% Just as Info: subfigure is dead. Use subfig.sty (which would be loaded above by the IEEE-template) or subcaption.sty instead.
+%           % \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\usepackage{caption}%
+\usepackage{subcaption}%You can pass options for subcaptions/subfigures here or alternatively, use the following command
+%\captionsetup[subfigure]{margin=0pt,font+=smaller,labelformat=parens,labelsep=space,skip=6pt,list=false,hypcap=false}%Default options for subfigures
+%
+% - - - Values for the font-options
+% - Size
+%        tiny, scriptsize, footnotesize, small, normalsize, large, Large
+% - Format
+%        normalfont  --  Normal shape & series & family
+%        up  --  Upright shape
+%        it  --  Italic shape
+%        sl  --  Slanted shape
+%        sc  --  SMALL CAPS SHAPE
+%        md  --  Medium series
+%        bf  --  Bold series
+%        rm  --  Roman family
+%        sf  --  Sans Serif family
+%        tt  --  Typewriter family
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%					Subfigure, Subfig, Subcaption, Caption fertig
+%------------------------------------------------------------------------
+%________________________________________________________________________
+%
+%
+%________________________________________________________________________
+%------------------------------------------------------------------------
+%				Settings
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%  Asterisk (*) after \captionsetup suppresses the "Unused \captionsetup[⟨type⟩]" Warning
+\captionsetup*[figure]{%
+    font=footnotesize,%
+    labelfont=normalfont,%
+    textfont=normalfont%
+}%
+%\captionsetup{belowskip=0pt}% 12pt
+%\captionsetup{aboveskip=4pt}% 4pt

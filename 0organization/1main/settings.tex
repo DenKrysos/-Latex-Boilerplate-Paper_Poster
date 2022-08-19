@@ -1,0 +1,190 @@
+%
+%
+% Setups
+%
+%
+%
+%
+%		New Lenghts & Variables
+\newlength\textheighttemp%
+% \setlength{\textheighttemp}{\textheight}%
+\newlength\textwidthtemp%
+% \setlength{\textwidthtemp}{\textwidth}%
+\newlength\textheightstd%
+\setlength{\textheightstd}{\textheight}%
+\newlength\textwidthstd%
+\setlength{\textwidthstd}{\textwidth}%
+\newlength\textheightold%
+\newlength\textwidthold%
+%
+\newlength\tempheight%
+\newlength\tempwidth%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%________________________________________________________________________
+%------------------------------------------------------------------------
+%					Spacing around Floats
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+% You can modify the following lengths, which affect all floats.;
+%    \floatsep: space left between floats (12.0pt plus 2.0pt minus 2.0pt).
+%    \textfloatsep: space between last top float or first bottom float and the text (20.0pt plus 2.0pt minus 4.0pt).
+%    \intextsep : space left on top and bottom of an in-text float (12.0pt plus 2.0pt minus 2.0pt).
+%    \dbltextfloatsep is \textfloatsep for 2 column output (20.0pt plus 2.0pt minus 4.0pt).
+%    \dblfloatsep is \floatsep for 2 column output (12.0pt plus 2.0pt minus 2.0pt).
+%    \abovecaptionskip: space above caption (10.0pt).
+%    \belowcaptionskip: space below caption (0.0pt).
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%					Float-Spacing done
+%------------------------------------------------------------------------
+%________________________________________________________________________
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%________________________________________________________________________
+%------------------------------------------------------------------------
+%							Setups für Microtype
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+\SetProtrusion{encoding={*},family={bch},series={*},size={6,7}}
+              {1={ ,750},2={ ,500},3={ ,500},4={ ,500},5={ ,500},
+               6={ ,500},7={ ,600},8={ ,500},9={ ,500},0={ ,500}}
+\SetExtraKerning[unit=space]
+    {encoding={*}, family={bch}, series={*}, size={footnotesize,small,normalsize}}
+    {\textendash={400,400}, % en-dash, add more space around it
+     "28={ ,150}, % left bracket, add space from right
+     "29={150, }, % right bracket, add space from left
+     \textquotedblleft={ ,150}, % left quotation mark, space from right
+     \textquotedblright={150, }} % right quotation mark, space from left
+\SetTracking{encoding={*}, shape=sc}{40}
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%							Microtype fertig
+%------------------------------------------------------------------------
+%________________________________________________________________________
+%
+%
+%
+%
+%
+%
+%________________________________________________________________________
+%------------------------------------------------------------------------
+%						Setups für Hyperref/URL
+%		Note: Package hyperref internally laods package url
+%		(Like some other Packages do. For Example: biblatex)
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%\mathchardef\UrlBreakPenalty=100% I think default is 100
+% Allow linebreaks in URLs after additional character to the defaults, but
+% don't just \renew or \def it, because this would remove all characters
+% predefined within \UrlBreaks in the package. This could mislead other users.
+% E.g. can cause smaller dots.. So use the etoolbox with "append to"
+%\appto\UrlBreaks{%
+%	\do\*%
+% 	\do\-% Is done with the url option "hyphens"
+%	\do\~%
+%	\do\"%
+%	\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j%
+%	\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w%
+%	\do\x\do\y\do\z%
+%}%
+%	Note: Alread inside the \UrlBreaks by default are:
+% 	\do\.%
+% 	\do\=%
+% 	\do\'%
+% 	\do\&%
+% 	\do\-% With the option hypens
+% \expandafter\def\expandafter\UrlBreaks\expandafter{\UrlBreaks% save the current one
+% 	\do\*%
+% 	\do\-%
+% 	\do\~%
+% 	\do\'%
+% 	\do\"%
+% 	\do\-%
+% 	\do\&%
+% 	\do\=%
+% }%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%						Hyperref/URL fertig
+%------------------------------------------------------------------------
+%________________________________________________________________________
+%
+%
+%
+%
+%
+%
+%
+%________________________________________________________________________
+%------------------------------------------------------------------------
+%						Redefinition of \texttt
+%				to allow a proper hyphenation (Silbentrennung)
+% other breakpoint symbols can be added, for example, below I also make [ a breakpoint:
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%\let\stdtexttt\texttt
+% \newcommand{\newtexttt}[1]{%
+%   \begingroup
+%   \ttfamily
+%   \begingroup\lccode`~=`/\lowercase{\endgroup\def~}{/\discretionary{}{}{}}%
+%   \begingroup\lccode`~=`[\lowercase{\endgroup\def~}{[\discretionary{}{}{}}%
+%   \begingroup\lccode`~=`.\lowercase{\endgroup\def~}{.\discretionary{}{}{}}%
+%   \catcode`/=\active\catcode`[=\active\catcode`.=\active
+%   \scantokens{#1\noexpand}%
+%   \endgroup
+% }
+% Oh noes, better way: Look at the Schriftart Segment in the Header
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%						Redef fertig
+%------------------------------------------------------------------------
+%________________________________________________________________________
+%
+%
+%
+%
+%
+%________________________________________________________________________
+%------------------------------------------------------------------------
+%						Definitionen allgemeiner Farben
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%\definecolor{optionalargscolor}{RGB}{255,125,25}%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%							Farben fertig
+%------------------------------------------------------------------------
+%________________________________________________________________________
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+% Initialisierungen wie Counter, Theorem, Variablen, Konstanten..
+%
+%\theoremstyle{break}
+%\theoremheaderfont{\bfseries}
+%\theorembodyfont{\normalfont}
+%\theoremseparator{}
+%\theorempreskip{0ex}
+%\theorempostskip{0ex}
+%\theoremindent0.5em
+%
+%
+% 
+% 
+%
+%
+\input{"\DenKrLayoutMainRootDir/3settings/listings_listings".tex}%
+% \input{"\DenKrLayoutMainRootDir/3settings/listings_minted".tex}%

@@ -1,0 +1,91 @@
+%  A Template for the File "./1supply/DenKr_comments.tex",
+%    which concretely configures the __sty.tex for using the Comment-Function
+%  In case not present, create the File "./1supply/DenKr_comments.tex", copy the stuff here below this Comment over and adjust to your needs.
+%
+%
+%==================================================================================
+% ----  Some Stuff to help during working state
+% -- Enables you this infamous comments that helps gratuitously while concurrent working / reviewing among several Co-Authors.
+% -- Adjust Author-Names and Macro-Names to your Project
+% % % % % % % % % % % % % % % % % % % % %
+% -- USAGE - Extent by additional Macros
+% -- -- For adding more Persons beyond the current number
+% - Just duplicate one of these blocks below and adjust to your requirements (Name of the Cmd and Name-Tag (Abbreviation for Persons Name) inside.
+% - Only thing missing here: Define a new Color. Just add a Color-Definition according to xcolor.sty, e.g.
+%        \definecolor{denkrComCol<Something>}{named}{blue}%
+%   above the duplicated Macro-Definition and then use that Color's name (what you've written as "denkrComCol<Something>")
+% - Suggested is to also adjust the "\TempDisplayPreparation" Definition at the bottom, which displays what Comment-Cmds are available.
+%----------------------------------------------------------------------------------
+%
+%= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\newcommanddisw{\dekrcom}{denkrComCol1}{{\#}DenKr: #1}%
+\newcommanddisw{\dekrhigh}{denkrComCol1}{#1}%
+% \renewcommand{\denkrcom}[1]{}%% Disable comments [selectively this]
+% \renewcommand{\denkrhigh}[1]{#1}%% Disable highlighting of text [selectively this]
+% \renewcommand{\denkrhigh}[1]{}%% Completely disable this kind of text [selectively this]
+\newcommand{\dkc}[1]{\dekrcom{#1}}
+%
+\newcommanddisw{\chficom}{denkrComCol3}{{\#}ChFi: #1}%
+\newcommanddisw{\chfihigh}{denkrComCol3}{#1}%
+% \renewcommand{\chficom}[1]{}%% Disable comments [selectively this]
+% \renewcommand{\chfihigh}[1]{#1}%% Disable highlighting of text [selectively this]
+% \renewcommand{\chfihigh}[1]{}%% Completely disable this kind of text [selectively this]
+%
+\newcommanddisw{\mabecom}{denkrComCol4}{{\#}MaBe: #1}%
+\newcommanddisw{\mabehigh}{denkrComCol4}{#1}%
+% \renewcommand{\mabecom}[1]{}%% Disable comments [selectively this]
+% \renewcommand{\mabehigh}[1]{#1}%% Disable highlighting of text [selectively this]
+% \renewcommand{\mabehigh}[1]{}%% Completely disable this kind of text [selectively this]
+%
+\newcommanddisw{\jazecom}{denkrComCol5}{{\#}JaZe: #1}%
+\newcommanddisw{\jazehigh}{denkrComCol5}{#1}%
+% \renewcommand{\jazecom}[1]{}%% Disable comments [selectively this]
+% \renewcommand{\jazehigh}[1]{#1}%% Disable highlighting of text [selectively this]
+% \renewcommand{\jazehigh}[1]{}%% Completely disable this kind of text [selectively this]
+%
+\newcommanddisw{\bevecom}{denkrComCol6}{{\#}BeVe: #1}%
+\newcommanddisw{\bevehigh}{denkrComCol6}{#1}%
+% \renewcommand{\bevecom}[1]{}%% Disable comments [selectively this]
+% \renewcommand{\bevehigh}[1]{#1}%% Disable highlighting of text [selectively this]
+% \renewcommand{\bevehigh}[1]{}%% Completely disable this kind of text [selectively this]
+%
+\newcommanddisw{\maarcom}{denkrComCol7}{{\#}MaAr: #1}%
+\newcommanddisw{\maarhigh}{denkrComCol7}{#1}%
+% \renewcommand{\maarcom}[1]{}%% Disable comments [selectively this]
+% \renewcommand{\maarhigh}[1]{#1}%% Disable highlighting of text [selectively this]
+% \renewcommand{\maarhigh}[1]{}%% Completely disable this kind of text [selectively this]
+%
+\newcommanddisw{\hedicom}{denkrComCol8}{{\#}Hedi: #1}%
+\newcommanddisw{\hedihigh}{denkrComCol8}{#1}%
+% \renewcommand{\hedicom}[1]{}%% Disable comments [selectively this]
+% \renewcommand{\hedihigh}[1]{#1}%% Disable highlighting of text [selectively this]
+% \renewcommand{\hedihigh}[1]{}%% Completely disable this kind of text [selectively this]
+%
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+%
+%
+%
+%
+%= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%
+\newcommand{\TempDisplayPreparation}{\disablewr{%
+	{%
+	\section{Draft-State: Comment Color Code}{\noindent\raggedright%
+	\todo{Comments: ToDos: \mbox{$\Rightarrow$ \textbackslash todo\{ \}}}\nl%
+    \notice{Comment: A general Notice: \mbox{$\Rightarrow$ \textbackslash notice\{ \}}}\nl%
+	\dekrcom{Comments: Dennis Krummacker: \mbox{$\Rightarrow$ \textbackslash dekrcom\{ \}}}\nl%
+	\chficom{Comments: Christoph Fischer: \mbox{$\Rightarrow$ \textbackslash chficom\{ \}}}\nl%
+	\mabecom{Comments: Maximilian Berndt: \mbox{$\Rightarrow$ \textbackslash mabecom\{ \}}}\nl%
+	\jazecom{Comments: Janis Zemitis: \mbox{$\Rightarrow$ \textbackslash jazecom\{ \}}}\nl%
+	\bevecom{Comments: Benedikt Veith: \mbox{$\Rightarrow$ \textbackslash bevecom\{ \}}}\nl%
+	\maarcom{Comments: Maryam Arabshahi: \mbox{$\Rightarrow$ \textbackslash maarcom\{ \}}}\nl%
+	\hedicom{Comments: Mohamed Romdhane: \mbox{$\Rightarrow$ \textbackslash hedicom\{ \}}}\nl%
+	\textbf{$\Rightarrow$ You may add such a Comment-Macro for yourself in "\DenKrSupplyRootDir/DenKr\_comments.tex" if you wish $\Leftarrow$}
+    }}%
+}}%
+%----------------------------------------------------------------------------------
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%==================================================================================

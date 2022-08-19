@@ -1,0 +1,80 @@
+%==================================================================================
+% ----  Project-Settings
+%----------------------------------------------------------------------------------
+%
+%Valid Layout Values
+% - scrarticle % Optimized "article" for Using KOMA-Script. NOT DONE YET
+% - article_mobilkomm % Used by: Osnabrück Mobilkomm-Tagung. A slightly modified 'article'-class
+% - IEEEtran % Most IEEE Conferences
+% - ieeeconf % A slight variation of IEEEtran. Used by some IEEE Conferences
+% - acmart % Used by most ACM Conferences
+% - preprint % Used to compile a preprint (i.e. no Final-Version or Working-State. Uses the article-class and includes a Submission-Copyright-Notice and the word 'preprint')
+% - postprint % Used to compile a particularly special kind of preprint. For the very final version of the paper, not only after submission and not only after Review-Phase but after final acceptance, ready for print. So it is pretty much the Final-Version without being really THE printed one and in another Layout (Uses the article-class and includes a Copyright-Notice (different from the preprint one))
+% - MDPI % NOT included, because the class for that either alters drastically rapidly or is slightly different for each Journal. Also, for submission they want the source but don't like complex Project Structuresfff, but everything within one File.
+%  %  %  %  %
+% - tikz_standalone % Sort of a special layout type. Used for Tikz-Pictures compiled in standalone-mode
+%  %  %  %  %
+% - tikzposter
+% - fancytikzposter % Not implemented yet, because tikzposter is truly great (when you know tikz yourself ;oP)
+% - beamerposter % Not implemented yet, because tikzposter is truly great (when you know tikz yourself ;oP)
+% - betterposter % Not implemented yet, because tikzposter is truly great (when you know tikz yourself ;oP)
+%  %  %  %  %
+% !!! ATTENTION !!! %
+%   The "Author-List" is the only thing regarding the papers content that is not well separated from the layout code. That is because every layout uses a different Syntax for defining and guidelines for formatting the authors list.
+%   -> Hence, when changing the layout, e.g. temporarily to 'preprint', remember to update the Author-List also the new layout's Author-File
+\newcommand{\DenKrLayout}{IEEEtran}%
+\newcommand{\DenKrLayoutLanguage}{english}% en_ger, english, ngerman
+\newcommand{\DenKrLayoutUseHyperref}{0}% 0: false aka NOT use Hyperref  |  1: true aka USE Hyperref
+%
+% _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+% --  Some Stuff to help during working state
+% Enables you this infamous comments that helps gratuitously while concurrent working / reviewing among several Co-Authors.
+% Have a look into the File  {"\DenKrSupplyRootDir/DenKr_comments".tex}  to adjust Author-&-Macro-Names to the needs of your project
+% During writing, set the following to '1' to have the Comment-Macros be printed.
+% After finishing the work, you can just set it to '0' to make every Comment-Output disappear.% Additional Feature: The Macro \disablewr{}. Its Argument is eaten away / vanishes / has no effect when \DenKrCommentsUsage is set to '0'
+\newcommand{\DenKrCommentsUsage}{1}% 1: Enabled  |  0: Disabled, Comment-Macros don't do anything
+%----------------------------------------------------------------------------------
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%==================================================================================
+%
+%
+%
+%
+%==================================================================================
+% ----  Project-Setup
+% ----     (In most cases, you shouldn't be required to touch anything below)
+%----------------------------------------------------------------------------------
+%
+\newcommand{\DenKrOrgaRootDir}{./0organization}%
+\newcommand{\DenKrLayoutMainRootDir}{\DenKrOrgaRootDir/1main}%
+\newcommand{\DenKrLayoutBaseRootDir}{\DenKrOrgaRootDir/2layout}%
+\newcommand{\DenKrLayoutRootDir}{\DenKrLayoutBaseRootDir/\DenKrLayout}%
+\newcommand{\DenKrSupplyRootDir}{./1supply}%
+\newcommand{\DenKrContentRootDir}{./4chapter}%
+\newcommand{\DenKrTablesRootDir}{./5tables}%
+\newcommand{\DenKrListingsRootDir}{./6listings}%
+\newcommand{\DenKrTikzRootDir}{./7Tikz}%
+\newcommand{\DenKrGraphicsRootDir}{./8graphics}%
+\newcommand{\DenKrAlgorithmRootDir}{\DenKrListingsRootDir}%
+\newcommand{\DenKrLiteratureDir}{\DenKrSupplyRootDir}%
+%=========================================================================
+% ----  Project-Setup (Some little additional for further Structuring)
+%-------------------------------------------------------------------------
+\newcommand{\DenKrSegmentationSubDir}{\DenKrContentRootDir/0segmentation}%
+\newcommand{\DenKrLayoutIncludeBiographies}{0}% 1: Print the Biographies after Literature-References  |  0: Don't print Biographies
+%
+%
+%
+%
+%
+%==================================================================================
+% ----  More on LaTeX
+%----------------------------------------------------------------------------------
+\newcommand{\DenKrCompiler}{pdfLaTeX}% LuaLaTeX, pdfLaTeX
+% correct bad hyphenation here
+\hyphenation{%
+	op-ti-cal
+    net-works
+    semi-con-duc-tor
+    time-stamp
+}%
