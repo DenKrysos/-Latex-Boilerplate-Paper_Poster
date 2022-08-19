@@ -1,3 +1,5 @@
+\usepackage{array}
+%
 %%%%\usepackage{tabular}% Latex-Std, just don't use
 %\usepackage{tabular*}% Latex-Std, bit better
 %%%%\usepackage{tabularx}% More comfortable than, 'tabular*', better to use, but no nesting
@@ -10,5 +12,9 @@
 % ---- -- Could also use 'tabularx', together with 'makecell', if you like it better...
 % ---- Otherwise maybe 'tabular*'
 %------------------------------------------------------------------------------------
+%longtable is a special one, which allows page-breaks
+\usepackage{longtable}%
+%----------------------------------------------------------------
 %
-\usepackage{multirow}
+\usepackage{multirow}% Create tabular cells spanning multiple rows
+\usepackage{colortbl}% Add colour to LaTeX tables

@@ -1,3 +1,42 @@
+%________________________________________________________________________
+%------------------------------------------------------------------------
+%               File Split Notice
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%   More inside "./0organization/1main/" in the File "settings_inDocument_perDoc.tex"
+%       (Unique to every single Project)
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%------------------------------------------------------------------------
+%________________________________________________________________________
+%
+%
+%
+%
+%
+%________________________________________________________________________
+%------------------------------------------------------------------------
+%		New Lengths & Variables
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+\newlength\textheighttemp%
+% \setlength{\textheighttemp}{\textheight}%
+\newlength\textwidthtemp%
+% \setlength{\textwidthtemp}{\textwidth}%
+\newlength\textheightstd%
+\setlength{\textheightstd}{\textheight}%
+\newlength\textwidthstd%
+\setlength{\textwidthstd}{\textwidth}%
+\newlength\textheightold%
+\newlength\textwidthold%
+%
+\newlength\tempheight%
+\newlength\tempwidth%
+%
+\newlength{\tmpwidth}%
+\newlength{\tmpheight}%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%					Float-Spacing done
+%------------------------------------------------------------------------
+%________________________________________________________________________
+%
 %
 %
 %
@@ -7,23 +46,7 @@
 %							Setups für enumitem
 %					Lists - (itemize, enumerate, description)
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-% \setlist[1]{\labelindent=\parindent} % < Usually a good idea
-%\setlist[description]{font=\sffamily\bfseries} % the Default
-\setlist[description]{%
-    topsep=0ex,itemsep=0ex,parsep=0ex,%
-    labelindent=0pt,%
-    leftmargin=0pt%
-}%
-\setlist[itemize]{%
-    topsep=0ex,itemsep=0ex,parsep=0ex,%
-    leftmargin=1em%
-}%
-\setlist[enumerate]{%
-    topsep=0ex,itemsep=0ex,parsep=0ex,%
-    leftmargin=1.5em%
-}%
-%\renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\normalfont\textbf{#1}:}%
-\renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\normalfont\textit{#1}:}%
+%  More in the "_perDoc.tex" File inside "./0organization/1main/"
 %
 % %  Additional new List-Style, "Enumeration-Inline-Roman" for enumerating with lower-case roman letters inline
 \newlist{enuminlrom}{enumerate*}{1}%
@@ -36,8 +59,6 @@
 %							enumitem fertig
 %------------------------------------------------------------------------
 %________________________________________________________________________
-%
-%
 %
 %
 %

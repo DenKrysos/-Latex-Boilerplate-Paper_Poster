@@ -1,47 +1,10 @@
-%
-%
-% Setups
-%
-%
-%
-%
-%		New Lenghts & Variables
-\newlength\textheighttemp%
-% \setlength{\textheighttemp}{\textheight}%
-\newlength\textwidthtemp%
-% \setlength{\textwidthtemp}{\textwidth}%
-\newlength\textheightstd%
-\setlength{\textheightstd}{\textheight}%
-\newlength\textwidthstd%
-\setlength{\textwidthstd}{\textwidth}%
-\newlength\textheightold%
-\newlength\textwidthold%
-%
-\newlength\tempheight%
-\newlength\tempwidth%
-%
-%
-%
-%
-%
-%
-%
-%
-%
 %________________________________________________________________________
 %------------------------------------------------------------------------
-%					Spacing around Floats
+%               File Split Notice
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-% You can modify the following lengths, which affect all floats.;
-%    \floatsep: space left between floats (12.0pt plus 2.0pt minus 2.0pt).
-%    \textfloatsep: space between last top float or first bottom float and the text (20.0pt plus 2.0pt minus 4.0pt).
-%    \intextsep : space left on top and bottom of an in-text float (12.0pt plus 2.0pt minus 2.0pt).
-%    \dbltextfloatsep is \textfloatsep for 2 column output (20.0pt plus 2.0pt minus 4.0pt).
-%    \dblfloatsep is \floatsep for 2 column output (12.0pt plus 2.0pt minus 2.0pt).
-%    \abovecaptionskip: space above caption (10.0pt).
-%    \belowcaptionskip: space below caption (0.0pt).
+%   More inside "./0organization/1main/" in the File "settings_perDoc.tex"
+%       (Unique to every single Project)
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-%					Float-Spacing done
 %------------------------------------------------------------------------
 %________________________________________________________________________
 %
@@ -49,30 +12,22 @@
 %
 %
 %
-%
-%
-%
-%
 %________________________________________________________________________
 %------------------------------------------------------------------------
-%							Setups für Microtype
+%						Definitionen allgemeiner Farben
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-\SetProtrusion{encoding={*},family={bch},series={*},size={6,7}}
-              {1={ ,750},2={ ,500},3={ ,500},4={ ,500},5={ ,500},
-               6={ ,500},7={ ,600},8={ ,500},9={ ,500},0={ ,500}}
-\SetExtraKerning[unit=space]
-    {encoding={*}, family={bch}, series={*}, size={footnotesize,small,normalsize}}
-    {\textendash={400,400}, % en-dash, add more space around it
-     "28={ ,150}, % left bracket, add space from right
-     "29={150, }, % right bracket, add space from left
-     \textquotedblleft={ ,150}, % left quotation mark, space from right
-     \textquotedblright={150, }} % right quotation mark, space from left
-\SetTracking{encoding={*}, shape=sc}{40}
+\definecolor{textFlowEmphColor}{RGB}{20,20,180}%
+\definecolor{textFlowHighEmphColor}{RGB}{80,0,180}%
+%
+\definecolor{optionalargscolor}{RGB}{255,125,25}%
+\definecolor{ColorRegExCmdID}{RGB}{25,0,255}%
+\definecolor{ColorRegExCmdSelect}{RGB}{255,125,25}%
+\definecolor{ColorRegExCmdMultiSelect}{RGB}{30,150,0}%
+\definecolor{ColorRegExCmdOption}{RGB}{100,100,100}%
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-%							Microtype fertig
+%							Farben fertig
 %------------------------------------------------------------------------
 %________________________________________________________________________
-%
 %
 %
 %
@@ -123,8 +78,6 @@
 %
 %
 %
-%
-%
 %________________________________________________________________________
 %------------------------------------------------------------------------
 %						Redefinition of \texttt
@@ -154,25 +107,8 @@
 %
 %________________________________________________________________________
 %------------------------------------------------------------------------
-%						Definitionen allgemeiner Farben
+            % Initialisierungen wie Counter, Theorem, Variablen, Konstanten..
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-%\definecolor{optionalargscolor}{RGB}{255,125,25}%
-%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-%							Farben fertig
-%------------------------------------------------------------------------
-%________________________________________________________________________
-%
-%
-%
-%
-%
-%
-%
-%
-%
-%
-% Initialisierungen wie Counter, Theorem, Variablen, Konstanten..
-%
 %\theoremstyle{break}
 %\theoremheaderfont{\bfseries}
 %\theorembodyfont{\normalfont}
@@ -180,6 +116,10 @@
 %\theorempreskip{0ex}
 %\theorempostskip{0ex}
 %\theoremindent0.5em
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%						This done
+%------------------------------------------------------------------------
+%________________________________________________________________________
 %
 %
 % 

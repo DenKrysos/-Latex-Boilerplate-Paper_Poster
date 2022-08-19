@@ -52,6 +52,10 @@ Inside the Directory "./0rganization/1main/8templates/example_chapter/" are some
     * Syntax e.g. for inputting Standalone-TikZ Pictures
 2. One for a Poster
     * Syntax for placing the Boxes
+<br/>
+
+A File that provides Templates for proper Bibtex-Entry-Definition is
+  > "./0organization/1main/8templates/literature_1Template.tex"
 
 
 ## Modus Operandi, Nodes, Tipps, Tricks
@@ -66,6 +70,18 @@ Nonetheless, I am doing it the following way: I do always write manuscripts usin
 So when finished with the manuscript, I can easily compile a preprint and a version for submission. Even when the submission requires a certain file-structure, then I create a second Project, set this up for the submission guidelines and copy the content over (which is quick and easy, because it is in this separate files in the "4chapter"-Directory).<br/>
 That might be not the most elegant solution, conceivable in principle, because then you have two distinct copies of your content, but in such a case that cannot be avoided anyways. Because a preprint has to be done and this cannot be performed within the submission-project. Hence, one may as well directly start with the "preprint-Version", which can be done through my Boilerplate and then only for final submission, the two Projects diverge.<br/>
 When then coming back for revising the manuscript after review, I do prepare the follow-up version again in the preprint-document and then update the submission-version.
+
+## Project Divergence
+A lot of Files in here are linked from other Projects.<br/>
+When working "Git-based", this won't be an issue anytime, because then already distinct standalone copies of these files are created.<br/>
+
+But when working with an Overleaf-Project that you created as a Copy of this Overleaf-Project directly inside Overleaf, the files are still links. This is partly cool, because then you always have updates right at hand, whenever I perform such. But on the other hand, sometimes you might want to change things, like Package-Options. And it appears like that's not possible, because you can't modify linked files.<br/>
+In that case, create the project divergence yourself: Go into the file in question (e.g. "./0organization/1main/2includes/packages/figure_subfigure_caption.tex"), copy its content, remove (delete) the linked file, create a new one with the same file-name and paste the content into. Then adjust to your needs (e.g. modify the caption formatting).
+
+### Recommendation
+Actually, for most cases, I would recommend performing a "Deep Copy" of the Project. I.e. not taking over the links referring to files in other projects, but having own duplicates so that the new Project works fully standalone.<br/>
+
+You can achieve this for example via downloading the Project as .zip from the GitHub-Repository, then in Overleaf choose "New Project -> Upload Project" and give the downloaded .zip.
 
 
 ## Overleaf
