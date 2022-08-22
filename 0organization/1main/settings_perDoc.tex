@@ -16,6 +16,8 @@
 %------------------------------------------------------------------------
 %							Setups für Microtype
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+\providecommand{\DenKrMicrotypeLoaded}{0}%
+\expandafter\ifstrequal\expandafter{\DenKrMicrotypeLoaded}{1}{%
 \SetProtrusion{encoding={*},family={bch},series={*},size={6,7}}
               {1={ ,750},2={ ,500},3={ ,500},4={ ,500},5={ ,500},
                6={ ,500},7={ ,600},8={ ,500},9={ ,500},0={ ,500}}
@@ -27,6 +29,7 @@
      \textquotedblleft={ ,150}, % left quotation mark, space from right
      \textquotedblright={150, }} % right quotation mark, space from left
 \SetTracking{encoding={*}, shape=sc}{40}
+}{}%
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 %							Microtype fertig
 %------------------------------------------------------------------------

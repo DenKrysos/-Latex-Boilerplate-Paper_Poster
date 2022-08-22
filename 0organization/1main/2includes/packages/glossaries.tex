@@ -4,9 +4,9 @@
 %						glossaries
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 % Glossaries muss NACH hyperref, babel, polyglossia, inputenc and fontenc geladen werden
-% Since hyperref is loaded via utilizing \AtEndPreamble{}, glossaries is also loaded in that way, where this is pastet after hyperref. (Code from \AtEndPreamble{} is executed in the order it was populated)
+% When hyperref is loaded via utilizing \AtEndPreamble{}, glossaries should also be loaded in that way, where this is pasted after hyperref. (Code from \AtEndPreamble{} is executed in the order it was populated)
 % See PassOptions for fp on Top
-\AtEndPreamble{%
+% \AtEndPreamble{%
 \usepackage[%
 	acronym,%
 % 	nomain,%
@@ -22,7 +22,7 @@
 \loadglsentries{./1supply/glossaries.tex}%
 %\glsdisablehyper% Disables Hyperlinks
 \renewcommand{\glossarysection}[2][]{}%Completely removes the section heading (re-defines the internally used command to just do nothing)
-}%
+% }%
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 %					glossaries fertig
 %------------------------------------------------------------------------

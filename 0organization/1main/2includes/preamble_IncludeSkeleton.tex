@@ -81,50 +81,6 @@
 %
 %
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-%				Hyperref
-%________________________________________________________________________
-% % Most of the times, links & bookmarks are not allowed for conference articles
-% % .pdf Bookmarks are created here by this
-\input{"\DenKrLayoutMainRootDir/2includes/packages/hyperref".tex}%
-%________________________________________________________________________
-%				END Hyperref
-%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-%
-%
-%
-%
-%
-\ifdef{\DenKrTikzStandaloneNotInclude}{}{%
-%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-%				Citation, References  /  Zitate, Quellen  (biblatex, bibtex, biber)
-%                   --- Begin biblatex ---
-%________________________________________________________________________
-\input{"\DenKrLayoutMainRootDir/2includes/packages/biblatex".tex}%
-%________________________________________________________________________
-%               --- END biblatex ---
-%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-}%
-%
-%
-%
-%
-%
-% \ifdef{\DenKrTikzStandaloneNotInclude}{}{%
-%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-%				Acronyms, Abbreviations, Glossary  /  Abkürzungen, Glossar und weiteres
-%                   --- Begin glossaries ---
-%________________________________________________________________________
-\input{"\DenKrLayoutMainRootDir/2includes/packages/glossaries".tex}%
-%________________________________________________________________________
-%               --- END glossaries ---
-%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-% }%
-%
-%
-%
-%
-%
-%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 %				Tables - tabular, tabular*, tabularx, tabulary, makecell, diagbox
 %________________________________________________________________________
 \input{"\DenKrLayoutMainRootDir/2includes/packages/table".tex}%
@@ -192,8 +148,79 @@
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 %
 %
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%				Remainder of Packages
+%________________________________________________________________________
+\input{"\DenKrLayoutMainRootDir/2includes/packages/compilation_4_remainder".tex}%
+%________________________________________________________________________
+%				END Remainder
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%
+%
+%
+%
+%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%				Hyperref
+%________________________________________________________________________
+% % Most of the times, links & bookmarks are not allowed for conference articles
+% % .pdf Bookmarks are created here by this
+\input{"\DenKrLayoutMainRootDir/2includes/packages/hyperref".tex}%
+%________________________________________________________________________
+%				END Hyperref
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%
+%
+%
+%
+%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%				In-Document Referencing (cleverref must be loaded after hyperref)
+%________________________________________________________________________
+\input{"\DenKrLayoutMainRootDir/2includes/packages/referencing".tex}%
+%________________________________________________________________________
+%				END In-Document Referencing
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%
+%
+%
+%
+%
+\ifdef{\DenKrTikzStandaloneNotInclude}{}{%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%				Citation, References  /  Zitate, Quellen  (biblatex, bibtex, biber)
+%                   --- Begin biblatex ---
+%________________________________________________________________________
+\input{"\DenKrLayoutMainRootDir/2includes/packages/biblatex".tex}%
+%________________________________________________________________________
+%               --- END biblatex ---
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+}%
+%
+%
+%
+%
 %
 \input{"\DenKrLayoutRootDir/preamble_3_packages".tex}%
+%
+%
+%
+%
+%
+% \ifdef{\DenKrTikzStandaloneNotInclude}{}{%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%				Acronyms, Abbreviations, Glossary  /  Abkürzungen, Glossar und weiteres
+%                   --- Begin glossaries ---
+%________________________________________________________________________
+\input{"\DenKrLayoutMainRootDir/2includes/packages/glossaries".tex}%
+%________________________________________________________________________
+%               --- END glossaries ---
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+% }%
+%
+%
+%
+%
 %
 \input{"\DenKrLayoutRootDir/preamble_9_finishing".tex}%
 %

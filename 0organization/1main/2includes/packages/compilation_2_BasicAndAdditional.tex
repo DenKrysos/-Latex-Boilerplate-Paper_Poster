@@ -2,13 +2,18 @@
 %------------------------------------------------------------------------
 %					Various (Basic) Packages
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-\usepackage{nameref}
-\usepackage{soul}
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\usepackage{mathtools}% Supersedes and internally loads 'amsmath'
+\usepackage{amssymb}% Loads 'amsfonts'
+%
+\usepackage{soul}%
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-\usepackage{textcomp}
-\usepackage{calc}
-\usepackage{xkeyval}
-% \usepackage{ifthen}
+\usepackage{textcomp}%
+\usepackage{calc}%
+\usepackage{xkeyval}%
+\usepackage{ifthen}%
+\usepackage{setspace}%
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 %					
 %------------------------------------------------------------------------
@@ -22,20 +27,19 @@
 %------------------------------------------------------------------------
 %					Additional Packages
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-% \usepackage{scrextend}
-% \usepackage[obeyFinal]{todonotes}
-%\usepackage{marginnote}
+\usepackage{colortbl}%
 %
-\usepackage{colortbl}
-\usepackage{amssymb}% http://ctan.org/pkg/amssymb
-\usepackage{pifont}% http://ctan.org/pkg/pifont
+%\usepackage{units}% Better don't use anymore. Instead siunitx.sty since it is newer and still maintained  %contains package 'nicefrac'.
+\usepackage{nicefrac}% Supplies some nice Fraction formatting. \nicefrac{<Numerator>}{<Denominator>}
+\usepackage{xfrac}% Another Fraction Formator. \sfrac[⟨instance⟩]{⟨num⟩}[⟨sep⟩]{⟨denom⟩}
+\usepackage{siunitx}%
+\sisetup{%
+    fraction-function=\nicefrac%
+}%
+% Fraction Example with this:
+%     $2\frac{7}{2}$, \nicefrac{7}{2}. \num[parse-numbers=false]{\frac{7}{2}}, \num[parse-numbers=false]{\nicefrac{1}{3}}.
+%     \sfrac{1}{2}, $\sfrac{1}{2}$, $\mathbf{3\times\sfrac{1}{2}}$; \quad \fontfamily{ppl}\selectfont Palatino: \sfrac{1}{2}, \quad \fontfamily{ptm}\selectfont Times: \sfrac{1}{2}
 %
-\usepackage{mathtools}% Supersedes and internally loads 'amsmath'
-\usepackage{amssymb}% Loads 'amsfonts'
-\usepackage{units}%contains package 'nicefrac'. Supplies some nice Fraction formatting.
-%
-%
-%\usepackage{multicol}% Multicol defines a multicols environment which typesets text in multiple columns 
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 %					
 %------------------------------------------------------------------------
