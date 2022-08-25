@@ -1,0 +1,48 @@
+
+%________________________________________________________________________
+%------------------------------------------------------------------------
+%							Font/Schriftarten Setup
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%####################################
+% With Lua(La)Tex, now better: 'fontspec'
+%####################################
+\usepackage{fontspec}%
+% - - - - Fonts - - - 
+%  --  --  The lower, the better i like them
+% \setmainfont{Times New Roman}%
+% \setmainfont{Gungsuh}%
+% \setmainfont{Malgun}%
+% \setmainfont{Batang}%
+% \setmainfont{Meiryo}%
+% \setmainfont{MS Mincho}%
+% \setmainfont{MS Gothic}%
+% \setmainfont{NSimSun}%
+% \setmainfont{SimSun}%
+% \setmainfont{Kozuka Gothic Pro}% From Adobe, Downloadable free at: http://fontpark.net/de/schriftart/kozuka-gothic-pro-b/
+% \setmainfont{Meiryo UI}%
+% \setmainfont{Yu Gothic}%
+%		\setmainfont{Yu Gothic Light}%
+%		\setmainfont{Yu Gothic Medium}%
+% \setmainfont{Yu Gothic UI}%
+%		\setmainfont{Yu Gothic UI Light}%
+%		\setmainfont{Yu Gothic UI Semibold}%
+%		\setmainfont{Yu Gothic UI Semilight}%
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+% \setmainfont[ItalicFont={Malgun},Ligatures=TeX]{Yu Gothic UI}% Includes Japanese Support, but not separated.
+% 		Like:	% 	\setmainjfont{Yu Gothic UI} % \mcfamily
+% 		 +		% 	\setsansjfont{Malgun} % \gtfamily
+% \setmainfont{Times New Roman}%
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+% For Japanese Characters
+\usepackage{luatexja}
+\usepackage{luatexja-fontspec}
+% \setmainjfont{Yu Gothic UI}% \mcfamily
+% \setmainjfont{Meiryo UI}[Path=./0organization/1main/2includes/fonts/]% \mcfamily
+% \setsansjfont{Malgun}[Path=./0organization/1main/2includes/fonts/]% \gtfamily
+\setmainjfont[Path=\DenKrLayoutMainRootDir/2includes/fonts/]{HanaMinA}% \mcfamily  % Font available for free download and installation on system "Hanazono Mincho". (Copy here in "./0organization/1main/2includes/fonts/")
+\setsansjfont{Harano Aji Mincho}% \gtfamily  % Font available via Latex-Package "haranoaji" (Harano Aji Fonts)
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%							Font/Schriftarten done
+%------------------------------------------------------------------------
+%________________________________________________________________________
+%
