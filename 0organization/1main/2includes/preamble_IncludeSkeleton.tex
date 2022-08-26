@@ -54,8 +54,9 @@
 %				Some 'Specials', one might want/like
 %________________________________________________________________________
 \expandafter\ifstrequal\expandafter{\DenKrLayout}{acmart}{}{%
+\expandafter\ifstrequal\expandafter{\DenKrLayout}{tikzposter}{}{%
 \input{"\DenKrLayoutMainRootDir/2includes/packages/microtype".tex}%
-}%
+}}%
 %
 \input{"\DenKrLayoutMainRootDir/2includes/packages/compilation_1_veryBasic".tex}%
 %________________________________________________________________________
