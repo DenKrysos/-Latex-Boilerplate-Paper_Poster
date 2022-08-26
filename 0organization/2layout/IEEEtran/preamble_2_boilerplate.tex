@@ -106,7 +106,7 @@
 
 % *** CITATION PACKAGES ***
 %
-%\usepackage{cite}
+\usepackage{cite}
 % cite.sty was written by Donald Arseneau
 % V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
 % \cite{} output to follow that of the IEEE. Loading the cite package will
@@ -235,11 +235,11 @@
 
 % *** SUBFIGURE PACKAGES ***
 % Rather don't use subfigure.sty, see below for a more concise comment on this (by me, not IEEE-template-author)
-% \ifCLASSOPTIONcompsoc
-%   \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
-% \else
-%   \usepackage[caption=false,font=footnotesize]{subfig}
-% \fi
+\ifCLASSOPTIONcompsoc
+  \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\else
+  \usepackage[caption=false,font=footnotesize]{subfig}
+\fi
 % subfig.sty, written by Steven Douglas Cochran, is the modern replacement
 % for subfigure.sty, the latter of which is no longer maintained and is
 % incompatible with some LaTeX packages including fixltx2e. However,

@@ -71,7 +71,11 @@
 %________________________________________________________________________
 % % Most of the times, links & bookmarks are not allowed for conference articles
 % % .pdf Bookmarks are created here by this
+\expandafter\ifstrequal\expandafter{\DenKrLayout}{IEEEtran}{%
+% Nothing to include for IEEEtran because subfig.sty is loaded as part of the provided Boilerplate for IEEEtran
+}{%
 \input{"\DenKrLayoutMainRootDir/2includes/packages/figure_subfigure_caption".tex}%
+}%
 %________________________________________________________________________
 %				END Subfigure, Subfig, Subcaption, Caption
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
@@ -191,7 +195,10 @@
 %				Citation, References  /  Zitate, Quellen  (biblatex, bibtex, biber)
 %                   --- Begin biblatex ---
 %________________________________________________________________________
+\expandafter\ifstrequal\expandafter{\DenKrLayout}{IEEEtran}{%
+}{%
 \input{"\DenKrLayoutMainRootDir/2includes/packages/biblatex".tex}%
+}%
 %________________________________________________________________________
 %               --- END biblatex ---
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
