@@ -82,21 +82,6 @@
 %
 %
 %
-%=================================
-% Quotation Marks
-%=================================
-% Quote the cool german Guillemet/Chevron way: »quote«
-\@ifpackageloaded{csquotes}{%
-    \newcommand{\gerguiquote}[1]{%
-        {\setquotestyle[guillemets]{german}\enquote{#1}}
-    }%
-}{%
-    \newcommand{\gerguiquote}[1]{%
-        {\guillemetright\relax#1\guillemetleft\relax}
-    }%
-}%
-%
-%
 %
 %
 %=================================
