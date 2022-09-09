@@ -10,11 +10,11 @@
 % still beware of the "Glue" from the set \parskip height plus x minus y
 % which in fact allows latex to stretch the space between paragraphs
 % (by default up to 1pt)
-\newcommand{\nl}{\par\noindent} % Abk. für NewLine
+\newcommand{\nl}{\par\noindent}% Abk. für NewLine
 % and here a command to create really a new paragraph
 % inserts an additional free line
-\newcommand{\np}{\par\vspace{\baselineskip}} % Abk. für NewParagraph
-\newcommand{\npi}{\par\vspace{\baselineskip}\noindent} % Abk. für NewParagraph_noIndent
+\newcommand{\np}{\par\vspace{\baselineskip}}% Abk. für NewParagraph
+\newcommand{\npi}{\par\vspace{\baselineskip}\noindent}% Abk. für NewParagraph_noIndent
 % Zu benutzen also so:
 % Neue Zeile ohne Einrückung: \nl
 % Neue Zeile mit Einrückung: Freie Zeile im Editor
@@ -24,10 +24,10 @@
 %
 %
 % Fußnote wiederholt referenzieren
-\newcommand{\savefootnote}[2]{\footnote{\label{#1}#2}}
-\newcommand{\repeatfootnote}[1]{\textsuperscript{\ref{#1}}}
+\newcommand{\savefootnote}[2]{\footnote{\label{#1}#2}}%
+\newcommand{\repeatfootnote}[1]{\textsuperscript{\ref{#1}}}%
 %
-\newcommand{\savefootnoteNoMark}[2]{\footnote{\label{#1}#2}}
+\newcommand{\savefootnoteNoMark}[2]{\footnote{\label{#1}#2}}%
 % Beispiel
 % %  First sentence.\savefootnote{footnote-label}{footnote content}
 % %  Second sentence.\repeatfootnote{footnote-label}
@@ -35,20 +35,20 @@
 %
 % Own Makro für footnote ohne Marker
 % Unmarked Footnote
-\makeatletter
+\makeatletter%
 %\def\blfootnote{\xdef\@thefnmark{}\@footnotetext}
-\def\blfootnote{\gdef\@thefnmark{}\@footnotetext}
-\makeatother
+\def\blfootnote{\gdef\@thefnmark{}\@footnotetext}%
+\makeatother%
 % Beispiel:
 %  \blfootnote{No number here!}
 %
 % Another Variant for a Blank-Footnote
 \newcommand\blankfootnote[1]{%
-    \begingroup
+    \begingroup%
     \renewcommand\thefootnote{}\footnote{#1}%
     \addtocounter{footnote}{-1}%
-    \endgroup
-}
+    \endgroup%
+}%
 %
 % 
 %
@@ -57,17 +57,17 @@
 % 
 % Makro für Kreis um Text
 \newcommand\circlearound[1]{%
-  \tikz[baseline]\node[draw,shape=circle,anchor=base,inner sep=0.3ex] {#1} ;}
+  \tikz[baseline]\node[draw,shape=circle,anchor=base,inner sep=0.3ex] {#1} ;}%
 \newcommand\lipsaround[1]{%
-  \tikz[baseline]\node[draw,shape=ellipse,anchor=base,inner sep=0.3ex] {#1} ;}
+  \tikz[baseline]\node[draw,shape=ellipse,anchor=base,inner sep=0.3ex] {#1} ;}%
 %
 \newcommand\lipsaroundCol[3]{%
-  \tikz[baseline]\node[draw=#2,fill=#3,shape=ellipse,anchor=base,inner sep=0.3ex] {#1} ;}
+  \tikz[baseline]\node[draw=#2,fill=#3,shape=ellipse,anchor=base,inner sep=0.3ex] {#1} ;}%
 % fill oder draw = none für farblos
 %
 \newcommand\rectdotaround[2]{%
   \tikz[baseline]\node[draw=#1,thick, loosely dotted,%
-  shape=rectangle,anchor=base,inner sep=0.5ex] {#2} ;}
+  shape=rectangle,anchor=base,inner sep=0.5ex] {#2} ;}%
 %
 %
 %
@@ -82,6 +82,22 @@
 %
 %
 %
+%=================================
+% Quotation Marks
+%=================================
+% Quote the cool german Guillemet/Chevron way: »quote«
+\@ifpackageloaded{csquotes}{%
+    \newcommand{\gerguiquote}[1]{%
+        {\setquotestyle[guillemets]{german}\enquote{#1}}
+    }%
+}{%
+    \newcommand{\gerguiquote}[1]{%
+        {\guillemetright\relax#1\guillemetleft\relax}
+    }%
+}%
+%
+%
+%
 %
 %=================================
 % Some More Symbols
@@ -89,54 +105,54 @@
 \newcommand{\compoundarrow}{\rule[0.5ex]{0.6ex}{0.6ex}\scriptsize\raise2pt\hbox{$\!{\blacktriangleright}$}}%
 \newcommand{\tikzarrow}{\tikz{\usetikzlibrary{shapes.arrows}\node[single arrow,scale=0.2,inner sep=2ex,fill]at(0,0){};}}%
 %
-\makeatletter
+\makeatletter%
 %ToDo: A filling of the path is still missing for the \blackpointright. Currently it's identical to \pointright
 \DeclareRobustCommand{\blackpointright}{%
     \mathrel{\mathpalette\blackpoint@right\relax}%
-}
+}%
 \newcommand{\blackpoint@right}[2]{%
     \vcenter{\hbox{\blackpoint@@right{#1}}}%
-}
+}%
 \newcommand{\blackpoint@@right}[1]{%
     \sbox\z@{$\m@th#1\blacktriangleright$}%
     \setlength{\unitlength}{\ht\z@}%
     \setlength{\dimen@}{\wd\z@}%
     \linethickness{%
-        \ifx#1\displaystyle 0.09\unitlength
-        \else\ifx#1\textstyle 0.09\unitlength
-        \else\ifx#1\scriptstyle 0.11\unitlength
-        \else 0.13\unitlength\fi\fi\fi
+        \ifx#1\displaystyle 0.09\unitlength%
+        \else\ifx#1\textstyle 0.09\unitlength%
+        \else\ifx#1\scriptstyle 0.11\unitlength%
+        \else 0.13\unitlength\fi\fi\fi%
     }%
     \edef\blackpoint@wd{\fpeval{2*(\dimen@/\unitlength)}}%
-    \begin{picture}(\blackpoint@wd,1)
-    \roundjoin
-    \polyline(0,0.5)(0,0)(\blackpoint@wd,0.5)(0,1)(0,0.2)\closepath\fillpath
+    \begin{picture}(\blackpoint@wd,1)%
+    \roundjoin%
+    \polyline(0,0.5)(0,0)(\blackpoint@wd,0.5)(0,1)(0,0.2)\closepath\fillpath%
     \end{picture}%
-}
+}%
 %
 \DeclareRobustCommand{\pointright}{%
     \mathrel{\mathpalette\point@right\relax}%
-}
+}%
 \newcommand{\point@right}[2]{%
     \vcenter{\hbox{\point@@right{#1}{\triangleright}}}%
-}
+}%
 \newcommand{\point@@right}[2]{%
     \sbox\z@{$\m@th#1\triangleright$}%
     \setlength{\unitlength}{\ht\z@}%
     \setlength{\dimen@}{\wd\z@}%
     \linethickness{%
-        \ifx#1\displaystyle 0.09\unitlength
-        \else\ifx#1\textstyle 0.09\unitlength
-        \else\ifx#1\scriptstyle 0.11\unitlength
-        \else 0.13\unitlength\fi\fi\fi
+        \ifx#1\displaystyle 0.09\unitlength%
+        \else\ifx#1\textstyle 0.09\unitlength%
+        \else\ifx#1\scriptstyle 0.11\unitlength%
+        \else 0.13\unitlength\fi\fi\fi%
     }%
     \edef\point@wd{\fpeval{2*(\dimen@/\unitlength)}}%
-    \begin{picture}(\point@wd,1)
-    \roundjoin
-    \polyline(0,0.5)(0,0)(\point@wd,0.5)(0,1)(0,0.2)
+    \begin{picture}(\point@wd,1)%
+    \roundjoin%
+    \polyline(0,0.5)(0,0)(\point@wd,0.5)(0,1)(0,0.2)%
     \end{picture}%
-}
-\makeatother
+}%
+\makeatother%
 %USAGE:
 % $A\pointright B \triangleright C$
 % $\pointright\triangleright$
@@ -177,17 +193,17 @@
 %
 % Nice for use with e.g. Tables / Legends.
 %     Look into the Folder 'organization/templates' for a Table Example inclusive Legend
-\definecolor{geilesrot}{rgb}{ .753,  0,  0}
-\definecolor{angenehmesorange}{rgb}{ 1,  .753,  0}
-\definecolor{superduftesgruen}{rgb}{ 0,  .69,  .314}
-\definecolor{woDieSonneNieHinscheintSchwarz}{rgb}{ 0,  0,  0}
+\definecolor{geilesrot}{rgb}{ .753,  0,  0}%
+\definecolor{angenehmesorange}{rgb}{ 1,  .753,  0}%
+\definecolor{superduftesgruen}{rgb}{ 0,  .69,  .314}%
+\definecolor{woDieSonneNieHinscheintSchwarz}{rgb}{ 0,  0,  0}%
 %----------------------------------------------------------------
-	\newcommand{\legcrossstraight}{\textcolor{geilesrot}{$\times$}}
-\newcommand{\legcross}{\textbf{\huge\legcrossstraight}}
-	\newcommand{\legbulletstraight}{\textcolor{angenehmesorange}{$\bullet$}}
-\newcommand{\legbullet}{\textbf{\huge\legbulletstraight}}
-	\newcommand{\legcheckstraight}{\textcolor{superduftesgruen}{$\checkmark$}}
-\newcommand{\legcheck}{\textbf{\huge\legcheckstraight}}
+	\newcommand{\legcrossstraight}{\textcolor{geilesrot}{$\times$}}%
+\newcommand{\legcross}{\textbf{\huge\legcrossstraight}}%
+	\newcommand{\legbulletstraight}{\textcolor{angenehmesorange}{$\bullet$}}%
+\newcommand{\legbullet}{\textbf{\huge\legbulletstraight}}%
+	\newcommand{\legcheckstraight}{\textcolor{superduftesgruen}{$\checkmark$}}%
+\newcommand{\legcheck}{\textbf{\huge\legcheckstraight}}%
 %
 %
 %
@@ -202,20 +218,20 @@
 %------------------------------------------------------------------------
 %			Verschiedene Definitionen wie Schriftzeichen
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-\newcommand{\mytilde}{{\raise.17ex\hbox{$\scriptstyle\mathtt{\sim}$}}}
-\newcommand{\mytildeA}{\textasciitilde}
-\newcommand{\mytildeB}{$\sim$}
-\newcommand{\mytildeC}{\~{}}
-\newcommand{\mytildeD}{\texttildelow}
-\newcommand{\mytildeE}{\raisebox{-.8ex}{\textasciitilde}}
+\newcommand{\mytilde}{{\raise.17ex\hbox{$\scriptstyle\mathtt{\sim}$}}}%
+\newcommand{\mytildeA}{\textasciitilde}%
+\newcommand{\mytildeB}{$\sim$}%
+\newcommand{\mytildeC}{\~{}}%
+\newcommand{\mytildeD}{\texttildelow}%
+\newcommand{\mytildeE}{\raisebox{-.8ex}{\textasciitilde}}%
 %
 % Creates an ordinary text-dash ('-'), but with leaving hyphenation active for the joined words
 %  (For this, 'ngerman' has to be defined (possibly unproblematically among others) by babel.sty)
-\newcommand{\mydash}{\foreignlanguage{ngerman}{"=}}
+\newcommand{\mydash}{\foreignlanguage{ngerman}{"=}}%
 %
 % For Guillemets/Chevron to use with every Font (Some Fonts don't define a sign for them)
-\newcommand{\DKguillemetL}{\xspace{\fontfamily{ptm}\selectfont »}}
-\newcommand{\DKguillemetR}{{\fontfamily{ptm}\selectfont «}\xspace}
+\newcommand{\DKguillemetL}{\xspace{\fontfamily{ptm}\selectfont »}}%
+\newcommand{\DKguillemetR}{{\fontfamily{ptm}\selectfont «}\xspace}%
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 %							Definitionen fertig
 %------------------------------------------------------------------------
@@ -240,15 +256,15 @@
 %
 % Initialisierungen wie Counter, Theorem, Variablen, Konstanten..
 %
-\newcommand{\stdleftbarwidth}{0.15em}
+\newcommand{\stdleftbarwidth}{0.15em}%
 %
-\theoremstyle{break}
-\theoremheaderfont{\bfseries}
-\theorembodyfont{\normalfont}
-\theoremseparator{}
-\theorempreskip{0ex}
-\theorempostskip{0ex}
-\theoremindent0.5em
+\theoremstyle{break}%
+\theoremheaderfont{\bfseries}%
+\theorembodyfont{\normalfont}%
+\theoremseparator{}%
+\theorempreskip{0ex}%
+\theorempostskip{0ex}%
+\theoremindent0.5em%
 %
 %That is not quite working well, hence, instead an own solution below
 %    \newtheorem{InciRem}{\protect\InciRemname}[section]%
@@ -299,13 +315,13 @@
 \DeclareDocumentCommand{\sidenote}{%
 m O{Sidenote} O{0pt}%
 }{%
-\vspace{#3}
-\begin{myleftbar}{\stdleftbarwidth}{0.5em}
-\begin{InciRem}[#2]
-#1
-\end{InciRem}
-\end{myleftbar}
-\vspace{#3}
+\vspace{#3}%
+\begin{myleftbar}{\stdleftbarwidth}{0.5em}%
+\begin{InciRem}[#2]%
+#1%
+\end{InciRem}%
+\end{myleftbar}%
+\vspace{#3}%
 }%
 % USAGE: \sidenote{<Text-Inhalt>}[<Label>][<Whitespace-Before-and-After>]
 %    e.g.: \sidenote{Eine Beispiel Notiz}%[Just some (optional) Example][0.5\baselineskip]
@@ -315,24 +331,24 @@ m O{Sidenote} O{0pt}%
 \DeclareDocumentCommand{\sidenoteSP}{%
 m O{Sidenote} O{0pt}%
 }{%
-\vspace{#3}
-\begin{samepage}
-\begin{myleftbar}{\stdleftbarwidth}{0.25em}
-\begin{InciRem}[#2]
-#1
-\end{InciRem}
-\end{myleftbar}
-\end{samepage}
-\vspace{#3}
+\vspace{#3}%
+\begin{samepage}%
+\begin{myleftbar}{\stdleftbarwidth}{0.25em}%
+\begin{InciRem}[#2]%
+#1%
+\end{InciRem}%
+\end{myleftbar}%
+\end{samepage}%
+\vspace{#3}%
 }%
 %
 %
 %
-\newcommand{\trennstern}{
-\vspace{\baselineskip}\hrule
-{\noindent\hspace{2em}*\hfill*\hfill*\hspace{2em}}
-\hrule\vspace{\baselineskip}
-}
+\newcommand{\trennstern}{%
+\vspace{\baselineskip}\hrule%
+{\noindent\hspace{2em}*\hfill*\hfill*\hspace{2em}}%
+\hrule\vspace{\baselineskip}%
+}%
 %
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 %							Sonder-Formatierungen END
@@ -420,11 +436,11 @@ O{#2} m o%
 \newcommand\chaptersubt[2]{\chapter%
   [#1\hfil\hbox{}\protect\linebreak{\itshape#2}]%
   {#1\\[2ex]\Large\itshape#2}%
-}
+}%
 \newcommand\sectionsubt[2]{\section%
   [#1\hfil\hbox{}\protect\linebreak{\itshape#2}]%
   {#1\\[2ex]\Large\itshape#2}%
-}
+}%
 %
 %
 %
@@ -435,7 +451,7 @@ O{#2} m o%
 %
 %
 %WorkingStateDivider
-\newcommand{\wdiv}{\vspace{0.5\baselineskip}\npi\hspace*{\fill}====================================================\hspace*{\fill}\nl\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\hfill\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\nl}
+\newcommand{\wdiv}{\vspace{0.5\baselineskip}\npi\hspace*{\fill}====================================================\hspace*{\fill}\nl\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\hfill\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\nl}%
 %
 %
 %
@@ -511,10 +527,10 @@ O{#2} m o%
 \newcommand{\absamrefzwei}[2]{%
 	\cref@gettype{#1}{\currlabtype}%
 	\IfSubStr{\currlabtype}{chapter}{%
-		Kapiteln~\ref{#1} (\nameref{#1}) \&
+		Kapiteln~\ref{#1} (\nameref{#1}) \&%
 			\ref{#2} (\nameref{#2})%
 	}{%
-		Abschnitten~\ref{#1} (\nameref{#1}) \&
+		Abschnitten~\ref{#1} (\nameref{#1}) \&%
 			\ref{#2} (\nameref{#2})%
 	}%
 }%
@@ -525,10 +541,10 @@ O{#2} m o%
 \newcommand{\absamrefzweis}[2]{%
 	\cref@gettype{#1}{\currlabtype}%
 	\IfSubStr{\currlabtype}{chapter}{%
-		Kapitel~\ref{#1} (\nameref{#1}) \&
+		Kapitel~\ref{#1} (\nameref{#1}) \&%
 			\ref{#2} (\nameref{#2})%
 	}{%
-		Abschnitte~\ref{#1} (\nameref{#1}) \&
+		Abschnitte~\ref{#1} (\nameref{#1}) \&%
 			\ref{#2} (\nameref{#2})%
 	}%
 }%
@@ -732,8 +748,8 @@ O{#2} m o%
 %			Tikz Macros
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 %
-\newcommand{\tikzpicturescale}{1.0}
-\newcommand{\tikzpicturescaleboxfactor}{1.0}
+\newcommand{\tikzpicturescale}{1.0}%
+\newcommand{\tikzpicturescaleboxfactor}{1.0}%
 %
 % Variable für die Breite/Höhe von eingebundenen Bildern
 % Verwendet im folgenden Makro
@@ -746,7 +762,7 @@ O{#2} m o%
 \newlength{\tikzAimedHeight}%
 \newlength{\tikzAimedWidth}%
 \newlength{\captionHeight}%
-\newcommand{\tikzFloatPositioning}{!ht}
+\newcommand{\tikzFloatPositioning}{!ht}%
 % \textheightscaled=0.96\textheight%
 % Makro für die Tikz Abbildungen
 % Arg#1 (Optional): Includestandalone-Mode
@@ -780,11 +796,11 @@ O{\includestandalonedefaultmode} m O{\tikzFilesPath} m o m >{\SplitList{,}}O{1,1
 \ifthenelse{#9=90}{%
 	\tikzAimedHeight=\tikzWidthFactorArgument\textwidthactual%
 	\tikzAimedWidth=\tikzHeightFactorArgument\textheightscaled%
-}{
+}{%
 	\ifthenelse{#9=-90}{%
 		\tikzAimedHeight=\tikzWidthFactorArgument\textwidthactual%
 		\tikzAimedWidth=\tikzHeightFactorArgument\textheightscaled%
-	}{
+	}{%
 		\tikzAimedHeight=\tikzHeightFactorArgument\textheightscaled%
 		\tikzAimedWidth=\tikzWidthFactorArgument\textwidthactual%
 	}%
@@ -873,7 +889,7 @@ O{\includestandalonedefaultmode} m O{\tikzFilesPath} m o m >{\SplitList{,}}O{1,1
 %
 %
 %
-\newenvironment{scope}{}{}
+\newenvironment{scope}{}{}%
 %
 %
 %
@@ -886,7 +902,7 @@ O{\includestandalonedefaultmode} m O{\tikzFilesPath} m o m >{\SplitList{,}}O{1,1
 %====================================================================
 %------------- Macro to calc the distance between two points in tikz -------------
 %vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-\makeatletter
+\makeatletter%
 \def\calcLength(#1,#2)#3{%
 \pgfpointdiff{\pgfpointanchor{#1}{center}}%
              {\pgfpointanchor{#2}{center}}%
@@ -896,10 +912,10 @@ O{\includestandalonedefaultmode} m O{\tikzFilesPath} m o m >{\SplitList{,}}O{1,1
 \FPeval\@temp@b{\pgfmath@tonumber{\pgf@ya}}%
 \FPeval\@temp@sum{(\@temp@a*\@temp@a+\@temp@b*\@temp@b)}%
 \FProot{\FPMathLen}{\@temp@sum}{2}%
-\FPround\FPMathLen\FPMathLen5\relax
-\global\expandafter\edef\csname #3\endcsname{\FPMathLen}
-}
-\makeatother
+\FPround\FPMathLen\FPMathLen5\relax%
+\global\expandafter\edef\csname #3\endcsname{\FPMathLen}%
+}%
+\makeatother%
 %
 % Usage Example
         % \begin{tikzpicture}
