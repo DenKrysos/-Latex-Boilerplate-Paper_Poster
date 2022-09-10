@@ -87,11 +87,11 @@
 % Quote the cool german Guillemet/Chevron way: »quote«
 \makeatletter\@ifpackageloaded{csquotes}{%
     \newcommand{\gerguiquote}[1]{%
-        {\setquotestyle[guillemets]{german}\enquote{#1}}
+        \xspace{\setquotestyle[guillemets]{german}\enquote{#1}}\xspace
     }%
 }{%
     \newcommand{\gerguiquote}[1]{%
-        {\guillemetright\relax#1\guillemetleft\relax}
+        \xspace{\guillemetright\relax#1\guillemetleft\relax}\xspace
     }%
 }\makeatother%
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\

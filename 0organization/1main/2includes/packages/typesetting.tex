@@ -1,0 +1,48 @@
+%________________________________________________________________________
+%------------------------------------------------------------------------
+%           Typesetting / Schriftsatz / Satz (Druck)
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%
+% - - - - - - - -
+% Text Alignment
+% - - - - - - - -
+\usepackage{ragged2e}%
+%
+\usepackage{wrapfig}% Allows to have a figure with text wrapped around
+\usepackage{varwidth}% Cmds for textsize relative to surrounding text (as opposed to always absolut) -> (\smaller vs \small)
+%
+%
+%
+%
+%
+%
+%________________________________________________________________________
+%------------------------------------------------------------------------
+%           More matching "Typography"
+%               (but common for Article & Book level classes, hence in this shared file)
+\usepackage{textcomp}% LaTeX support for the Text Companion fonts
+% - - - - - - - - - - - - - -
+% See PassOptions for xcolor on Top
+\usepackage{xcolor}%
+% - - - - - - - - - - - - - -
+\usepackage{ulem}\normalem%
+\usepackage{relsize}% Set the font size relative to the current font size
+\usepackage{xspace}% Define commands that appear not to eat spaces
+\usepackage{soul}% Hyphenation for letterspacing, underlining, and more
+\usepackage{setspace}%
+% - - - - - - - - - - - - - -
+% Additional Formatting-Cmds, letters, signs, special characters, units
+% - - - - - - - - - - - - - -
+%\usepackage{units}% Better don't use anymore. Instead siunitx.sty since it is newer and still maintained  %contains package 'nicefrac'.
+\usepackage{nicefrac}% Supplies some nice Fraction formatting. \nicefrac{<Numerator>}{<Denominator>}
+\usepackage{xfrac}% Another Fraction Formator. \sfrac[⟨instance⟩]{⟨num⟩}[⟨sep⟩]{⟨denom⟩}
+\usepackage{siunitx}%
+\sisetup{%
+    fraction-function=\nicefrac%
+}%
+% Fraction Example with this:
+%     $2\frac{7}{2}$, \nicefrac{7}{2}. \num[parse-numbers=false]{\frac{7}{2}}, \num[parse-numbers=false]{\nicefrac{1}{3}}.
+%     \sfrac{1}{2}, $\sfrac{1}{2}$, $\mathbf{3\times\sfrac{1}{2}}$; \quad \fontfamily{ppl}\selectfont Palatino: \sfrac{1}{2}, \quad \fontfamily{ptm}\selectfont Times: \sfrac{1}{2}
+% - - - - - - - -
+%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
