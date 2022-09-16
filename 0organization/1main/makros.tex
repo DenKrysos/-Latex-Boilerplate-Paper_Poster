@@ -87,7 +87,14 @@
 %=================================
 % Some More Symbols
 %================================================
-\newcommand{\compoundarrow}{\rule[0.5ex]{0.6ex}{0.6ex}\scriptsize\raise2pt\hbox{$\!{\blacktriangleright}$}}%
+% \newcommand{\compoundarrow}{\rule[0.5ex]{0.6ex}{0.6ex}\scriptsize\raise2pt\hbox{$\!{\blacktriangleright}$}}%
+\newcommand{\compoundarrow}{\tikz{%
+\def\compoundarrowDimXOne{1ex}%
+\def\compoundarrowDimXTwo{1.4ex}%
+\def\compoundarrowDimYOne{0.6ex}%
+\def\compoundarrowDimYTwo{1.2ex}%
+\path[fill,line join=miter,rounded corners=0](0,0)--++(\compoundarrowDimXOne,0)--++(0,-\compoundarrowDimYOne)--++(\compoundarrowDimXTwo,\compoundarrowDimYTwo)--++(-\compoundarrowDimXTwo,\compoundarrowDimYTwo)--++(0,-\compoundarrowDimYOne)--++(-\compoundarrowDimXOne,0)--cycle;%
+}}%
 \newcommand{\tikzarrow}{\tikz{\usetikzlibrary{shapes.arrows}\node[single arrow,scale=0.2,inner sep=2ex,fill]at(0,0){};}}%
 %
 \makeatletter%
@@ -153,20 +160,20 @@
 %=================================
 % Presets for Usage as Itemization Label
 %================================================
-% USAGE: \begin{itemize}[\labpraegA]   or   \item[\labpraegAsym]
+% USAGE: \begin{itemize}[\labpragA]   or   \item[\labpragAsym]
 %   (Standing for: Label-Prägnanz-#
-%   (The \labpraeg# are defined to be readily used for a whole itemization environment (i.e. comprise also a fitting left-margin)
-%   (The \labpraeg#sym can be used for single items as they do only define the Symbol itself
-\newcommand{\labpragAsym}{\textbf{$\scriptstyle\rightarrow$}}%
+%   (The \labprag# are defined to be readily usable for a whole itemization environment (i.e. comprise also a fitting left-margin)
+%   (The \labprag#sym can be used for single items as they do only define the Symbol itself
+\newcommand{\labpragAsym}{\raisebox{.5\height}{\textbf{\scriptsize$\rightarrow$}}}%
 \SetEnumitemKey{labpragA}{label=\labpragAsym,leftmargin=1.25em}%
-\newcommand{\labpragBsym}{\textbf{$\scriptstyle\Rightarrow$}}%
-\SetEnumitemKey{labpragB}{label=\labpragBsym,leftmargin=1.25em}%
-\newcommand{\labpragCsym}{$\scriptstyle\pointright$}%
-\SetEnumitemKey{labpragC}{label=\labpragCsym,leftmargin=1.4em}%
-\newcommand{\labpragDsym}{$\scriptstyle\blacktriangleright$}%
-\SetEnumitemKey{labpragD}{label=\labpragDsym,leftmargin=1.25em}%
-\newcommand{\labpragEsym}{$\scriptstyle\compoundarrow$}%
-\SetEnumitemKey{labpragE}{label=\labpragEsym,leftmargin=1.4em}%
+\newcommand{\labpragBsym}{\raisebox{.5\height}{\textbf{$\scriptstyle\Rightarrow$}}}%
+\SetEnumitemKey{labpragB}{label=\labpragBsym,leftmargin=1.3em}%
+\newcommand{\labpragCsym}{\raisebox{.5\height}{\scalebox{0.7}{$\pointright$}}}%
+\SetEnumitemKey{labpragC}{label=\labpragCsym,leftmargin=1.3em}%
+\newcommand{\labpragDsym}{\raisebox{.4\height}{\scalebox{0.7}{$\blacktriangleright$}}}%
+\SetEnumitemKey{labpragD}{label=\labpragDsym,leftmargin=1.2em}%
+\newcommand{\labpragEsym}{\raisebox{.1\height}{\scalebox{0.6}{\compoundarrow}}}%
+\SetEnumitemKey{labpragE}{label=\labpragEsym,leftmargin=1.3em}%
 %=================================
 % Label-Presets END
 %================================================
@@ -212,7 +219,7 @@
 %
 % Creates an ordinary text-dash ('-'), but with leaving hyphenation active for the joined words
 %  (For this, 'ngerman' has to be defined (possibly unproblematically among others) by babel.sty)
-\newcommand{\mydash}{\foreignlanguage{ngerman}{"=}}%
+\newcommand{\hyphdash}{\foreignlanguage{ngerman}{"=}}% Variant for Babel
 %
 % For Guillemets/Chevron to use with every Font (Some Fonts don't define a sign for them)
 \newcommand{\DKguillemetL}{\xspace{\fontfamily{ptm}\selectfont »}}%
@@ -802,14 +809,14 @@ O{\includestandalonedefaultmode} m O{\tikzFilesPath} m o m >{\SplitList{,}}O{1,1
 		\expandafter\efigure\expandafter[\tikzFloatPositioning]%
 			\centering%
 % 	 		\fbox{%
-			\includestandalone[width=\tikzwidth,angle=#8,mode=#1]{#3/#2}%
+			\includestandalone[width=\tikzwidth,angle=#9,mode=#1]{#3/#2}%
 % 	 		}%
 			\IfValueTF{#5}{%
 				\caption[#5]{#4}%
 			}{%
 				\caption{#4}%
 			}%
-			\label{#7}%
+			\label{#8}%
 		\efigureend%
 	}{%
 		\expandafter\efigure\expandafter[\tikzFloatPositioning]%
