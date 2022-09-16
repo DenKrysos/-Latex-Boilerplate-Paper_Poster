@@ -15,6 +15,69 @@
 \newcommand{\orcidIco}[1]{\href{https://orcid.org/#1}{\includesvg[height=1.5ex]{\DenKrLayoutMainRootDir/4aids/graphics/logo/orcid.logo.icon}}}%
 \newcommand{\orcidIcoText}[1]{\href{https://orcid.org/#1}{\includegraphics[height=1.5ex]{\DenKrLayoutMainRootDir/4aids/graphics/logo/orcid.logo.icon.eps} \hspace{1.5em} orcid.org/#1}}%
 %
+%
+%
+%
+%
+%####################################################################
+%====================================================================
+%------------- Cookbook-specific Macros -------------
+%vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+%____________________________________________________________________
+\newcommand{\reciperef}[1]{\gerguiquote{\textit{\nameref{#1} (S. \pageref{#1})}}}%
+%
+\DeclareDocumentCommand{\recipeHead}{%
+    o% as used with Section-Headings, for optional "short" title
+    m% The actual section-Heading
+    O{0}% Whether or not it shall be treated like with an Asterisk, i.e. shall become numbered. Implementation ToDo
+}{%
+    \IfNoValueTF{#1}{%
+        \section{#2}%
+    }{%
+        \section[#1]{#2}%
+    }%
+}%
+\DeclareDocumentCommand{\recipeLevelOne}{%
+    o% as used with Section-Headings, for optional "short" title
+    m% The actual section-Heading
+    O{0}% Whether or not it shall be treated like with an Asterisk, i.e. shall become numbered. Implementation ToDo
+}{%
+    \IfNoValueTF{#1}{%
+        \subsection*{#2}%
+    }{%
+        \subsection*[#1]{#2}%
+    }%
+}%
+\DeclareDocumentCommand{\recipeLevelTwo}{%
+    o% as used with Section-Headings, for optional "short" title
+    m% The actual section-Heading
+    O{0}% Whether or not it shall be treated like with an Asterisk, i.e. shall become numbered. Implementation ToDo
+}{%
+    \IfNoValueTF{#1}{%
+        \subsubsection*{#2}%
+    }{%
+        \subsubsection*[#1]{#2}%
+    }%
+}%
+\DeclareDocumentCommand{\recipeLevelThree}{%
+    o% as used with Section-Headings, for optional "short" title
+    m% The actual section-Heading
+    O{0}% Whether or not it shall be treated like with an Asterisk, i.e. shall become numbered. Implementation ToDo
+}{%
+    \IfNoValueTF{#1}{%
+        \paragraph*{#2}%
+    }{%
+        \paragraph*[#1]{#2}%
+    }%
+}%
+%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+%------------- Cookbook-specific End -------------
+%====================================================================
+%####################################################################
+%
+%
+%
+%
 %####################################################################
 %====================================================================
 %------------- Framed TextBox with Banner-Header -------------
@@ -198,26 +261,30 @@
 \end{center}%\end{scope}%\end{figure}%
 }%
 %====================================================================
-%TODO: Define a maximum height. Then check, if including a picture with the width exceeds this max height. In case: rather use the height.
-%TODO: Check if a picture is too small. Means: using a width to include it would stretch it. Rather use the actual width of the picture in that case.
-%TODO: The Value 2 for the Stretch-Option
-%ARGS: [Optional] Number of Pictures per Line. Defaults to 2
-%       [Optional] Picture-Surpressing Override. Displays this Picture-Matrix no matter if the global Value for surpressing pictures is set. Obviously, to use this, the first Optional Argument has to be set -> so just add it and pass it the default-value of '2', even if you actually not intend to use it.
-%       A List of all pictures with by path, inside one {}, divided with |. E.g.: {graphics/Pic1.png | graphics/Pic2.jpg}
-%       [Optional] Stretching Option. Stretches the last line if the number of remaining pictures does not equal the numer of pictures per Line. Valid Values for Stretch:
+%ToDo_Extension: Allow to pass a value for the MaxHeight
+%
+%ARGS:
+%  #1 [Optional] Number of Pictures per Line. Defaults to 2
+%  #2 [Optional] Picture-Surpressing Override. Displays this Picture-Matrix no matter if the global Value for surpressing pictures is set. Obviously, to use this, the first Optional Argument has to be set -> so just add it and pass it the default-value of '2', even if you actually not intend to use it.
+%  #3 [Mandatory] A List of all pictures with path, inside one {}, divided with |. E.g.: {graphics/Pic1.png | graphics/Pic2.jpg}
+%  #4 [Optional] Stretching Option. Stretches the last line if the number of remaining pictures does not equal the numer of pictures per Line. Valid Values for Stretch:
 %       1: Only stretches the frame, picture inside stays same size as others
 %       2: Also stretches the picture to fit either its maximum width or its width fits the page width. % TODO, not done yet
+%       3: With Stretching factor. Then you supply a second Value in the Argument, seperated by comma, which is multiplied with the max possible width to become the pictures width.
+%
 % Usage-Example: \dishPicMat[3]{graphics/Pic1.png | graphics/Pic2.jpg}
 %       Example2: \dishPicMat{graphics/Pic1.png}
 %       Example3(Stretch): \dishPicMat[2]{graphics/Pic1.png | graphics/Pic2.jpg | graphics/Pic3.jpg}[1]
+%       Example3(Stretch): \dishPicMat[2]{graphics/Pic1.png | graphics/Pic2.jpg | graphics/Pic3.jpg}[3,0.8]
 \DeclareDocumentCommand{\dishPicMat}{%
-    O{2} O{0} >{\SplitList{|}}m O{0}%
+    O{2} O{0} >{\SplitList{|}}m >{\SplitArgument{1}{,}}O{0}%
 }{%
     %\newcounter{quotient}%
     \setcounter{numArgs}{0}%
     \setcounter{numPerLine}{\number\numexpr#1\relax}%
     \setcounter{ArrayEntCnt}{0}%
     \ProcessList{#3}{\preparePictureMatrixList}%
+    \dishPicMatParseArgStretch#4%
     \setcounter{numLines}{\value{numArgs}}%
     \divide\value{numLines} by \value{numPerLine}%
     %\setcounter{numLines}{\inteval{\value{numArgs}/\value{numPerLine}}}%
@@ -228,6 +295,9 @@
     }{%
         \setcounter{numInLastLine}{\value{numPerLine}}%
     }%
+    % For Acquiring the actual dimensions of a Picture to include -> Then check whether the inclusion would interpolate and in case include with actual size. Performed later within processing
+    \newlength{\srcPicWidth}%
+    \newlength{\srcPicHeight}%
     %\the\value{numArgs} -- \the\value{numPerLine} -- \the\value{numLines} -- \the\value{numInLastLine}
     \let\innAbst\undefined%
     \newlength\innAbst%
@@ -251,6 +321,7 @@
     \setlength\picWidth{\nodeWidth-2\innAbst}% Abstand zwischen Text und Zellenrand
     %\setlength\picWidth{\textwidth/\value{numPerLine}-2\innAbst}% Abstand zwischen Text und Zellenrand
     %\the\picWidth -- \the\textwidth
+    \setlength\dishPicMatPicHeightMax{\textheight/3}%
     \setcounter{prevNode}{0}%
     \setcounter{currLine}{1}%
     \setcounter{currRow}{1}%
@@ -289,6 +360,30 @@
                     \setcounter{prevNode}{\theloopi-1}%
                     \renewcommand{\newNodeRefPoint}{north east}%
                 }%
+                % The last line
+                % \ifthenelse{\number\stretchArgMode=1 \AND \thenumInLastLine<\thenumPerLine}{%
+                \ifthenelse{\thenumInLastLine<\thenumPerLine \AND \thecurrLine=\thenumLines}{%
+                    \ifthenelse{\number\stretchArgMode>0}{%
+                        \ifnumcomp{\thecurrLine}{=}{\thenumLines}{%
+                            %\setlength\nodeWidth{\textwidth/\value{numPerLine}-\recipeBorderWidthDishPic-\recipeBorderWidthDishPic/\value{numPerLine}}%
+                            \ifnumcomp{\thecurrRow}{=}{1}{%
+                                \setlength\nodeWidth{\textwidth/\value{numInLastLine}-\recipeBorderWidthDishPic-\recipeBorderWidthDishPic/\value{numInLastLine}}%
+                            }{}%
+                            \ifnumcomp{\thecurrRow}{=}{\thenumInLastLine}{%
+                                %\setlength\nodeWidth{\nodeWidth+\recipeBorderWidthDishPic}%
+                            }{}%
+                        }{}%
+                    }{}%
+                    \ifthenelse{\number\stretchArgMode=1}{%
+                        %Nothing do do
+                    }{\ifthenelse{\number\stretchArgMode=2}{%
+                        \setlength\picWidth{\nodeWidth-2\innAbst}%
+                    }{\ifthenelse{\number\stretchArgMode=3}{%
+                        \setlength\picWidth{\nodeWidth-2\innAbst}%
+                        \setlength\picWidth{\stretchArgFactor\picWidth}%
+                    }{}}}%
+                }{}%
+                % First Pic in line: Compute Line-Height
                 \ifnumcomp{\thecurrRow}{=}{1}{%
                     \setcounter{loopj}{\theloopi}%
                     \ifnumcomp{\thecurrLine}{=}{\thenumLines}{%
@@ -298,7 +393,9 @@
                     }%
                         \setlength\lineHeight{1pt}
                     {\loop\ifnum\value{loopj}<\value{temp}%Inner loops must be embraced
-                        \settoheight{\lineHeightCmp}{\includegraphics[width=\picWidth]{\checkArrayEnt{\theloopj}{}{\getArrayEnt{\theloopj}}}}\global\lineHeightCmp=\lineHeightCmp%
+                        % Measure the Pic calculating the dimension
+                        \dishPicMatSetMaxPicDimension{\theloopj}%
+                        \settoheight{\lineHeightCmp}{\includegraphics[width=\srcPicWidth]{\checkArrayEnt{\theloopj}{}{\getArrayEnt{\theloopj}}}}\global\lineHeightCmp=\lineHeightCmp%
                         \setlength\lineHeightCmp{\lineHeightCmp+2\innAbst}\global\lineHeightCmp=\lineHeightCmp%
                         \ifnumcomp{\lineHeightCmp}{>}{\lineHeight}{%
                             \setlength\lineHeight{\lineHeightCmp}\global\lineHeight=\lineHeight%
@@ -306,17 +403,8 @@
                     \stepcounter{loopj}%
                     \repeat}%
                 }{}%
-                \ifthenelse{\number#4=1 \AND \thenumInLastLine<\thenumPerLine}{%
-                    \ifnumcomp{\thecurrLine}{=}{\thenumLines}{%
-                        %\setlength\nodeWidth{\textwidth/\value{numPerLine}-\recipeBorderWidthDishPic-\recipeBorderWidthDishPic/\value{numPerLine}}%
-                        \ifnumcomp{\thecurrRow}{=}{1}{%
-                            \setlength\nodeWidth{\textwidth/\value{numInLastLine}-\recipeBorderWidthDishPic-\recipeBorderWidthDishPic/\value{numInLastLine}}%
-                        }{}%
-                        \ifnumcomp{\thecurrRow}{=}{\thenumInLastLine}{%
-                            %\setlength\nodeWidth{\nodeWidth+\recipeBorderWidthDishPic}%
-                        }{}%
-                    }{}%
-                }{}%
+                % Assure scaled inclusion won't interpolate picture. Here, make the final setting for the actual inclusion
+                \dishPicMatSetMaxPicDimension{\theloopi}%
                 \begin{pgfonlayer}{Layer2}%
                     \node[rectBase](\theloopi)%
                         at (\theprevNode.\newNodeRefPoint)%
@@ -353,7 +441,7 @@
                 \ifthenelse{\thecurrLine=\thenumLines \AND \thecurrRow=\thenumInLastLine}{%
                     \renewcommand{\cornFormatRB}{cornRounding}%
                 }{}%
-                \ifthenelse{\number\numexpr#4\relax=1}{}{%
+                \ifthenelse{\number\numexpr\stretchArgMode\relax>0}{}{%
                     \setcounter{temp}{\thenumLines-1}%
                     \ifthenelse{\thenumInLastLine<\thenumPerLine \AND \thecurrLine=\thetemp \AND \thecurrRow=\thenumPerLine}{%
                         \renewcommand{\cornFormatRB}{cornRounding}%
@@ -369,14 +457,47 @@
             \repeat%
         \end{tikzpicture}%
     \end{center}
+    \let\stretchArgMode\undefined%
+    \let\stretchArgFactor\undefined%
+    \let\srcPicWidth\undefined%
+    \let\srcPicHeight\undefined%
 }%
-\newcommand{\dishPicMatIncludegraphics}{\includegraphics[width=\picWidth]{\checkArrayEnt{\theloopi}{NoEntryDefined}{\getArrayEnt{\theloopi}}}}%
+\newcommand{\dishPicMatSetMaxPicDimension}[1]{% The Index of the Pic in the array to measure
+    \settowidth{\srcPicWidth}{\includegraphics{\checkArrayEnt{#1}{}{\getArrayEnt{#1}}}}%
+    \ifnumcomp{\picWidth}{<}{\srcPicWidth}{%
+        \setlength{\srcPicWidth}{\picWidth}%
+    }{}%
+    \ifthenelse{\number\stretchArgMode=3 \AND \thecurrLine=\thenumLines}{%
+        % No Height-Limit for the last line, when stretching deliberately via given factor
+    }{%
+        \settoheight{\tmpheight}{\includegraphics[width=\srcPicWidth]{\checkArrayEnt{#1}{}{\getArrayEnt{#1}}}}%
+        \ifnumcomp{\dishPicMatPicHeightMax}{<}{\tmpheight}{%
+            \settowidth{\srcPicWidth}{\includegraphics[height=\dishPicMatPicHeightMax]{\checkArrayEnt{#1}{}{\getArrayEnt{#1}}}}%
+        }{}%
+    }%
+}%
+\newcommand{\dishPicMatIncludegraphics}{%
+    \includegraphics[width=\srcPicWidth]{\checkArrayEnt{\theloopi}{NoEntryDefined}{\getArrayEnt{\theloopi}}}%
+}%
 %====================================================================
 %####################################################################
 %\newcommand\countListArgs[1]{\stepcounter{numArgs}}%
 \newcommand\preparePictureMatrixList[1]{%
     \stepcounter{numArgs}%
     \addArrayEnt{#1}%
+}%
+\NewDocumentCommand{\dishPicMatParseArgStretch}{mm}{%
+    \def\stretchArgMode{#1}%
+    \IfValueTF{#2}{%
+        % \ifnumcomp{\number\numexpr\stretchArgFactor\relax}{>}{1}{%
+        \ifthenelse{\lengthtest{#2pt > 1.0pt}}{% Workaround via lengthtest, because ifthenelse or ifnumcomp cannot work with floating-point
+            \def\stretchArgFactor{1}%
+        }{
+            \def\stretchArgFactor{#2}%
+        }%
+    }{%
+        \def\stretchArgFactor{1}%
+    }%
 }%
 %\dishPicMat neccessities
 \newcounter{temp}%
@@ -389,6 +510,7 @@
 \newcounter{currRow}%
 \newcounter{loopi}%
 \newcounter{loopj}%
+\newlength{\dishPicMatPicHeightMax}%
 % = = = = = = = = = = = = = = = =
 %Args: Either cornRounding or cornNoRound
 %Arg-Order: Node-ID, NorthWest, NorthEast, SouthEast, SouthWest
