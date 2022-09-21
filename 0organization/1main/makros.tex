@@ -23,11 +23,18 @@
 %
 %
 %
-% Fußnote wiederholt referenzieren
-\newcommand{\savefootnote}[2]{\footnote{\label{#1}#2}}%
-\newcommand{\repeatfootnote}[1]{\textsuperscript{\ref{#1}}}%
 %
-\newcommand{\savefootnoteNoMark}[2]{\footnote{\label{#1}#2}}%
+%
+%
+%________________________________________________________________________
+%------------------------------------------------------------------------
+%			Footnotes - More elaborate use
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+% Fußnote wiederholt referenzieren
+\newcommand{\savefootnote}[2]{\footnote{\label{#1}#2}}
+\newcommand{\repeatfootnote}[1]{\textsuperscript{\ref{#1}}}
+%
+\newcommand{\savefootnoteNoMark}[2]{\footnote{\label{#1}#2}}
 % Beispiel
 % %  First sentence.\savefootnote{footnote-label}{footnote content}
 % %  Second sentence.\repeatfootnote{footnote-label}
@@ -35,26 +42,42 @@
 %
 % Own Makro für footnote ohne Marker
 % Unmarked Footnote
-\makeatletter%
+\makeatletter
 %\def\blfootnote{\xdef\@thefnmark{}\@footnotetext}
-\def\blfootnote{\gdef\@thefnmark{}\@footnotetext}%
-\makeatother%
+\def\blfootnote{\gdef\@thefnmark{}\@footnotetext}
+\makeatother
 % Beispiel:
 %  \blfootnote{No number here!}
 %
 % Another Variant for a Blank-Footnote
 \newcommand\blankfootnote[1]{%
-    \begingroup%
+    \begingroup
     \renewcommand\thefootnote{}\footnote{#1}%
     \addtocounter{footnote}{-1}%
-    \endgroup%
+    \endgroup
+}
+%
+% This places a footnote on the bottom of the page but does not leave a Mark where the footnote is defined.
+%     It inserts the number nicely into the ordinary numbering series of normal \footnote{}
+% Arguments:
+%  1 - A label for later referencing of this footnote, i.e. creating a mark
+%  2 - The actual footnote
+\newcommand{\footnoteplace}[2]{%
+    \addtocounter{footnote}{1}%
+    \footnotetext[\thefootnote]{\label{#1}#2}%
 }%
+% This creates a marker corresponding to a formerly "placed" footnote, using its declared label
+\newcommand{\footnoteref}[1]{\repeatfootnote{#1}}%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%				Footnotes done
+%------------------------------------------------------------------------
+%________________________________________________________________________
 %
-% 
 %
 %
 %
-% 
+%
+%
 % Makro für Kreis um Text
 \newcommand\circlearound[1]{%
   \tikz[baseline]\node[draw,shape=circle,anchor=base,inner sep=0.3ex] {#1} ;}%
