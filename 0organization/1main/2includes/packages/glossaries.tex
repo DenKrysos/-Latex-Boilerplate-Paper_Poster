@@ -7,6 +7,9 @@
 % When hyperref is loaded via utilizing \AtEndPreamble{}, glossaries should also be loaded in that way, where this is pasted after hyperref. (Code from \AtEndPreamble{} is executed in the order it was populated)
 % See PassOptions for fp on Top
 % \AtEndPreamble{%
+% \let\printglossary\relax%
+% \let\theglossary\relax%
+% \let\endtheglossary\relax%
 \usepackage[%
 	acronym,%
 % 	nomain,%
@@ -19,18 +22,10 @@
 ]{glossaries}%
 \input{"\DenKrLayoutMainRootDir/3settings/4customization/glossaries_keys".tex}%
 %\makeglossaries%
-\loadglsentries{\DenKrSupplyRootDir/glossaries.tex}%
-%\glsdisablehyper% Disables Hyperlinks
-\renewcommand{\glossarysection}[2][]{}%Completely removes the section heading (re-defines the internally used command to just do nothing)
-% }%
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 %					glossaries fertig
 %------------------------------------------------------------------------
 %________________________________________________________________________
-%
-%
-%
-%
 %
 %
 %
@@ -41,6 +36,11 @@
 %       (Additional added keys are included in Preamble, with the package)
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 \input{"\DenKrLayoutMainRootDir/3settings/4customization/glossaries_cmds".tex}%
+%
+\loadglsentries{\DenKrSupplyRootDir/glossaries.tex}%
+%\glsdisablehyper% Disables Hyperlinks
+\renewcommand{\glossarysection}[2][]{}%Completely removes the section heading (re-defines the internally used command to just do nothing)
+% }%
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 %							Glossaries fertig
 %------------------------------------------------------------------------
