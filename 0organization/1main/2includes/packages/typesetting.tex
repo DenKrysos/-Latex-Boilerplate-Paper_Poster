@@ -36,10 +36,113 @@
 %\usepackage{units}% Better don't use anymore. Instead siunitx.sty since it is newer and still maintained  %contains package 'nicefrac'.
 \usepackage{nicefrac}% Supplies some nice Fraction formatting. \nicefrac{<Numerator>}{<Denominator>}
 \usepackage{xfrac}% Another Fraction Formator. \sfrac[⟨instance⟩]{⟨num⟩}[⟨sep⟩]{⟨denom⟩}
+% - - - SI Units - - - -
+% When writing a fraction within a SI-Unit Statement, deactivate the number-parsing singular for this one occurence:
+%   \num[parse-numbers=false]{\frac{7}{2}}
+\usepackage[english,german,ngerman]{translator}%
 \usepackage{siunitx}%
 \sisetup{%
-    fraction-function=\nicefrac%
+    input-ignore={,},%
+    input-decimal-markers={.},%
+    %output-decimal-marker={.},%
+    %group-separator={,},%
+    group-minimum-digits=5,% Determines the number of digits after which the grouping starts to be applied. Default: 5
+    group-digits=all,%
+    fraction-function=\nicefrac% \dfrac 
 }%
+\DeclareSIUnit{\calorie}{cal}%
+\DeclareSIUnit{\tablespoon}{\translate{tbsp}}%
+\DeclareSIUnit{\teaspoon}{\translate{tsp}}%
+\newtranslation[to=German]{tbsp}{EL}%
+\newtranslation[to=German]{tsp}{TL}%
+\addto\extrasgerman{\sisetup{locale=DE,output-decimal-marker={,},group-separator={.},detect-all}}%
+\addto\extrasenglish{\sisetup{locale=US,output-decimal-marker={.},group-separator={,},detect-all}}%
+% For some reason, group-separator does not work in the addto configuration, hence adding it again below
+\expandafter\ifstrequal\expandafter{\DenKrLanguageStringCmd}{ngerman}{%
+    \sisetup{locale=DE,group-separator={.}}%
+}{\expandafter\ifstrequal\expandafter{\DenKrLanguageStringCmd}{english}{%
+    \sisetup{locale=US,group-separator={,}}%
+}{}}%
+%
+%  Example:
+%        \qty[locale=DE]{2}{\tablespoon}
+%        %
+%        \begin{otherlanguage}{english}
+%        \qty{2}{\tablespoon}
+%        \end{otherlanguage}
+%        %
+%        \begin{otherlanguage}{german}
+%        \qty{2}{\tablespoon}
+%        \end{otherlanguage}
+% - - - -
+% Two Macros for pasting time (time-of-day or time-span). Allow an optional first argument for local set up in the usual siunitx way.
+\ExplSyntaxOn
+% Hour-Minute-Second-Period (For pasting a Period of Time. Like \hmsP{10;20;30} -> "10:20:30 h" | \hmsP{;10;30}  ->  "20:30 min"
+\NewDocumentCommand\hmsP{o >{\SplitArgument{2}{;}}m}{%
+    \group_begin:%
+        \IfNoValueF{#1}{%
+            \keys_set:nn{siunitx}{#1}%
+        }%
+        \siunitx_hmsP_output:nnn #2%
+    \group_end:%
+}%
+\cs_new_protected:Npn\siunitx_hmsP_output:nnn #1#2#3{%
+    \qty[parse-numbers=false]{\mbox{
+        \tl_if_blank:nF{#1}{\IfNoValueF{#1}{%
+            #1%
+            \tl_if_blank:nT{#2}{%
+                \tl_if_blank:nF{#3}{\IfNoValueF{#3}{:}}%
+            }\tl_if_blank:nF{#2}{\IfNoValueF{#2}{:}}%
+        }}%
+        \tl_if_blank:nF{#2}{\IfNoValueTF{#2}{%
+            \tl_if_blank:nF{#1}{\IfNoValueF{#1}{\tl_if_blank:nF{#3}{\IfNoValueF{#3}{0:}}}}%
+        }{%
+            #2%
+            \tl_if_blank:nF{#3}{\IfNoValueF{#3}{:}}%
+        }}\tl_if_blank:nT{#2}{%
+            \tl_if_blank:nF{#1}{\IfNoValueF{#1}{\tl_if_blank:nF{#3}{\IfNoValueF{#3}{0:}}}}%
+        }%
+        \tl_if_blank:nF{#3}{\IfNoValueF{#3}{%
+            #3%
+        }}%
+    }}{%
+        \tl_if_blank:nT{#1}{%
+            \tl_if_blank:nT{#2}{%
+                \tl_if_blank:nF{#3}{\IfNoValueF{#3}{\second}}%
+            }\tl_if_blank:nF{#2}{\IfNoValueF{#2}{\minute}}%
+        }\tl_if_blank:nF{#1}{\IfNoValueF{#1}{\hour}}%
+    }%
+}%
+% Hour-Minute-Second-Clock (For pasting Time of Day / Clock Time. Like \hmsC{10;20;30} -> "10h 20 min 30s"
+\NewDocumentCommand\hmsC{o >{\SplitArgument{2}{;}}m}{%
+    \group_begin:%
+        \IfNoValueF{#1}{%
+            \keys_set:nn{siunitx}{#1}%
+        }%
+        \siunitx_hmsC_output:nnn #2%
+    \group_end:%
+}%
+\cs_new_protected:Npn\siunitx_hmsC_output:nnn #1#2#3{%
+    \IfNoValueF{#1}{%
+        \tl_if_blank:nF{#1}{%
+            \qty{#1}{\hour}%
+            \IfNoValueF{#2}{~}%
+        }%
+    }%
+    \IfNoValueF{#2}{%
+        \tl_if_blank:nF{#2}{%
+            \qty{#2}{\minute}%
+            \IfNoValueF{#3}{~}%
+        }%
+    }%
+    \IfNoValueF{#3}{%
+        \tl_if_blank:nF{#3}{%
+            \qty{#3}{\second}%
+        }%
+    }%
+}%
+\ExplSyntaxOff
+% - - - - - - - - - - -
 % Fraction Example with this:
 %     $2\frac{7}{2}$, \nicefrac{7}{2}. \num[parse-numbers=false]{\frac{7}{2}}, \num[parse-numbers=false]{\nicefrac{1}{3}}.
 %     \sfrac{1}{2}, $\sfrac{1}{2}$, $\mathbf{3\times\sfrac{1}{2}}$; \quad \fontfamily{ppl}\selectfont Palatino: \sfrac{1}{2}, \quad \fontfamily{ptm}\selectfont Times: \sfrac{1}{2}
