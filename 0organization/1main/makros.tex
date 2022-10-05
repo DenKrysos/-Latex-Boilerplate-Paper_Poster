@@ -317,11 +317,18 @@
 % Own redefinition of leftbar environment
 % Einfach ums schöner zu machen
 \newenvironment{myleftbar}[2]%[1=0.5pt,2=5pt]%
-{\setlength{\topsep}{0ex}%
-\def\FrameCommand{\hspace{#2} \vrule width #1 \hspace{0.0em}}%
-\MakeFramed%
-{\advance\hsize-\width \FrameRestore}}%
-{\endMakeFramed}%
+{%
+    % \setlength{\tempheight}{\topsep}%
+    % \setlength{\topsep}{0ex}%
+    \vspace*{-0.95\topsep}%
+    \def\FrameCommand{\hspace{#2} \vrule width #1 \hspace{0.0em}}%
+    \MakeFramed{\advance\hsize-\width\FrameRestore}%
+}%
+{%
+    \endMakeFramed%
+    \vspace*{-\topsep}%
+    % \setlength{\topsep}{\tempheight}% Doesn't work
+}%
 %
 %
 %
