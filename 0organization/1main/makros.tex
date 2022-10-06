@@ -79,18 +79,13 @@
 %
 %
 % Makro für Kreis um Text
-\newcommand\circlearound[1]{%
-  \tikz[baseline]\node[draw,shape=circle,anchor=base,inner sep=0.3ex] {#1} ;}%
-\newcommand\lipsaround[1]{%
-  \tikz[baseline]\node[draw,shape=ellipse,anchor=base,inner sep=0.3ex] {#1} ;}%
+\newcommand\circlearound[1]{\tikz[baseline]\node[draw,shape=circle,anchor=base,inner sep=0.3ex]{#1};}%
+\newcommand\lipsaround[1]{\tikz[baseline]\node[draw,shape=ellipse,anchor=base,inner sep=0.3ex]{#1};}%
 %
-\newcommand\lipsaroundCol[3]{%
-  \tikz[baseline]\node[draw=#2,fill=#3,shape=ellipse,anchor=base,inner sep=0.3ex] {#1} ;}%
+\newcommand\lipsaroundCol[3]{\tikz[baseline]\node[draw=#2,fill=#3,shape=ellipse,anchor=base,inner sep=0.3ex]{#1};}%
 % fill oder draw = none für farblos
 %
-\newcommand\rectdotaround[2]{%
-  \tikz[baseline]\node[draw=#1,thick, loosely dotted,%
-  shape=rectangle,anchor=base,inner sep=0.5ex] {#2} ;}%
+\newcommand\rectdotaround[2]{\tikz[baseline]\node[draw=#1,thick, loosely dotted,shape=rectangle,anchor=base,inner sep=0.5ex]{#2};}%
 %
 %
 %
