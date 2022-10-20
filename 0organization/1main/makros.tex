@@ -304,6 +304,43 @@
 }%
 %
 %
+%
+%
+%
+%________________________________________________________________________
+%------------------------------------------------------------------------
+%			Typesetting
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+% Usage: \DenKrSubfloat{<Label>}{<SubCaption>}{<FloatCode>}
+%   Yes, I declared all three Arguments as mandatory, Deal with it.
+\makeatletter\AddToHook{begindocument/before}{%
+\@ifpackageloaded{subfig}{%
+    \DeclareDocumentCommand{\DenKrSubfloat}{m m m}{%
+        \subfloat[#1][#2]{#3}%
+    }%
+}{\@ifpackageloaded{subcaption}{
+    \DeclareDocumentCommand{\DenKrSubfloat}{m m m}{%
+        \sbox{\tmpbox}{#3}%
+        % \settowidth{\tmpwidth}{#3}%
+        \settowidth{\tmpwidth}{\usebox{\tmpbox}}%
+        \begin{minipage}{\tmpwidth}%
+            \centering%
+            \usebox{\tmpbox}%
+            \protect\subcaption{#2}%
+            \label{#1}%
+        \end{minipage}%
+    }%
+}{\gerguiquote{Neither \textbf{subcaption} nor \textbf{subfig} loaded}}%
+}%
+}\makeatother%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%				Basic Typesetting END
+%------------------------------------------------------------------------
+%________________________________________________________________________
+%
+%
+%
+%
 %________________________________________________________________________
 %------------------------------------------------------------------------
 %			Sonder-Formatierungen (Randnotiz, Trenn-Markierung)
