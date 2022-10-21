@@ -379,8 +379,8 @@
 % -- A second Variant, the former one does not properly align itself and contained objects, i.e. among others does not allow to be filled (that would set the Filling color plane over the contained objects)
 %===========================
 \makeatletter
-\pgfdeclarelayer{scopenodeFill}
-\pgfsetlayers{background,scopenodeFill,main}
+% \pgfdeclarelayer{scopenodeFill}% Done inside the Package-Inclusion-File for TikZ
+% \pgfsetlayers{background,scopenodeFill,main}
 \tikzset{%
   % adapted from tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarybackgrounds.code.tex
   on scopenodeFill layer/.style={%
@@ -441,3 +441,19 @@
   \end{scope}%
 }
 \makeatother
+%
+%
+%
+%
+%===========================
+%==  Fading / Shading  =====
+%===========================
+\pgfdeclareradialshading{tikzfadeDissolvingRingInclineInner}{\pgfpointorigin}{%
+    color(0bp)=(pgftransparent!100);%
+    color(20bp)=(pgftransparent!100);%
+    color(22.0bp)=(pgftransparent!10);%
+    color(22.5bp)=(pgftransparent!0);%
+    color(23bp)=(pgftransparent!30);%
+    color(25bp)=(pgftransparent!100)%
+}%
+\pgfdeclarefading{custom fade dissolving ring incline inner}{\pgfuseshading{tikzfadeDissolvingRingInclineInner}}%

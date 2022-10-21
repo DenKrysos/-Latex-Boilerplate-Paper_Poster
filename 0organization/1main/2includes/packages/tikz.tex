@@ -20,6 +20,7 @@
 	]{standalone}%
 \usepackage{tikz}%
 \usetikzlibrary{calc}%
+\usetikzlibrary{math}%
 \usetikzlibrary{matrix}%
 \usetikzlibrary{fit}%
 \usetikzlibrary{positioning}%
@@ -72,8 +73,9 @@
 \pgfdeclarelayer{mindmaplayer}%
 \pgfdeclarelayer{linelayer}%
 \pgfdeclarelayer{line}%
-\pgfdeclarelayer{foreground}%
+\pgfdeclarelayer{scopenodeFill}%
 \pgfdeclarelayer{foregroundlayer}%
+\pgfdeclarelayer{foreground}%
 \pgfdeclarelayer{Layer1}%
 \pgfdeclarelayer{Layer2}%
 \pgfdeclarelayer{Layer3}%
@@ -84,7 +86,7 @@
 \pgfdeclarelayer{Layer8}%
 \pgfdeclarelayer{Layer9}%
 \pgfdeclarelayer{Layer10}%
-\pgfsetlayers{backgroundlayer,background,mainlayer,main,notelayer,note,mindmaplayer,linelayer,line,foregroundlayer,foreground,Layer1,Layer2,Layer3,Layer4,Layer5,Layer6,Layer7,Layer8,Layer9,Layer10}%
+\pgfsetlayers{backgroundlayer,background,mainlayer,main,notelayer,note,mindmaplayer,linelayer,line,scopenodeFill,foregroundlayer,foreground,Layer1,Layer2,Layer3,Layer4,Layer5,Layer6,Layer7,Layer8,Layer9,Layer10}%
 %\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
 %							TikZ / PGF fertig
 %------------------------------------------------------------------------
