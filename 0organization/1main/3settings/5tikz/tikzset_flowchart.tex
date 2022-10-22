@@ -230,6 +230,49 @@
 	text centered,%
 	align=center,%
 ]%
+%========-------------------------------------------========
+%========		UML State Machine					========
+%========-------------------------------------------========
+% Usage:
+% - - - - - - -
+%        \node(S1)%
+%            [UMLSM_state]%
+%            {node
+%            \nodepart{two} a};%
+%        \node(S2)%
+%            [UMLSM_state,anchor=north west]%
+%            at($(S1.north east)+(\nodedist,0)$)
+%            {node 2};%
+%        \path[UMLSM_arrow](S1.east)--(S2.west);%
+% - - - - - - -
+\tikzstyle{UMLSM_start}=[%
+    circle,draw=black,fill=black,%
+    inner sep=0pt,minimum size=1.25ex,%
+]%
+\tikzstyle{UMLSM_state}=[%
+    minimum width=6em,%
+    %minimum height=1cm,%
+    inner ysep=0.5*\inndist,%
+    inner xsep=1.0*\inndist,%
+    draw=black,%
+    align=left,% To enable linebreak
+    rounded corners=1.5ex,%
+    rectangle split,%
+    rectangle split parts=2,%
+    rectangle split part fill={gray!40,white},%
+    rectangle split every empty part={},% delete existing height, depth and width
+    rectangle split empty part height=1.75ex,%
+    rectangle split empty part depth=0ex,%
+    rectangle split part align={center,left},%either: top, center, base, bottom, left, right
+]%
+\tikzstyle{UMLSM_arrow}=[%
+    draw,%
+    thick,%
+    line join=round,%
+    rounded corners=1.3ex,%
+    >=latex,% latex, stealth
+    ->,%
+]%
 %
 %
 %

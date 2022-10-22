@@ -18,6 +18,10 @@
   \pgfgetlastxy{#1}{#2}%
 }
 %
+\makeatletter%
+\newcommand\tikzcurrentcoordinate{\the\tikz@lastxsaved,\the\tikz@lastysaved}%
+\makeatother%
+%
 %
 %
 %

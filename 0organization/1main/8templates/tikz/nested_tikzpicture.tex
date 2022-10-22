@@ -12,7 +12,49 @@ For simple stuff, it may satisfy you, for more complex things, I suggest one of 
 
 
 #####################
-1) Instead of nesting tikzpictures, use a "scope" with "local bounding box"
+1) Use saveboxes to then safely nest tikzpictures
+    (-> Coordinates will be remembered. The way [remember picture] works is to save the origin location in the aux file, so you have to run the code twice.)
+    (It should be noted that by placing the picture inside a node you are centering it (default) at the node location (origin).)
+!(!
+    When using this together with standalone, you have to take one precaution, that is to "disable" the \newpage-cmd locally. This is due to a \newpage that "standalone" apparently attaches to tikzpicture. As you cannot have a new page in an sbox, it suffices to just disable this cmd locally with "\let\newpage\relax". See below for an example on that
+!)!
+(-> Be careful to declare the \sbox outside the actual tikzpicture or you run into other problems, like not working LaTeX directives and formatting or surplus whitespaces)
+#####################
+\documentclass{article}
+\thispagestyle{empty}
+\usepackage{graphicx}
+\usepackage{tikz}
+\begin{document}
+\begin{figure}
+\sbox0{\begin{tikzpicture}[remember picture]
+    \coordinate(v)at(3, 4);
+    \node(t)at(v){v};
+    \draw[->](1,2)--(v);
+    \end{tikzpicture}
+}
+\begin{tikzpicture}[remember picture]
+    \node(inset){\usebox0};
+    \node(t2)[blue]at(v){v};
+    \draw[->,red](5,-2)--(v);
+\end{tikzpicture}
+\end{figure}
+\end{document}
+% = = = = = = = = = = =
+% -- Disabling the newpage-cmd
+\newsavebox{\someSBox}%
+\sbox{\someSBox}{\let\newpage\relax\begin{tikzpicture}[remember picture]%
+    \begin{scope}[dashed,blue]
+        \node(){test};
+    \end{scope}
+\end{tikzpicture}}%
+\usebox{\someSBox}%
+
+
+
+
+#####################
+2) Instead of nesting tikzpictures, use a "scope" with "local bounding box"
+    (Gives you "wrapper" around the scope for e.g. attaching stuff to anchors, like drawing a connection onto the "collection of objects")
 #####################
 \documentclass{article}
 \thispagestyle{empty}
@@ -22,43 +64,15 @@ For simple stuff, it may satisfy you, for more complex things, I suggest one of 
 \begin{figure}
 \begin{tikzpicture}
 \begin{scope}[local bounding box=inset]
-        \coordinate(v) at (3, 4);
-        \node(t) at (v){v};
-        \draw[->] (1,2) -- (v);
+    \coordinate(v)at(3, 4);
+    \node(t)at(v){v};
+    \draw[->](1,2)--(v);
 \end{scope}
-  \node(t2)[blue] at (v){v};
-  \draw[->, red](5, -2) -- (v);
+\node(t2)[blue]at(v){v};
+\draw[->,red](5,-2)--(v);
 
-\draw [red] (inset.east) -- (inset.west);
+\draw[red](inset.east)--(inset.west);
 \end{tikzpicture}
-\end{figure}
-\end{document}
-
-
-
-
-#####################
-2) Use saveboxes to then safely nest tikzpictures
-    (-> Coordinates will be remembered. The way [remember picture] works is to save the origin location in the aux file, so you have to run the code twice.)
-    (It should be noted that by placing the picture inside a node you are centering it (default) at the node location (origin).)
-#####################
-\documentclass{article}
-\thispagestyle{empty}
-\usepackage{graphicx}
-\usepackage{tikz}
-\begin{document}
-\begin{figure}
-\sbox0{\begin{tikzpicture}[remember picture]
-        \coordinate(v) at (3, 4);
-        \node(t) at (v){v};
-        \draw[->] (1,2) -- (v);
-        \end{tikzpicture}
-}
-  \begin{tikzpicture}[remember picture]
-    \node(inset) {\usebox0};
-    \node(t2)[blue] at (v){v};
-    \draw[->, red](5, -2) -- (v);
-  \end{tikzpicture}
 \end{figure}
 \end{document}
 
@@ -73,16 +87,16 @@ For simple stuff, it may satisfy you, for more complex things, I suggest one of 
 \thispagestyle{empty}
 \usepackage{tikz}
 \begin{document}
-  \tikzstyle{every picture}+=[remember picture]
-  \begin{tikzpicture}
-    \node(inset) {
-      \begin{tikzpicture}[remember picture]
-       \coordinate(v) at (3, 4);
-       \node(t) at (v){v};
-       \draw[->] (1,2) -- (v);
-      \end{tikzpicture}
+\tikzstyle{every picture}+=[remember picture]
+\begin{tikzpicture}
+    \node(inset){
+        \begin{tikzpicture}[remember picture]
+            \coordinate(v)at(3,4);
+            \node(t)at(v){v};
+            \draw[->](1,2)--(v);
+        \end{tikzpicture}
     };
-    \node(t2)[blue] at (v){v};
-    \draw[->, red](5, -2) -- (v);
-  \end{tikzpicture}
+    \node(t2)[blue]at(v){v};
+    \draw[->,red](5,-2)--(v);
+\end{tikzpicture}
 \end{document}

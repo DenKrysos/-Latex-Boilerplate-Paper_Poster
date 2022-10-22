@@ -1,5 +1,15 @@
 %
 %========-------------------------------------------========
+%========		General Setup	========
+%========-------------------------------------------========
+\tikzset{%
+  DenKrScale/.initial=1,%
+  DenKrRotate/.initial=0,%
+}%
+%
+%
+%
+%========-------------------------------------------========
 %========		\pic(NodeName)[Style]{.PicIdentifier}	========
 %========-------------------------------------------========
 \definecolor{TikzCol_folderbg}{RGB}{124,166,198}%
@@ -2590,6 +2600,14 @@
     line width=\KiwiCutPlaneShadeLineWidth%
   },%
   KiwiCutPlaneShade/.pic={%
+    \pgfkeysgetvalue{/tikz/DenKrScale}{\DenKrScaleKiwiCutPlaneShade}%
+    \pgfkeysgetvalue{/tikz/DenKrRotate}{\DenKrRotateKiwiCutPlaneShade}%
+    \pic(-KiwiCutPlaneShadePic)[scale=\DenKrScaleKiwiCutPlaneShade,DenKrScale=\DenKrScaleKiwiCutPlaneShade,rotate=\DenKrRotateKiwiCutPlaneShade,DenKrRotate=\DenKrRotateKiwiCutPlaneShade]at(0,0){KiwiCutPlaneShadePre};%
+    \let\DenKrScaleKiwiCutPlaneShade\undefined%
+    \let\DenKrRotateKiwiCutPlaneShade\undefined%
+  },%
+  KiwiCutPlaneShadePre/.pic={%
+    \pgfkeysgetvalue{/tikz/DenKrScale}{\DenKrScaleKiwiCutPlaneShadePre}%
     \coordinate(-BellyLeft)at(-0.5*\KiwiCutPlaneShadeFleshWidth,0);%
     \coordinate(-BellyRight)at($(-BellyLeft)+(\KiwiCutPlaneShadeFleshWidth,0)$);%
     \coordinate(-BellyCenter)at($(-BellyLeft)!.5!(-BellyRight)$);%
@@ -2695,7 +2713,7 @@
         \KiwiCutPlaneShadeCutPathDef{-BellyLeft}{-BellyCenterHigh}{-BellyRight}{-BellyCenterLow}{1};
     %
     \newcommand{\KiwiCoreLineBrightPattern}[3]{% Angle, Length
-        \path[draw=##3, line width=0.016*\KiwiCutPlaneShadeSize,line cap=round]%
+        \path[draw=##3, line width=0.016*\DenKrScaleKiwiCutPlaneShadePre*\KiwiCutPlaneShadeSize,line cap=round]%
             (-BellyCenter)--++(##1:##2);%
         %\fill[color=##3]($(-BellyCenter)+(##1:##2)$)circle(0.008*\KiwiCutPlaneShadeSize);%
     }%
@@ -2766,7 +2784,7 @@
     \KiwiCoreLineDark{313}{0.20*\KiwiCutPlaneShadeSize}%
     \KiwiCoreLineBright{300}{0.19*\KiwiCutPlaneShadeSize}%
     \KiwiCoreLineDark{285}{0.17*\KiwiCutPlaneShadeSize}%
-    \path[KiwiCutPlaneShadeLine,line width=0.7*\KiwiCutPlaneShadeLineWidth,draw=TikzCol_kiwiGreenMedium,fill=TikzCol_kiwiCoreWhite]%
+    \path[KiwiCutPlaneShadeLine,line width=0.7*\DenKrScaleKiwiCutPlaneShadePre*\KiwiCutPlaneShadeLineWidth,draw=TikzCol_kiwiGreenMedium,fill=TikzCol_kiwiCoreWhite]%
         (-KiwiCoreTopL)%
             ..controls%
                 ++(-0.0*\KiwiCutPlaneShadeSize,-0.04*\KiwiCutPlaneShadeSize)%
@@ -2922,8 +2940,17 @@
     \KiwiSeedTwo{0.055*\KiwiCutPlaneShadeWidth,-0.129*\KiwiCutPlaneShadeHeight}{352}{-0.05}{-0.11}{9}%
     \KiwiSeedTwo{0.033*\KiwiCutPlaneShadeWidth,-0.091*\KiwiCutPlaneShadeHeight}{358}{-0.04}{-0.13}{12}%
     \KiwiSeedTwo{0.014*\KiwiCutPlaneShadeWidth,-0.095*\KiwiCutPlaneShadeHeight}{352}{-0.05}{-0.03}{-8}%
+    \let\DenKrScaleKiwiCutPlaneShadePre\undefined%
   },%
   KiwiCutPlaneCenterDeko/.pic={%
+    \pgfkeysgetvalue{/tikz/DenKrScale}{\DenKrScaleKiwiCutPlaneCenterDeko}%
+    \pgfkeysgetvalue{/tikz/DenKrRotate}{\DenKrRotateKiwiCutPlaneCenterDeko}%
+    \pic(-KiwiCutPlaneCenterDekoPic)[scale=\DenKrScaleKiwiCutPlaneCenterDeko,DenKrScale=\DenKrScaleKiwiCutPlaneCenterDeko,rotate=\DenKrRotateKiwiCutPlaneCenterDeko,DenKrRotate=\DenKrRotateKiwiCutPlaneCenterDeko]at(0,0){KiwiCutPlaneCenterDekoPre};%
+    \let\DenKrScaleKiwiCutPlaneCenterDeko\undefined%
+    \let\DenKrRotateKiwiCutPlaneCenterDeko\undefined%
+  },%
+  KiwiCutPlaneCenterDekoPre/.pic={%
+    \pgfkeysgetvalue{/tikz/DenKrScale}{\DenKrScaleKiwiCutPlaneCenterDekoPre}%
     \coordinate(-BellyLeft)at(-0.5*\KiwiCutPlaneShadeFleshWidth,0);%
     \coordinate(-BellyRight)at($(-BellyLeft)+(\KiwiCutPlaneShadeFleshWidth,0)$);%
     \coordinate(-BellyCenter)at($(-BellyLeft)!.5!(-BellyRight)$);%
@@ -2942,7 +2969,7 @@
     %
     %
     \newcommand{\KiwiCoreLineBrightPattern}[3]{% Angle, Length
-        \path[draw=##3, line width=0.016*\KiwiCutPlaneShadeSize,line cap=round]%
+        \path[draw=##3, line width=0.016*\DenKrScaleKiwiCutPlaneCenterDekoPre*\KiwiCutPlaneShadeSize,line cap=round]%
             (-BellyCenter)--++(##1:##2);%
         %\fill[color=##3]($(-BellyCenter)+(##1:##2)$)circle(0.008*\KiwiCutPlaneShadeSize);%
     }%
@@ -3013,7 +3040,7 @@
     \KiwiCoreLineDark{313}{0.20*\KiwiCutPlaneShadeSize}%
     \KiwiCoreLineBright{300}{0.19*\KiwiCutPlaneShadeSize}%
     \KiwiCoreLineDark{285}{0.17*\KiwiCutPlaneShadeSize}%
-    \path[KiwiCutPlaneShadeLine,line width=0.7*\KiwiCutPlaneShadeLineWidth,draw=TikzCol_kiwiGreenMedium,fill=TikzCol_kiwiCoreWhite]%
+    \path[KiwiCutPlaneShadeLine,line width=0.7*\DenKrScaleKiwiCutPlaneCenterDekoPre*\KiwiCutPlaneShadeLineWidth,draw=TikzCol_kiwiGreenMedium,fill=TikzCol_kiwiCoreWhite]%
         (-KiwiCoreTopL)%
             ..controls%
                 ++(-0.0*\KiwiCutPlaneShadeSize,-0.04*\KiwiCutPlaneShadeSize)%
@@ -3169,6 +3196,7 @@
     \KiwiSeedTwo{0.055*\KiwiCutPlaneShadeWidth,-0.129*\KiwiCutPlaneShadeHeight}{352}{-0.05}{-0.11}{9}%
     \KiwiSeedTwo{0.033*\KiwiCutPlaneShadeWidth,-0.091*\KiwiCutPlaneShadeHeight}{358}{-0.04}{-0.13}{12}%
     \KiwiSeedTwo{0.014*\KiwiCutPlaneShadeWidth,-0.095*\KiwiCutPlaneShadeHeight}{352}{-0.05}{-0.03}{-8}%
+    \let\DenKrScaleKiwiCutPlaneCenterDekoPre\undefined%
   }%
 }%
 %
@@ -3836,7 +3864,17 @@
     draw=none,%
     line width=\KiwiSunLineWidth%
   },%
-  KiwiSunFlower/.pic={%
+  pics/KiwiSunFlower/.style={code={%
+    % \tikzset{DenKrScale/.get=\DenKrScale}%
+    \pgfkeysgetvalue{/tikz/DenKrScale}{\DenKrScaleKiwiSunFlower}%
+    \pgfkeysgetvalue{/tikz/DenKrRotate}{\DenKrRotateKiwiSunFlower}%
+    \pic(-KiwiSunFlowerPic)[scale=\DenKrScaleKiwiSunFlower,DenKrScale=\DenKrScaleKiwiSunFlower,rotate=\DenKrRotateKiwiSunFlower,DenKrRotate=\DenKrRotateKiwiSunFlower]at(0,0){KiwiSunFlowerPre};%
+    \let\DenKrScaleKiwiSunFlower\undefined%
+    \let\DenKrRotateKiwiSunFlower\undefined%
+  }},%
+  pics/KiwiSunFlowerPre/.style={code={%
+    \pgfkeysgetvalue{/tikz/DenKrScale}{\DenKrScaleKiwiSunFlowerPre}%
+    \pgfkeysgetvalue{/tikz/DenKrRotate}{\DenKrRotateKiwiSunFlowerPre}%
     % Peak 3 + Body 1 | 2
     % Peak 4 + Body 3 | 5 | 6 | 4
     % Peak 6 + Body 4 | 6 | 5
@@ -3874,9 +3912,20 @@
     % \scopenode[name=-KiwiCut,draw=none,anchor=center,at={(0,0)}]{%
     %     \pic(-KiwiCutPic)[scale=1.4]% scale=0.6, xscale=0.3,yscale=0.4, rotate=90
     %     {KiwiCutPlaneShade};};%
-    \pic(-KiwiCutPic)[scale=1.6]at(0,0){KiwiCutPlaneCenterDeko};%
-  },%
+    \pic(-KiwiCutPic)[scale=1.6*\DenKrScaleKiwiSunFlowerPre,DenKrScale=\DenKrScaleKiwiSunFlowerPre,rotate=\DenKrRotateKiwiSunFlowerPre,DenKrRotate=\DenKrRotateKiwiSunFlowerPre]at(0,0){KiwiCutPlaneCenterDekoPre};%
+    \let\DenKrScaleKiwiSunFlowerPre\undefined%
+    \let\DenKrRotateKiwiSunFlowerPre\undefined%
+  }},%
   KiwiSunB1P3/.pic={%
+    \pgfkeysgetvalue{/tikz/DenKrScale}{\DenKrScaleKiwiSunBOnePThree}%
+    \pgfkeysgetvalue{/tikz/DenKrRotate}{\DenKrRotateKiwiSunBOnePThree}%
+    \pic(-KiwiSunB1P3Pic)[scale=\DenKrScaleKiwiSunBOnePThree,DenKrScale=\DenKrScaleKiwiSunBOnePThree,rotate=\DenKrRotateKiwiSunBOnePThree,DenKrRotate=\DenKrRotateKiwiSunBOnePThree]at(0,0){KiwiSunB1P3Pre};%
+    \let\DenKrScaleKiwiSunBOnePThree\undefined%
+    \let\DenKrRotateKiwiSunBOnePThree\undefined%
+  },%
+  KiwiSunB1P3Pre/.pic={%
+    \pgfkeysgetvalue{/tikz/DenKrScale}{\DenKrScaleKiwiSunBOnePThreePre}%
+    \pgfkeysgetvalue{/tikz/DenKrRotate}{\DenKrRotateKiwiSunBOnePThreePre}%
     \path[KiwiSunLine,%
         fill=TikzCol_kiwiSunSkin1,%
     ](0,0)circle(\SunIcoRadiusTwo);%
@@ -3884,9 +3933,20 @@
     %
     \SunIcoDrawBodyOne{TikzCol_kiwiSun4}{TikzCol_kiwiSun1}%
     %
-    \pic(-KiwiCutPic)[scale=1.4]at(0,0){KiwiCutPlaneCenterDeko};%
+    \pic(-KiwiCutPic)[scale=1.4*\DenKrScaleKiwiSunBOnePThreePre,DenKrScale=\DenKrScaleKiwiSunBOnePThreePre,rotate=\DenKrRotateKiwiSunBOnePThreePre,DenKrRotate=\DenKrRotateKiwiSunBOnePThreePre]at(0,0){KiwiCutPlaneCenterDekoPre};%
+    \let\DenKrScaleKiwiSunBOnePThreePre\undefined%
+    \let\DenKrRotateKiwiSunBOnePThreePre\undefined%
   },%
   KiwiSunB2P3/.pic={%
+    \pgfkeysgetvalue{/tikz/DenKrScale}{\DenKrScaleKiwiSunBTwoPThree}%
+    \pgfkeysgetvalue{/tikz/DenKrRotate}{\DenKrRotateKiwiSunBTwoPThree}%
+    \pic(-KiwiSunB2P3Pic)[scale=\DenKrScaleKiwiSunBTwoPThree,DenKrScale=\DenKrScaleKiwiSunBTwoPThree,rotate=\DenKrRotateKiwiSunBTwoPThree,DenKrRotate=\DenKrRotateKiwiSunBTwoPThree]at(0,0){KiwiSunB2P3Pre};%
+    \let\DenKrScaleKiwiSunBTwoPThree\undefined%
+    \let\DenKrRotateKiwiSunBTwoPThree\undefined%
+  },%
+  KiwiSunB2P3Pre/.pic={%
+    \pgfkeysgetvalue{/tikz/DenKrScale}{\DenKrScaleKiwiSunBTwoPThreePre}%
+    \pgfkeysgetvalue{/tikz/DenKrRotate}{\DenKrRotateKiwiSunBTwoPThreePre}%
     \path[KiwiSunLine,%
         fill=TikzCol_kiwiSunSkin1,%
     ](0,0)circle(\SunIcoRadiusTwo);%
@@ -3895,9 +3955,20 @@
     %
     \SunIcoDrawBodyTwo{TikzCol_kiwiSun2!50!TikzCol_SunIcoYellowOne}{TikzCol_kiwiSun1}%
     %
-    \pic(-KiwiCutPic)[scale=1.4]at(0,0){KiwiCutPlaneCenterDeko};%
+    \pic(-KiwiCutPic)[scale=1.4*\DenKrScaleKiwiSunBTwoPThreePre,DenKrScale=\DenKrScaleKiwiSunBTwoPThreePre,rotate=\DenKrRotateKiwiSunBTwoPThreePre,DenKrRotate=\DenKrRotateKiwiSunBTwoPThreePre]at(0,0){KiwiCutPlaneCenterDekoPre};%
+    \let\DenKrScaleKiwiSunBTwoPThreePre\undefined%
+    \let\DenKrRotateKiwiSunBTwoPThreePre\undefined%
   },%
   KiwiSunB6P6/.pic={%
+    \pgfkeysgetvalue{/tikz/DenKrScale}{\DenKrScaleKiwiSunBSixPSix}%
+    \pgfkeysgetvalue{/tikz/DenKrRotate}{\DenKrRotateKiwiSunBSixPSix}%
+    \pic(-KiwiSunB6P6Pic)[scale=\DenKrScaleKiwiSunBSixPSix,DenKrScale=\DenKrScaleKiwiSunBSixPSix,rotate=\DenKrRotateKiwiSunBSixPSix,DenKrRotate=\DenKrRotateKiwiSunBSixPSix]at(0,0){KiwiSunB6P6Pre};%
+    \let\DenKrScaleKiwiSunBSixPSix\undefined%
+    \let\DenKrRotateKiwiSunBSixPSix\undefined%
+  },%
+  KiwiSunB6P6Pre/.pic={%
+    \pgfkeysgetvalue{/tikz/DenKrScale}{\DenKrScaleKiwiSunBSixPSixPre}%
+    \pgfkeysgetvalue{/tikz/DenKrRotate}{\DenKrRotateKiwiSunBSixPSixPre}%
     \path[KiwiSunLine,%
         fill=TikzCol_kiwiSunSkin1,%
     ](0,0)circle(\SunIcoRadiusTwo);%
@@ -3906,7 +3977,9 @@
     % \SunIcoDrawBodyFive{TikzCol_kiwiSun3}{TikzCol_kiwiSun2}{TikzCol_kiwiSun1}%
     \SunIcoDrawBodySix{TikzCol_kiwiSun1}{TikzCol_kiwiSun2}{TikzCol_kiwiSun4}%
     %
-    \pic(-KiwiCutPic)[scale=1.4]at(0,0){KiwiCutPlaneCenterDeko};%
+    \pic(-KiwiCutPic)[scale=1.4*\DenKrScaleKiwiSunBSixPSixPre,DenKrScale=\DenKrScaleKiwiSunBSixPSixPre,rotate=\DenKrRotateKiwiSunBSixPSixPre,DenKrRotate=\DenKrRotateKiwiSunBSixPSixPre]at(0,0){KiwiCutPlaneCenterDekoPre};%
+    \let\DenKrScaleKiwiSunBSixPSixPre\undefined%
+    \let\DenKrRotateKiwiSunBSixPSixPre\undefined%
   }%
 }%
 %
