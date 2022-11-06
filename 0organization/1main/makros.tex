@@ -309,6 +309,27 @@
 %
 %________________________________________________________________________
 %------------------------------------------------------------------------
+%     A manual Counter. Just to have an arbitrary counter at hand
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+\newcounter{manualCounter}%
+\setcounter{manualCounter}{0}%
+\newcommand{\manCountReset}{\setcounter{manualCounter}{0}}%
+\DeclareDocumentCommand{\manCount}{o}{% Only 1 possible Argument (optional), which is a label for referencing
+    \refstepcounter{manualCounter}%
+    \IfNoValueTF{#1}{}{%
+        \label{#1}%
+    }%
+    \arabic{manualCounter}%
+}%
+%------------------------------------------------------------------------
+%________________________________________________________________________
+%
+%
+%
+%
+%
+%________________________________________________________________________
+%------------------------------------------------------------------------
 %			Typesetting
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 % Usage: \DenKrSubfloat{<Label>}{<SubCaption>}{<FloatCode>}
