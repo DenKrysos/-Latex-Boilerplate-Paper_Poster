@@ -1,4 +1,26 @@
 %
+% REQUIREMENTS:
+%   The automatic Column-Balancing requires Macros from the File
+%   "2includes/setup/measuring_the_page".tex
+%______________________________________________________________
+%\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\......
+%  Automatic Method
+%////////////////////////////////////////////////////////////////////´´´´´´
+%''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+% USAGE:
+%  - Put \measureRemainingVerticalSpace from "2includes/setup/measuring_the_page".tex
+%       -> This measure the remaning height on the last page and provides it via the .aux-File
+%  - Put \ from here
+%
+% ToDo. It is not finished yet
+%
+%
+%______________________________________________________________
+%\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\......
+%  Manual Method
+%////////////////////////////////////////////////////////////////////´´´´´´
+%''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+%
 %- - Balancing columns at last page - - - - - - - - - - - - - -
 %\usepackage{flushend}% Lasst uns das balance package statt flushend nehmen um die Spalten auf die gleiche Länge zu bringen. Flushend ruiniert sonst die Einrückung in der letzten Zeile. (Michael)
 %\usepackage{balance}% Even better yet: All of that 'automatic approaches' pretty much suck in most applications. Just fiddle around manually a little at finishing the paper, with the following.
@@ -41,3 +63,4 @@
 %%% This command does not take effect until the next page so it should come on the page before the last.
 %%% Make sure that you do not shorten the textheight too much.
 %\addtolength{\textheight}{-1cm}%
+%

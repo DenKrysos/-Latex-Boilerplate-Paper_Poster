@@ -76,8 +76,7 @@
             \coordinate(bottom)at(current page text area.south east);%
             \path let \p1=(bottom-|behindLastText)in coordinate(heightDiff)at($(behindLastText)-(\p1)$);%
             \pgfextracty{\lastPageRemainingVerticalSpace}{\pgfpointanchor{heightDiff}{center}}%
-            \global\lastPageRemainingVerticalSpace\lastPageRemainingVerticalSpace
-            \node()at(bottom){\the\lastPageRemainingVerticalSpace};
+            \global\lastPageRemainingVerticalSpace\lastPageRemainingVerticalSpace%
         \end{tikzpicture}%
         \EndOnNewPagefalse%
     \fi%
