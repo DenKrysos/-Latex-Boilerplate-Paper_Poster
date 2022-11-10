@@ -49,10 +49,40 @@
 %					Lists - (itemize, enumerate, description)
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 %  More in the "_perDoc.tex" File inside "./0organization/1main/"
+%    -> The "_perDoc.tex" comes after the "_basic.tex" and hence its Settings overwrite.
 %
+%---------------------------
 % %  Additional new List-Style, "Enumeration-Inline-Roman" for enumerating with lower-case roman letters inline
+% - - - - - - - -
 \newlist{enuminlrom}{enumerate*}{1}%
 \setlist[enuminlrom]{label=\textit{(\roman*)}}%
+%
+%---------------------------
+% %  List-Style Settings
+% - - - - - - - -
+%\setlist[1]{\labelindent=\parindent} % < Usually a good idea
+%\setlist[description]{font=\sffamily\bfseries} % the Default
+\setlist[description]{%
+    topsep=0ex,%
+    itemsep=0ex,%
+    parsep=0ex,%
+    labelindent=0pt,%
+    leftmargin=0pt%
+}%
+\setlist[itemize]{%
+    topsep=0ex,%
+    itemsep=0ex,%
+    parsep=0ex,%
+    leftmargin=1em%
+}%
+\setlist[enumerate]{%
+    topsep=0ex,%
+    itemsep=0ex,%
+    parsep=0ex,%
+    leftmargin=1.5em%
+}%
+\renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\normalfont\textbf{#1}:}%
+% \renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\normalfont\textit{#1}:}%
 %
 %
 % - - Templates
