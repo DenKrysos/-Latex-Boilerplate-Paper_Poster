@@ -45,17 +45,18 @@
 % ----     (In most cases, you shouldn't be required to touch anything below)
 %----------------------------------------------------------------------------------
 %
-\newcommand{\DenKrOrgaRootDir}{./0organization}%
+\newcommand{\DenKrSubDirPrefix}{.}%
+\newcommand{\DenKrOrgaRootDir}{\DenKrSubDirPrefix/0organization}%
 \newcommand{\DenKrLayoutMainRootDir}{\DenKrOrgaRootDir/1main}%
 \newcommand{\DenKrLayoutBaseRootDir}{\DenKrOrgaRootDir/2layout}%
 \newcommand{\DenKrLayoutRootDir}{\DenKrLayoutBaseRootDir/\DenKrLayout}%
-\newcommand{\DenKrSupplyRootDir}{./1supply}%
+\newcommand{\DenKrSupplyRootDir}{\DenKrSubDirPrefix/1supply}%
 \newcommand{\DenKrLayoutSupplyAuthorDir}{\DenKrSupplyRootDir/authors/2layout}%
-\newcommand{\DenKrContentRootDir}{./9chapter}%
-\newcommand{\DenKrTablesRootDir}{./5tables}%
-\newcommand{\DenKrListingsRootDir}{./6listings}%
-\newcommand{\DenKrTikzRootDir}{./7Tikz}%
-\newcommand{\DenKrGraphicsRootDir}{./8graphics}%
+\newcommand{\DenKrContentRootDir}{\DenKrSubDirPrefix/9chapter}%
+\newcommand{\DenKrTablesRootDir}{\DenKrSubDirPrefix/5tables}%
+\newcommand{\DenKrListingsRootDir}{\DenKrSubDirPrefix/6listings}%
+\newcommand{\DenKrTikzRootDir}{\DenKrSubDirPrefix/7Tikz}%
+\newcommand{\DenKrGraphicsRootDir}{\DenKrSubDirPrefix/8graphics}%
 \newcommand{\DenKrAlgorithmRootDir}{\DenKrListingsRootDir}%
 \newcommand{\DenKrLiteratureDir}{\DenKrSupplyRootDir}%
 % - - - - - - - - - - - - - - -
