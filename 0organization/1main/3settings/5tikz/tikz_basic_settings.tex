@@ -5,6 +5,20 @@
 \newcommand\inndist{0.75ex}% Distance between Text and cell-border
 %
 %
+% \makeatletter%
+% \ifthenelse{\@microtype@loaded=1}{
+%     \microtypecontext{spacing=nonfrench}%
+% }{}
+% \makeatother%
+\makeatletter%
+\AddToHook{begindocument/before}{%
+\@ifpackageloaded{microtype}{%
+    \microtypecontext{spacing=nonfrench}%
+}{}%
+}%
+\makeatother%
+%
+%
 % TikZ Default Line Width
 %    ultra thin: 0.1 pt
 %    very thin: 0.2 pt
