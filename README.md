@@ -9,6 +9,17 @@ This one here is quite sophisticated. A simplified one can be found:<br/>
 
 Just saying, there is also another Boilerplate for Book-type Documents:<br/>
 > [https://github.com/DenKrysos/-Latex-Boilerplate-Book](https://github.com/DenKrysos/-Latex-Boilerplate-Book "DenKr Latex Book-Boilerplate")
+<br/>
+
+## Compilation
+* This here is meant to be compiled with 'PdfLaTeX'
+* Remember to add "--shell-escape" to your compiler's arguments in order to make all that Standalone & TikZ stuff working
+* For Overleaf refer to the here included file "latexmkrc"
+* Examplary proper compiler argument setup
+  * TeX Live / Texlipse
+    * -synctex=1 -interaction=nonstopmode --shell-escape %input
+  * Overleaf 'latexmkrc'
+    * $pdflatex = 'pdflatex %O %S --synctex=1 --interaction=nonstopmode --shell-escape --src-specials';
 
 ## Description
 * Layout and Skeleton Setup is well separated from the content
