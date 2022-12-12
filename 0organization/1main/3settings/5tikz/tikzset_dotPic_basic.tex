@@ -63,6 +63,7 @@
 %========-------------------------------------------========
 %========   IT, Computer    ========
 %========-------------------------------------------========
+% Todo
 \usetikzlibrary{fit}
 \tikzset{
   comp/.style = {
@@ -287,17 +288,44 @@
 %-------------------------------------------
 %--------   Unmanned Aerial Vehicle (UAV)    --------
 %-------------------------------------------
+% Usage Example:
+% - Default Behaviour
+%    - The lines are drawn
+%    - It is not filled
+%    - Line Color is Black
+%    - Fill Color is White
+% - The Colors can be changed as shown in the Example below (which acts for all subsequent Pics within the scope)
+% - To make it filled, change the "FillOpacity" Value as shown below (acts for all subsequent Pics within the scope)
+%
+%            \node(UAV1)[nestedTikz,anchor=north west]at(0,0){\tikz[remember picture]{%
+%                \colorlet{TikzCol_UnmannedAerialVehicleLine}{blue}%
+%                \colorlet{TikzCol_UnmannedAerialVehicleFill}{yellow}%
+%                \def\UnmannedAerialVehicleFillOpacity{1}%
+%                \pic(UAV1Pic){UnmannedAerialVehicleOne};%
+%            }};%
+%            \node(UAV2)[nestedTikz,anchor=north]at(0,0){\tikz[remember picture]{%
+%                \colorlet{TikzCol_UnmannedAerialVehicleLine}{orange}%
+%                \colorlet{TikzCol_UnmannedAerialVehicleFill}{green}%
+%                \def\UnmannedAerialVehicleFillOpacity{1}%
+%                \pic(UAV2Pic){UnmannedAerialVehicleTwo};%
+%            }};%
+%-------------------------------------------
 \definecolor{TikzCol_UnmannedAerialVehicleLine}{RGB}{0,0,0}
+\definecolor{TikzCol_UnmannedAerialVehicleFill}{RGB}{255,255,255}
 %
 \def\UnmannedAerialVehicleSize{10em}%
 \def\UnmannedAerialVehicleLineWidth{0.01*\UnmannedAerialVehicleSize}%
+%
+\def\UnmannedAerialVehicleFillOpacity{0.0}%
 %
 \tikzset{%
   UnmannedAerialVehicleLine/.style={%
     draw=TikzCol_UnmannedAerialVehicleLine,%
     line width=\UnmannedAerialVehicleLineWidth,%
     line join=round,%
-    line cap=round%
+    line cap=round,%
+    fill=TikzCol_UnmannedAerialVehicleFill,%
+    fill opacity=\UnmannedAerialVehicleFillOpacity%
   },%
   UnmannedAerialVehicleOne/.pic={%
     \def\UnmannedAerialVehicleRoundedCorners{0.02*\UnmannedAerialVehicleSize}%
@@ -567,7 +595,7 @@
         (-CameraLB)%
         --%
     cycle;%
-    \draw[draw=TikzCol_UnmannedAerialVehicleLine,line width=0.6*\UnmannedAerialVehicleLineWidth](-CameraCenter)circle(0.036*\UnmannedAerialVehicleSize);%
+    \draw[draw=TikzCol_UnmannedAerialVehicleLine,fill=none,line width=0.6*\UnmannedAerialVehicleLineWidth](-CameraCenter)circle(0.036*\UnmannedAerialVehicleSize);%
     \draw[draw=none,fill=TikzCol_UnmannedAerialVehicleLine,line width=0pt](-CameraCenter)circle(0.019*\UnmannedAerialVehicleSize);%
     \draw[draw=none,fill=white,line width=0pt]($(-CameraCenter)+(135:0.01*\UnmannedAerialVehicleSize)$)circle(0.01*\UnmannedAerialVehicleSize);%
     %
@@ -623,11 +651,11 @@
     %
     % - - - - - - - 
     % Some Accents
-    \path[UnmannedAerialVehicleLine,line join=miter]%
+    \path[UnmannedAerialVehicleLine,fill=none,line join=miter]%
         ($(-CorpusLT)!.8!(-CorpusLT1)$)%
         to[out=-40,in=40]%
         ($(-CorpusLB)!.8!(-CorpusLB1)$);%
-    \path[UnmannedAerialVehicleLine,line join=miter]%
+    \path[UnmannedAerialVehicleLine,fill=none,line join=miter]%
         ($(-CorpusLT1)!.2!(-CorpusLT2)$)%
         ..controls%
             ++(0.025*\UnmannedAerialVehicleSize,-0.03*\UnmannedAerialVehicleSize)%
@@ -636,11 +664,11 @@
         ..%
         ($(-CorpusLB1)!.1!(-CorpusLB2)$);%
     %
-    \path[UnmannedAerialVehicleLine,line join=miter]%
+    \path[UnmannedAerialVehicleLine,fill=none,line join=miter]%
         ($(-CorpusRT)!.8!(-CorpusRT1)$)%
         to[out=180+40,in=180-40]%
         ($(-CorpusRB)!.8!(-CorpusRB1)$);%
-    \path[UnmannedAerialVehicleLine,line join=miter]%
+    \path[UnmannedAerialVehicleLine,fill=none,line join=miter]%
         ($(-CorpusRT1)!.2!(-CorpusRT2)$)%
         ..controls%
             ++(-0.025*\UnmannedAerialVehicleSize,-0.03*\UnmannedAerialVehicleSize)%
@@ -919,7 +947,7 @@
         (-CameraLB)%
         --%
     cycle;%
-    \draw[draw=TikzCol_UnmannedAerialVehicleLine,line width=0.6*\UnmannedAerialVehicleLineWidth](-CameraCenter)circle(0.036*\UnmannedAerialVehicleSize);%
+    \draw[draw=TikzCol_UnmannedAerialVehicleLine,fill=none,line width=0.6*\UnmannedAerialVehicleLineWidth](-CameraCenter)circle(0.036*\UnmannedAerialVehicleSize);%
     \draw[draw=none,fill=TikzCol_UnmannedAerialVehicleLine,line width=0pt](-CameraCenter)circle(0.019*\UnmannedAerialVehicleSize);%
     \draw[draw=none,fill=white,line width=0pt]($(-CameraCenter)+(135:0.01*\UnmannedAerialVehicleSize)$)circle(0.01*\UnmannedAerialVehicleSize);%
     %
@@ -975,11 +1003,11 @@
     %
     % - - - - - - - 
     % Some Accents
-    \path[UnmannedAerialVehicleLine,line join=miter]%
+    \path[UnmannedAerialVehicleLine,fill=none,line join=miter]%
         ($(-CorpusLT)!.8!(-CorpusLT1)$)%
         to[out=-40,in=40]%
         ($(-CorpusLB)!.8!(-CorpusLB1)$);%
-    \path[UnmannedAerialVehicleLine,line join=miter]%
+    \path[UnmannedAerialVehicleLine,fill=none,line join=miter]%
         ($(-CorpusLT1)!.2!(-CorpusLT2)$)%
         ..controls%
             ++(0.025*\UnmannedAerialVehicleSize,-0.03*\UnmannedAerialVehicleSize)%
@@ -988,11 +1016,11 @@
         ..%
         ($(-CorpusLB1)!.1!(-CorpusLB2)$);%
     %
-    \path[UnmannedAerialVehicleLine,line join=miter]%
+    \path[UnmannedAerialVehicleLine,fill=none,line join=miter]%
         ($(-CorpusRT)!.8!(-CorpusRT1)$)%
         to[out=180+40,in=180-40]%
         ($(-CorpusRB)!.8!(-CorpusRB1)$);%
-    \path[UnmannedAerialVehicleLine,line join=miter]%
+    \path[UnmannedAerialVehicleLine,fill=none,line join=miter]%
         ($(-CorpusRT1)!.2!(-CorpusRT2)$)%
         ..controls%
             ++(-0.025*\UnmannedAerialVehicleSize,-0.03*\UnmannedAerialVehicleSize)%
@@ -1002,7 +1030,7 @@
         ($(-CorpusRB1)!.1!(-CorpusRB2)$);%
     % - - - - - - - 
     % Some Accents - Central
-    \path[UnmannedAerialVehicleLine,line width=0.5*\UnmannedAerialVehicleLineWidth]%
+    \path[UnmannedAerialVehicleLine,fill=none,line width=0.5*\UnmannedAerialVehicleLineWidth]%
         (-CorpusLT2)%
         --%
         ++(0.06*\UnmannedAerialVehicleSize,-0.07*\UnmannedAerialVehicleSize)%
@@ -1012,17 +1040,17 @@
         --%
         (\p1)%
     ;%
-    \path[UnmannedAerialVehicleLine]%
+    \path[UnmannedAerialVehicleLine,fill=none]%
         ($(-CorpusCT)+(-0.06*\UnmannedAerialVehicleSize,-0.035*\UnmannedAerialVehicleSize)$)%
         --%
         ++(0.12*\UnmannedAerialVehicleSize,0)%
     ;%
-    \path[UnmannedAerialVehicleLine]%
+    \path[UnmannedAerialVehicleLine,fill=none]%
         ($(-CorpusCT)+(-0.025*\UnmannedAerialVehicleSize,-0.055*\UnmannedAerialVehicleSize)$)%
         --%
         ++(0.05*\UnmannedAerialVehicleSize,0)%
     ;%
-    \path[UnmannedAerialVehicleLine]%
+    \path[UnmannedAerialVehicleLine,fill=none]%
         ($(-CorpusCT)+(-0.04*\UnmannedAerialVehicleSize,-0.075*\UnmannedAerialVehicleSize)$)%
         --%
         ++(0.08*\UnmannedAerialVehicleSize,0)%
@@ -1036,21 +1064,38 @@
 %-------------------------------------------
 %--------   Automated Guided Vehicle (AGV) aka Autonomous Mobile Robot (AMR)    --------
 %-------------------------------------------
+% Usage Example:
+% - Default Behaviour
+%    - The lines are drawn
+%    - It is not filled
+%    - Line Color is Black
+%    - Fill Color is White
+% - The Colors can be changed as shown in the Example below (which acts for all subsequent Pics within the scope)
+% - To make it filled, change the "FillOpacity" Value as shown below (acts for all subsequent Pics within the scope)
+%
+%            \node(AGV2)[nestedTikz,anchor=north]at(0,0){\tikz[remember picture]{%
+%                \colorlet{TikzCol_AutomatedGuidedVehicleLine}{purple}%
+%                \colorlet{TikzCol_AutomatedGuidedVehicleFill}{yellow}%
+%                \def\AutomatedGuidedVehicleFillOpacity{1}%
+%                \pic(AGV2Pic){AutomatedGuidedVehicleOne};%
+%            }};%
+%-------------------------------------------
 \definecolor{TikzCol_AutomatedGuidedVehicleLine}{RGB}{0,0,0}
 \definecolor{TikzCol_AutomatedGuidedVehicleFill}{RGB}{255,255,255}
 %
 \def\AutomatedGuidedVehicleSize{10em}%
 \def\AutomatedGuidedVehicleLineWidth{0.01*\AutomatedGuidedVehicleSize}%
+%
 \def\AutomatedGuidedVehicleFillOpacity{0.0}%
 %
 \tikzset{%
   AutomatedGuidedVehicleLine/.style={%
-    fill=TikzCol_AutomatedGuidedVehicleFill,%
-    fill opacity=\AutomatedGuidedVehicleFillOpacity,%
     draw=TikzCol_AutomatedGuidedVehicleLine,%
     line width=\AutomatedGuidedVehicleLineWidth,%
     line join=round,%
-    line cap=round%
+    line cap=round,%
+    fill=TikzCol_AutomatedGuidedVehicleFill,%
+    fill opacity=\AutomatedGuidedVehicleFillOpacity%
   },%
   AutomatedGuidedVehicleOne/.pic={%
     % \node()[anchor=center]at(0.5,-0.6){\includegraphics[width=23em]{IMG_4516.jpg}};%
@@ -1123,7 +1168,7 @@
     \path[AutomatedGuidedVehicleLine](-L2-R2)--++(-50:0.35*\AutomatedGuidedVehicleSidepanelHeight)--++(-90:0.55*\AutomatedGuidedVehicleSidepanelHeight)--++(180+30:0.2*\AutomatedGuidedVehicleSidepanelHeight)--(-JoinSidePanelR)--(-CtrlPanelRT)--(-L2-R1)--cycle;%
     %
     % Cargo
-    \coordinate(-Packet1-BL)at($(-L2-L2)+(-\AutomatedGuidedVehicleAngleOne+30:0.3*\AutomatedGuidedVehicleLength)$);%
+    \coordinate(-Packet1-BL)at($(-L2-L2)+(-\AutomatedGuidedVehicleAngleOne+20:0.45*\AutomatedGuidedVehicleLength)$);%
     \coordinate(-Packet1-BC)at($(-Packet1-BL)+(-\AutomatedGuidedVehicleAngleOne:0.4*\AutomatedGuidedVehicleLength)$);%
     \coordinate(-Packet2-BL)at($(-Packet1-BC)+(\AutomatedGuidedVehicleAngleOne:0.15*\AutomatedGuidedVehicleLength)$);%
     \coordinate(-Packet2-BC)at($(-Packet2-BL)+(-\AutomatedGuidedVehicleAngleOne:0.2*\AutomatedGuidedVehicleLength)$);%
