@@ -6,7 +6,8 @@
 % -- USAGE - Extent by additional Macros
 % -- -- For adding more Persons beyond the current number
 % - Just duplicate one of these blocks below and adjust to your requirements (Name of the Cmd and Name-Tag (Abbreviation for Persons Name) inside.
-% - Only thing missing here: Define a new Color. Just add a Color-Definition according to xcolor.sty, e.g.
+% - Colors are defined up to "denkrComCol12"
+% - Above that, the only thing missing: Define a new Color. Just add a Color-Definition according to xcolor.sty, e.g.
 %        \definecolor{denkrComCol<Something>}{named}{blue}%
 %   above the duplicated Macro-Definition and then use that Color's name (what you've written as "denkrComCol<Something>")
 % - Suggested is to also adjust the "\TempDisplayPreparation" Definition at the bottom, which displays what Comment-Cmds are available.
@@ -14,72 +15,72 @@
 %
 %= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-\newcommanddisw{\dekrcom}{denkrComColDenKr}{{\#}DenKr: #1}%
-\newcommanddisw{\dekrhigh}{denkrComColDenKr}{#1}%
-% \renewcommand{\denkrcom}[1]{}%% Disable comments [selectively this]
-% \renewcommand{\denkrhigh}[1]{#1}%% Disable highlighting of text [selectively this]
-% \renewcommand{\denkrhigh}[1]{}%% Completely disable this kind of text [selectively this]
-\newcommand{\dkc}[1]{\dekrcom{#1}}
+\newcommanddisw{\dekr}{denkrComColDenKr}{{\#}DenKr: #1}% Tagged Comment
+\newcommanddisw{\dekrhl}{denkrComColDenKr}{#1}% Highlight Text in Color
+% \renewcommand{\dekr}[1]{}%% Disable comments [selectively this]
+% \renewcommand{\dekrhl}[1]{#1}%% Disable highlighting of text [selectively this]
+% \renewcommand{\dekrhl}[1]{}%% Completely disable this kind of text [selectively this]
+\newcommand{\dkc}[1]{\dekr{#1}}
 %
-\newcommanddisw{\chficom}{denkrComCol1}{{\#}ChFi: #1}%
-\newcommanddisw{\chfihigh}{denkrComCol1}{#1}%
-% \renewcommand{\chficom}[1]{}%% Disable comments [selectively this]
-% \renewcommand{\chfihigh}[1]{#1}%% Disable highlighting of text [selectively this]
-% \renewcommand{\chfihigh}[1]{}%% Completely disable this kind of text [selectively this]
+\newcommanddisw{\chfi}{denkrComCol1}{{\#}ChFi: #1}%
+\newcommanddisw{\chfihl}{denkrComCol1}{#1}%
+% \renewcommand{\chfi}[1]{}%% Disable comments [selectively this]
+% \renewcommand{\chfihl}[1]{#1}%% Disable highlighting of text [selectively this]
+% \renewcommand{\chfihl}[1]{}%% Completely disable this kind of text [selectively this]
 %
-\newcommanddisw{\mabecom}{denkrComCol2}{{\#}MaBe: #1}%
-\newcommanddisw{\mabehigh}{denkrComCol2}{#1}%
-% \renewcommand{\mabecom}[1]{}%% Disable comments [selectively this]
-% \renewcommand{\mabehigh}[1]{#1}%% Disable highlighting of text [selectively this]
-% \renewcommand{\mabehigh}[1]{}%% Completely disable this kind of text [selectively this]
+\newcommanddisw{\mabe}{denkrComCol2}{{\#}MaBe: #1}%
+\newcommanddisw{\mabehl}{denkrComCol2}{#1}%
+% \renewcommand{\mabe}[1]{}%% Disable comments [selectively this]
+% \renewcommand{\mabehl}[1]{#1}%% Disable highlighting of text [selectively this]
+% \renewcommand{\mabehl}[1]{}%% Completely disable this kind of text [selectively this]
 %
-\newcommanddisw{\jazecom}{denkrComCol3}{{\#}JaZe: #1}%
-\newcommanddisw{\jazehigh}{denkrComCol3}{#1}%
-% \renewcommand{\jazecom}[1]{}%% Disable comments [selectively this]
-% \renewcommand{\jazehigh}[1]{#1}%% Disable highlighting of text [selectively this]
-% \renewcommand{\jazehigh}[1]{}%% Completely disable this kind of text [selectively this]
+\newcommanddisw{\jaze}{denkrComCol3}{{\#}JaZe: #1}%
+\newcommanddisw{\jazehl}{denkrComCol3}{#1}%
+% \renewcommand{\jaze}[1]{}%% Disable comments [selectively this]
+% \renewcommand{\jazehl}[1]{#1}%% Disable highlighting of text [selectively this]
+% \renewcommand{\jazehl}[1]{}%% Completely disable this kind of text [selectively this]
 %
-\newcommanddisw{\bevecom}{denkrComCol4}{{\#}BeVe: #1}%
-\newcommanddisw{\bevehigh}{denkrComCol4}{#1}%
-% \renewcommand{\bevecom}[1]{}%% Disable comments [selectively this]
-% \renewcommand{\bevehigh}[1]{#1}%% Disable highlighting of text [selectively this]
-% \renewcommand{\bevehigh}[1]{}%% Completely disable this kind of text [selectively this]
+\newcommanddisw{\beve}{denkrComCol4}{{\#}BeVe: #1}%
+\newcommanddisw{\bevehl}{denkrComCol4}{#1}%
+% \renewcommand{\beve}[1]{}%% Disable comments [selectively this]
+% \renewcommand{\bevehl}[1]{#1}%% Disable highlighting of text [selectively this]
+% \renewcommand{\bevehl}[1]{}%% Completely disable this kind of text [selectively this]
 %
-\newcommanddisw{\hedicom}{denkrComCol5}{{\#}Hedi: #1}%
-\newcommanddisw{\hedihigh}{denkrComCol5}{#1}%
-% \renewcommand{\hedicom}[1]{}%% Disable comments [selectively this]
-% \renewcommand{\hedihigh}[1]{#1}%% Disable highlighting of text [selectively this]
-% \renewcommand{\hedihigh}[1]{}%% Completely disable this kind of text [selectively this]
+\newcommanddisw{\hedi}{denkrComCol5}{{\#}Hedi: #1}%
+\newcommanddisw{\hedihl}{denkrComCol5}{#1}%
+% \renewcommand{\hedi}[1]{}%% Disable comments [selectively this]
+% \renewcommand{\hedihl}[1]{#1}%% Disable highlighting of text [selectively this]
+% \renewcommand{\hedihl}[1]{}%% Completely disable this kind of text [selectively this]
 %
-\newcommanddisw{\frpocom}{denkrComCol6}{{\#}FrPo: #1}%
-\newcommanddisw{\frpohigh}{denkrComCol6}{#1}%
-% \renewcommand{\maarcom}[1]{}%% Disable comments [selectively this]
-% \renewcommand{\maarhigh}[1]{#1}%% Disable highlighting of text [selectively this]
-% \renewcommand{\maarhigh}[1]{}%% Completely disable this kind of text [selectively this]
+\newcommanddisw{\frpo}{denkrComCol6}{{\#}FrPo: #1}%
+\newcommanddisw{\frpohl}{denkrComCol6}{#1}%
+% \renewcommand{\maar}[1]{}%% Disable comments [selectively this]
+% \renewcommand{\maarhl}[1]{#1}%% Disable highlighting of text [selectively this]
+% \renewcommand{\maarhl}[1]{}%% Completely disable this kind of text [selectively this]
 %
-\newcommanddisw{\Acom}{denkrComCol7}{{\#}DummyA: #1}%
-\newcommanddisw{\Ahigh}{denkrComCol7}{#1}%
-% \renewcommand{\maarcom}[1]{}%% Disable comments [selectively this]
-% \renewcommand{\maarhigh}[1]{#1}%% Disable highlighting of text [selectively this]
-% \renewcommand{\maarhigh}[1]{}%% Completely disable this kind of text [selectively this]
+\newcommanddisw{\dummyA}{denkrComCol7}{{\#}DummyA: #1}%
+\newcommanddisw{\dummyAhl}{denkrComCol7}{#1}%
+% \renewcommand{\dummyA}[1]{}%% Disable comments [selectively this]
+% \renewcommand{\dummyAhl}[1]{#1}%% Disable highlighting of text [selectively this]
+% \renewcommand{\dummyAhl}[1]{}%% Completely disable this kind of text [selectively this]
 %
-\newcommanddisw{\Bcom}{denkrComCol8}{{\#}DummyB: #1}%
-\newcommanddisw{\Bhigh}{denkrComCol8}{#1}%
-% \renewcommand{\maarcom}[1]{}%% Disable comments [selectively this]
-% \renewcommand{\maarhigh}[1]{#1}%% Disable highlighting of text [selectively this]
-% \renewcommand{\maarhigh}[1]{}%% Completely disable this kind of text [selectively this]
+\newcommanddisw{\dummyB}{denkrComCol8}{{\#}DummyB: #1}%
+\newcommanddisw{\dummyBhl}{denkrComCol8}{#1}%
+% \renewcommand{\dummyB}[1]{}%% Disable comments [selectively this]
+% \renewcommand{\dummyBhl}[1]{#1}%% Disable highlighting of text [selectively this]
+% \renewcommand{\dummyBhl}[1]{}%% Completely disable this kind of text [selectively this]
 %
-\newcommanddisw{\Ccom}{denkrComCol9}{{\#}DummyC: #1}%
-\newcommanddisw{\Chigh}{denkrComCol9}{#1}%
-% \renewcommand{\maarcom}[1]{}%% Disable comments [selectively this]
-% \renewcommand{\maarhigh}[1]{#1}%% Disable highlighting of text [selectively this]
-% \renewcommand{\maarhigh}[1]{}%% Completely disable this kind of text [selectively this]
+\newcommanddisw{\dummyC}{denkrComCol9}{{\#}DummyC: #1}%
+\newcommanddisw{\dummyChl}{denkrComCol9}{#1}%
+% \renewcommand{\dummyC}[1]{}%% Disable comments [selectively this]
+% \renewcommand{\dummyChl}[1]{#1}%% Disable highlighting of text [selectively this]
+% \renewcommand{\dummyChl}[1]{}%% Completely disable this kind of text [selectively this]
 %
-\newcommanddisw{\Dcom}{denkrComCol10}{{\#}DummyD: #1}%
-\newcommanddisw{\Dhigh}{denkrComCol10}{#1}%
-% \renewcommand{\maarcom}[1]{}%% Disable comments [selectively this]
-% \renewcommand{\maarhigh}[1]{#1}%% Disable highlighting of text [selectively this]
-% \renewcommand{\maarhigh}[1]{}%% Completely disable this kind of text [selectively this]
+\newcommanddisw{\dummyD}{denkrComCol10}{{\#}DummyD: #1}%
+\newcommanddisw{\dummyDhl}{denkrComCol10}{#1}%
+% \renewcommand{\dummyD}[1]{}%% Disable comments [selectively this]
+% \renewcommand{\dummyDhl}[1]{#1}%% Disable highlighting of text [selectively this]
+% \renewcommand{\dummyDhl}[1]{}%% Completely disable this kind of text [selectively this]
 %
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 %= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
@@ -95,17 +96,17 @@
 	\section{Draft-State: Comment Color Code}{\noindent\raggedright%
 	\todo{Comments: ToDos: \mbox{$\Rightarrow$ \textbackslash todo\{ \}}}\nl%
     \notice{Comment: A general Notice: \mbox{$\Rightarrow$ \textbackslash notice\{ \}}}\nl%
-	\dekrcom{Comments: Dennis Krummacker: \mbox{$\Rightarrow$ \textbackslash dekrcom\{ \}}}\nl%
-	\chficom{Comments: Christoph Fischer: \mbox{$\Rightarrow$ \textbackslash chficom\{ \}}}\nl%
-	\mabecom{Comments: Maximilian Berndt: \mbox{$\Rightarrow$ \textbackslash mabecom\{ \}}}\nl%
-	\jazecom{Comments: Janis Zemitis: \mbox{$\Rightarrow$ \textbackslash jazecom\{ \}}}\nl%
-	\bevecom{Comments: Benedikt Veith: \mbox{$\Rightarrow$ \textbackslash bevecom\{ \}}}\nl%
-	\hedicom{Comments: Mohamed Romdhane: \mbox{$\Rightarrow$ \textbackslash hedicom\{ \}}}\nl%
-	\frpocom{Comments: Franc Pouhela: \mbox{$\Rightarrow$ \textbackslash frpocom\{ \}}}\nl%
-	\Acom{Comments: Just-some-Dummy: \mbox{$\Rightarrow$ \textbackslash Acom\{ \}}}\nl%
-	\Bcom{Comments: Just-some-Dummy: \mbox{$\Rightarrow$ \textbackslash Bcom\{ \}}}\nl%
-	\Ccom{Comments: Just-some-Dummy: \mbox{$\Rightarrow$ \textbackslash Ccom\{ \}}}\nl%
-	\Dcom{Comments: Just-some-Dummy: \mbox{$\Rightarrow$ \textbackslash Dcom\{ \}}}\nl%
+	\dekr{Comments: Dennis Krummacker: \mbox{$\Rightarrow$ \textbackslash dekr\{ \}}}\nl%
+	\chfi{Comments: Christoph Fischer: \mbox{$\Rightarrow$ \textbackslash chfi\{ \}}}\nl%
+	\mabe{Comments: Maximilian Berndt: \mbox{$\Rightarrow$ \textbackslash mabe\{ \}}}\nl%
+	\jaze{Comments: Janis Zemitis: \mbox{$\Rightarrow$ \textbackslash jaze\{ \}}}\nl%
+	\beve{Comments: Benedikt Veith: \mbox{$\Rightarrow$ \textbackslash beve\{ \}}}\nl%
+	\hedi{Comments: Mohamed Romdhane: \mbox{$\Rightarrow$ \textbackslash hedi\{ \}}}\nl%
+	\frpo{Comments: Franc Pouhela: \mbox{$\Rightarrow$ \textbackslash frpo\{ \}}}\nl%
+	\dummyA{Comments: Just-some-Dummy: \mbox{$\Rightarrow$ \textbackslash dummyA\{ \}}}\nl%
+	\dummyB{Comments: Just-some-Dummy: \mbox{$\Rightarrow$ \textbackslash dummyB\{ \}}}\nl%
+	\dummyC{Comments: Just-some-Dummy: \mbox{$\Rightarrow$ \textbackslash dummyC\{ \}}}\nl%
+	\dummyD{Comments: Just-some-Dummy: \mbox{$\Rightarrow$ \textbackslash dummyD\{ \}}}\nl%
 	\textbf{$\Rightarrow$ You may add such a Comment-Macro for yourself in "\DenKrSupplyRootDir/DenKr\_comments.tex" if you wish $\Leftarrow$}
     }}%
 }}%
