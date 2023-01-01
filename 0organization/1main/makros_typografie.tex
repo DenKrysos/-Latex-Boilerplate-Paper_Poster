@@ -857,6 +857,7 @@
 % - 0: Final Version. Everything formats nice and fine and as appealing as intended
 % - 1: Works as a draft state to save compiling time during working on it. Pictures are not included and the Rating-Symbols are not generated
 \newcounter{draftPhase}%
+\newcounter{ReleaseBuild}%
 % These two are the ones actually used by the Macros. Can be selectively set to new values after this position here to let their behaviour diverge
 \newcounter{draftPhase_pic}%
 \newcounter{draftPhase_rating}%
@@ -878,6 +879,19 @@
 \newcommand\draftPhaseSetIngredients[1]{%
     \setcounter{draftPhase_ingredients}{#1}%
 }% Sets only and selectively the value used for generating the rating-symbols
+% - - - - - - - - -
+% Give the following a '1' to specify that the next Compile is supposed to be a somewhat final Build for Release.
+% By that, all the Draft-Flags are reset and the Release-Flag is Set. Hence put this at last, after all DraftPhase-Sets, whenever you intend to compile a Release-Version, so that it is able to properly overwrite their Flags.
+% Using this allows for example to also exclude Files/Chapters/Text/... that shall only be included during Writing/Development (things like for example Explanations for the Contributors).
+\newcommand\phaseSetRelease[1]{%
+    \setcounter{ReleaseBuild}{#1}%
+    \ifnumcomp{\value{ReleaseBuild}}{>}{0}{%
+        \setcounter{draftPhase}{0}%
+        \setcounter{draftPhase_pic}{\value{draftPhase}}%
+        \setcounter{draftPhase_rating}{\value{draftPhase}}%
+        \setcounter{draftPhase_ingredients}{\value{draftPhase}}%
+    }{}%
+}%
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 %							Settings for my own Macros end
 %------------------------------------------------------------------------
@@ -898,7 +912,9 @@
 \DeclareDocumentCommand{\ratingSection}{%
 O{2} m m m%
 }{%
-    \begin{longtable}[l]{|l l l |}%@{}l
+    % \begin{minipage}{\linewidth}% Let's rather not allow this to break across pages
+    % \begin{longtable}[l]{|l l l |}%@{}l
+    \begin{tabular}[l]{|l l l |}%@{}l
     \hline
     Köstlichkeit:&%
         #2&%
@@ -917,7 +933,9 @@ O{2} m m m%
         \TstrutRatingSection\BstrutRatingSection\\
     \hline
     }{}%
-    \end{longtable}%
+    \end{tabular}%
+    % \end{longtable}%
+    % \end{minipage}%
 }%
 \newcommand{\ratingSectionDescriptionFormat}[2]{%ARGS: #1: Something like "Mehr Punkte". #2: What the first Expressions means as a result, like "Weniger Aufwand"
     \makecell[l]{\color{black!50}\footnotesize (#1$\rightarrow$\\\color{black!50}\footnotesize\ \ #2)}%
@@ -966,6 +984,13 @@ O{0} m%
             }%
         }%
     }%
+}%
+% = = = = = = = = = = = = = = = = = = = =
+% What is wrapped by that Macro is just eaten and not processed at all, in case the 'ReleaseBuild' is Set.
+\DeclareDocumentCommand{\releaseExclude}{%
+m%
+}{%
+    \ifnumcomp{\value{ReleaseBuild}}{=}{0}{#1}{}%
 }%
 %^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %------------- Inclusions End -------------
