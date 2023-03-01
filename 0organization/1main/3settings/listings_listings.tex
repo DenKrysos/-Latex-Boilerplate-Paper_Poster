@@ -6,11 +6,14 @@
 % Colors etc. to get the Eclipse Look
 % \newfontfamily\listingsfont[Scale=0.7]{Courier} 
 % \newfontfamily\listingsfontinline[Scale=0.8]{Courier New} 
-\definecolor{eclipse_comment}{rgb}{0.12, 0.38, 0.18 } %adjusted, in Eclipse: {0.25, 0.42, 0.30 } = #3F6A4D
-\definecolor{eclipse_keyword1}{RGB}{128, 0, 40}  % red
-\definecolor{eclipse_keyword2}{RGB}{155,40,128} %purple
-\definecolor{eclipse_keyword3}{RGB}{0,120,10} %green
-\definecolor{eclipse_string}{rgb}{0.06, 0.10, 0.98} % #101AF9
+\definecolor{eclipse_comment}{rgb}{0.12,0.38,0.18}%adjusted, in Eclipse: {0.25, 0.42, 0.30 } = #3F6A4D
+% \definecolor{eclipse_keyword1}{RGB}{128, 0, 40}%Red. Old, formerly used
+%\definecolor{eclipse_keyword2}{RGB}{155,40,128}%Violet. Old, formerly used
+\definecolor{eclipse_keyword1}{RGB}{128, 0, 40}%Reddish Purple
+\definecolor{eclipse_keyword2}{RGB}{100,40,128}%Violet
+\definecolor{eclipse_keyword3}{RGB}{0,120,10}%Green
+\definecolor{eclipse_keyword4}{RGB}{0,0,192}%Blue
+\definecolor{eclipse_string}{rgb}{0.06, 0.10, 0.98}% #101AF9
 \def\lstsmallmath{\leavevmode\ifmmode \scriptstyle \else  \fi}
 \def\lstsmallmathend{\leavevmode\ifmmode  \else  \fi}
 %-----------
@@ -39,6 +42,7 @@
     numbers=left,% left, none
     numberstyle=\tiny\color{halfgray},
 % 	numberstyle=\tiny,
+    columns=fixed,% fixed, flexible, fullflexible, space-flexible. Character Spacing and Alignment
     %
 % 	backgroundcolor=\color{lstbg},
     backgroundcolor=\color{ipython_bg},
@@ -103,10 +107,14 @@
 {
     language=C,
     morecomment=[l]{//},
-    morekeywords={
+    morekeywords=[1]{%Basic Keywords. If, return, while, ...
+        static,
+        const,
+        register,
+        inline,
         strlen,
     },
-    morekeywords=[2]{
+    morekeywords=[2]{%Functions
         main,
         malloc,
         free,
@@ -126,8 +134,9 @@
         pthread_setcancelstate,
         pcap_breakloop,
         pcap_close,
+        endl,
     },
-    morekeywords=[3]{
+    morekeywords=[3]{%Typedefed, Names of Struct, Enum, ...
         int8_t,
         uint8_t,
         int16_t,
@@ -141,18 +150,36 @@
         uintptr_t,
         sem_t,
         pthread_t,
+        socklen_t,
+        time_t,
+        timespec,
+        timeval,
+        string,
     },
-    morekeywords=[8]{
-        NULL
+    morekeywords=[4]{%Collection-Members
+        tm_sec,
+        tm_min,
+        tm_hour,
+        tm_day,
+        tm_mon,
+        tm_year,
+        tv_sec,
+        tv_nsec,
+    },
+    morekeywords=[8]{%Special Keywords
+        NULL,
+        std,
+        Socket,
     },
     morekeywords=[9]{
         critical section
     },
     %
-    keywordstyle=\color{eclipse_keyword1}\bfseries,
-    keywordstyle=[2]\color{eclipse_keyword2}\bfseries,
-    keywordstyle=[3]\color{eclipse_keyword3}\bfseries,
-    keywordstyle=[8]\color{eclipse_keyword1},
+    keywordstyle=[1]\color{eclipse_keyword1}\bfseries,%Basic Keywords. If, return, while, ...
+    keywordstyle=[2]\color{eclipse_keyword2}\bfseries,%Functions
+    keywordstyle=[3]\color{eclipse_keyword3},%Typedefed, Names of Struct, Enum, ...
+    keywordstyle=[4]\color{eclipse_keyword4},%Collection-Members
+    keywordstyle=[8]\color{eclipse_keyword1},%Special Keywords
     keywordstyle=[9]\color{red}\bfseries,
     stringstyle=\color{eclipse_string},
     commentstyle=\color{eclipse_comment}\itshape,
