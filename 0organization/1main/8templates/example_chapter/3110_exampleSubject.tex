@@ -49,13 +49,12 @@ Document-within References to check whether hyperref \& nameref work properly:\n
 
 \nl%
 %
-\tikzabb%[tex]%
-{tikztest}%
-{%
-Tikz-Picture Caption. Some Example Standalone-Tikz-Pic
-}%
-{1}[1,1,!ht]%[0.55,1,!ht]%
-{fig:tikz_test}%
+\begin{figure}[!htpb]
+    \centering
+	\includestandalone[mode=\includestandalonedefaultmode]{\tikzFilesPath/tikztest}% width=\columnwidth
+    \caption{Tikz-Picture Caption. Some Example Standalone-Tikz-Pic}
+    \label{fig:tikz_test}
+\end{figure}
 %
 %
 \tikzabb%[tex]%
