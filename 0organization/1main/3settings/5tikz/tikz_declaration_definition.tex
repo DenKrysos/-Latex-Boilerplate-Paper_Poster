@@ -1,4 +1,13 @@
-
+%%###########################################################%%
+%%        vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv        %%
+%%-----------------------------------------------------------%%
+%  - Author: Dennis Krummacker
+%%------------------------------------------------------------%%
+%%        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^        %%
+%%============================================================%%
+%
+%
+%
 % Two nice rectangles. Lets me specify different rounded corners%
 \tikzset{%
   rectangle with rounded corners north west/.initial=4pt,%
@@ -371,11 +380,29 @@
     \draw[#1](\tikz@scopenode@name@smuggle.south west)rectangle(\tikz@scopenode@name@smuggle.north east);%
 }
 %
+\newdimen\ScopenodeInnerSep%
+\setlength{\ScopenodeInnerSep}{0.6ex}%
+\tikzstyle{ScopenodeInner}=[%
+    draw=none,%
+    fill=none,%
+]%
+\newcommand{\scopenodePadded}[4]{%  Name, at, further-Arguments, Content
+    \scopenode[name=#1%
+        ,at={#2}%
+        ,#3,%
+    ]{%
+        \scopenode[ScopenodeInner,name=#1_inner,solid,thin]{%
+            #4%
+        }%
+        \path($(#1_inner.north west)+(-\ScopenodeInnerSep,\ScopenodeInnerSep)$)--($(#1_inner.south east)+(\ScopenodeInnerSep,-\ScopenodeInnerSep)$);%
+    }%
+}%
+%
 %
 %
 %
 %===========================
-% Scopenode -- 
+% Scopenode-Fill -- 
 % -- A second Variant, the former one does not properly align itself and contained objects, i.e. among others does not allow to be filled (that would set the Filling color plane over the contained objects)
 %===========================
 \makeatletter
@@ -441,6 +468,18 @@
   \end{scope}%
 }
 \makeatother
+%
+\newcommand{\scopenodeFillPadded}[4]{%  Name, at, further-Arguments, Content
+    \scopenodeFill[name=#1%
+        ,at={#2}%
+        ,#3,%
+    ]{%
+        \scopenode[ScopenodeInner,name=#1_inner,solid,thin]{%
+            #4%
+        }%
+        \path($(#1_inner.north west)+(-\ScopenodeInnerSep,\ScopenodeInnerSep)$)--($(#1_inner.south east)+(\ScopenodeInnerSep,-\ScopenodeInnerSep)$);%
+    }%
+}%
 %
 %
 %

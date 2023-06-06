@@ -1,3 +1,13 @@
+%%###########################################################%%
+%%        vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv        %%
+%%-----------------------------------------------------------%%
+%  - Author: Dennis Krummacker
+%%------------------------------------------------------------%%
+%%        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^        %%
+%%============================================================%%
+%
+%
+%
 %========-------------------------------------------========
 %========		General Setup	========
 %========       (For dotPics)   ========
@@ -52,6 +62,76 @@
       (-0.8*\SmallPicSize,0.15*\SmallPicSize)--(0.7*\SmallPicSize,0.15*\SmallPicSize);%
     \draw[draw=black]%
       (-0.8*\SmallPicSize,-0.4*\SmallPicSize)--(0.2*\SmallPicSize,-0.4*\SmallPicSize);%
+  }%
+}%
+%
+\definecolor{TikzCol_PadlockLine}{RGB}{13,96,139}
+\newdimen\PadlockSize%
+\setlength{\PadlockSize}{4.5em}%
+\newdimen\PadlockLineWidth%
+\setlength{\PadlockLineWidth}{0.03\PadlockSize}%
+% \def\PadlockSize{4.5em}%
+% \def\PadlockLineWidth{0.03*\PadlockSize}%
+%
+\tikzset{%
+  PadlockLine/.style={%
+    draw=TikzCol_PadlockLine,%
+    line width=\PadlockLineWidth,%
+    line join=round,%
+    line cap=round%
+  },%
+  PadlockClosed/.pic={%
+    \coordinate(-CorpusLB)at(-0.7*\PadlockSize,0);%
+    \coordinate(-CorpusRB)at(0.7*\PadlockSize,0);%
+    \coordinate(-CorpusLT)at($(-CorpusLB)+(0,\PadlockSize)$);%
+    \coordinate(-CorpusRT)at($(-CorpusRB)+(0,\PadlockSize)$);%
+    \coordinate(-CorpusC)at($(-CorpusLB)!.5!(-CorpusRT)$);%
+    \coordinate(-UpperAnchor)at($(-CorpusLT)!.5!(-CorpusRT)+(0,0.3*\PadlockSize)$);%
+    \coordinate(-UpperAnchor2)at($(-UpperAnchor)+(0,0.05*\PadlockSize)$);%
+    \path[PadlockLine]%
+        (-CorpusLB)%
+        --%
+        (-CorpusLT)%
+        to[out=10,in=180-10]%
+            coordinate[pos=0.1](-ShackleJoint1)%
+            coordinate[pos=0.2](-ShackleJoint2)%
+            coordinate[pos=0.8](-ShackleJoint3)%
+            coordinate[pos=0.9](-ShackleJoint4)%
+        (-CorpusRT)%
+        --%
+        (-CorpusRB)%
+        to[in=-10,out=180+10]%
+        cycle
+    ;%
+    \path[PadlockLine,rounded corners=0.05\PadlockSize]%
+        (-ShackleJoint1)%
+        --%
+        (-ShackleJoint1|--UpperAnchor2)%
+        to[out=70,in=180-70]%
+        (-ShackleJoint4|--UpperAnchor2)%
+        --%
+        (-ShackleJoint4)%
+    ;%
+    \path[PadlockLine,rounded corners=0.05\PadlockSize]%
+        (-ShackleJoint2)%
+        --%
+        (-ShackleJoint2|--UpperAnchor)%
+        to[out=70,in=180-70]%
+        (-ShackleJoint3|--UpperAnchor)%
+        --%
+        (-ShackleJoint3)%
+    ;%
+    \path[PadlockLine,rounded corners=0.03\PadlockSize]%
+        ($(-CorpusC)+(0,0.2*\PadlockSize)$)%
+        ++(-60:0.2\PadlockSize)%
+        arc%[start angle=10,end angle=80,radius=10pt]%
+        (-60:180+60:0.2\PadlockSize)%
+        --%
+        ($(\tikzcurrentcoordinate-|-CorpusC)+(-0.25\PadlockSize,-0.4\PadlockSize)$)%
+        --%
+        ++(0.5\PadlockSize,0)%
+        --cycle%
+    ;%
   }%
 }%
 %
