@@ -31,6 +31,45 @@
 \usepackage{soul}% Hyphenation for letterspacing, underlining, and more
 \usepackage{setspace}%
 % - - - - - - - - - - - - - -
+% Creating an Outline/Contour around Text
+\newcommand{\DenKrOutlineWidth}{0.03em}%
+\providecommand{\DenKrCompiler}{pdfLaTeX}%
+\expandafter\ifstrequal\expandafter{\DenKrCompiler}{pdfLaTeX}{%
+    \usepackage[pdftex,outline]{contour}%
+    \contourlength{\DenKrOutlineWidth}% Thickness of the Outline. Default: 0.03em. Not expanded on Definition, but on Use.
+    \contournumber{25}% How many copies are created. Default: 16
+    %USAGE Example:
+    % {%
+    %     \LARGE%
+    %     \contour{violet}{\textcolor{orange}{Text with Outline/Contour}}\nl%
+    %     {%
+    %         \contourlength{0.2em}%
+    %         \contour{violet}{\textcolor{orange}{Text with Outline/Contour}}\nl%
+    %         \contour{violet}{\textcolor{orange}{Text with Outline/Contour}}\nl%
+    %     }%
+    %     \contour{violet}{\textcolor{orange}{Text with Outline/Contour}}\nl%
+    % }%
+}{\expandafter\ifstrequal\expandafter{\DenKrCompiler}{LuaLaTeX}{%
+    \usepackage{pdfrender}%
+    %USAGE Example:
+    % - The logic is kind-of inverted here.
+    %   - What is set as the actual 'textcolor' is actually reflected as the Color of the Contour
+    %   - The \textpdfrender is "filling" this inside.
+    % \definecolor{CharFillColor}{rgb}{1,.8,.8}
+    % \colorlet{CharFillColor}{orange}
+    % \begin{document}
+    %     \sffamily
+    %     \textcolor{violet}{
+    %     \textpdfrender{
+    %     TextRenderingMode=FillStroke,
+    %     LineWidth=\DenKrOutlineWidth,
+    %     FillColor=CharFillColor,
+    %     MiterLimit=1,
+    %     }{Text with Outline/Contour}}
+    % \end{document}
+}{%
+}}%
+% - - - - - - - - - - - - - -
 % Additional Formatting-Cmds, letters, signs, special characters, units
 % - - - - - - - - - - - - - -
 %\usepackage{units}% Better don't use anymore. Instead siunitx.sty since it is newer and still maintained  %contains package 'nicefrac'.
