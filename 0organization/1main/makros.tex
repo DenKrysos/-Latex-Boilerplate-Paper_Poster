@@ -24,6 +24,46 @@
 %
 %
 %
+%---------------------------------------------
+% Vertically aligning Text of different size
+%---------------------------------------------
+% USAGE Example: 
+%    \npi
+%    {\LARGE SomeUng --\raiseC{\normalsize -- OtherdgM-- }\raiseT{\normalsize -- OtherdgM-- }\raiseT{\normalsize -- OtherdM}}
+%    \npi
+%    SomeUng --\raiseC{\tiny -- OtherdgM-- }\raiseT{\tiny -- OtherdgM-- }\raiseT{\tiny -- OtherdM}
+%---------------------------------------------
+\newsavebox{\verticalAlign}%
+\newlength{\verticalAlignHeight}%
+\newcommand{\textOccupyHeight}{%
+    %\ht\strutbox%
+    %\heightof{\strut}%
+    %\heightof{AMXgpqj}%
+    %\ht\vphantom{AMXgpqj}%
+    \heightof{\vphantom{AMXgpqj}}%
+}%
+% \depthof{#1}
+\newcommand*{\raiseT}[1]{%
+    \setlength{\verticalAlignHeight}{\textOccupyHeight}%
+    \sbox{\verticalAlign}{#1}%
+    \raisebox{\verticalAlignHeight-\ht\verticalAlign}{\usebox{\verticalAlign}}%
+}%
+\newcommand*{\raiseC}[1]{%
+    \setlength{\verticalAlignHeight}{\textOccupyHeight}%
+    \sbox{\verticalAlign}{#1}%
+    \raisebox{0.5\verticalAlignHeight-0.5\ht\verticalAlign}{\usebox{\verticalAlign}}%
+}%
+%
+\newcommand*{\adjustT}[1]{%
+    \adjustbox{valign=t}{#1}%
+}%
+\newcommand*{\adjustC}[1]{%
+    \adjustbox{valign=c}{#1}%
+}%
+%
+%
+%
+%
 %
 %
 %________________________________________________________________________

@@ -96,13 +96,16 @@
 \DeclareSIUnit{\teaspoon}{\translate{tsp}}%
 \newtranslation[to=German]{tbsp}{EL}%
 \newtranslation[to=German]{tsp}{TL}%
-\addto\extrasgerman{\sisetup{locale=DE,output-decimal-marker={,},group-separator={.},detect-all}}%
-\addto\extrasenglish{\sisetup{locale=US,output-decimal-marker={.},group-separator={,},detect-all}}%
+\newcommand{\groupSeparatorShortSpace}{\,}% \, is a "short-space", just a blank space, but shorter than a text-mode full space.
+\newcommand{\groupSepGer}{.}%
+\newcommand{\groupSepEn}{\groupSeparatorShortSpace}% Usually a 'short-space' or ',' (just plain comma)
+\addto\extrasgerman{\sisetup{locale=DE,output-decimal-marker={,},group-separator={\groupSepGer},detect-all}}%
+\addto\extrasenglish{\sisetup{locale=US,output-decimal-marker={.},group-separator={\groupSepEn},detect-all}}%
 % For some reason, group-separator does not work in the addto configuration, hence adding it again below
 \expandafter\ifstrequal\expandafter{\DenKrLanguageStringCmd}{ngerman}{%
-    \sisetup{locale=DE,group-separator={.}}%
+    \sisetup{locale=DE,group-separator={\groupSepGer}}%
 }{\expandafter\ifstrequal\expandafter{\DenKrLanguageStringCmd}{english}{%
-    \sisetup{locale=US,group-separator={,}}%
+    \sisetup{locale=US,group-separator={\groupSepEn}}%
 }{}}%
 %
 %  Example:
