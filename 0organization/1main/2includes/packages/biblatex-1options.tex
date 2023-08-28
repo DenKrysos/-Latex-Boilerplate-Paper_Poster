@@ -1,6 +1,12 @@
 %
+\expandafter\ifstrequal\expandafter{\DenKrLayout}{MDPI}{%
+    \def{\DenKrBiblatexStyle}{\DenKrLayoutRootDir/Definitions/mdpi}%
+}{%
+    \def{\DenKrBiblatexStyle}{ieee}% numeric-comp, apa, ieee
+}
+%
 \PassOptionsToPackage{%
-    style=ieee,% numeric-comp, apa, ieee
+    style=\DenKrBiblatexStyle,%
     %apabackref=true,%
 	isbn=false,%
     %minbibnames=4,%

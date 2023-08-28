@@ -25,6 +25,7 @@
 \newcommand{\DenKrLayout}{IEEEtran}%
 \newcommand{\DenKrLayoutLanguage}{english}% en_ger, english, ngerman
 \newcommand{\DenKrLayoutUseHyperref}{1}% 0: false aka NOT use Hyperref  |  1: true aka USE Hyperref
+\newcommand{\DenKrBlindReview}{0}% 0: NO Blind-Review, i.e. keep Authors in  |  1: Don't print Authors
 %
 % _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 % --  Some Stuff to help during working state
@@ -45,26 +46,49 @@
 % ----     (In most cases, you shouldn't be required to touch anything below)
 %----------------------------------------------------------------------------------
 %
-\newcommand{\DenKrSubDirPrefix}{.}%
-\newcommand{\DenKrOrgaRootDir}{\DenKrSubDirPrefix/0organization}%
-\newcommand{\DenKrLayoutMainRootDir}{\DenKrOrgaRootDir/1main}%
-\newcommand{\DenKrLayoutBaseRootDir}{\DenKrOrgaRootDir/2layout}%
-\newcommand{\DenKrLayoutRootDir}{\DenKrLayoutBaseRootDir/\DenKrLayout}%
-\newcommand{\DenKrSupplyRootDir}{\DenKrSubDirPrefix/1supply}%
-\newcommand{\DenKrLayoutSupplyAuthorDir}{\DenKrSupplyRootDir/authors/2layout}%
-\newcommand{\DenKrContentRootDir}{\DenKrSubDirPrefix/9chapter}%
-\newcommand{\DenKrTablesRootDir}{\DenKrSubDirPrefix/5tables}%
-\newcommand{\DenKrListingsRootDir}{\DenKrSubDirPrefix/6listings}%
-\newcommand{\DenKrTikzRootDir}{\DenKrSubDirPrefix/7Tikz}%
-\newcommand{\DenKrGraphicsRootDir}{\DenKrSubDirPrefix/8graphics}%
-\newcommand{\DenKrAlgorithmRootDir}{\DenKrListingsRootDir}%
-\newcommand{\DenKrLiteratureDir}{\DenKrSupplyRootDir}%
-% - - - - - - - - - - - - - - -
-\newcommand{\DenKrTikzArtDir}{\DenKrLayoutMainRootDir/8templates/tikz/7Tikz}%
+%Consider setting bevor \input{}ing this file: (Setting with any Directory)
+%      \newcommand{\DenKrSubDirPrefix}{./}%
+\providecommand{\DenKrSubDirPrefix}{}%
+%----------------------------------------------
+%----------------------------------------------
+\newcommand{\DenKrOrgaRootDirPATH}{0organization}%
+\newcommand{\DenKrLayoutMainRootDirPATH}{\DenKrOrgaRootDirPATH/1main}%
+\newcommand{\DenKrLayoutBaseRootDirPATH}{\DenKrOrgaRootDirPATH/2layout}%
+\newcommand{\DenKrLayoutRootDirPATH}{\DenKrLayoutBaseRootDirPATH/\DenKrLayout}%
+\newcommand{\DenKrSupplyRootDirPATH}{1supply}%
+\newcommand{\DenKrLayoutSupplyAuthorDirPATH}{\DenKrSupplyRootDirPATH/authors/2layout}%
+\newcommand{\DenKrContentRootDirPATH}{9chapter}%
+\newcommand{\DenKrTablesRootDirPATH}{5tables}%
+\newcommand{\DenKrListingsRootDirPATH}{6listings}%
+\newcommand{\DenKrTikzRootDirPATH}{7Tikz}%
+\newcommand{\DenKrGraphicsRootDirPATH}{8graphics}%
+\newcommand{\DenKrAlgorithmRootDirPATH}{\DenKrListingsRootDirPATH}%
+\newcommand{\DenKrLiteratureDirPATH}{\DenKrSupplyRootDirPATH}%
+% - - - - - - - - - - - - - - - - - - - -
+\newcommand{\DenKrOrgaRootDir}{\DenKrSubDirPrefix\DenKrOrgaRootDirPATH}%
+\newcommand{\DenKrLayoutMainRootDir}{\DenKrSubDirPrefix\DenKrLayoutMainRootDirPATH}%
+\newcommand{\DenKrLayoutBaseRootDir}{\DenKrSubDirPrefix\DenKrLayoutBaseRootDirPATH}%
+\newcommand{\DenKrLayoutRootDir}{\DenKrSubDirPrefix\DenKrLayoutRootDirPATH}%
+\newcommand{\DenKrSupplyRootDir}{\DenKrSubDirPrefix\DenKrSupplyRootDirPATH}%
+\newcommand{\DenKrLayoutSupplyAuthorDir}{\DenKrSubDirPrefix\DenKrLayoutSupplyAuthorDirPATH}%
+\newcommand{\DenKrContentRootDir}{\DenKrSubDirPrefix\DenKrContentRootDirPATH}%
+\newcommand{\DenKrTablesRootDir}{\DenKrSubDirPrefix\DenKrTablesRootDirPATH}%
+\newcommand{\DenKrListingsRootDir}{\DenKrSubDirPrefix\DenKrListingsRootDirPATH}%
+\newcommand{\DenKrTikzRootDir}{\DenKrSubDirPrefix\DenKrTikzRootDirPATH}%
+\newcommand{\DenKrGraphicsRootDir}{\DenKrSubDirPrefix\DenKrGraphicsRootDirPATH}%
+\newcommand{\DenKrAlgorithmRootDir}{\DenKrSubDirPrefix\DenKrAlgorithmRootDirPATH}%
+\newcommand{\DenKrLiteratureDir}{\DenKrSubDirPrefix\DenKrLiteratureDirPATH}%
+%----------------------------------------------
+%----------------------------------------------
+\newcommand{\DenKrSegmentationSubDirPATH}{\DenKrContentRootDirPATH/0segmentation}%
+\newcommand{\DenKrSegmentationSubDir}{\DenKrSubDirPrefix\DenKrSegmentationSubDirPATH}%
+%----------------------------------------------
+%----------------------------------------------
+\newcommand{\DenKrTikzArtDirPATH}{\DenKrLayoutMainRootDirPATH/8templates/tikz/7Tikz}%
+\newcommand{\DenKrTikzArtDir}{\DenKrSubDirPrefix\DenKrTikzArtDirPATH}%
 %=========================================================================
 % ----  Project-Setup (Some little additional for further Structuring)
 %-------------------------------------------------------------------------
-\newcommand{\DenKrSegmentationSubDir}{\DenKrContentRootDir/0segmentation}%
 \newcommand{\DenKrLayoutIncludeBiographies}{0}% 1: Print the Biographies after Literature-References  |  0: Don't print Biographies
 %
 %
@@ -75,6 +99,9 @@
 % ----  More on LaTeX
 %----------------------------------------------------------------------------------
 \newcommand{\DenKrCompiler}{pdfLaTeX}% LuaLaTeX, pdfLaTeX
+%
+\newcommand{\DenKrJPFont}{1}% 1: Also make Japanese Fonts available  |  0: Don't setup Japanese Fonts
+%
 % correct bad hyphenation here
 \hyphenation{%
 	op-ti-cal

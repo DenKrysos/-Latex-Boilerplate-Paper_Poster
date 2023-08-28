@@ -3,6 +3,7 @@
 % \usepackage{etex}%
 % \reserveinserts{32}%
 \usepackage{etoolbox}%
+\usepackage{currfile}%
 %-------------------------------------------------------------------------------
 %-------------------------------------------------------------------------------
 %
@@ -203,8 +204,12 @@
 %________________________________________________________________________
 \expandafter\ifstrequal\expandafter{\DenKrLayout}{IEEEtran}{%
 }{%
+\expandafter\ifstrequal\expandafter{\DenKrLayout}{wiley}{%
+}{%
+\expandafter\ifstrequal\expandafter{\DenKrLayout}{MDPI}{%
+}{%
 \input{"\DenKrLayoutMainRootDir/2includes/packages/biblatex".tex}%
-}%
+}}}%
 %________________________________________________________________________
 %               --- END biblatex ---
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
