@@ -71,10 +71,10 @@
 %			Footnotes - More elaborate use
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 % Fußnote wiederholt referenzieren
-\newcommand{\savefootnote}[2]{\footnote{\label{#1}#2}}
-\newcommand{\repeatfootnote}[1]{\textsuperscript{\ref{#1}}}
+\newcommand{\savefootnote}[2]{\footnote{\label{#1}#2}}%
+\newcommand{\repeatfootnote}[1]{\textsuperscript{\ref{#1}}\ifMultipleFootnote}%
 %
-\newcommand{\savefootnoteNoMark}[2]{\footnote{\label{#1}#2}}
+\newcommand{\savefootnoteNoMark}[2]{\footnote{\label{#1}#2}}%
 % Beispiel
 % %  First sentence.\savefootnote{footnote-label}{footnote content}
 % %  Second sentence.\repeatfootnote{footnote-label}
@@ -82,20 +82,20 @@
 %
 % Own Makro für footnote ohne Marker
 % Unmarked Footnote
-\makeatletter
+\makeatletter%
 %\def\blfootnote{\xdef\@thefnmark{}\@footnotetext}
-\def\blfootnote{\gdef\@thefnmark{}\@footnotetext}
-\makeatother
+\def\blfootnote{\gdef\@thefnmark{}\@footnotetext}%
+\makeatother%
 % Beispiel:
 %  \blfootnote{No number here!}
 %
 % Another Variant for a Blank-Footnote
 \newcommand\blankfootnote[1]{%
-    \begingroup
+    \begingroup%
     \renewcommand\thefootnote{}\footnote{#1}%
     \addtocounter{footnote}{-1}%
-    \endgroup
-}
+    \endgroup%
+}%
 %
 % This places a footnote on the bottom of the page but does not leave a Mark where the footnote is defined.
 %     It inserts the number nicely into the ordinary numbering series of normal \footnote{}
@@ -108,6 +108,21 @@
 }%
 % This creates a marker corresponding to a formerly "placed" footnote, using its declared label
 \newcommand{\footnoteref}[1]{\repeatfootnote{#1}}%
+%
+% Auxiliary stuff. (Formats footnote-references nicely with comma, in case multiple are set in succession)
+\newcommand\nextToken\relax%
+\newcommand\tokenIsFootnoteRef{%
+    \ifx\footnoteref\nextToken%
+        \textsuperscript{,}%
+    \else\ifx\repeatfootnote\nextToken%
+        \textsuperscript{,}%
+    \else\ifx\savefootnote\nextToken%
+        \textsuperscript{,}%
+    \else\ifx\footnote\nextToken%
+        \textsuperscript{,}%
+    \fi\fi\fi\fi%
+}%
+\newcommand\ifMultipleFootnote{\futurelet\nextToken\tokenIsFootnoteRef}%
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 %				Footnotes done
 %------------------------------------------------------------------------
@@ -142,6 +157,8 @@
 %
 %
 %
+% Requires Packages:
+%  pict2e, fp, xparse, tikz, mathtools, cals, amssymb
 %=================================
 % Some More Symbols
 %================================================
@@ -268,12 +285,14 @@
 %------------------------------------------------------------------------
 %			Verschiedene Definitionen wie Schriftzeichen
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-\newcommand{\mytilde}{{\raise.17ex\hbox{$\scriptstyle\mathtt{\sim}$}}}%
-\newcommand{\mytildeA}{\textasciitilde}%
-\newcommand{\mytildeB}{$\sim$}%
-\newcommand{\mytildeC}{\~{}}%
-\newcommand{\mytildeD}{\texttildelow}%
-\newcommand{\mytildeE}{\raisebox{-.8ex}{\textasciitilde}}%
+\newcommand{\mytildeA}{\mbox{\raise.17ex\hbox{$\scriptstyle\mathtt{\sim}$}}\relax}%
+\newcommand{\mytildeB}{\textasciitilde}%
+\newcommand{\mytildeC}{$\sim$}%
+\newcommand{\mytildeD}{$\mathord{\sim}$}%
+\newcommand{\mytildeE}{\~{}}%
+\newcommand{\mytildeF}{\texttildelow}%
+\newcommand{\mytildeG}{\raisebox{-.8ex}{\textasciitilde}}%
+\newcommand{\mytilde}{\mytildeA}%
 \newcommand{\myequalhat}{\mathrel{\widehat{=}}}%
 \newcommand{\myequalhatA}{\mathrel{\stackon[1.5pt]{=}{\stretchto{\scalerel*[\widthof{=}]{\wedge}{\rule{1ex}{3ex}}}{0.5ex}}}}% Would require \usepackage{scalerel,stackengine,amsmath}
 %
@@ -606,6 +625,8 @@ O{#2} m o%
 \newcommand{\tabref}[1]{Table~\ref{#1}}%
 \newcommand{\algorefGer}[1]{Algorithmus~\ref{#1}}%
 \newcommand{\algoref}[1]{Algorithm~\ref{#1}}%
+\newcommand{\gleref}[1]{Gleichung~\ref{#1}}%
+\newcommand{\equref}[1]{Equation~\ref{#1}}%
 % Und das gleiche inklusive \nameref
 % Makro zur einheitlichen Formatierung von Abschnitts-Referenzen
 \newcommand{\abnamref}[1]{Abbildung~\ref{#1} (\nameref{#1})}%
