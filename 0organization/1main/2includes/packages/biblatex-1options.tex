@@ -1,8 +1,8 @@
 %
 \expandafter\ifstrequal\expandafter{\DenKrLayout}{MDPI}{%
-    \def{\DenKrBiblatexStyle}{\DenKrLayoutRootDir/Definitions/mdpi}%
+    \newcommand{\DenKrBiblatexStyle}{\DenKrLayoutRootDir/Definitions/mdpi}%
 }{%
-    \def{\DenKrBiblatexStyle}{ieee}% numeric-comp, apa, ieee
+    \newcommand{\DenKrBiblatexStyle}{ieee}% numeric-comp, apa, ieee
 }
 %
 \PassOptionsToPackage{%
