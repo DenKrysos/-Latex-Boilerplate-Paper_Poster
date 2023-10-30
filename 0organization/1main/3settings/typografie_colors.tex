@@ -1,0 +1,39 @@
+%________________________________________________________________________
+% Colors
+% - - (Definition of Colors collected on one spot, because these can be "intercepted")
+%  - - (Creating the File included below and defining the same Color-Names there, sets those in effect)
+% - - - - - - - - - - - - - - - - - - - - - - - - - -
+% - - Determines the Typesetting of the Page (Chapter-Heading, Header, Footer, etc.)
+% - - As well as some other Objects, like enumeration labels
+%========================================================================
+\colorlet{DenKrColor_Default}{.}%
+\AtBeginDocument{\colorlet{DenKrColor_Default}{.}}% Will in most cases result in 'black'. Specifically, xcolor issues '\color{black}' at the end of the package
+%
+%-----------------------------
+% Colors concering the Page-Layout (with KOMA-Classes)
+\definecolor{DenKrKomaColor_HeadLine}{RGB}{40,60,150}%
+\definecolor{DenKrKomaColor_FootLine}{named}{DenKrKomaColor_HeadLine}%
+\definecolor{DenKrKomaColor_PageNumber}{RGB}{0,60,150}%
+%
+\definecolor{DenKrKomaColor_PartHeading}{RGB}{40,0,100}%
+\definecolor{DenKrKomaColor_ChapterHeading}{RGB}{60,0,150}%
+\definecolor{DenKrKomaColor_SectionHeading}{named}{DenKrKomaColor_ChapterHeading}%
+\definecolor{DenKrKomaColor_SubSectionHeading}{RGB}{80,0,180}%
+\definecolor{DenKrKomaColor_SubSubSectionHeading}{RGB}{80,100,180}%
+\definecolor{DenKrKomaColor_ParagraphHeading}{RGB}{130,150,210}%
+\definecolor{DenKrKomaColor_SubParagraphHeading}{RGB}{130,150,210}%
+%
+%-----------------------------
+% Colors concering further Typografie-Objects
+% - - Color for the Label of Description-Lists from enumitem.sty
+%  - - E.g. DenKrKomaColor_SubSectionHeading, DenKrColor_Default, black
+\definecolor{DenKrColor_DescriptionLabel}{named}{DenKrKomaColor_SubSectionHeading}%
+%
+%
+%
+%-----------------------------
+% Checking and Including the File to overwrite the Color-Settings on Editor-Demand
+\newcommand{\DenKrKomaColorOverwriteFile}{"\DenKrSupplyRootDir/OptionalDocConfig/OverwriteProperties/typografie_colors".tex}%
+\IfFileExists{\DenKrKomaColorOverwriteFile}{%
+\input{\DenKrKomaColorOverwriteFile}%
+}{}%

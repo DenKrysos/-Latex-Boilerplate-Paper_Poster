@@ -21,9 +21,6 @@
 %           More matching "Typography"
 %               (but common for Article & Book level classes, hence in this shared file)
 % - - - - - - - - - - - - - -
-% See PassOptions for xcolor on Top
-\usepackage{xcolor}%
-% - - - - - - - - - - - - - -
 \usepackage{textcomp}% LaTeX support for the Text Companion fonts
 \usepackage{ulem}\normalem%
 \usepackage{relsize}% Set the font size relative to the current font size
@@ -118,7 +115,40 @@
 %        \begin{otherlanguage}{german}
 %        \qty{2}{\tablespoon}
 %        \end{otherlanguage}
-% - - - -
+%
+% - - - - - - - - - -
+% CAUTION: The Key-Definitions don't really work yet. Apparently, qty does prevent key expansion. I did not solve this yet.
+% Some Formatting Helpers / Templates for the siunitx cmds
+%  - Don't parse numbers
+\newcommand{\SIrawNum}{parse-numbers=false}%
+%       \qty[parse-numbers=false]{1.5}{\gram}  ->  \qty[\SIrawNum]{1.5}{\gram}
+%  - State an "approximate" number. ->(siunitx supports so called comparators, such as <, =, > and also \approx and \sim)
+%       \qty{\sim 3}{\gram}  instead of  \mytilde\qty{35}{\gram}
+%  - Bold Printing  ->(Use these commands to replace hard-coding {\bfseries\boldmath\qty[detect-weight=true,detect-all=true]{500}{\ml} Glas}
+\NewDocumentCommand{\qtybold}{omm}{%
+    {\bfseries\boldmath%
+    \IfNoValueTF{#1}{%
+        \qty[detect-weight=true,detect-all=true]{#2}{#3}%
+    }{%
+        \qty[detect-weight=true,detect-all=true,#1]{#2}{#3}%
+    }%
+    }%
+}%
+\NewDocumentCommand{\qtyrangebold}{ommm}{%
+    {\bfseries\boldmath%
+    \IfNoValueTF{#1}{%
+        \qtyrange[detect-weight=true,detect-all=true]{#2}{#3}{#4}%
+    }{%
+        \qtyrange[detect-weight=true,detect-all=true,#1]{#2}{#3}{#4}%
+    }%
+    }%
+}%
+%  - Group Digits (My default setting is to not start grouping right away after reaching the first 4. This directly groups with exceeding 3 digits)
+\newcommand{\SIgroupDig}{group-minimum-digits=3}%
+%       \qty[group-minimum-digits=3]{1500}{\liter}  ->  \qty[\SIgroupDig]{1500}{\liter}
+% - - - - - - - - - -
+% - - - - - - - - - -
+% - - - - - - - - - -
 % Two Macros for pasting time (time-of-day or time-span). Allow an optional first argument for local set up in the usual siunitx way.
 \ExplSyntaxOn
 % Hour-Minute-Second-Period (For pasting a Period of Time. Like \hmsP{10;20;30} -> "10:20:30 h" | \hmsP{;10;30}  ->  "20:30 min"
