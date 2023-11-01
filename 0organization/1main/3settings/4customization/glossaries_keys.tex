@@ -2,6 +2,16 @@
 %------------------------------------------------------------------------
 %					Custom Key Definitions
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\%
+% For the DualEntry Cmd, to link the opposing entry in Acronyms or Glossaries
+\glsaddkey*{crossRef}%Key Name
+% {\glsentrytext{\glslabel}deutsch}%Default Value
+{}%Default Value
+{\glsentrycrossRef}%Use analog \glsentrytext
+{\GlsentrycrossRef}%Use analog \Glsentrytext
+{\glscrossRef}%Use analog \glstext
+{\GlscrossRef}%Use analog \Glstext
+{\GLScrossRef}%Use analog \GLStext%
+%
 \glsaddkey*{deutsch}%Key Name
 % {\glsentrytext{\glslabel}deutsch}%Default Value
 {}%Default Value

@@ -2,6 +2,28 @@
 %------------------------------------------------------------------------
 %							Setups für Glossaries
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+% - - Some Setting
+\ifdef{\DenKrLayoutLanguage}{%
+    \expandafter\ifstrequal\expandafter{\DenKrLayoutLanguage}{english}{%
+        \def\DenKrGlossaryRefLabel{Glossaries}%
+        \def\DenKrAcronymRefLabel{Acronyms}%
+    }{%
+    \expandafter\ifstrequal\expandafter{\DenKrLayoutLanguage}{ngerman}{%
+        \def\DenKrGlossaryRefLabel{Glossar}%
+        \def\DenKrAcronymRefLabel{Acronyme}%
+    }{%
+    \expandafter\ifstrequal\expandafter{\DenKrLayoutLanguage}{german}{%
+        \def\DenKrGlossaryRefLabel{Glossar}%
+        \def\DenKrAcronymRefLabel{Acronyme}%
+    }{%
+        \def\DenKrGlossaryRefLabel{Glossaries}%
+        \def\DenKrAcronymRefLabel{Acronyms}%
+    }}}%
+}{%
+        \def\DenKrGlossaryRefLabel{Glossaries}%
+        \def\DenKrAcronymRefLabel{Acronyms}%
+}%
+%
 % \defglsentryfmt[\acronymtype]{
 %   \ifglsused{\glslabel}
 %     {\glsgenentryfmt}% Wenn verwendet normales format
@@ -61,6 +83,20 @@
  	leftmargin=2em,%
 	itemindent=-2em,%
 }%
+\newglossarystyle{list+crossRef}
+{% based on list style (adapt as required)
+    \setglossarystyle{list}%
+    \renewcommand{\glossentry}[2]{%
+        \item[\glsentryitem{##1}%
+            \glstarget{##1}{\glossentryname{##1}}]%
+        \glossentrydesc{##1}\glspostdescription%
+        \space\space##2%
+        \ifglshasfield{crossRef}{##1}{%
+            \space|\space%
+            \textit{\DenKrGlossaryRefLabel}: \glstext{\glsentrycrossRef{##1}}%
+        }{}%
+    }%
+}%
 \newglossarystyle{list+url}
 {% based on list style (adapt as required)
   \setglossarystyle{list}%
@@ -72,7 +108,9 @@
      \glsletentryfield{\thisurl}{##1}{url}%
      \expandafter\url\expandafter{\thisurl}}{}}%
 }%
-\newglossarystyle{list+Deutsch+Untertitel+alternativ+url}{%
+%
+%
+\newglossarystyle{list+Deutsch+Untertitel+alternativ+url+crossRef}{%
 	\renewenvironment{theglossary}%
 		{\begin{myglossarylist}}{\end{myglossarylist}}%
 	\renewcommand*{\glossaryheader}{}%
@@ -87,10 +125,15 @@
 			Auch genannt: \textbf{\glsentryalternativ{##1}}.\space}{}%
 		\ifglshasfield{deutsch}{##1}{Zu Deutsch: %
 			\textbf{\glsentrydeutsch{##1}}.\space}{}%
-		\glossentrydesc{##1}\glspostdescription\space ##2%
-    \ifglshasfield{url}{##1}{\glspar
-		\url{\glsentryurl{##1}}}{}%
-	}%
+		\glossentrydesc{##1}\glspostdescription%
+        \space##2%
+        \ifglshasfield{crossRef}{##1}{%
+            .\space%
+            \textit{\DenKrAcronymRefLabel}: \glstext{\glsentrycrossRef{##1}}%
+        }{}%
+        \ifglshasfield{url}{##1}{\glspar
+    		\url{\glsentryurl{##1}}}{}%
+    	}%
 	\renewcommand*{\subglossentry}[3]{%
 		\begin{myglossarylist}%
 			\item[\glssubentryitem{##2}%
@@ -103,7 +146,12 @@
 				Auch genannt: \textbf{\glsentryalternativ{##2}}.\space}{}%
 			\ifglshasfield{deutsch}{##2}{Zu Deutsch: %
 				\textbf{\glsentrydeutsch{##2}}.\space}{}%
-			\glossentrydesc{##2}\glspostdescription\space ##3.%
+			\glossentrydesc{##2}\glspostdescription%
+            \space##3%
+            \ifglshasfield{crossRef}{##1}{%
+                .\space%
+                \textit{\DenKrAcronymRefLabel}: \glstext{\glsentrycrossRef{##1}}%
+            }{.}%
 		\end{myglossarylist}%
 	}%
 	\renewcommand*{\glsgroupskip}{\ifglsnogroupskip\else\indexspace\fi}%

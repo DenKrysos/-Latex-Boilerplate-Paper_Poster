@@ -13,10 +13,16 @@
 % -- Version 2:
 % (based on package xparse)
 \DeclareDocumentCommand{\newdualentry}{ O{} O{} m m m m }{%
-	\newglossaryentry{gls-#3}{name={#5\glsadd{#3}},%
+	\newglossaryentry{gls-#3}{%
+        name={#5},%\glsadd{#3}
 		text={#5},%
-		description={#6},#1}%
-	\newacronym[see={[Glossar:]{gls-#3}},#2]{#3}{#4\glsadd{gls-#3}}{#5}%
+		description={#6},%
+        crossRef={#3},%
+        #1}%
+	\newacronym[crossRef={gls-#3},#2]%
+        {#3}%
+        {#4}%\glsadd{gls-#3}
+        {#5}%
 }%
 % Usage Syntax:
 % \newdualentry[glossary options][acronym options]{label}{abbrv}{long}{description}
