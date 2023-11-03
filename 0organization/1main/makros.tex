@@ -733,6 +733,35 @@ O{#2} m o%
 %
 %
 %
+%=================================
+%  Section Heading & Glossaries
+%   -> You can't just use a \gls{} Command in the Heading of a Chapter, Section, etc.
+%      This would cause a Warning about "Token not allowed [...]" (because of adding hyperlink (an unsupported special character) to the bookmarks)
+%      Instead using \texorpdfstring{}{} specifies different strings to be placed in the actual document or as bookmark
+%      Combining this with alterantive \gls cmds like \glsentrytext{} instead of \glstext{} works around this problem
+%     - Defining a nice Macro for use instead, doesn't really makes things easier, as then, this macro does not properly expand
+%   -> So, for making this process easier: Use the following Macro as opposed hacking something yourself.
+%   -> Hence, here you have a "Boilerplate". Use the following, instead of a simple \gls[...]{} (adjust 'text', 'desc', 'plural', etc. as required)
+%================================================
+% \texorpdfstring{\glstext{#2}}{\glsentrytext{#2}}
+\makeatletter%
+\newcommand{\glstextHead}[1]{%
+    \expandafter\texorpdfstring{\expandafter\glstext{#1}}{\expandafter\glsentrytext{#1}}%
+}%
+\newcommand{\glsdescHead}[1]{%
+    \expandafter\texorpdfstring{\expandafter\glsdesc{#1}}{\expandafter\glsentrydesc{#1}}%
+}%
+\newcommand{\glstextplHead}[1]{%
+    \expandafter\texorpdfstring{\expandafter\glsplural{#1}}{\expandafter\glsentryplural{#1}}%
+}%
+\newcommand{\glsdescplHead}[1]{%
+    \expandafter\texorpdfstring{\expandafter\glsdescplural{#1}}{\expandafter\glsentrydescplural{#1}}%
+}%
+\makeatother%
+%
+%
+%
+%
 %
 %
 %
