@@ -615,21 +615,21 @@ O{#2} m o%
 % Eventuell Labelprüfung vor \cref@gettype einbauen:
 %	(ifcsdef aus der etoolbox)
 % Macros for uniform Formatting of References to Document-Elements (Figure, Equation, Algorithm, Table)
-\newcommand{\abbref}[1]{Abbildung~\ref{#1}}%
+\newcommand{\abbref}[1]{\hyperref[#1]{Abbildung~\ref*{#1}}}%
 \newcommand{\abbrefzwei}[2]{Abbildungen~\ref{#1} \& \ref{#2}}%
-\newcommand{\figref}[1]{Figure~\ref{#1}}%
+\newcommand{\figref}[1]{\hyperref[#1]{Figure~\ref*{#1}}}%
 \newcommand{\figreftwo}[2]{Figures~\ref{#1} \& \ref{#2}}%
-\newcommand{\absref}[1]{Abschnitt~\ref{#1}}%
-\newcommand{\secref}[1]{Section~\ref{#1}}%
-\newcommand{\tablref}[1]{Tabelle~\ref{#1}}%
-\newcommand{\tabref}[1]{Table~\ref{#1}}%
-\newcommand{\algorefGer}[1]{Algorithmus~\ref{#1}}%
-\newcommand{\algoref}[1]{Algorithm~\ref{#1}}%
-\newcommand{\gleref}[1]{Gleichung~\ref{#1}}%
-\newcommand{\equref}[1]{Equation~\ref{#1}}%
+\newcommand{\absref}[1]{\hyperref[#1]{Abschnitt~\ref*{#1}}}%
+\newcommand{\secref}[1]{\hyperref[#1]{Section~\ref*{#1}}}%
+\newcommand{\tablref}[1]{\hyperref[#1]{Tabelle~\ref*{#1}}}%
+\newcommand{\tabref}[1]{\hyperref[#1]{Table~\ref*{#1}}}%
+\newcommand{\algorefGer}[1]{\hyperref[#1]{Algorithmus~\ref*{#1}}}%
+\newcommand{\algoref}[1]{\hyperref[#1]{Algorithm~\ref*{#1}}}%
+\newcommand{\gleref}[1]{\hyperref[#1]{Gleichung~\ref*{#1}}}%
+\newcommand{\equref}[1]{\hyperref[#1]{Equation~\ref*{#1}}}%
 % - - - - - - - - - - - - - - - -
 % To do it *automatically*, using "Cleverref"
-\newcommand{\entityref}[1]{\cref{#1}}%
+\newcommand{\entityref}[1]{\hyperref[#1]{\cref*{#1}}}%
 \newcommand{\eleref}[1]{\entityref{#1}}%
 \newcommand{\typeref}[1]{\entityref{#1}}%
 % - - - - - - - - - - - - - - - -
@@ -637,12 +637,20 @@ O{#2} m o%
 \makeatletter%
 \newcommand{\numnamref}[1]{%
     %\cref@gettype{#1}{\currlabtype}%
-    \cref{#1} (\nameref{#1})%
+    \hyperref[#1]{\cref*{#1}} (\nameref{#1})%
 }%
 \makeatother%
-\newcommand{\entitynamref}[1]{\numnamref{#1}}%
-\newcommand{\elenamref}[1]{\numnamref{#1}}%
-\newcommand{\typenamref}[1]{\numnamref{#1}}%
+\newcommand{\entitynumnamref}[1]{\numnamref{#1}}%
+\newcommand{\elenumnamref}[1]{\numnamref{#1}}%
+\newcommand{\typenumnamref}[1]{\numnamref{#1}}%
+% - - - - - - - - - - - - - - - -
+% Nameref with some fancy formatting
+\newcommand{\formattednamref}[1]{{%
+    \color{DenKrColor_Highlight_Emerald}\nameref{#1}%
+}}%
+\newcommand{\entityformattednamref}[1]{\formattednamref{#1}}%
+\newcommand{\eleformattednamref}[1]{\formattednamref{#1}}%
+\newcommand{\typeformattednamref}[1]{\formattednamref{#1}}%
 %
 % - - - - - - - - - - - - - - - -
 % - Legacy stuff
@@ -739,23 +747,22 @@ O{#2} m o%
 %      This would cause a Warning about "Token not allowed [...]" (because of adding hyperlink (an unsupported special character) to the bookmarks)
 %      Instead using \texorpdfstring{}{} specifies different strings to be placed in the actual document or as bookmark
 %      Combining this with alterantive \gls cmds like \glsentrytext{} instead of \glstext{} works around this problem
-%     - Defining a nice Macro for use instead, doesn't really makes things easier, as then, this macro does not properly expand
 %   -> So, for making this process easier: Use the following Macro as opposed hacking something yourself.
-%   -> Hence, here you have a "Boilerplate". Use the following, instead of a simple \gls[...]{} (adjust 'text', 'desc', 'plural', etc. as required)
+%   -> Or, if you prefer, right below this Comment-Block, you have a "Boilerplate". Use this instead of a simple \gls[...]{} (adjust 'text', 'desc', 'plural', etc. as required)
 %================================================
 % \texorpdfstring{\glstext{#2}}{\glsentrytext{#2}}
 \makeatletter%
 \newcommand{\glstextHead}[1]{%
-    \expandafter\texorpdfstring{\expandafter\glstext{#1}}{\expandafter\glsentrytext{#1}}%
+    \expandafter\texorpdfstring{\expandafter\glsentrytext{#1}}{\expandafter\glsentrytext{#1}}%
 }%
 \newcommand{\glsdescHead}[1]{%
-    \expandafter\texorpdfstring{\expandafter\glsdesc{#1}}{\expandafter\glsentrydesc{#1}}%
+    \expandafter\texorpdfstring{\expandafter\glsentrydesc{#1}}{\expandafter\glsentrydesc{#1}}%
 }%
 \newcommand{\glstextplHead}[1]{%
-    \expandafter\texorpdfstring{\expandafter\glsplural{#1}}{\expandafter\glsentryplural{#1}}%
+    \expandafter\texorpdfstring{\expandafter\glsentryplural{#1}}{\expandafter\glsentryplural{#1}}%
 }%
 \newcommand{\glsdescplHead}[1]{%
-    \expandafter\texorpdfstring{\expandafter\glsdescplural{#1}}{\expandafter\glsentrydescplural{#1}}%
+    \expandafter\texorpdfstring{\expandafter\glsentrydescplural{#1}}{\expandafter\glsentrydescplural{#1}}%
 }%
 \makeatother%
 %

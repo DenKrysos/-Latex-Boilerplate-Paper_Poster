@@ -1,0 +1,47 @@
+%
+%________________________________________________________________________
+%========================================================================
+% For Using "String-based Variables, collected under some Domain"
+%  USAGE:
+%         \setCollectVar{someCollection}{Var1}{12pt}
+%         Value is: \getCollectVar{someCollection}{Var1}
+%         \destroyCollectVar{someCollection}{Var1}
+\makeatletter%
+\newcommand{\setCollectVar}[3]{%
+    \expandafter\def\csname #1@#2\endcsname{#3}%
+}%
+\newcommand{\getCollectVar}[2]{%
+    \@ifundefined{#1@#2}{%
+        % Handle the case where the variable is not defined
+        \PackageError{DenKr-Variable-Collection}{#1@#2 is not defined}{}%
+    }{%
+        \csname #1@#2\endcsname%
+    }%
+}%
+\newcommand{\destroyCollectVar}[2]{%
+    \expandafter\let\csname #1@#2\endcsname\relax%
+}%
+\makeatother%
+%------------------------------------------------------------------------
+%========================================================================
+%
+%
+%
+%________________________________________________________________________
+%========================================================================
+% Compare a "\DenKr"-Variable with a Value (String)
+% ARG:
+%  1 - The Variable
+%  2 - The Value to Compare with
+%  3 - If equal (then do this)
+%  4 - else (do this)
+\newcommand{\DenKrCmp}[4]{%
+    \expandafter\ifstrequal\expandafter{#1}{#2}{%
+        #3%
+    }{%
+        #4%
+    }%
+}%
+%  Ah, well, I know, "ifstrequal" isn't really a tex-primitive... But I always include 'etoolbox' very early on, as one of the first things anyway.
+%------------------------------------------------------------------------
+%========================================================================

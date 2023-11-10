@@ -40,7 +40,8 @@
 %------------------------------------------------------------------------
 %				Former Documents
 %========================================================================
-\newacronym{ar}{AR}{Application Relation}%
+\newacronym{appr}{AR}{Application Relation}%
+\newacronym{comr}{CR}{Communication Relation}%
 \newacronym{indeco}{InDeCo}{Interconnection Detachment \& Convergence}%ArchDaemon-Tool: Interconnection
 \newacronym{coma}{CoMa}{Context-Management}%ArchDaemon-Tool: Context-Management
 \newacronym{peac}{PeAc}{Permission \& Access}%ArchDaemon-Tool: Permission & Access
@@ -109,9 +110,9 @@
 %        \newglossaryentry{trunking}{%
 %        	name={Trunking},%
 %        	text={Trunking},%
-%        	deutsch={Bündelung},%
-%        	untertitel={Datenübertragung},%
-%        	alternativ={Link Aggregation},%
+%        	textDE={Bündelung},%
+%        	subtitle={Datenübertragung},%
+%        	alternative={Link Aggregation},%
 %        	description={\label{gls:trunking}%
 %                In der Nachrichtentechnik und Informatik bezeichnet >>Trunking<< [...]%
 %           },%
@@ -160,6 +161,7 @@
 \newacronym{poc}{PoC}{Proof-of-Concept}%
 \newacronym{wip}{WiP}{Work in Progress}%
 \newacronym{utf}{UTF}{Unicode Transformation Format}%
+\newacronym{pov}{PoV}{Point-of-View}%
 %--------------------------------------------------------
 % = = = Specific for: Research (i.e. no one in the practical, operating, real word out there uses such stuff)
 %________________________________________________________
@@ -193,6 +195,8 @@
 \newacronym{loc}{LoC}{Lines of Code}%
 \newacronym{mutex}{MutEx}{Mutual Exclusion}%
 \newacronym{dll}{DLL}{Dynamically Loaded Library}%
+\newacronym{oop}{OoP}{Out-of-Process execution}%
+\newacronym{shmem}{ShMem}{Shared-Memory}%
 %--------------------------------------------------------
 % = = = Specific for: Network Communication, Distributed Systems
 %________________________________________________________
@@ -318,13 +322,23 @@
 \newacronym{mlearn}{ML}{Machine Learning}%
 \newacronym{svm}{SVM}{Support Vector Machine}%
 %--------------------------------------------------------
-% = = = Specific for: Business
+% = = = Specific for: Business, Economies, Authorities, Administration
 %________________________________________________________
 \newacronym{sla}{SLA}{Service Level Agreement}%
 \newacronym{b2b}{B2B}{Business-To-Business}%
 \newacronym{b2c}{B2C}{Business-To-Consumer}%
 \newacronym{pmse}{PMSE}{Programme Making and Special Events}%
 \newacronym{ppdr}{PPDR}{Public Protection and Disaster Relief}%
+\newacronym[
+    textAlt={SMB},%
+    longAlt={small or medium-sized business},%
+    %textDE={KMU},%
+    %longDE={kleines oder mittelständiges Unternehmen}%
+]{sme}{SME}{small or medium-sized enterprise}%
+\newacronym[%
+    textEN={SME},%
+    longEN={small or medium-sized enterprise}%
+]{kmu}{KMU}{kleines oder mittelständiges Unternehmen}%
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 %						Akronyme fertig
 %------------------------------------------------------------------------
@@ -347,9 +361,9 @@
 % Example:
 %        \newdualentry%
 %        [%
-%            deutsch={Programmierschnittstelle},%
+%            textDE={Programmierschnittstelle},%
 %            parent={},%
-%            untertitel={}%
+%            subtitle={}%
 %        ]%Options für Glossary
 %        [%
 %            plural=APIs,%
