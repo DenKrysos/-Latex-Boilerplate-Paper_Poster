@@ -112,13 +112,16 @@
 %        	text={Trunking},%
 %        	textDE={Bündelung},%
 %        	subtitle={Datenübertragung},%
-%        	alternative={Link Aggregation},%
+%        	longAlt={Link Aggregation},%
 %        	description={\label{gls:trunking}%
 %                In der Nachrichtentechnik und Informatik bezeichnet >>Trunking<< [...]%
 %           },%
 %        }
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-
+\newglossaryentry{eventfd}{%
+	name={EventFD},%
+	description={Short for Event-File-Descriptor. Essentially just an identifier for sending and receiving events. Usually used for triggering events between entities or any kind of synchronization.}%
+}%
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 %						Glossar fertig
 %------------------------------------------------------------------------
@@ -136,9 +139,11 @@
 % Example:
 %        \newacronym{sdning}{SDN}{Software-Defined Networking}%
 %        \newacronym[plural=SDNs,%
-%        	firstplural=Software-Defined Networks (SDNs),%
-%        	longplural=Software-Defined Networks]%
-%        	{sdn}{SDN}{Software-Defined Network}%
+%            firstplural=Software-defined Networks (SDNs),%
+%            longplural=Software-defined Networks,%
+%            prefixfirst={a\ },%
+%            prefix={an\ }%
+%        ]{sdnet}{SDN}{Software-defined Network}%
 %        \glsunset{sdn}%
 %        \newacronym[see={[Glossar:]{gls-endTE}}]{endTEde}{ETE}{Ende-zu-Ende}%Don't create such an acronym entry explicitly if you use the supplied dualentry-cmd below
 %        \newacronym[englisch=Virtual Machine,%
@@ -192,6 +197,7 @@
 \newacronym{netfunc}{NF}{Network Function}%
 \newacronym{nfv}{NFV}{Network Function Virtualization}%
 \newacronym{typlv}{TLV}{Type-Length-Value}%
+\newacronym{kvp}{KVP}{Key-Value-Pair}%
 \newacronym{loc}{LoC}{Lines of Code}%
 \newacronym{mutex}{MutEx}{Mutual Exclusion}%
 \newacronym{dll}{DLL}{Dynamically Loaded Library}%
@@ -200,6 +206,10 @@
 %--------------------------------------------------------
 % = = = Specific for: Network Communication, Distributed Systems
 %________________________________________________________
+\newacronym{msg}{msg}{message}%
+\newacronym{pkt}{pkt}{packet}%
+\newacronym{pkg}{pkg}{package}%
+\newacronym{osi}{OSI}{Open Systems Interconnection}%
 \newacronym{url}{URL}{Uniform Resource Locator}%
 \newacronym{nic}{NIC}{Network Interface Card}%
 \newacronym{rest}{REST}{Representational State Transfer}%
@@ -208,14 +218,18 @@
 \newacronym{https}{HTTPS}{Hypertext Transfer Protocol Secure}%
 \newacronym{rpc}{RPC}{Remote Procedure Call}%
 \newacronym{lldp}{LLDP}{Link Layer Discovery Protocol}%
+\newacronym{arp}{ARP}{Address Resolution Protocol}%
+\newacronym{ndp}{NDP}{Neighbor Discovery Protocol}%
 \newacronym{snmp}{SNMP}{Simple Network Management Protocol}%
 \newacronym{nsh}{NSH}{Network Service Header}%
 \newacronym{sdn}{SDN}{Software-defined Networking}%
 %\glsunset{sdn}%
 \newacronym[plural=SDNs,%
-	firstplural=Software-defined Networks (SDNs),%
-	longplural=Software-defined Networks]%
-	{sdnet}{SDN}{Software-defined Network}%
+    firstplural=Software-defined Networks (SDNs),%
+    longplural=Software-defined Networks,%
+    prefixfirst={a\ },%
+    prefix={an\ }%
+]{sdnet}{SDN}{Software-defined Network}%
 \newacronym{ip}{IP}{Internet Protocol}%
 \glsunset{ip}%
 \newacronym{tcp}{TCP}{Transmission Control Protocol}%
@@ -223,8 +237,9 @@
 \newacronym{dns}{DNS}{Domain Name System}%
 \newacronym{ntp}{NTP}{Network Time Protocol}%
 \newacronym{ptp}{PTP}{Precision Time Protocol}%
-\newacronym{p2p}{P2P}{Point-to-Point}%
-\newacronym{peer2p}{Peer2P}{Peer-to-Peer}%
+\newacronym{p2p}{P2P}{Point-to-Point}%Point-to-Point means a direct communication. I.e. just a link between the two points in question
+\newacronym{e2e}{E2E}{End-to-End}%End-to-End means that there is something in between (a switch, router, gateway or even another PC that relays the communication), but the communication process that is talked about happens between the two remote endpoints on the two sides of the chain.
+\newacronym{peer2p}{Peer2P}{Peer-to-Peer}% Peer-to-Peer is just a different concept from a totally different level. It means a network in which the participants can act as both Server and Client, e.g. for sharing files
 \newacronym{m2m}{M2M}{Machine-to-Machine}%
 \newacronym{rbs}{RBS}{Reference Broadcast Time Synchronization}%
 \newacronym{rbis}{RBIS}{Reference Broadcast Infrastructure Synchronization}%
@@ -237,6 +252,7 @@
 \newacronym{arq}{ARQ}{Automatic Repeat Request}%
 \newacronym{ppm}{PPM}{Parallel Process Migration}%
 \newacronym{checkres}{C/R}{Checkpoint/Restore}%
+\newacronym{pubsub}{Pub/Sub}{Publish-Subscribe}%
 %--------------------------------------------------------
 % = = = Specific for: Wireless Communication, Radio
 %________________________________________________________
@@ -244,10 +260,12 @@
 \newacronym{acp}{AP}{Access-Point}%
 \newacronym{urllc}{URLLC}{Ultra Reliable Low Latency Communication}%
 \newacronym{bnetza}{BNetzA}{Bundesnetzagentur}%
+\newacronym{rat}{RAT}{Radio Access Technology}%
+\newacronym{rssi}{RSSI}{Received Signal Strength Indicator}%
 %--------------------------------------------------------
 % = = = Specific for: Mobile Communications, 5G, 6G
 %________________________________________________________
- \newacronym{bey5g}{B5G}{Beyond 5G}%
+\newacronym{bey5g}{B5G}{Beyond 5G}%
 \newacronym{5gsba}{SBA}{5G Service Based Architecture}%
 \newacronym{sba}{SBA}{Service Based Architecture}%
 \newacronym{mano}{MANO}{Management \& Orchestration}%
@@ -393,3 +411,31 @@
 %-------------------------------------------------------------------------
 %_________________________________________________________________________
 %
+%
+%
+%
+%
+%
+%________________________________________________________________________
+%------------------------------------------------------------------------
+%						Symbols
+%  -  -  -  -  -  -  -
+%   Nothing too special. Just to treat 'Symbols' separately. Like mathematical notation, physics, chemistry, Greek Letters and such.
+%   Just do as with Glossary-Entries (\newglossaryentry), and specify the Type 'symbol'.
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+\newglossaryentry{sigma}{%
+    type=symbol,%
+    name={$\sigma$},%
+    sort={sigma},%
+    description={Surface tension}%
+}%
+\newglossaryentry{molmass}{%
+    type=symbol,%
+    name={$M_w$},%
+    sort={Mw},%
+    description={Molar mass}%
+}%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%						Symbols fertig
+%-------------------------------------------------------------------------
+%_________________________________________________________________________

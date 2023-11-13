@@ -1,0 +1,48 @@
+%=========================================
+%--- This keeps Stuff that is independent from Tex-Variant and Compiler (pdfLaTex, LuaLaTex, etc)
+%=========================================
+%
+% Here: Inclusion of package "csquotes" and further configuration.
+%     Remark that before this file here, Compiler-dependent, a \PassOptionsToPackage{} should be done.
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+% == Note ==  With csquotes.sty, use
+%     \textquote{}, to automatically print correct quotation marks, depending on the set language by polyglossia (or babel)
+%     \enquote{}, for 'nested' quotations
+%\usepackage[autostyle=true,german=quotes]{csquotes}% Deutsche Anführungszeichen, german=quotes, guillemets, swiss
+%\usepackage[autostyle=true,style=english]{csquotes}% Default English
+\usepackage{csquotes}%
+\DeclareQuoteStyle[guilsingl]{DenKr}%
+  {\guilsinglright}%
+  {\guilsinglleft}%
+  [0.05em]%
+  {\guilsinglright}%
+  {\guilsinglleft}%
+% - - - - - - - - - - - - - -
+%
+%
+%
+%________________________________________________________________________
+%------------------------------------------------------------------------
+%               Quotation Marks
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+% Quote the cool german Guillemet/Chevron way: »quote«
+\makeatletter\AddToHook{begindocument/before}{\@ifpackageloaded{csquotes}{%
+    \newcommand{\gerguiquote}[1]{%
+        \xspace{\setquotestyle[guillemets]{german}\enquote{#1}}\xspace
+    }%
+    % A 'light' version, i.e. single-Guillemet
+    \newcommand{\gerguiquotel}[1]{%
+        \xspace{\setquotestyle[guilsingl]{DenKr}\enquote{#1}}\xspace
+    }%
+}{%
+    \newcommand{\gerguiquote}[1]{%
+        \xspace{\guillemetright\relax#1\guillemetleft\relax}\xspace
+    }%
+    \newcommand{\gerguiquotel}[1]{%
+        \xspace{\guilsinglright\relax#1\guilsinglleft\relax}\xspace
+    }%
+}}\makeatother%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%				Quoting done
+%------------------------------------------------------------------------
+%________________________________________________________________________
