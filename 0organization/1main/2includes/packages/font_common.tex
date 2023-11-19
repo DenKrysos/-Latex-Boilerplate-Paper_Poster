@@ -23,6 +23,36 @@
 %
 %________________________________________________________________________
 %------------------------------------------------------------------------
+%               Some Configuration
+%           (For some Info/Explanation see at the bottom)
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+\newenvironment{DenKrBlockQuoteEnv}%
+{%
+    \list{}{%
+        \setlength{\itemsep}{0pt}%
+        \setlength{\parsep}{0pt}%
+        \setlength{\parskip}{0pt}%
+        \setlength{\topsep}{0pt}%
+        \setlength{\partopsep}{0.3\baselineskip}%
+        \setlength{\rightmargin}{0.5\leftmargin}%
+    }%
+    \item\relax%
+}%
+{\endlist}%
+\SetBlockEnvironment{DenKrBlockQuoteEnv}%
+% \renewcommand\mkblockquote[4]{\enquote{#1#2#3}#4}%
+% \renewcommand\mkblockquote[4]{\leavevmode\llap{,,}#1#2#3``#4}%
+% \renewcommand\mkblockquote[4]{\leavevmode{\setquotestyle[guillemets]{german}\enquote{#1#2#3}#4}}%
+\renewcommand\mkblockquote[4]{\leavevmode\llap{\smash{\raisebox{-0.6ex}{\bfseries\Huge\guillemetright}}}#1#2#3\smash[b]{\raisebox{-0.2ex}{\bfseries\LARGE\guillemetleft}}#4}%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%				Config done
+%------------------------------------------------------------------------
+%________________________________________________________________________
+%
+%
+%
+%________________________________________________________________________
+%------------------------------------------------------------------------
 %               Quotation Marks
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 % Quote the cool german Guillemet/Chevron way: »quote«
@@ -44,5 +74,31 @@
 }}\makeatother%
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 %				Quoting done
+%------------------------------------------------------------------------
+%________________________________________________________________________
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%________________________________________________________________________
+%               Just some 'enlightening' Info
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+% About the "BlockQuote"
+%    The default for the Environment:
+%			\SetBlockEnvironment{quote}%
+%    'quote' is an environment usually defined by all documentclasses. And that is like:
+%			\newenvironment{quote}%
+%			{\list{}{\rightmargin\leftmargin}\item\relax}%
+%			{\endlist}%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%				Info done
 %------------------------------------------------------------------------
 %________________________________________________________________________

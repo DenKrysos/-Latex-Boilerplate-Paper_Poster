@@ -22,10 +22,35 @@
 	nogroupskip=true,%
     prefix,% makes -extra load -prefix
 ]{glossaries-extra}% glossaries  glossaries-extra
-\setabbreviationstyle[acronym]{long-short}% To have true Gls-first output with -extra
+%------------------------
+%     Without '-extra':
+% - - - - - - - - - - - -
+%\usepackage{glossaries-prefix}%
+%\setacronymstyle{short-long}%
+%------------------------
+%     With 'glossaries-extra':
+% - - - - - - - - - - - -
+%   Indispensable with '-extra', to have any kind of true 'Gls-first' output
+\setabbreviationstyle[acronym]{short-long}%
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%					glossaries fertig
+%------------------------------------------------------------------------
+%________________________________________________________________________
+%
+%
+%
+%________________________________________________________________________
+%------------------------------------------------------------------------
+%               Configuring / Customization
+%				(Additional Glossaries & Keys)
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 \newglossary{symbol}{sym}{sbl}{List of Symbols}%
 \input{"\DenKrLayoutMainRootDir/3settings/4customization/glossaries_keys".tex}%
+%---------------------------------------
+% makeglossaries is well placed on that spot
+% \ifdef{\DenKrTikzStandaloneNotInclude}{}{%
 % \makeglossaries%
+% }%
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 %					glossaries fertig
 %------------------------------------------------------------------------

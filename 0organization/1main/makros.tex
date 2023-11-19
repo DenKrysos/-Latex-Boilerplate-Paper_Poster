@@ -637,6 +637,15 @@ O{#2} m o%
 }%
 %
 % - - - - - - - - - - - - - - - -
+% To create a Reference with Custom-Text
+% 1: The Hyperlink-Destination, i.e. just "sec:target" not "\pageref{sec:target}
+% 2: The text that shall be displayed.
+% -> The entire text is clickable and leads to the link's destination
+\newcommand{\refCustom}[2]{%
+    \hyperref[#1]{#2}%
+}%
+%
+% - - - - - - - - - - - - - - - -
 % - Legacy stuff
 % - - (Better just ignore. Only still here, because I am not able to delete old code. '^.^  I might have a problem there...)
 %--------------------------------
