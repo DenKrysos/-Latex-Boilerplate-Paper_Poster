@@ -50,7 +50,7 @@
 }%
 }%
 %
-\expandafter\ifstrequal\expandafter{\DenKrLayout}{IEEEtran}{%
+\expandafter\ifstrequal\expandafter{\DenKrLayout}{IEEEtranNoBiblatex}{%
 \bibliographystyle{IEEEtran}%
 \DenKrBibliographyFileInclusion%
 }{%
@@ -62,7 +62,7 @@
 \bibliographystyle{\DenKrLayoutRootDir/Definitions/mdpi}%
 \DenKrBibliographyFileInclusion%
 }{%
-\printbibliography%
+\printbibliography[env=bibliographyDenKrEnv]%
 }}}%
 %
 %

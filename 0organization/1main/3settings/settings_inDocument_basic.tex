@@ -22,9 +22,24 @@
 %
 %---------------------------
 % %  Additional new List-Style, "Enumeration-Inline-Roman" for enumerating with lower-case roman letters inline
-% - - - - - - - -
 \newlist{enuminlrom}{enumerate*}{1}%
 \setlist[enuminlrom]{label=\textit{(\roman*)}}%
+% - - - - - - - -
+% % Additional List-Style, "Enumeration-Paragraph-Roman" for enumeration with upper-case roman letters, without leftmargin, i.e. looks and behaves like a paragraph, but with enumerated label
+\newlist{enumparrom}{enumerate}{1}%
+\setlist[enumparrom]{%
+    label=\textit{\textbf{(}\Roman*\textbf{)}},%
+    %wide,%
+    align=left,%
+    labelindent=0.5\parindent,%
+    listparindent=\parindent,%
+    leftmargin=0pt,%
+    labelwidth=!,%
+    itemindent=!,%
+    topsep=0ex,%
+    itemsep=0ex,%
+    parsep=0ex,%
+}%
 %
 %---------------------------
 % %  List-Style Settings
