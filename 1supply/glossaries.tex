@@ -1,7 +1,7 @@
 %________________________________________________________________________
 %------------------------------------------------------------------------
 %       Package Extensions are performed in files
-% - - - - - - - - - - - - -
+%  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 %           "0organization/1main/3settings/4customization/glossaries_keys.tex"
 %           "0organization/1main/3settings/4customization/glossaries_cmds.tex"
 %       This supplies an additional Glossary-Entry-Creation Makro for simultaneously filling in an Acronym and corresponding Glossary-Entry, being referenced. (Usage see later below)
@@ -20,10 +20,14 @@
 %------------------------------------------------------------------------
 %				Central Terms of this Document (aka Thesis, Paper, Letter, ...)
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+% \newacronym{Key}{Abbreviation}{WrittenOut}%
+% \glsunset{Key}%
+% % % % % % % % % % % % % % %
 % \newglossaryentry{denkrsuite}{%
 % 	name={DenKr\_Suite},%
 % 	description={A collective term for all elements of the software solution provided by this Thesis.},%
 % }%
+% % % % % % % % % % % % % % %
 % \newdualentry%
 % []% Options für Glossary
 % []% Options für Acronym
@@ -31,72 +35,23 @@
 % {ArchDaemon}% abbreviation
 % {Architecture-Daemon}% long form
 % {Part of the \gls{denkrsuite}. \textit{\gls{integhierarchl}~4} of the \gls{integhierarch} from the \gls{denkrnuc}.}% description
-% % % % % % % % % % % % % % %
-% \newacronym{Key}{Abbreviation}{WrittenOut}%
-% \glsunset{Key}%
-%
-%
-%
-%------------------------------------------------------------------------
-%				Former Documents
-%========================================================================
-\newacronym{appr}{AR}{Application Relation}%
-\newacronym{comr}{CR}{Communication Relation}%
-\newacronym{indeco}{InDeCo}{Interconnection Detachment \& Convergence}%ArchDaemon-Tool: Interconnection
-\newacronym{coma}{CoMa}{Context-Management}%ArchDaemon-Tool: Context-Management
-\newacronym{peac}{PeAc}{Permission \& Access}%ArchDaemon-Tool: Permission & Access
-\newacronym{dynploy}{DynPloy}{Dynamic Deployment}%ArchDaemon-Tool: Dynamic Deployment
-\newacronym{remcon}{RemCon}{Remote Configuration}%ArchDaemon-Tool: Device \& Service Remote Configuration
-\newacronym{coagd}{CAD}{Collective Aggregator Discovery}%DenKrement-Tool: Automatic Self-Organizing Network Device Discovery  (Operates sparsam, kollaborativ)  ("Capacity-aware/Economical, Collaborative Network Device Discovery")
-\newacronym{archdaemon}{ArchDaemon}{Architecture-Daemon}
-\newacronym{ctrllog}{ACL}{Aggregated Control Logic}
-\newacronym{adagent}{ADAg}{ArchDaemon-Agent}
-\newacronym{adaloc}{ADAl}{ArchDaemon-Allocator}%Commissioner, Allocator, Controller, Hub, Pivot
-\newacronym{inserv}{InServ}{Inserted-Service}% Inserted/Infrastrucure Service  |  service, item, component,
-\newacronym{infrserv}{InfrServ}{Infrastructure-Service}% unit, member, extension, addition, attachment, additive
-\newacronym{atserv}{AtServ}{Atop-Service}%
-\newacronym{orcus}{OrCuS}{Organic Customization System}% Culmination, Cumulation
-\newacronym{ore}{ORE}{Organic Runtime Environment}%
-\newacronym{relag}{Agent}{Agent}%
-\newacronym{relorc}{Orc}{Orchestrator}%
-\newacronym{slaag}{SLAAg}{Service Level Agreement Agent}%
-\newacronym{cmdc}{CMDC}{Centralized Mission and Driving Control}%
-\newacronym{dcmod}{DCMod}{Data Collection Module}%
-\newacronym{posmod}{PosMod}{Positioning Module}%
-\newacronym{mts}{MTS}{Map Transformation Stage}%
-\newacronym{sensmod}{SensMod}{Sensing Module}%
-\newacronym{sidr}{SIDR}{Sensor ID Resolver}%
-\newacronym{camod}{CAMod}{Carrier Aggregation Module}%
-\newacronym{muxs}{MuxS}{Multiplexer Stage}%
-\newacronym[plural=CSEs,%
-	firstplural=Carrier State Estimators (CSEs),%
-	longplural=Carrier State Estimators]%
-	{cse}{CSE}{Carrier State Estimator}%
-\newacronym{ca}{CA}{Carrier Aggregator}%
-\newacronym[plural=IAs,%
-	firstplural=Information Anchors (IAs),%
-	longplural=Information Anchors]%
-	{ia}{IA}{Information Anchor}%
-\newacronym{dbmod}{DBMod}{Data Base Module}%
-\newacronym{bui}{BUI}{Base User Interface}%
-\newacronym{bman}{BMan}{Base Manager}%
-\newacronym[plural=DSs,%
-	firstplural=Data Suppliers (DSs),%
-	longplural=Data Suppliers]%
-	{ds}{DS}{Data Supplier}%
-\newacronym[plural=GWs,%
-	firstplural=Gateways (GWs),%
-	longplural=Gateways]%
-	{gw}{GW}{Gateway}%
-\newacronym{auditf}{TTF}{Trust \& Traceability Function}%
-\newacronym{specal}{SASF}{Spectrum Allocation \& Sharing Function}%
-%------------------------------------------------------------------------
 %________________________________________________________________________
-%
+%					Term Definitions
+%VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+
+%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 %					Central Terms done
 %------------------------------------------------------------------------
 %________________________________________________________________________
+%
+%
+%------------------------------------------------------------------------
+%				Former Documents
+%     (I like to put Terms from former Documents to the bottom of this File)
+%     (But yeah, doesn't make a difference. Do as you please.)
+%========================================================================
+%
 %
 %
 %
@@ -105,7 +60,7 @@
 %________________________________________________________________________
 %------------------------------------------------------------------------
 %						Glossar
-%  -  -  -  -  -  -  -
+%  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 % Example:
 %        \newglossaryentry{trunking}{%
 %        	name={Trunking},%
@@ -118,10 +73,12 @@
 %           },%
 %        }
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 \newglossaryentry{eventfd}{%
 	name={EventFD},%
 	description={Short for Event-File-Descriptor. Essentially just an identifier for sending and receiving events. Usually used for triggering events between entities or any kind of synchronization.}%
 }%
+%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 %						Glossar fertig
 %------------------------------------------------------------------------
@@ -135,7 +92,7 @@
 %------------------------------------------------------------------------
 %						Akronyme (Abkürzungen)
 %                       -- (More Universal) --
-%  -  -  -  -  -  -  -
+%  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 % Example:
 %        \newacronym{sdning}{SDN}{Software-Defined Networking}%
 %        \newacronym[plural=SDNs,%
@@ -152,6 +109,7 @@
 %        	longplural=Virtuelle Maschinen]%
 %        {vm}{VM}{Virtuelle Maschine}%
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 %
 %--------------------------------------------------------
 % = = = General Terms
@@ -189,9 +147,18 @@
 \newacronym{opsys}{OS}{Operating System}%
 \newacronym{digt}{DT}{Digital Twin}%
 \newacronym{virtm}{VM}{Virtual Machine}%
+\newacronym{vreal}{VR}{Virtual Reality}%
+\newacronym{areal}{AR}{Augmented Reality}%
+\newacronym{dma}{DMA}{Direct Memory Access}%
+\newacronym{mmap}{MMap}{Memory Mapping}%
+\newacronym{regla}{RegLAc}{Register-Level Access}% Kind of a Synonym to [...] Programming
+\newacronym{reglp}{RegLPr}{Register-Level Programming}% Kind of a Synonym to [...] Access
 %--------------------------------------------------------
 % = = = Specific for: Software, Design, Architecture, Paradigm, Development, DevOps, CI/CD
 %________________________________________________________
+\newacronym{sdlc}{SDLC}{Systems Development Life Cycle}%
+\newacronym{devops}{DevOps}{Software Development \& IT Operations}%
+\newacronym{cicd}{CI/CD}{Continuous Integration \& Continuous Delivery/Deployment/Delivery}%
 \newacronym{api}{API}{Application Programming Interface}%
 \newacronym{uri}{URI}{Uniform Resource Identifier}%
 \newacronym{netfunc}{NF}{Network Function}%
@@ -201,8 +168,10 @@
 \newacronym{loc}{LoC}{Lines of Code}%
 \newacronym{mutex}{MutEx}{Mutual Exclusion}%
 \newacronym{dll}{DLL}{Dynamically Loaded Library}%
-\newacronym{oop}{OoP}{Out-of-Process execution}%
+\newacronym{oop}{OoP}{Out-of-Process}% (execution)
 \newacronym{shmem}{ShMem}{Shared-Memory}%
+\newacronym{cli}{CLI}{Command Line Interface}%
+\newacronym{gui}{GUI}{Graphical User Interface}%
 %--------------------------------------------------------
 % = = = Specific for: Network Communication, Distributed Systems
 %________________________________________________________
@@ -253,6 +222,12 @@
 \newacronym{ppm}{PPM}{Parallel Process Migration}%
 \newacronym{checkres}{C/R}{Checkpoint/Restore}%
 \newacronym{pubsub}{Pub/Sub}{Publish-Subscribe}%
+\newacronym{crc}{CRC}{Cyclic Redundancy Check}%
+%--------------------------------------------------------
+% = = = Security
+%________________________________________________________
+\newacronym{denos}{DoS}{Denial-of-Service}%
+\newacronym{ddenos}{DDoS}{Distributed-Denial-of-Service}%
 %--------------------------------------------------------
 % = = = Specific for: Wireless Communication, Radio
 %________________________________________________________
@@ -357,6 +332,7 @@
     textEN={SME},%
     longEN={small or medium-sized enterprise}%
 ]{kmu}{KMU}{kleines oder mittelständiges Unternehmen}%
+%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 %						Akronyme fertig
 %------------------------------------------------------------------------
@@ -375,7 +351,7 @@
 % \newdualentry[glossary options][acronym options]{label}{abbrv}{long}{description}
 % and for the references:
 % Refer to acronym with \gls{label} and the glossary with \gls{gls-label}
-%  -  -  -  -  -  -  -
+%  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 % Example:
 %        \newdualentry%
 %        [%
@@ -406,6 +382,7 @@
 %						Dual Entry Definitions
 %VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 
+%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 %						Dual Entrys fertig
 %-------------------------------------------------------------------------
@@ -419,10 +396,11 @@
 %________________________________________________________________________
 %------------------------------------------------------------------------
 %						Symbols
-%  -  -  -  -  -  -  -
+%  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 %   Nothing too special. Just to treat 'Symbols' separately. Like mathematical notation, physics, chemistry, Greek Letters and such.
 %   Just do as with Glossary-Entries (\newglossaryentry), and specify the Type 'symbol'.
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 \newglossaryentry{sigma}{%
     type=symbol,%
     name={$\sigma$},%
@@ -435,7 +413,73 @@
     sort={Mw},%
     description={Molar mass}%
 }%
+%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 %						Symbols fertig
+%-------------------------------------------------------------------------
+%_________________________________________________________________________
+%
+%
+%
+%
+%
+%________________________________________________________________________
+%------------------------------------------------------------------------
+%				Former Documents
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+\newacronym{appr}{AR}{Application Relation}%
+\newacronym{comr}{CR}{Communication Relation}%
+\newacronym{indeco}{InDeCo}{Interconnection Detachment \& Convergence}%ArchDaemon-Tool: Interconnection
+\newacronym{coma}{CoMa}{Context-Management}%ArchDaemon-Tool: Context-Management
+\newacronym{peac}{PeAc}{Permission \& Access}%ArchDaemon-Tool: Permission & Access
+\newacronym{dynploy}{DynPloy}{Dynamic Deployment}%ArchDaemon-Tool: Dynamic Deployment
+\newacronym{remcon}{RemCon}{Remote Configuration}%ArchDaemon-Tool: Device \& Service Remote Configuration
+\newacronym{coagd}{CAD}{Collective Aggregator Discovery}%DenKrement-Tool: Automatic Self-Organizing Network Device Discovery  (Operates sparsam, kollaborativ)  ("Capacity-aware/Economical, Collaborative Network Device Discovery")
+\newacronym{archdaemon}{ArchDaemon}{Architecture-Daemon}
+\newacronym{ctrllog}{ACL}{Aggregated Control Logic}
+\newacronym{adagent}{ADAg}{ArchDaemon-Agent}
+\newacronym{adaloc}{ADAl}{ArchDaemon-Allocator}%Commissioner, Allocator, Controller, Hub, Pivot
+\newacronym{inserv}{InServ}{Inserted-Service}% Inserted/Infrastrucure Service  |  service, item, component,
+\newacronym{infrserv}{InfrServ}{Infrastructure-Service}% unit, member, extension, addition, attachment, additive
+\newacronym{atserv}{AtServ}{Atop-Service}%
+\newacronym{orcus}{OrCuS}{Organic Customization System}% Culmination, Cumulation
+\newacronym{ore}{ORE}{Organic Runtime Environment}%
+\newacronym{relag}{Agent}{Agent}%
+\newacronym{relorc}{Orc}{Orchestrator}%
+\newacronym{slaag}{SLAAg}{Service Level Agreement Agent}%
+\newacronym{cmdc}{CMDC}{Centralized Mission and Driving Control}%
+\newacronym{dcmod}{DCMod}{Data Collection Module}%
+\newacronym{posmod}{PosMod}{Positioning Module}%
+\newacronym{mts}{MTS}{Map Transformation Stage}%
+\newacronym{sensmod}{SensMod}{Sensing Module}%
+\newacronym{sidr}{SIDR}{Sensor ID Resolver}%
+\newacronym{camod}{CAMod}{Carrier Aggregation Module}%
+\newacronym{muxs}{MuxS}{Multiplexer Stage}%
+\newacronym[plural=CSEs,%
+	firstplural=Carrier State Estimators (CSEs),%
+	longplural=Carrier State Estimators]%
+	{cse}{CSE}{Carrier State Estimator}%
+\newacronym{ca}{CA}{Carrier Aggregator}%
+\newacronym[plural=IAs,%
+	firstplural=Information Anchors (IAs),%
+	longplural=Information Anchors]%
+	{ia}{IA}{Information Anchor}%
+\newacronym{dbmod}{DBMod}{Data Base Module}%
+\newacronym{bui}{BUI}{Base User Interface}%
+\newacronym{bman}{BMan}{Base Manager}%
+\newacronym[plural=DSs,%
+	firstplural=Data Suppliers (DSs),%
+	longplural=Data Suppliers]%
+	{ds}{DS}{Data Supplier}%
+\newacronym[plural=GWs,%
+	firstplural=Gateways (GWs),%
+	longplural=Gateways]%
+	{gw}{GW}{Gateway}%
+\newacronym{auditf}{TTF}{Trust \& Traceability Function}%
+\newacronym{specal}{SASF}{Spectrum Allocation \& Sharing Function}%
+%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+%				Formder Documents Done
 %-------------------------------------------------------------------------
 %_________________________________________________________________________

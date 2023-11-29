@@ -213,6 +213,55 @@
 %
 %
 %
+%
+%=================================
+% Some Label Symbols
+%  (Some use dingbats, which requires LuaLaTeX or the 'pifonts' package
+%================================================
+\newcommand{\labItDefaultA}{\textbullet}%
+\newcommand{\labItDefaultB}{\textbf{--}}%
+\newcommand{\labItDefaultC}{\ast}%
+\newcommand{\labItDefaultD}{\textperiodcentered}%
+%
+\newcommand{\labDKsymDot}{\textperiodcentered}%
+\newcommand{\labDKsymAst}{$\mathrm{\ast}$}%
+\newcommand{\labDKsymPointright}{\raiseC{\scalebox{0.7}{$\pointright$}}}%
+\newcommand{\labDKsymTriangle}{\raisebox{0.3\height}{\scalebox{0.9}{$\triangleright$}}}%
+\newcommand{\labDKsymTriangleBl}{\raiseC{\scalebox{0.7}{$\blacktriangleright$}}}%
+\newcommand{\labDKsymLozenge}{\raiseC{\scalebox{0.65}{$\mathrm{\lozenge}$}}}%
+\newcommand{\labDKsymLozengeBl}{\raiseC{\scalebox{0.65}{$\mathrm{\blacklozenge}$}}}%
+\newcommand{\labDKsymSquare}{\raiseC{\scalebox{0.55}{$\mathrm{\square}$}}}%
+\newcommand{\labDKsymSquareBl}{\raiseC{\scalebox{0.55}{$\mathrm{\blacksquare}$}}}%
+\newcommand{\labDKsymDiamondSplit}{\raiseC{\scalebox{0.7}{\ding{118}}}}%
+\newcommand{\labDKsymCrossA}{\raiseC{\scalebox{0.7}{\ding{103}}}}%
+\newcommand{\labDKsymCrossB}{\raiseC{\scalebox{0.7}{\ding{104}}}}%
+\newcommand{\labDKsymCrossC}{\raiseC{\scalebox{0.7}{\ding{105}}}}%
+\newcommand{\labDKsymCrossD}{\raiseC{\scalebox{0.7}{\ding{106}}}}%
+\newcommand{\labDKsymCrossE}{\raiseC{\scalebox{0.7}{\ding{107}}}}%
+%-------------------------------------------
+% Setting labels (includes margin adjustment
+\SetEnumitemKey{labDKDot}{label=\labDKsymDot,leftmargin=1.0em}%
+\SetEnumitemKey{labDKAst}{label=\labDKsymAst,leftmargin=1.1em}%
+\SetEnumitemKey{labDKPointright}{label=\labDKsymPointright,leftmargin=1.3em}%
+\SetEnumitemKey{labDKTriangle}{label=\labDKsymTriangle,leftmargin=1.2em}%
+\SetEnumitemKey{labDKTriangleBl}{label=\labDKsymTriangleBl,leftmargin=1.25em}%
+\SetEnumitemKey{labDKLozenge}{label=\labDKsymLozenge,leftmargin=1.1em}%
+\SetEnumitemKey{labDKLozengeBl}{label=\labDKsymLozengeBl,leftmargin=1.1em}%
+\SetEnumitemKey{labDKSquare}{label=\labDKsymSquare,leftmargin=1.1em}%
+\SetEnumitemKey{labDKSquareBl}{label=\labDKsymSquareBl,leftmargin=1.1em}%
+\SetEnumitemKey{labDKDiamondSplit}{label=\labDKsymDiamondSplit,leftmargin=1.15em}%
+\SetEnumitemKey{labDKCrossA}{label=\labDKsymCrossA,leftmargin=1.2em}%
+\SetEnumitemKey{labDKCrossB}{label=\labDKsymCrossB,leftmargin=1.2em}%
+\SetEnumitemKey{labDKCrossC}{label=\labDKsymCrossC,leftmargin=1.2em}%
+\SetEnumitemKey{labDKCrossD}{label=\labDKsymCrossD,leftmargin=1.2em}%
+\SetEnumitemKey{labDKCrossE}{label=\labDKsymCrossE,leftmargin=1.2em}%
+%=================================
+% Label Symbols END
+%================================================
+%
+%
+%
+%
 %=================================
 % Presets for Usage as Itemization Label
 %================================================

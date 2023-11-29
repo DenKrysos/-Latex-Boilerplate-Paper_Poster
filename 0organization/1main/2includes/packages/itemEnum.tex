@@ -1,17 +1,16 @@
 %________________________________________________________________________
 %------------------------------------------------------------------------
-%               File Split Notice
+%       Itemization & Enumeration (& Description) Lists
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-%   More inside "./0organization/1main/" in the File "settings_inDocument_perDoc.tex"
-%       (Unique to every single Project)
-%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-%------------------------------------------------------------------------
-%________________________________________________________________________
+\let\labelindent\relax%
+\usepackage[inline]{enumitem}%
 %
 %
 %
 %
 %
+% \makeatletter\AddToHook{begindocument/before}{%
+% }\makeatother%
 %________________________________________________________________________
 %------------------------------------------------------------------------
 %							Setups für enumitem
@@ -69,26 +68,39 @@
 \renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\normalfont\textbf{#1}:}%
 % \renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\normalfont\textit{#1}:}%
 %
+%---------------------------
+% %  List-Style Further Refining
+% - - - - - - - -
+\newlist{itemizeDefault}{itemize}{4}%
+\newlist{enumerateDefault}{enumerate}{4}%
+\setlistdepth{9}%
+%
+\renewlist{itemize}{itemize}{9}%
+\setlist[itemize,1]{label=\textbullet}%
+\setlist[itemize,2]{labDKLozengeBl}%
+\setlist[itemize,3]{labDKTriangleBl}%\ast}
+\setlist[itemize,4]{labDKDiamondSplit}%
+\setlist[itemize,5]{labDKAst}%\textperiodcentered}
+\setlist[itemize,6]{labDKDot}%
+\setlist[itemize,7]{labDKSquareBl}%
+\setlist[itemize,8]{labDKPointright}%
+\setlist[itemize,9]{label=\labItDefaultB}%
+%
+\renewlist{enumerate}{enumerate}{9}%
+\setlist[enumerate,1]{label=\arabic*.}%
+\setlist[enumerate,2]{label=\alph*)}%
+\setlist[enumerate,3]{label=\roman*.}%
+\setlist[enumerate,4]{label=\Alph*)}%
+\setlist[enumerate,5]{label=\Roman*.}%
+\setlist[enumerate,6]{label=(\arabic*)}%
+\setlist[enumerate,7]{label=(\roman*)}%
+\setlist[enumerate,8]{label=(\Roman*)}%
+\setlist[enumerate,9]{label=(\alph*)}%
+%
 %
 % - - Templates
 %       For Templates, have a look into the corresponding File inside the "8templates" Directory
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 %							enumitem fertig
-%------------------------------------------------------------------------
-%________________________________________________________________________
-%
-%
-%
-%
-%
-%________________________________________________________________________
-%------------------------------------------------------------------------
-%							Setups für Glossaries
-%       (Additionally defined cmds/macros are included "pre-Document")
-%       (Additional added keys are included in Preamble, with the package)
-%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-\input{"\DenKrLayoutMainRootDir/3settings/4customization/glossaries_style".tex}%
-%/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-%							Glossaries fertig
 %------------------------------------------------------------------------
 %________________________________________________________________________

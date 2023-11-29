@@ -25,13 +25,25 @@
 %					Part
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 % For creating a "Labeled Paragraph", which looks similar to a Description-List. This essentially just formats the given Text in a uniform way...
-\newcommand{\parLabelBeforeskip}{0.2\baselineskip}%
+\newcommand{\parLabelBeforeskip}{0.34\baselineskip}%
 \newcommand{\parLabelAfterlabelskip}{0.3em}%\enskip\quad\qquad%
-\newcommand{\parLabel}[1]{{%
+\ExplSyntaxOn%
+\DeclareDocumentCommand{\parLabel}{O{} m}{%
+    \group_begin:%
+    {%
+    \keys_set:nn { parLabel } { #1 }
     \vspace{\parLabelBeforeskip}%
-    \bfseries{\color{DenKrColor_LabeledParagraph}#1}:%
+    \bfseries{\color{DenKrColor_LabeledParagraph}#2}\l_parLabel_delim_tl%
     }\hspace*{\parLabelAfterlabelskip}%
+    \group_end:%
 }%
+% Define keys
+\keys_define:nn { parLabel }{%
+  delim .tl_set:N = \l_parLabel_delim_tl,%
+  delim .initial:n = :,%
+  % Add more keys as needed
+}%
+\ExplSyntaxOff%
 %
 %
 %
