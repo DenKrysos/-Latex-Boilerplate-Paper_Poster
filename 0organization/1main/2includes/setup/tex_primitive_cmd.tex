@@ -45,3 +45,19 @@
 %  Ah, well, I know, "ifstrequal" isn't really a tex-primitive... But I always include 'etoolbox' very early on, as one of the first things anyway.
 %------------------------------------------------------------------------
 %========================================================================
+%
+%
+%
+%________________________________________________________________________
+%========================================================================
+% Automatically escapes the underscore '_' for text inside it
+%   USAGE: \escapeus{text_with_underscore}
+\makeatletter%
+\DeclareRobustCommand*{\escapeus}[1]{%
+  \begingroup\@activeus\scantokens{#1\endinput}\endgroup%
+}%
+\begingroup\lccode`\~=`\_\relax%
+   \lowercase{\endgroup\def\@activeus{\catcode`\_=\active \let~\_}}%
+\makeatother%
+%------------------------------------------------------------------------
+%========================================================================

@@ -22,9 +22,12 @@
 %---------------------------
 % %  List-Style Settings
 % - - - - - - - -
-% \renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\normalfont{\color{DenKrColor_DescriptionLabel}\textbf{#1}}:}%
-%\renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\normalfont\textbf{#1}:}%
-\renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\normalfont\textit{#1}:}%
+% \renewcommand{\DenKrDescriptionlabelFont}{\normalfont\bfseries}%
+% \renewcommand{\DenKrDescriptionlabelFont}{\normalfont\color{DenKrColor_DescriptionLabel}\bfseries}%
+\renewcommand{\DenKrDescriptionlabelFont}{\normalfont\itshape}%
+% \renewcommand{\DenKrDescriptionlabelFont}{\normalfont\color{DenKrColor_DescriptionLabel}\itshape}%
+%
+\renewcommand{\DenKrDescriptionlabelFormat}[1]{#1:}%
 %
 % - - Templates
 %       For Templates, have a look into the corresponding File inside the "8templates" Directory

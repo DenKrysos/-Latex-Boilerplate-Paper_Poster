@@ -56,7 +56,7 @@
     topsep=0ex,%
     itemsep=0ex,%
     parsep=0ex,%
-    leftmargin=1em%
+    leftmargin=*,%1em%
 }%
 \setlist[enumerate]{%
     topsep=0ex,%
@@ -64,27 +64,89 @@
     parsep=0ex,%
     leftmargin=1.5em%
 }%
-% \renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\normalfont{\color{DenKrColor_DescriptionLabel}\textbf{#1}}:}%
-\renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\normalfont\textbf{#1}:}%
-% \renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\normalfont\textit{#1}:}%
 %
+\providecommand{\DenKrDescriptionlabelFont}{}%
+\providecommand{\DenKrDescriptionlabelFormat}{}%
+\providecommand{\DenKrDescriptionlabelMake}{}%
+%
+\renewcommand{\DenKrDescriptionlabelFont}{\normalfont\bfseries}%
+% \renewcommand{\DenKrDescriptionlabelFont}{\normalfont\color{DenKrColor_DescriptionLabel}\bfseries}%
+% \renewcommand{\DenKrDescriptionlabelFont}{\normalfont\itshape}%
+% \renewcommand{\DenKrDescriptionlabelFont}{\normalfont\color{DenKrColor_DescriptionLabel}\itshape}%
+%
+\renewcommand{\DenKrDescriptionlabelFormat}[1]{#1:}%
+%
+\renewcommand{\DenKrDescriptionlabelMake}[1]{\DenKrDescriptionlabelFormat{{\DenKrDescriptionlabelFont#1}}}%
+\renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\DenKrDescriptionlabelMake{#1}}%
+%
+%
+%
+%
+%
+%================================================
+% %  Molding some Label-Symbols into Keys
+%=================================
+% The actual symbols are defined in the "2includes/macros.tex"
 %---------------------------
-% %  List-Style Further Refining
+% %  The Default ones
 % - - - - - - - -
+\SetEnumitemKey{labItDefaultA}{label=\textbullet,align=right,leftmargin=*}%
+\SetEnumitemKey{labItDefaultB}{label=\textbf{--},align=right,leftmargin=*}%
+\SetEnumitemKey{labItDefaultC}{label=$\mathrm{\ast}$,align=right,leftmargin=*}%
+\SetEnumitemKey{labItDefaultD}{label=\textperiodcentered,align=right,leftmargin=*}%
+%---------------------------
+% %  My "Prägnanz" Symbols, i.e. are supposed to indicate a rising "Conciseness"
+%    (Their leftmargins are set, so that they align with each other
+% - - - - - - - -
+\SetEnumitemKey{labpragA}{label=\labpragAsym,align=right,leftmargin=1.1em}%1.25em
+\SetEnumitemKey{labpragB}{label=\labpragBsym,align=right,leftmargin=1.1em}%1.3em
+\SetEnumitemKey{labpragC}{label=\labpragCsym,align=right,leftmargin=1.1em}%1.3em
+\SetEnumitemKey{labpragD}{label=\labpragDsym,align=right,leftmargin=1.1em}%1.2em
+\SetEnumitemKey{labpragE}{label=\labpragEsym,align=right,leftmargin=1.1em}%1.3em
+%---------------------------
+% %  Simply some more Symbols, suitable as Itemization Labels
+% - - - - - - - -
+\SetEnumitemKey{labDKBullet}{label=\labDKsymBullet,align=right,leftmargin=*}%1.0em
+\SetEnumitemKey{labDKGeviert}{label=\labDKsymGeviert,align=right,leftmargin=*}%1.0em
+\SetEnumitemKey{labDKAst}{label=\labDKsymAst,align=right,leftmargin=*}%1.0em
+\SetEnumitemKey{labDKDot}{label=\labDKsymDot,align=right,leftmargin=*}%0.9em
+\SetEnumitemKey{labDKOblong}{label=\labDKsymOblong,align=right,leftmargin=*}%
+\SetEnumitemKey{labDKPointright}{label=\labDKsymPointright,align=right,leftmargin=*}%1.3em
+\SetEnumitemKey{labDKTriangle}{label=\labDKsymTriangle,align=right,leftmargin=*}%1.0em
+\SetEnumitemKey{labDKTriangleBl}{label=\labDKsymTriangleBl,align=right,leftmargin=*}%1.05em
+\SetEnumitemKey{labDKRTriCurvedB}{label=\labDKsymRTriCurvedB,align=right,leftmargin=*}%
+\SetEnumitemKey{labDKLozenge}{label=\labDKsymLozenge,align=right,leftmargin=*}%1.0em
+\SetEnumitemKey{labDKLozengeBl}{label=\labDKsymLozengeBl,align=right,leftmargin=*}%1.0em
+\SetEnumitemKey{labDKSquare}{label=\labDKsymSquare,align=right,leftmargin=*}%1.0em
+\SetEnumitemKey{labDKSquareBl}{label=\labDKsymSquareBl,align=right,leftmargin=*}%1.0em
+\SetEnumitemKey{labDKDiamondSplit}{label=\labDKsymDiamondSplit,align=right,leftmargin=*}%1.1em
+\SetEnumitemKey{labDKCrossA}{label=\labDKsymCrossA,align=right,leftmargin=*}%1.1em
+\SetEnumitemKey{labDKCrossB}{label=\labDKsymCrossB,align=right,leftmargin=*}%1.1em
+\SetEnumitemKey{labDKCrossC}{label=\labDKsymCrossC,align=right,leftmargin=*}%1.1em
+\SetEnumitemKey{labDKCrossD}{label=\labDKsymCrossD,align=right,leftmargin=*}%1.1em
+\SetEnumitemKey{labDKCrossE}{label=\labDKsymCrossE,align=right,leftmargin=*}%1.1em
+%
+%
+%
+%
+%
+%================================================
+% %  List-Style Further Refining
+%=================================
 \newlist{itemizeDefault}{itemize}{4}%
 \newlist{enumerateDefault}{enumerate}{4}%
 \setlistdepth{9}%
 %
 \renewlist{itemize}{itemize}{9}%
-\setlist[itemize,1]{label=\textbullet}%
-\setlist[itemize,2]{labDKLozengeBl}%
-\setlist[itemize,3]{labDKTriangleBl}%\ast}
-\setlist[itemize,4]{labDKDiamondSplit}%
-\setlist[itemize,5]{labDKAst}%\textperiodcentered}
-\setlist[itemize,6]{labDKDot}%
-\setlist[itemize,7]{labDKSquareBl}%
-\setlist[itemize,8]{labDKPointright}%
-\setlist[itemize,9]{label=\labItDefaultB}%
+\setlist[itemize,1]{labDKBullet,leftmargin=*}%
+\setlist[itemize,2]{labDKOblong,leftmargin=*}%
+\setlist[itemize,3]{labDKLozengeBl,leftmargin=*}%
+\setlist[itemize,4]{labDKRTriCurvedB,leftmargin=*}%
+\setlist[itemize,5]{labDKDiamondSplit,leftmargin=*}%
+\setlist[itemize,6]{labDKAst,leftmargin=0.9em}%
+\setlist[itemize,7]{labDKSquareBl,leftmargin=*}%
+\setlist[itemize,8]{labDKPointright,leftmargin=1.1em}%
+\setlist[itemize,9]{labDKDot,leftmargin=*}%
 %
 \renewlist{enumerate}{enumerate}{9}%
 \setlist[enumerate,1]{label=\arabic*.}%

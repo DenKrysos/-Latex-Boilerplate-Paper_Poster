@@ -71,16 +71,25 @@
 \newcommand{\typenumnamref}[1]{\numnamref{#1}}%
 % - - - - - - - - - - - - - - - -
 % Nameref with some fancy formatting
+% - - Setup for it
+\newcommand{\formatrefFormat}[1]{{\color{DenKrColor_Highlight_Emerald}#1}}%
+\newcommand{\quotrefFormat}[1]{{\gerguiquotel{#1}}}%
+\newcommand{\formatquotrefFormat}[1]{{\quotrefFormat{\formatrefFormat{#1}}}}%
+% - - The actual referenc cmds
 \newcommand{\formattednamref}[1]{{%
-    \color{DenKrColor_Highlight_Emerald}\nameref{#1}%
+    \formatrefFormat{\nameref{#1}}%
 }}%
 \newcommand{\entityformattednamref}[1]{\formattednamref{#1}}%
 \newcommand{\eleformattednamref}[1]{\formattednamref{#1}}%
 \newcommand{\typeformattednamref}[1]{\formattednamref{#1}}%
+%
+\newcommand{\quotednamref}[1]{{%
+    \quotrefFormat{\nameref{#1}}%
+}}%
 % - - - - - - - - - - - - - - - -
 % The formatted above + quotation
 \newcommand{\formatquotnamref}[1]{%
-    \gerguiquotel{\formattednamref{#1}}%
+    \formatquotrefFormat{\nameref{#1}}%
 }%
 %
 % - - - - - - - - - - - - - - - -

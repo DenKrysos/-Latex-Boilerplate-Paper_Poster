@@ -151,8 +151,12 @@
 \newacronym{areal}{AR}{Augmented Reality}%
 \newacronym{dma}{DMA}{Direct Memory Access}%
 \newacronym{mmap}{MMap}{Memory Mapping}%
+\newacronym{mmio}{MMIO}{Memory Mapped I/O}%
 \newacronym{regla}{RegLAc}{Register-Level Access}% Kind of a Synonym to [...] Programming
 \newacronym{reglp}{RegLPr}{Register-Level Programming}% Kind of a Synonym to [...] Access
+\newacronym{regtl}{RTL}{Register-Transfer Level}% Not to be confused with the upper two
+\newacronym{ipc}{IPC}{Inter-Process Communication}%
+\newacronym{ttl}{TTL}{Time-to-Live}%
 %--------------------------------------------------------
 % = = = Specific for: Software, Design, Architecture, Paradigm, Development, DevOps, CI/CD
 %________________________________________________________
@@ -160,6 +164,7 @@
 \newacronym{devops}{DevOps}{Software Development \& IT Operations}%
 \newacronym{cicd}{CI/CD}{Continuous Integration \& Continuous Delivery/Deployment/Delivery}%
 \newacronym{api}{API}{Application Programming Interface}%
+\newacronym{hci}{HCI}{Human Computer Interaction}%
 \newacronym{uri}{URI}{Uniform Resource Identifier}%
 \newacronym{netfunc}{NF}{Network Function}%
 \newacronym{nfv}{NFV}{Network Function Virtualization}%
@@ -223,6 +228,15 @@
 \newacronym{checkres}{C/R}{Checkpoint/Restore}%
 \newacronym{pubsub}{Pub/Sub}{Publish-Subscribe}%
 \newacronym{crc}{CRC}{Cyclic Redundancy Check}%
+\newglossaryentry{opfl}{%
+	name={OpenFlow},%
+	description={%
+    A communication protocol that allows to configure the control plane of compatible switches and routers to define the behavior of the forwarding plane, i.e. how the forwarding device treats packages.
+    Via that, it enables network controllers to determine the path of packets through a network of switches.
+    It is closely related to the concept of \glstext{sdn}.
+    }%
+}%
+\newacronym{coma}{CoMa}{Context-Management}%
 %--------------------------------------------------------
 % = = = Security
 %________________________________________________________
@@ -399,6 +413,20 @@
 %  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 %   Nothing too special. Just to treat 'Symbols' separately. Like mathematical notation, physics, chemistry, Greek Letters and such.
 %   Just do as with Glossary-Entries (\newglossaryentry), and specify the Type 'symbol'.
+%  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+% Example:
+%        \newglossaryentry{sigma}{%
+%            type=symbol,%
+%            name={$\sigma$},%
+%            sort={sigma},%
+%            description={Surface tension}%
+%        }%
+%        \newglossaryentry{molmass}{%
+%            type=symbol,%
+%            name={$M_w$},%
+%            sort={Mw},%
+%            description={Molar mass}%
+%        }%
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 %VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 \newglossaryentry{sigma}{%
@@ -431,7 +459,7 @@
 \newacronym{appr}{AR}{Application Relation}%
 \newacronym{comr}{CR}{Communication Relation}%
 \newacronym{indeco}{InDeCo}{Interconnection Detachment \& Convergence}%ArchDaemon-Tool: Interconnection
-\newacronym{coma}{CoMa}{Context-Management}%ArchDaemon-Tool: Context-Management
+\newacronym{comad}{CoMaD}{Context-Management Dock}%ArchDaemon-Tool: Context-Management (Module)
 \newacronym{peac}{PeAc}{Permission \& Access}%ArchDaemon-Tool: Permission & Access
 \newacronym{dynploy}{DynPloy}{Dynamic Deployment}%ArchDaemon-Tool: Dynamic Deployment
 \newacronym{remcon}{RemCon}{Remote Configuration}%ArchDaemon-Tool: Device \& Service Remote Configuration
