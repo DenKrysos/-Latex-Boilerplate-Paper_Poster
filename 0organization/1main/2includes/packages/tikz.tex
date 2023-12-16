@@ -14,9 +14,14 @@
 	group=true,%
 	mode=\includestandalonedefaultmode,%
 %	subpreambles=true,%
-% 	build={%
-% 		latexoptions=-interaction=batchmode -shell-escape -jobname ’\buildjobname’%
-% 	},%
+%	build={%
+% 		latexoptions={-interaction=batchmode -shell-escape -jobname \quote\buildjobname\quote},%
+% 		% Default: -interaction=batchmode -shell-escape -jobname \quote \buildjobname \quote
+%		jobname={},%
+% 		% Jobname for build compiler run. Default: \file
+%		command={\latex\space\latexoptions\space\file},%
+% 		% Full build shell command. Default: \latex \space \latexoptions \space \file
+%	},%
 	]{standalone}%
 \usepackage{import}%
 \usepackage{tikz}%

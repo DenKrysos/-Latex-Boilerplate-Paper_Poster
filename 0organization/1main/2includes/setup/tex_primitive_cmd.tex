@@ -61,3 +61,26 @@
 \makeatother%
 %------------------------------------------------------------------------
 %========================================================================
+%
+%
+%
+%________________________________________________________________________
+%========================================================================
+% A Macro for reading a File's Content to a Macro.
+\newcommand{\ReadFileToMacro}[2]{%
+  \providecommand{#1}{}%
+  \IfFileExists{#2}{%
+    \endlinechar=-1\relax%
+    \newread\file%
+    \openin\file=#2%
+    \read\file to\DenKrNestedSrcDirTmpfile%
+    \closein\file%
+    \edef\DenKrNestedSrcDirTmpfile{\DenKrNestedSrcDirTmpfile}%
+    \endlinechar=13\relax%
+  }{}%
+}%
+% USAGE:
+%    \newcommand{\CustomTempFile}{../tmp/DenKrNestedSrcDir.tex}%
+%    \ReadFileToMacro{\DenKrNestedSrcDirTmpfile}{\CustomTempFile}%
+%------------------------------------------------------------------------
+%========================================================================
