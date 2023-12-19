@@ -6,8 +6,8 @@
 \newcommand{\lstJS}[1]{\lstinline[language=DenKr-JavaScript,breaklines=true]$#1$}%
 \newcommand{\lstPY}[1]{\lstinline[language=DenKr-Python,breaklines=true]$#1$}%
 % Colors etc. to get the Eclipse Look
-% \newfontfamily\listingsfont[Scale=0.7]{Courier} 
-% \newfontfamily\listingsfontinline[Scale=0.8]{Courier New} 
+% \newfontfamily\listingsfont[Scale=0.7]{Courier}
+% \newfontfamily\listingsfontinline[Scale=0.8]{Courier New}
 % - - - - - - - - - -
 % Coming from C alike
 \definecolor{eclipse_1_comment}{rgb}{0.12,0.38,0.18}%adjusted, in Eclipse: {0.25, 0.42, 0.30 } = #3F6A4D
@@ -34,8 +34,9 @@
 % Font-Style
 %   Package listings has too hooks 'TextStyle' and 'DisplayStyle' and the switch '\lst@ifdisplaystyle', which can be used for setting a different font size in inline and displayed code listings.
 \makeatletter%
+% \ttfamily, \scriptsize, \listingsfont, \fontsize{11}{13}\selectfont\ttfamily
 \lstdefinestyle{denkrFontStyle}{%
-  basicstyle=% \ttfamily, \scriptsize, \listingsfont, \fontsize{11}{13}\selectfont\ttfamily
+  basicstyle=%
     \lst@ifdisplaystyle%
         \scriptsize%
     \else%
@@ -125,7 +126,7 @@
 %
 % Zusätzliche Hervorherbungen (for every language)
 \lstset{%
-	emph={%  
+	emph={%
     	critical,
     	section
     },%
@@ -210,7 +211,7 @@
         std,
     },%
     morekeywords=[11]{%Foreign Syntax, when typesetting C-alike Pseudo-Code that includes Keywords from another language
-        each, 
+        each,
     },% constructor, iterator
     morekeywords=[12]{%Foreign Syntax 2
         in, of, let, def,
@@ -224,6 +225,7 @@
     },%
     morekeywords=[14]{%Yet some more Keywords
         true, false, True, False, TRUE, FALSE,
+        fail, failure,
         this,
     },%
     morekeywords=[99]{%
@@ -433,7 +435,7 @@
 	morekeywords=[4]{%Types, Objects and related
     	class, export, boolean, throw, implements, import, this, extends
     },%
-	morekeywords=[6]{%Operators. each, constructor, 
+	morekeywords=[6]{%Operators. each, constructor,
     	each, constructor
     },%
 	morekeywords=[7]{%Various Keywords

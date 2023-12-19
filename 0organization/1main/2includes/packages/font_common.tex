@@ -91,6 +91,18 @@
 %________________________________________________________________________
 %               Just some 'enlightening' Info
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+% Some USAGE Info for "BlockQuote"
+% - \blockquote{} only typesets as blockquote, when a certain threshold for the amount of contained text is exceeded. Is the contained text below that amount of words or lines, it typesets as a usual inline-quote.
+% - You can set this threshold via \SetBlockThreshold{}
+% - This is actually a "global setting", meaning that it affects all blockquotes after the command is issued.
+% - But it is of course a scoped value. Hence, you can embrace it in a scope to change only locally and temporary the behavior
+% E.g.:
+%        {
+%        \SetBlockThreshold{0}
+%        \blockquote{Only those who believe in such, en counter their limits!}
+%        }%
+%
+%
 % About the "BlockQuote"
 %    The default for the Environment:
 %			\SetBlockEnvironment{quote}%

@@ -1,14 +1,14 @@
 \ProvidesFile{custom-numeric.bbx}%[2015-02-08 v. biblatex bibliography style]
-
+%
 % Just a small adjust, to get REPORT equivalent formatted...
-
+%
 % =========================== Redefined drivers ==============================
-% for article, book, booklet, inbook, incollection, 
+% for article, book, booklet, inbook, incollection,
 % inproceedings, manual, phdthesis entry types
 % ============================================================================
-
+%
 \RequireBibliographyStyle{numeric}
-  
+%
 \DeclareBibliographyDriver{report}{%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
@@ -53,10 +53,10 @@
   \usebibmacro{addendum+pubstate}%
   \newunit\newblock%
   \usebibmacro{pageref}%
-  \usebibmacro{finentry}}
-  
-  
+  \usebibmacro{finentry}}%
+%
+%
 % =========================== Redefined macroses ==============================
-
-
-\endinput
+%
+%
+\endinput%

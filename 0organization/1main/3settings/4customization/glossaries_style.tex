@@ -170,7 +170,7 @@
  	leftmargin=2em,%
 	itemindent=-2em,%
 }%
-\newglossarystyle{list+crossRef}
+\newglossarystyle{list+crossRef}%
 {% based on list style (adapt as required)
     \setglossarystyle{list}%
     \renewcommand{\glossentry}[2]{%
@@ -184,14 +184,14 @@
         }{}%
     }%
 }%
-\newglossarystyle{list+url}
+\newglossarystyle{list+url}%
 {% based on list style (adapt as required)
   \setglossarystyle{list}%
     \renewcommand{\glossentry}[2]{%
     \item[\glsentryitem{##1}%
-          \glstarget{##1}{\glossentryname{##1}}]
+          \glstarget{##1}{\glossentryname{##1}}]%
        \glossentrydesc{##1}\glspostdescription\space##2%
-    \ifglshasfield{url}{##1}{\glspar
+    \ifglshasfield{url}{##1}{\glspar%
      \glsletentryfield{\thisurl}{##1}{url}%
      \expandafter\url\expandafter{\thisurl}}{}}%
 }%
@@ -216,7 +216,7 @@
             .\space%
             \textit{\DenKrRefLabelAcronyms}: \glstext{\glsentrycrossRef{##1}}%
         }{}%
-        \ifglshasfield{url}{##1}{\glspar
+        \ifglshasfield{url}{##1}{\glspar%
     		\url{\glsentryurl{##1}}}{}%
     	}%
 	\renewcommand*{\subglossentry}[3]{%

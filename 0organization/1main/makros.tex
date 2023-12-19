@@ -523,16 +523,16 @@ m O{Sidenote} O{0pt}%
 % \texorpdfstring{\glstext{#2}}{\glsentrytext{#2}}
 \makeatletter%
 \newcommand{\glstextHead}[1]{%
-    \expandafter\texorpdfstring{\expandafter\glsentrytext{#1}}{\expandafter\glsentrytext{#1}}%
+    \expandafter\texorpdfstring{\expandafter\glsentryshort{#1}}{\expandafter\glsentryshort{#1}}% glsentryshort, glsentrytext
 }%
 \newcommand{\glsdescHead}[1]{%
-    \expandafter\texorpdfstring{\expandafter\glsentrydesc{#1}}{\expandafter\glsentrydesc{#1}}%
+    \expandafter\texorpdfstring{\expandafter\glsentrylong{#1}}{\expandafter\glsentrylong{#1}}% glsentrylong, glsentrydesc
 }%
 \newcommand{\glstextplHead}[1]{%
-    \expandafter\texorpdfstring{\expandafter\glsentryplural{#1}}{\expandafter\glsentryplural{#1}}%
+    \expandafter\texorpdfstring{\expandafter\glsentryshortpl{#1}}{\expandafter\glsentryshortpl{#1}}% glsentryshortpl, glsentryplural
 }%
 \newcommand{\glsdescplHead}[1]{%
-    \expandafter\texorpdfstring{\expandafter\glsentrydescplural{#1}}{\expandafter\glsentrydescplural{#1}}%
+    \expandafter\texorpdfstring{\expandafter\glsentrylongpl{#1}}{\expandafter\glsentrylongpl{#1}}% glsentrylongpl, glsentrydescplural
 }%
 \makeatother%
 %
@@ -544,6 +544,8 @@ m O{Sidenote} O{0pt}%
 \newcommand{\glsInArticle}[1]{%
     \ifglsused{#1}{an}{a}%
 }%
+\providecommand{\glsdescpl}{}%
+\renewcommand{\glsdescpl}[1]{\glslink{#1}{\glsentrylongpl{#1}}}%
 %
 %
 %

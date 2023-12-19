@@ -12,12 +12,12 @@
 % (Silbentrennung)
 % 	Usage: \texttthyph{}
 %<-------------------->
-\makeatletter
-\DeclareRobustCommand\ttfamily
-        {\not@math@alphabet\ttfamily\mathtt
-         \fontfamily\ttdefault\selectfont\hyphenchar\font=-1\relax}
-\makeatother
-\DeclareTextFontCommand{\texttthyph}{\ttfamily\hyphenchar\font=45\relax}
+\makeatletter%
+\DeclareRobustCommand\ttfamily%
+        {\not@math@alphabet\ttfamily\mathtt%
+         \fontfamily\ttdefault\selectfont\hyphenchar\font=-1\relax}%
+\makeatother%
+\DeclareTextFontCommand{\texttthyph}{\ttfamily\hyphenchar\font=45\relax}%
 % Standartmäßig verfügbare Schriftarten:
 % cmtt 	Computer Modern Typewriter (default)
 % lmtt 	Latin Modern
