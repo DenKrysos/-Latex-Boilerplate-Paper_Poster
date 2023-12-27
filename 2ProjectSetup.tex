@@ -100,6 +100,7 @@
 %----------------------------------------------------------------------------------
 \newcommand{\DenKrCompiler}{pdfLaTeX}% LuaLaTeX, pdfLaTeX
 %
+% - Just saying: Activating Japanese-Fonts (or any CJK) introduces some hickups: Increase compilation/loading time. Also: It patches the "listings.sty" package and while doing so introduces a minor bug (as of 2023-12): They forgot a line-end percentage, which adds an additional space before each \lstinline.
 \newcommand{\DenKrJPFont}{1}% 1: Also make Japanese Fonts available  |  0: Don't setup Japanese Fonts
 %
 % correct bad hyphenation here
