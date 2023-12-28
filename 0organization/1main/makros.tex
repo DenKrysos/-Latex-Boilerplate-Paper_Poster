@@ -8,7 +8,7 @@
 %---------------------------------------------
 % Vertically aligning Text of different size
 %---------------------------------------------
-% USAGE Example: 
+% USAGE Example:
 %    \npi
 %    {\LARGE SomeUng --\raiseC{\normalsize -- OtherdgM-- }\raiseT{\normalsize -- OtherdgM-- }\raiseT{\normalsize -- OtherdM}}
 %    \npi
@@ -335,6 +335,16 @@ cycle;%
 \newcommand{\myequalhat}{\mathrel{\widehat{=}}}%
 \newcommand{\myequalhatA}{\mathrel{\stackon[1.5pt]{=}{\stretchto{\scalerel*[\widthof{=}]{\wedge}{\rule{1ex}{3ex}}}{0.5ex}}}}% Would require \usepackage{scalerel,stackengine,amsmath}
 %
+% NOTE on "Hypenation in Compund-Words (i.e. wie explicit dash '-' in-between). Something like: "Compund-Word"
+%   You may know, when you create a compound-word, hyphenation is deactivated for the parts of the compound-word and a line-break can only occur on the dash.
+%   However, the package "babel.sty" provides some special "shorthands" to force a different behavior, but only in some languages, like german.
+%   Howeverever, compiling with LuaLaTeX, one is better of to not use babel, but polyglossia instead.
+%   Howevereverever, polyglossia supports the option "babelshorthands". Pass this to the package and the same shorthands as known from babel are available, and that with every language.
+% - So much for the explanation, tl;dr:
+%   - With pdfLaTeX, usepackage{babel} and then use the macro below
+%   - With LuaLaTex, \usepackage[babelshorthands]{polyglossia} and simply use "=  instead of a plain -
+% -> Then, still an ordinary dash is printend and in additoin, hyphenations on other positions in compound-words, other than the dash are still possible.
+% - - - - - - -
 % Creates an ordinary text-dash ('-'), but with leaving hyphenation active for the joined words
 %  (For this, 'ngerman' has to be defined (possibly unproblematically among others) by babel.sty)
 \newcommand{\hyphdash}{\foreignlanguage{ngerman}{"=}}% Variant for Babel
@@ -622,23 +632,23 @@ m O{Sidenote} O{0pt}%
 % Optionen für fontseries und fontshape:
 % Series, any combination of weight and width is [in theory] possible:
 % weight                    width
-% Ultra Light       ul      Ultra Condensed     uc    
-% Extra Light       el      Extra Condensed     ec    
-% Light             l       Condensed            c      
-% Semi Light        sl      Semi Condensed      sc    
+% Ultra Light       ul      Ultra Condensed     uc
+% Extra Light       el      Extra Condensed     ec
+% Light             l       Condensed            c
+% Semi Light        sl      Semi Condensed      sc
 % Medium (normal)   m
-% Semi Bold         sb      Semi Expanded       sx    
-% Bold              b       Expanded             x 
-% Extra Bold        eb      Extra Expanded      ex 
+% Semi Bold         sb      Semi Expanded       sx
+% Bold              b       Expanded             x
+% Extra Bold        eb      Extra Expanded      ex
 % Ultra Bold        ub      Ultra Expanded      ux
 % %
 % Shape:
-% upright (normal)   n 
+% upright (normal)   n
 % italic             it
-% slanted/oblique    sl 
+% slanted/oblique    sl
 % small caps         sc
 % upright italic     ui
-% outline            ol 
+% outline            ol
 %
 %Inline English
 %Zum anders formatieren von nicht übersetzten, englischen Begriffen
@@ -720,7 +730,7 @@ m O{Sidenote} O{0pt}%
 %________________________________________________________________________
 %
 %
-% 
+%
 %
 %
 %
@@ -766,7 +776,7 @@ m O{Sidenote} O{0pt}%
 % Arg#5 (Optional): Alternatives Caption (TableOfContents usw.)
 % Arg#6: Number of Lines des Caption
 % Arg#7 (Optional): Liste mit folgendem Inhalt. Parameter zu Skalierung und Positionierung
-%			#1: Faktor der Seitenhöhe, der nicht überschritten werden soll 
+%			#1: Faktor der Seitenhöhe, der nicht überschritten werden soll
 %			#2: Faktor der Seitenbreite, der nicht überschritten werden soll
 %			#3: Positionierungsmodus. Bsp.: !ht, !htpb, H
 %	  Beispiel für ein Listen-Format: [1,1,!htp]
