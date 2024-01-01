@@ -232,13 +232,13 @@
     % Check against minimum height/width
     %
     \pgfmathsetlength\pgf@xb{\pgfkeysvalueof{/pgf/minimum width}}%
-    \pgf@xb=.5\pgf@xb%   
+    \pgf@xb=.5\pgf@xb%
     \ifdim\pgf@x<\pgf@xb%
       % yes, too small. Enlarge...
       \pgf@x=\pgf@xb%
     \fi%
     \pgfmathsetlength\pgf@yb{\pgfkeysvalueof{/pgf/minimum height}}%
-    \pgf@yb=.5\pgf@yb%   
+    \pgf@yb=.5\pgf@yb%
     \ifdim\pgf@y<\pgf@yb%
       % yes, too small. Enlarge...
       \pgf@y=\pgf@yb%
@@ -402,7 +402,7 @@
 %
 %
 %===========================
-% Scopenode-Fill -- 
+% Scopenode-Fill --
 % -- A second Variant, the former one does not properly align itself and contained objects, i.e. among others does not allow to be filled (that would set the Filling color plane over the contained objects)
 %===========================
 \makeatletter
@@ -474,7 +474,7 @@
         ,at={#2}%
         ,#3,%
     ]{%
-        \scopenode[ScopenodeInner,name=#1_inner,solid,thin]{%
+        \scopenodeFill[ScopenodeInner,name=#1_inner,solid,thin]{%
             #4%
         }%
         \path($(#1_inner.north west)+(-\ScopenodeInnerSep,\ScopenodeInnerSep)$)--($(#1_inner.south east)+(\ScopenodeInnerSep,-\ScopenodeInnerSep)$);%
@@ -496,3 +496,105 @@
     color(25bp)=(pgftransparent!100)%
 }%
 \pgfdeclarefading{custom fade dissolving ring incline inner}{\pgfuseshading{tikzfadeDissolvingRingInclineInner}}%
+%
+%--------------------
+% Some Fadings for Rectangles
+%--------------------
+% https://tex.stackexchange.com/questions/287869/custom-fading-for-rectangle
+% USAGE EXAMPLE:
+%        \fill[blue] (-1.5,-1.5) rectangle (1.5,1.5);
+%        \node [align=center, rounded corners, fill=white, path fading=rectangle fade] at (0,1) {\small this is text};
+%        \node [align=center, rounded corners, fill=white, path fading=rectangle fading] at (0,.33) {\small this is text};
+%        \node [align=center, rounded corners, fill=white, path fading=rectangular fading] at (0,-.33) {\small this is text};
+%        \node [align=center, rounded corners, fill=white, path fading=rectangular fade] at (0,-1) {\small this is text};
+% - - - - - - - - - -
+% \begin{tikzfadingfrompicture}[name=rectangle fade]%
+%     \foreach\i[evaluate=\i as \k using {1.5-\i/100}]in{0,1,...,100}\path[fill=white!\i!black] (-\k,-\k)rectangle(\k,\k);%
+% \end{tikzfadingfrompicture}%
+% \begin{tikzfadingfrompicture}[name=rectangle fading]%
+%   \foreach\i[evaluate=\i as \k using {1.25-\i/100}]in{0,1,...,100}\path[fill=white!\i!black] (-\k,-\k)rectangle(\k,\k);%
+% \end{tikzfadingfrompicture}%
+% \pgfdeclarefading{rectangular fading}{%
+%   \tikz{%
+%     \shade[bottom color=pgftransparent!100,top color=pgftransparent!0](0,0)--(1,-1)--(-1,-1)--cycle;%
+%     \shade[bottom color=pgftransparent!0,top color=pgftransparent!100](0,0)--(-1,1)--(1,1)--cycle;%
+%     \shade[right color=pgftransparent!0,left color=pgftransparent!100](0,0)--(-1,1)--(-1,-1)--cycle;%
+%     \shade[right color=pgftransparent!100,left color=pgftransparent!0](0,0)--(1,1)--(1,-1)--cycle;%
+%   }%
+% }%
+% \pgfdeclarefading{rectangular fade}{%
+%   \tikz{%
+%     \shade[bottom color=pgftransparent!100,top color=pgftransparent!0,middle color=pgftransparent!0](0,0)--(1,-1)--(-1,-1)--cycle;%
+%     \shade[bottom color=pgftransparent!0,top color=pgftransparent!100,middle color=pgftransparent!0](0,0)--(-1,1)--(1,1)--cycle;%
+%     \shade[right color=pgftransparent!0,left color=pgftransparent!100,middle color=pgftransparent!0](0,0)--(-1,1)--(-1,-1)--cycle;%
+%     \shade[right color=pgftransparent!100,left color=pgftransparent!0,middle color=pgftransparent!0](0,0)--(1,1)--(1,-1)--cycle;%
+%     \draw[pgftransparent!0](-.5,.5)--(.5,-.5)(-.5,-.5)--(.5,.5);%
+%   }%
+% }%
+%
+%
+%
+%
+%===========================
+%==  Blur Shadow via Preaction  =====
+%===========================
+% ToDo: THIS IS NOT WORKING (yet)
+%  Because freakin' transform canvas is required to modify a path within preaction and this stupid messes up positioning when doing shit like scaling or rotation
+% \tikzset{%
+%     DenKrPreBlurShadowLoop/.style={%
+%         DenKrPreBlurShadowLoopStep/.list={#1}%
+%     },%
+%     % 1: xshift, 2: yshift, 3: opacity, 4: color, 5: Scaling
+%     % E.g.: DenKrPreBlurShadowLoop={4ex/4ex/1/blue/1,2ex/2ex/1/green/1},%
+%     DenKrPreBlurShadowLoopStep/.code args={#1/#2/#3/#4/#5}{%
+%         \tikzset{%
+%             preaction={%
+%                 fill=#4,%
+%                 opacity=#3,%
+%                 transform canvas={%
+%                     xshift=#1,yshift=#2,%
+%                     scale=#5%
+%                 }%
+%     }}},%
+%     % 1: XShift, 2: YShift, 3: Opacity, 4: Color
+%     DenKrPreBlurShadowUpDown/.code n args={4}{%
+%         \tikzset{%
+%             DenKrPreBlurShadowLoop={%
+%                 #1/#2/#3*0.1/blue/1,%
+%                 % #1/#2/#3*0.1/#4/0.95,%
+%                 % #1/#2/#3*0.1/#4/0.9,%
+%                 0.85*#1/0.85*#2/#3*0.1/red/0.85%
+%             },%
+%         }%
+%     },%
+%     DenKrPreBlurShadowUp/shift/.initial=0,%
+%     DenKrPreBlurShadowUp/opacity/.initial=1,%
+%     DenKrPreBlurShadowUp/color/.initial=black,%
+%     % 1: XYShift, 2: Opacity, 3: Color
+%     DenKrPreBlurShadowUp/.code={%
+%         \pgfqkeys{/tikz/DenKrPreBlurShadowUp}{#1}%
+%         \pgfkeysgetvalue{/tikz/DenKrPreBlurShadowUp/shift}{\tmpShift}%
+%         \pgfkeysgetvalue{/tikz/DenKrPreBlurShadowUp/opacity}{\tmpOpacity}%
+%         \pgfkeysgetvalue{/tikz/DenKrPreBlurShadowUp/color}{\tmpColor}%
+%         \tikzset{%
+%             DenKrPreBlurShadowUpDown={\tmpShift}{\tmpShift}{\tmpOpacity}{\tmpColor}%
+%         }%
+%     },%
+%     DenKrPreBlurShadowDown/shift/.initial=0,%
+%     DenKrPreBlurShadowDown/opacity/.initial=1,%
+%     DenKrPreBlurShadowDown/color/.initial=black,%
+%     % 1: XYShift, 2: Opacity, 3: Color
+%     DenKrPreBlurShadowDown/.code={%
+%         \pgfqkeys{/tikz/DenKrPreBlurShadowDown}{#1}%
+%         \pgfkeysgetvalue{/tikz/DenKrPreBlurShadowDown/shift}{\tmpShift}%
+%         \pgfkeysgetvalue{/tikz/DenKrPreBlurShadowDown/opacity}{\tmpOpacity}%
+%         \pgfkeysgetvalue{/tikz/DenKrPreBlurShadowDown/color}{\tmpColor}%
+%         \tikzset{%
+%             DenKrPreBlurShadowUpDown={\tmpShift}{-\tmpShift}{\tmpOpacity}{\tmpColor}%
+%         }%
+%     },%
+% }%
+% \tikzstyle{SelectedDenKrShadow}=[%
+%     % DenKrPreBlurShadowLoop={4ex/4ex/1/blue,2ex/2ex/1/green},%
+%     DenKrPreBlurShadowUp={shift=2ex,color=black},%
+% ]%

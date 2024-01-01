@@ -8,6 +8,66 @@
 %
 %
 %
+%#1 Positioning Method:
+%    1 - Custom. Give it a complete and exact Position in 'Position'
+%    2 - Start of a Line (manually). Positions it 'south west' of the given Node in 'Position'. (Also sets the Prev-Line-Cache)
+%    3 - Automatic New-Line. It caches the node at the Front, when starting a new-Line and also uses the cached one.
+%    4 - Any in a Line (manually). Positions it 'north east' of the given Node in 'Position'
+%    5 - Automatic Next-in-Line.
+%#2 Color, without Prefix
+%#3 Position
+%#4 Prefix for Color-Palette
+%#5 Node-Width
+\newcommand{\DrawBoxColorReference}[5]{%
+    \def\colorPrefix{#4}%
+    %
+    \ifnumcomp{1}{=}{#1}{%
+        \def\posAt{#3}%
+    }{\ifnumcomp{3}{=}{#1}{%
+        \def\posAt{(\colorPrefix}%
+        \appto\posAt{\cacheNL}%
+        \appto\posAt{.south west)}%
+    }{%
+        \ifnumcomp{5}{=}{#1}{%
+            \def\posAt{(\colorPrefix}%
+            \appto\posAt{\cachePrevNode}%
+            \appto\posAt{.north east)}%
+        }{%
+            \def\posAt{(\colorPrefix}%
+            \appto\posAt{#3}%
+            \ifnumcomp{2}{=}{#1}{%
+                \appto\posAt{.south west}%
+            }{\ifnumcomp{4}{=}{#1}{%
+                \appto\posAt{.north east}%
+            }{}}%
+            \appto\posAt{)}%
+        }%
+    }}%
+    %
+    \def\colorName{\colorPrefix}%
+    \appto\colorName{#2}%
+    %
+    \node(\colorName)[line width=0pt,anchor=north west,draw=none,fill=\colorName,minimum width=#5,minimum height=10ex]at\posAt{%
+        \bfseries%
+        \contourlength{0.12em}%
+        \contour{white}{\textcolor{black}{#2}}%
+    };%
+    %
+    \def\cachePrevNode{#2}%
+    \ifnumcomp{4}{=}{#1}{%
+        %
+    }{\ifnumcomp{3}{=}{#1}{%
+        \def\cacheNL{#2}%
+    }{\ifnumcomp{2}{=}{#1}{%
+        \def\cacheNL{#2}%
+    }{\ifnumcomp{1}{=}{#1}{%
+        %
+    }{}}}}%
+}%
+%
+%
+%
+%
 \begin{tikzpicture}[%
 	scale = 1.0,%Könnte das Makro \tikzpicturescale sein. Siehe in makros.tex
 	% (Sollte eigentlich übergeben werden)(Beachte Möglichkeiten der Übergabe;
@@ -96,54 +156,79 @@
     | <PalettePrefix>: \texttt{Contrast}\\
     | Example:  \textcolor{Contrast_Lime}{\bfseries Contrast\_Lime}  |  \textcolor{Contrast_Violet}{\bfseries Contrast\_Violet}
 };
-%#1 Color, without Prefix
-%#2 Position
-\newcommand{\contrastDrawBox}[2]{%
-    \def\colorName{Contrast_}%
-    \appto\colorName{#1}%
-    %
-    \node(\colorName)[line width=0pt,anchor=north west,draw=none,fill=\colorName,minimum width=8em,minimum height=10ex]at(#2){%
-        \bfseries%
-        \contourlength{0.12em}%
-        \contour{white}{\textcolor{black}{#1}}%
-    };%
+% Arguments: The first three from "\DrawBoxColorReference" above
+\newcommand{\contrastDrawBox}[3]{%
+    \DrawBoxColorReference{#1}{#2}{#3}{Contrast_}{8em}%
 }%
-\contrastDrawBox{RedDark}{$(Contrast_desc2.south west)+(0,-0.5cm)$}%
-\contrastDrawBox{Red}{$(Contrast_RedDark.north east)+(0,0)$}%
-\contrastDrawBox{Orange}{$(Contrast_Red.north east)+(0,0)$}%
-\contrastDrawBox{OrangeLight}{$(Contrast_Orange.north east)+(0,0)$}%
+\contrastDrawBox{1}{RedDark}{($(Contrast_desc2.south west)+(0,-0.5cm)$)}%
+\contrastDrawBox{5}{Red}{}%
+\contrastDrawBox{5}{Orange}{}%
+\contrastDrawBox{5}{OrangeLight}{}%
+\contrastDrawBox{5}{Coral}{}%
+\contrastDrawBox{5}{Salmon}{}%
 %
-\contrastDrawBox{BlueDark}{$(Contrast_RedDark.south west)+(0,0)$}%
-\contrastDrawBox{Blue}{$(Contrast_BlueDark.north east)+(0,0)$}%
-\contrastDrawBox{BlueRoyal}{$(Contrast_Blue.north east)+(0,0)$}%
-\contrastDrawBox{BlueLight}{$(Contrast_BlueRoyal.north east)+(0,0)$}%
-\contrastDrawBox{BlueGray}{$(Contrast_BlueLight.north east)+(0,0)$}%
+\contrastDrawBox{2}{CrimsonDark}{RedDark}%
+\contrastDrawBox{5}{Crimson}{}%
 %
-\contrastDrawBox{GreenDark}{$(Contrast_BlueDark.south west)+(0,0)$}%
-\contrastDrawBox{Green}{$(Contrast_GreenDark.north east)+(0,0)$}%
-\contrastDrawBox{GreenLight}{$(Contrast_Green.north east)+(0,0)$}%
-\contrastDrawBox{Lime}{$(Contrast_GreenLight.north east)+(0,0)$}%
-\contrastDrawBox{GreenYellow}{$(Contrast_Lime.north east)+(0,0)$}%
+\contrastDrawBox{3}{BlueDark}{}%
+\contrastDrawBox{5}{Blue}{}%
+\contrastDrawBox{5}{BlueRoyal}{}%
+\contrastDrawBox{5}{BlueLight}{}%
+\contrastDrawBox{5}{BlueGray}{}%
 %
-\contrastDrawBox{Yellow}{$(Contrast_GreenDark.south west)+(0,0)$}%
-\contrastDrawBox{YellowLight}{$(Contrast_Yellow.north east)+(0,0)$}%
-\contrastDrawBox{YellowLightL}{$(Contrast_YellowLight.north east)+(0,0)$}%
+\contrastDrawBox{3}{BlueFlax}{}%
+\contrastDrawBox{5}{Aqua}{}%
+\contrastDrawBox{5}{Turquoise}{}%
 %
-\contrastDrawBox{Beige}{$(Contrast_Yellow.south west)+(0,0)$}%
-\contrastDrawBox{BeigeLight}{$(Contrast_Beige.north east)+(0,0)$}%
-\contrastDrawBox{BeigeLightL}{$(Contrast_BeigeLight.north east)+(0,0)$}%
-\contrastDrawBox{eggShell}{$(Contrast_BeigeLightL.north east)+(0,0)$}%
+\contrastDrawBox{3}{GreenDark}{}%
+\contrastDrawBox{5}{Green}{}%
+\contrastDrawBox{5}{GreenLight}{}%
+\contrastDrawBox{5}{Lime}{}%
+\contrastDrawBox{5}{GreenYellow}{}%
 %
-\contrastDrawBox{Brown}{$(Contrast_Beige.south west)+(0,0)$}%
-\contrastDrawBox{Khaki}{$(Contrast_Brown.north east)+(0,0)$}%
-\contrastDrawBox{KhakiLight}{$(Contrast_Khaki.north east)+(0,0)$}%
-\contrastDrawBox{PinkLight}{$(Contrast_KhakiLight.north east)+(0,0)$}%
+\contrastDrawBox{3}{Gold}{}%
+\contrastDrawBox{5}{Yellow}{}%
+\contrastDrawBox{5}{Goldenrod}{}%
+\contrastDrawBox{5}{YellowPale}{}%
 %
-\contrastDrawBox{Violet}{$(Contrast_Brown.south west)+(0,0)$}%
-\contrastDrawBox{Purple}{$(Contrast_Violet.north east)+(0,0)$}%
+\contrastDrawBox{3}{Brown}{}%
+\contrastDrawBox{5}{Chocolate}{}%
+\contrastDrawBox{5}{Wood}{}%
+\contrastDrawBox{5}{Khaki}{}%
+\contrastDrawBox{5}{KhakiLight}{}%
 %
-\contrastDrawBox{Gray}{$(Contrast_Violet.south west)+(0,0)$}%
-\contrastDrawBox{GrayLight}{$(Contrast_Gray.north east)+(0,0)$}%
+\contrastDrawBox{3}{Beige}{}%
+\contrastDrawBox{5}{BeigeLight}{}%
+\contrastDrawBox{5}{BeigeLightL}{}%
+\contrastDrawBox{5}{eggShell}{}%
+%
+\contrastDrawBox{3}{Orchid}{}%
+\contrastDrawBox{5}{Plum}{}%
+\contrastDrawBox{5}{PinkLight}{}%
+\contrastDrawBox{5}{Lavender}{}%
+\contrastDrawBox{5}{Pansy}{}%
+%
+\contrastDrawBox{3}{Indigo}{}%
+\contrastDrawBox{5}{IndigoLight}{}%
+\contrastDrawBox{5}{IndigoLightL}{}%
+\contrastDrawBox{3}{Violet}{}%
+\contrastDrawBox{5}{VioletLight}{}%
+\contrastDrawBox{5}{VioletLightL}{}%
+\contrastDrawBox{3}{Purple}{}%
+\contrastDrawBox{5}{PurpleLight}{}%
+\contrastDrawBox{5}{PurpleLightL}{}%
+\contrastDrawBox{3}{Tyrian}{}%
+\contrastDrawBox{5}{TyrianLight}{}%
+\contrastDrawBox{5}{TyrianLightL}{}%
+%
+\contrastDrawBox{3}{Gray}{}%
+\contrastDrawBox{5}{GrayLight}{}%
+%
+%
+\node(Contrast_title_alt)[anchor=north west]at($(Contrast_Gray.south west)+(0,-0.5cm)$){Palette Contrast-Optimized (Additional Colors)};
+%
+\contrastDrawBox{1}{Orchid2}{($(Contrast_title_alt.south west)+(0,-0.5cm)$)}%
+\contrastDrawBox{5}{Orchid3}{Orchid2}%
 %
 %
 %
@@ -153,185 +238,182 @@
 %
 %
 %
-\node(HTML_title)[anchor=north west]at($(PST_title.south west)+(0,-25cm)$){Palette for HTML/CSS Color-Names};
+\node(HTML_title)[anchor=north west]at($(PST_title.south west)+(0,-30cm)$){Palette for HTML/CSS Color-Names};
 \node(HTML_desc1)[anchor=north west]at($(HTML_title.south west)+(0,0)$){Color-Name: <PalettePrefix>\_<ColorName>};
 \node(HTML_desc2)[anchor=north west,align=left]at($(HTML_desc1.south west)+(0,0)$){
     | <PalettePrefix>: \texttt{HTML}\\
     | Example:  \textcolor{HTML_MediumVioletRed}{\bfseries HTML\_MediumVioletRed}  |  \textcolor{HTML_MediumAquamarine}{\bfseries HTML\_MediumAquamarine}
 };
-%#1 Color, without Prefix
-%#2 Position
-\newcommand{\HTMLDrawBox}[2]{%
-    \def\colorName{HTML_}%
-    \appto\colorName{#1}%
-    %
-    \node(\colorName)[line width=0pt,anchor=north west,draw=none,fill=\colorName,minimum width=10em,minimum height=10ex]at(#2){%
-        \bfseries%
-        \contourlength{0.12em}%
-        \contour{white}{\textcolor{black}{#1}}%
-    };%
+%#1 Positioning Method:
+%    1 - Custom. Give it a complete and exact Position in 'Position'
+%    2 - Start of a Line (manually). Positions it 'south west' of the given Node in 'Position'. (Also sets the Prev-Line-Cache)
+%    3 - Automatic New-Line. It caches the node at the Front, when starting a new-Line and also uses the cached one.
+%    4 - Any in a Line. Positions it 'north east' of the given Node in 'Position'
+%#2 Color, without Prefix
+%#3 Position
+\newcommand{\HTMLDrawBox}[3]{%
+    \DrawBoxColorReference{#1}{#2}{#3}{HTML_}{10em}%
 }%
 % Red HTML Color Names
-\HTMLDrawBox{IndianRed}{$(HTML_desc2.south west)+(0,-0.5cm)$}%
-\HTMLDrawBox{LightCoral}{$(HTML_IndianRed.north east)+(0,0)$}%
-\HTMLDrawBox{Salmon}{$(HTML_LightCoral.north east)+(0,0)$}%
-\HTMLDrawBox{DarkSalmon}{$(HTML_Salmon.north east)+(0,0)$}%
-\HTMLDrawBox{LightSalmon}{$(HTML_DarkSalmon.north east)+(0,0)$}%
-\HTMLDrawBox{Crimson}{$(HTML_LightSalmon.north east)+(0,0)$}%
-\HTMLDrawBox{Red}{$(HTML_Crimson.north east)+(0,0)$}%
-\HTMLDrawBox{FireBrick}{$(HTML_Red.north east)+(0,0)$}%
-\HTMLDrawBox{DarkRed}{$(HTML_FireBrick.north east)+(0,0)$}%
+\HTMLDrawBox{1}{IndianRed}{($(HTML_desc2.south west)+(0,-0.5cm)$)}%
+\HTMLDrawBox{5}{LightCoral}{}%
+\HTMLDrawBox{5}{Salmon}{}%
+\HTMLDrawBox{5}{DarkSalmon}{}%
+\HTMLDrawBox{5}{LightSalmon}{}%
+\HTMLDrawBox{5}{Crimson}{}%
+\HTMLDrawBox{5}{Red}{}%
+\HTMLDrawBox{5}{FireBrick}{}%
+\HTMLDrawBox{5}{DarkRed}{}%
 % Pink HTML Color Names
-\HTMLDrawBox{Pink}{$(HTML_IndianRed.south west)+(0,0)$}%
-\HTMLDrawBox{LightPink}{$(HTML_Pink.north east)+(0,0)$}%
-\HTMLDrawBox{HotPink}{$(HTML_LightPink.north east)+(0,0)$}%
-\HTMLDrawBox{DeepPink}{$(HTML_HotPink.north east)+(0,0)$}%
-\HTMLDrawBox{MediumVioletRed}{$(HTML_DeepPink.north east)+(0,0)$}%
-\HTMLDrawBox{PaleVioletRed}{$(HTML_MediumVioletRed.north east)+(0,0)$}%
+\HTMLDrawBox{2}{Pink}{IndianRed}%
+\HTMLDrawBox{5}{LightPink}{}%
+\HTMLDrawBox{5}{HotPink}{}%
+\HTMLDrawBox{5}{DeepPink}{}%
+\HTMLDrawBox{5}{MediumVioletRed}{}%
+\HTMLDrawBox{5}{PaleVioletRed}{}%
 % Orange HTML Color Names
-\HTMLDrawBox{LightSalmon}{$(HTML_Pink.south west)+(0,0)$}%
-\HTMLDrawBox{Coral}{$(HTML_LightSalmon.north east)+(0,0)$}%
-\HTMLDrawBox{Tomato}{$(HTML_Coral.north east)+(0,0)$}%
-\HTMLDrawBox{OrangeRed}{$(HTML_Tomato.north east)+(0,0)$}%
-\HTMLDrawBox{DarkOrange}{$(HTML_OrangeRed.north east)+(0,0)$}%
-\HTMLDrawBox{Orange}{$(HTML_DarkOrange.north east)+(0,0)$}%
+\HTMLDrawBox{3}{Coral}{}%
+\HTMLDrawBox{5}{Tomato}{}%
+\HTMLDrawBox{5}{OrangeRed}{}%
+\HTMLDrawBox{5}{DarkOrange}{}%
+\HTMLDrawBox{5}{Orange}{}%
 % Yellow HTML Color Names
-\HTMLDrawBox{Gold}{$(HTML_LightSalmon.south west)+(0,0)$}%
-\HTMLDrawBox{Yellow}{$(HTML_Gold.north east)+(0,0)$}%
-\HTMLDrawBox{LightYellow}{$(HTML_Yellow.north east)+(0,0)$}%
-\HTMLDrawBox{LemonChiffon}{$(HTML_LightYellow.north east)+(0,0)$}%
-\HTMLDrawBox{LightGoldenrodYellow}{$(HTML_LemonChiffon.north east)+(0,0)$}%
-\HTMLDrawBox{PapayaWhip}{$(HTML_LightGoldenrodYellow.north east)+(0,0)$}%
+\HTMLDrawBox{3}{Gold}{}%
+\HTMLDrawBox{5}{Yellow}{}%
+\HTMLDrawBox{5}{LightYellow}{}%
+\HTMLDrawBox{5}{LemonChiffon}{}%
+\HTMLDrawBox{5}{LightGoldenrodYellow}{}%
+\HTMLDrawBox{5}{PapayaWhip}{}%
 %
-\HTMLDrawBox{Moccasin}{$(HTML_Gold.south west)+(0,0)$}%
-\HTMLDrawBox{PeachPuff}{$(HTML_Moccasin.north east)+(0,0)$}%
-\HTMLDrawBox{PaleGoldenrod}{$(HTML_PeachPuff.north east)+(0,0)$}%
-\HTMLDrawBox{Khaki}{$(HTML_PaleGoldenrod.north east)+(0,0)$}%
-\HTMLDrawBox{DarkKhaki}{$(HTML_Khaki.north east)+(0,0)$}%
+\HTMLDrawBox{3}{Moccasin}{}%
+\HTMLDrawBox{5}{PeachPuff}{}%
+\HTMLDrawBox{5}{PaleGoldenrod}{}%
+\HTMLDrawBox{5}{Khaki}{}%
+\HTMLDrawBox{5}{DarkKhaki}{}%
 % Purple HTML Color Names
-\HTMLDrawBox{Lavender}{$(HTML_Moccasin.south west)+(0,0)$}%
-\HTMLDrawBox{Thistle}{$(HTML_Lavender.north east)+(0,0)$}%
-\HTMLDrawBox{Plum}{$(HTML_Thistle.north east)+(0,0)$}%
-\HTMLDrawBox{Violet}{$(HTML_Plum.north east)+(0,0)$}%
-\HTMLDrawBox{Orchid}{$(HTML_Violet.north east)+(0,0)$}%
-\HTMLDrawBox{Fuchsia}{$(HTML_Orchid.north east)+(0,0)$}%
-\HTMLDrawBox{Magenta}{$(HTML_Fuchsia.north east)+(0,0)$}%
-\HTMLDrawBox{MediumOrchid}{$(HTML_Magenta.north east)+(0,0)$}%
-\HTMLDrawBox{MediumPurple}{$(HTML_MediumOrchid.north east)+(0,0)$}%
-\HTMLDrawBox{RebeccaPurple}{$(HTML_MediumPurple.north east)+(0,0)$}%
+\HTMLDrawBox{3}{Lavender}{}%
+\HTMLDrawBox{5}{Thistle}{}%
+\HTMLDrawBox{5}{Plum}{}%
+\HTMLDrawBox{5}{Violet}{}%
+\HTMLDrawBox{5}{Orchid}{}%
+\HTMLDrawBox{5}{Fuchsia}{}%
+\HTMLDrawBox{5}{Magenta}{}%
+\HTMLDrawBox{5}{MediumOrchid}{}%
+\HTMLDrawBox{5}{MediumPurple}{}%
+\HTMLDrawBox{5}{RebeccaPurple}{}%
 %
-\HTMLDrawBox{BlueViolet}{$(HTML_Lavender.south west)+(0,0)$}%
-\HTMLDrawBox{DarkViolet}{$(HTML_BlueViolet.north east)+(0,0)$}%
-\HTMLDrawBox{DarkOrchid}{$(HTML_DarkViolet.north east)+(0,0)$}%
-\HTMLDrawBox{DarkMagenta}{$(HTML_DarkOrchid.north east)+(0,0)$}%
-\HTMLDrawBox{Purple}{$(HTML_DarkMagenta.north east)+(0,0)$}%
-\HTMLDrawBox{Indigo}{$(HTML_Purple.north east)+(0,0)$}%
-\HTMLDrawBox{SlateBlue}{$(HTML_Indigo.north east)+(0,0)$}%
-\HTMLDrawBox{DarkSlateBlue}{$(HTML_SlateBlue.north east)+(0,0)$}%
-\HTMLDrawBox{MediumSlateBlue}{$(HTML_DarkSlateBlue.north east)+(0,0)$}%
+\HTMLDrawBox{3}{BlueViolet}{}%
+\HTMLDrawBox{5}{DarkViolet}{}%
+\HTMLDrawBox{5}{DarkOrchid}{}%
+\HTMLDrawBox{5}{DarkMagenta}{}%
+\HTMLDrawBox{5}{Purple}{}%
+\HTMLDrawBox{5}{Indigo}{}%
+\HTMLDrawBox{5}{SlateBlue}{}%
+\HTMLDrawBox{5}{DarkSlateBlue}{}%
+\HTMLDrawBox{5}{MediumSlateBlue}{}%
 % Green HTML Color Names
-\HTMLDrawBox{GreenYellow}{$(HTML_BlueViolet.south west)+(0,0)$}%
-\HTMLDrawBox{Chartreuse}{$(HTML_GreenYellow.north east)+(0,0)$}%
-\HTMLDrawBox{LawnGreen}{$(HTML_Chartreuse.north east)+(0,0)$}%
-\HTMLDrawBox{Lime}{$(HTML_LawnGreen.north east)+(0,0)$}%
-\HTMLDrawBox{LimeGreen}{$(HTML_Lime.north east)+(0,0)$}%
-\HTMLDrawBox{PaleGreen}{$(HTML_LimeGreen.north east)+(0,0)$}%
-\HTMLDrawBox{LightGreen}{$(HTML_PaleGreen.north east)+(0,0)$}%
-\HTMLDrawBox{MediumSpringGreen}{$(HTML_LightGreen.north east)+(0,0)$}%
+\HTMLDrawBox{3}{GreenYellow}{}%
+\HTMLDrawBox{5}{Chartreuse}{}%
+\HTMLDrawBox{5}{LawnGreen}{}%
+\HTMLDrawBox{5}{Lime}{}%
+\HTMLDrawBox{5}{LimeGreen}{}%
+\HTMLDrawBox{5}{PaleGreen}{}%
+\HTMLDrawBox{5}{LightGreen}{}%
+\HTMLDrawBox{5}{MediumSpringGreen}{}%
 %
-\HTMLDrawBox{SpringGreen}{$(HTML_GreenYellow.south west)+(0,0)$}%
-\HTMLDrawBox{MediumSeaGreen}{$(HTML_SpringGreen.north east)+(0,0)$}%
-\HTMLDrawBox{SeaGreen}{$(HTML_MediumSeaGreen.north east)+(0,0)$}%
-\HTMLDrawBox{ForestGreen}{$(HTML_SeaGreen.north east)+(0,0)$}%
-\HTMLDrawBox{Green}{$(HTML_ForestGreen.north east)+(0,0)$}%
-\HTMLDrawBox{DarkGreen}{$(HTML_Green.north east)+(0,0)$}%
-\HTMLDrawBox{YellowGreen}{$(HTML_DarkGreen.north east)+(0,0)$}%
-\HTMLDrawBox{OliveDrab}{$(HTML_YellowGreen.north east)+(0,0)$}%
+\HTMLDrawBox{3}{SpringGreen}{}%
+\HTMLDrawBox{5}{MediumSeaGreen}{}%
+\HTMLDrawBox{5}{SeaGreen}{}%
+\HTMLDrawBox{5}{ForestGreen}{}%
+\HTMLDrawBox{5}{Green}{}%
+\HTMLDrawBox{5}{DarkGreen}{}%
+\HTMLDrawBox{5}{YellowGreen}{}%
+\HTMLDrawBox{5}{OliveDrab}{}%
 %
-\HTMLDrawBox{Olive}{$(HTML_SpringGreen.south west)+(0,0)$}%
-\HTMLDrawBox{DarkOliveGreen}{$(HTML_Olive.north east)+(0,0)$}%
-\HTMLDrawBox{MediumAquamarine}{$(HTML_DarkOliveGreen.north east)+(0,0)$}%
-\HTMLDrawBox{DarkSeaGreen}{$(HTML_MediumAquamarine.north east)+(0,0)$}%
-\HTMLDrawBox{LightSeaGreen}{$(HTML_DarkSeaGreen.north east)+(0,0)$}%
-\HTMLDrawBox{DarkCyan}{$(HTML_LightSeaGreen.north east)+(0,0)$}%
-\HTMLDrawBox{Teal}{$(HTML_DarkCyan.north east)+(0,0)$}%
+\HTMLDrawBox{3}{Olive}{}%
+\HTMLDrawBox{5}{DarkOliveGreen}{}%
+\HTMLDrawBox{5}{MediumAquamarine}{}%
+\HTMLDrawBox{5}{DarkSeaGreen}{}%
+\HTMLDrawBox{5}{LightSeaGreen}{}%
+\HTMLDrawBox{5}{DarkCyan}{}%
+\HTMLDrawBox{5}{Teal}{}%
 % Blue HTML Color Names
-\HTMLDrawBox{Aqua}{$(HTML_Olive.south west)+(0,0)$}%
-\HTMLDrawBox{Cyan}{$(HTML_Aqua.north east)+(0,0)$}%
-\HTMLDrawBox{LightCyan}{$(HTML_Cyan.north east)+(0,0)$}%
-\HTMLDrawBox{PaleTurquoise}{$(HTML_LightCyan.north east)+(0,0)$}%
-\HTMLDrawBox{Aquamarine}{$(HTML_PaleTurquoise.north east)+(0,0)$}%
-\HTMLDrawBox{Turquoise}{$(HTML_Aquamarine.north east)+(0,0)$}%
-\HTMLDrawBox{MediumTurquoise}{$(HTML_Turquoise.north east)+(0,0)$}%
-\HTMLDrawBox{DarkTurquoise}{$(HTML_MediumTurquoise.north east)+(0,0)$}%
-\HTMLDrawBox{CadetBlue}{$(HTML_DarkTurquoise.north east)+(0,0)$}%
+\HTMLDrawBox{3}{Aqua}{}%
+\HTMLDrawBox{5}{Cyan}{}%
+\HTMLDrawBox{5}{LightCyan}{}%
+\HTMLDrawBox{5}{PaleTurquoise}{}%
+\HTMLDrawBox{5}{Aquamarine}{}%
+\HTMLDrawBox{5}{Turquoise}{}%
+\HTMLDrawBox{5}{MediumTurquoise}{}%
+\HTMLDrawBox{5}{DarkTurquoise}{}%
+\HTMLDrawBox{5}{CadetBlue}{}%
 %
-\HTMLDrawBox{SteelBlue}{$(HTML_Aqua.south west)+(0,0)$}%
-\HTMLDrawBox{LightSteelBlue}{$(HTML_SteelBlue.north east)+(0,0)$}%
-\HTMLDrawBox{PowderBlue}{$(HTML_LightSteelBlue.north east)+(0,0)$}%
-\HTMLDrawBox{LightBlue}{$(HTML_PowderBlue.north east)+(0,0)$}%
-\HTMLDrawBox{SkyBlue}{$(HTML_LightBlue.north east)+(0,0)$}%
-\HTMLDrawBox{LightSkyBlue}{$(HTML_SkyBlue.north east)+(0,0)$}%
-\HTMLDrawBox{DeepSkyBlue}{$(HTML_LightSkyBlue.north east)+(0,0)$}%
-\HTMLDrawBox{DodgerBlue}{$(HTML_DeepSkyBlue.north east)+(0,0)$}%
-\HTMLDrawBox{CornflowerBlue}{$(HTML_DodgerBlue.north east)+(0,0)$}%
+\HTMLDrawBox{3}{SteelBlue}{}%
+\HTMLDrawBox{5}{LightSteelBlue}{}%
+\HTMLDrawBox{5}{PowderBlue}{}%
+\HTMLDrawBox{5}{LightBlue}{}%
+\HTMLDrawBox{5}{SkyBlue}{}%
+\HTMLDrawBox{5}{LightSkyBlue}{}%
+\HTMLDrawBox{5}{DeepSkyBlue}{}%
+\HTMLDrawBox{5}{DodgerBlue}{}%
+\HTMLDrawBox{5}{CornflowerBlue}{}%
 %
-\HTMLDrawBox{MediumSlateBlue}{$(HTML_SteelBlue.south west)+(0,0)$}%
-\HTMLDrawBox{RoyalBlue}{$(HTML_MediumSlateBlue.north east)+(0,0)$}%
-\HTMLDrawBox{Blue}{$(HTML_RoyalBlue.north east)+(0,0)$}%
-\HTMLDrawBox{MediumBlue}{$(HTML_Blue.north east)+(0,0)$}%
-\HTMLDrawBox{DarkBlue}{$(HTML_MediumBlue.north east)+(0,0)$}%
-\HTMLDrawBox{Navy}{$(HTML_DarkBlue.north east)+(0,0)$}%
-\HTMLDrawBox{MidnightBlue}{$(HTML_Navy.north east)+(0,0)$}%
+\HTMLDrawBox{3}{MediumSlateBlue}{}%
+\HTMLDrawBox{5}{RoyalBlue}{}%
+\HTMLDrawBox{5}{Blue}{}%
+\HTMLDrawBox{5}{MediumBlue}{}%
+\HTMLDrawBox{5}{DarkBlue}{}%
+\HTMLDrawBox{5}{Navy}{}%
+\HTMLDrawBox{5}{MidnightBlue}{}%
 % Brown HTML Color Names
-\HTMLDrawBox{Cornsilk}{$(HTML_MediumSlateBlue.south west)+(0,0)$}%
-\HTMLDrawBox{BlanchedAlmond}{$(HTML_Cornsilk.north east)+(0,0)$}%
-\HTMLDrawBox{Bisque}{$(HTML_BlanchedAlmond.north east)+(0,0)$}%
-\HTMLDrawBox{NavajoWhite}{$(HTML_Bisque.north east)+(0,0)$}%
-\HTMLDrawBox{Wheat}{$(HTML_NavajoWhite.north east)+(0,0)$}%
-\HTMLDrawBox{BurlyWood}{$(HTML_Wheat.north east)+(0,0)$}%
-\HTMLDrawBox{Tan}{$(HTML_BurlyWood.north east)+(0,0)$}%
-\HTMLDrawBox{RosyBrown}{$(HTML_Tan.north east)+(0,0)$}%
-\HTMLDrawBox{SandyBrown}{$(HTML_RosyBrown.north east)+(0,0)$}%
+\HTMLDrawBox{3}{Cornsilk}{}%
+\HTMLDrawBox{5}{BlanchedAlmond}{}%
+\HTMLDrawBox{5}{Bisque}{}%
+\HTMLDrawBox{5}{NavajoWhite}{}%
+\HTMLDrawBox{5}{Wheat}{}%
+\HTMLDrawBox{5}{BurlyWood}{}%
+\HTMLDrawBox{5}{Tan}{}%
+\HTMLDrawBox{5}{RosyBrown}{}%
+\HTMLDrawBox{5}{SandyBrown}{}%
 %
-\HTMLDrawBox{Goldenrod}{$(HTML_Cornsilk.south west)+(0,0)$}%
-\HTMLDrawBox{DarkGoldenrod}{$(HTML_Goldenrod.north east)+(0,0)$}%
-\HTMLDrawBox{Peru}{$(HTML_DarkGoldenrod.north east)+(0,0)$}%
-\HTMLDrawBox{Chocolate}{$(HTML_Peru.north east)+(0,0)$}%
-\HTMLDrawBox{SaddleBrown}{$(HTML_Chocolate.north east)+(0,0)$}%
-\HTMLDrawBox{Sienna}{$(HTML_SaddleBrown.north east)+(0,0)$}%
-\HTMLDrawBox{Brown}{$(HTML_Sienna.north east)+(0,0)$}%
-\HTMLDrawBox{Maroon}{$(HTML_Brown.north east)+(0,0)$}%
+\HTMLDrawBox{3}{Goldenrod}{}%
+\HTMLDrawBox{5}{DarkGoldenrod}{}%
+\HTMLDrawBox{5}{Peru}{}%
+\HTMLDrawBox{5}{Chocolate}{}%
+\HTMLDrawBox{5}{SaddleBrown}{}%
+\HTMLDrawBox{5}{Sienna}{}%
+\HTMLDrawBox{5}{Brown}{}%
+\HTMLDrawBox{5}{Maroon}{}%
 % White HTML Color Names
-\HTMLDrawBox{White}{$(HTML_Goldenrod.south west)+(0,0)$}%
-\HTMLDrawBox{Snow}{$(HTML_White.north east)+(0,0)$}%
-\HTMLDrawBox{HoneyDew}{$(HTML_Snow.north east)+(0,0)$}%
-\HTMLDrawBox{MintCream}{$(HTML_HoneyDew.north east)+(0,0)$}%
-\HTMLDrawBox{Azure}{$(HTML_MintCream.north east)+(0,0)$}%
-\HTMLDrawBox{AliceBlue}{$(HTML_Azure.north east)+(0,0)$}%
-\HTMLDrawBox{GhostWhite}{$(HTML_AliceBlue.north east)+(0,0)$}%
-\HTMLDrawBox{WhiteSmoke}{$(HTML_GhostWhite.north east)+(0,0)$}%
-\HTMLDrawBox{SeaShell}{$(HTML_WhiteSmoke.north east)+(0,0)$}%
+\HTMLDrawBox{3}{White}{}%
+\HTMLDrawBox{5}{Snow}{}%
+\HTMLDrawBox{5}{HoneyDew}{}%
+\HTMLDrawBox{5}{MintCream}{}%
+\HTMLDrawBox{5}{Azure}{}%
+\HTMLDrawBox{5}{AliceBlue}{}%
+\HTMLDrawBox{5}{GhostWhite}{}%
+\HTMLDrawBox{5}{WhiteSmoke}{}%
+\HTMLDrawBox{5}{SeaShell}{}%
 %
-\HTMLDrawBox{Beige}{$(HTML_White.south west)+(0,0)$}%
-\HTMLDrawBox{OldLace}{$(HTML_Beige.north east)+(0,0)$}%
-\HTMLDrawBox{FloralWhite}{$(HTML_OldLace.north east)+(0,0)$}%
-\HTMLDrawBox{Ivory}{$(HTML_FloralWhite.north east)+(0,0)$}%
-\HTMLDrawBox{AntiqueWhite}{$(HTML_Ivory.north east)+(0,0)$}%
-\HTMLDrawBox{Linen}{$(HTML_AntiqueWhite.north east)+(0,0)$}%
-\HTMLDrawBox{LavenderBlush}{$(HTML_Linen.north east)+(0,0)$}%
-\HTMLDrawBox{MistyRose}{$(HTML_LavenderBlush.north east)+(0,0)$}%
+\HTMLDrawBox{3}{Beige}{}%
+\HTMLDrawBox{5}{OldLace}{}%
+\HTMLDrawBox{5}{FloralWhite}{}%
+\HTMLDrawBox{5}{Ivory}{}%
+\HTMLDrawBox{5}{AntiqueWhite}{}%
+\HTMLDrawBox{5}{Linen}{}%
+\HTMLDrawBox{5}{LavenderBlush}{}%
+\HTMLDrawBox{5}{MistyRose}{}%
 % Gray HTML Color Names
-\HTMLDrawBox{Gainsboro}{$(HTML_Beige.south west)+(0,0)$}%
-\HTMLDrawBox{LightGray}{$(HTML_Gainsboro.north east)+(0,0)$}%
-\HTMLDrawBox{Silver}{$(HTML_LightGray.north east)+(0,0)$}%
-\HTMLDrawBox{DarkGray}{$(HTML_Silver.north east)+(0,0)$}%
-\HTMLDrawBox{Gray}{$(HTML_DarkGray.north east)+(0,0)$}%
-\HTMLDrawBox{DimGray}{$(HTML_Gray.north east)+(0,0)$}%
-\HTMLDrawBox{LightSlateGray}{$(HTML_DimGray.north east)+(0,0)$}%
-\HTMLDrawBox{SlateGray}{$(HTML_LightSlateGray.north east)+(0,0)$}%
-\HTMLDrawBox{DarkSlateGray}{$(HTML_SlateGray.north east)+(0,0)$}%
-\HTMLDrawBox{Black}{$(HTML_DarkSlateGray.north east)+(0,0)$}%
+\HTMLDrawBox{3}{Gainsboro}{}%
+\HTMLDrawBox{5}{LightGray}{}%
+\HTMLDrawBox{5}{Silver}{}%
+\HTMLDrawBox{5}{DarkGray}{}%
+\HTMLDrawBox{5}{Gray}{}%
+\HTMLDrawBox{5}{DimGray}{}%
+\HTMLDrawBox{5}{LightSlateGray}{}%
+\HTMLDrawBox{5}{SlateGray}{}%
+\HTMLDrawBox{5}{DarkSlateGray}{}%
+\HTMLDrawBox{5}{Black}{}%
 %
 %
 %
@@ -347,32 +429,24 @@
     | <PalettePrefix>: \texttt{DKT}\\
     | Example:  \textcolor{DKT_Beige}{\bfseries DKT\_Beige}  |  \textcolor{DKT_Cyan}{\bfseries DKT\_Cyan}
 };
-%#1 Color, without Prefix
-%#2 Position
-\newcommand{\DKTDrawBox}[2]{%
-    \def\colorName{DKT_}%
-    \appto\colorName{#1}%
-    %
-    \node(\colorName)[line width=0pt,anchor=north west,draw=none,fill=\colorName,minimum width=7em,minimum height=10ex]at(#2){%
-        \bfseries%
-        \contourlength{0.12em}%
-        \contour{white}{\textcolor{black}{#1}}%
-    };%
+% Arguments: The first three from "\DrawBoxColorReference" above
+\newcommand{\DKTDrawBox}[3]{%
+    \DrawBoxColorReference{#1}{#2}{#3}{DKT_}{7em}%
 }%
-\DKTDrawBox{Blue}{$(DKT_desc2.south west)+(0,-0.5cm)$}%
-\DKTDrawBox{BlueLight}{$(DKT_Blue.north east)+(0,0)$}%
-\DKTDrawBox{BlueGray}{$(DKT_BlueLight.north east)+(0,0)$}%
-\DKTDrawBox{Cyan}{$(DKT_BlueGray.north east)+(0,0)$}%
+\DKTDrawBox{1}{Blue}{($(DKT_desc2.south west)+(0,-0.5cm)$)}%
+\DKTDrawBox{5}{BlueLight}{}%
+\DKTDrawBox{5}{BlueGray}{}%
+\DKTDrawBox{5}{Cyan}{}%
 %
-\DKTDrawBox{Beige}{$(DKT_Blue.south west)+(0,0)$}%
-\DKTDrawBox{BeigeLight}{$(DKT_Beige.north east)+(0,0)$}%
-\DKTDrawBox{BeigeLightL}{$(DKT_BeigeLight.north east)+(0,0)$}%
+\DKTDrawBox{2}{Beige}{Blue}%
+\DKTDrawBox{5}{BeigeLight}{}%
+\DKTDrawBox{5}{BeigeLightL}{}%
 %
-\DKTDrawBox{Yellow}{$(DKT_Beige.south west)+(0,0)$}%
-\DKTDrawBox{YellowLight}{$(DKT_Yellow.north east)+(0,0)$}%
+\DKTDrawBox{3}{Yellow}{}%
+\DKTDrawBox{5}{YellowLight}{}%
 %
-\DKTDrawBox{GrayLight}{$(DKT_Yellow.south west)+(0,0)$}%
-\DKTDrawBox{eggShell}{$(DKT_GrayLight.north east)+(0,0)$}%
+\DKTDrawBox{3}{GrayLight}{}%
+\DKTDrawBox{5}{eggShell}{}%
 %
 \end{tikzpicture}%
 %

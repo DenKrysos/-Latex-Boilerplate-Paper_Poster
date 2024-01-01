@@ -47,6 +47,19 @@
     %     \contour{violet}{\textcolor{orange}{Text with Outline/Contour}}\nl%
     % }%
 }{\expandafter\ifstrequal\expandafter{\DenKrCompiler}{LuaLaTeX}{%
+    % Two different Packages and by that Methods are available:
+    %  "contour": Prints the actual text as normal and surrounds it with the Contour.
+    %  "pdfrender": Prints the outline as the actual text and fills this inside with a different Color.
+    % -> "contour" grows bigger to the outside and makes the Outline sleeked (when growing too big)
+    % -> "pdfrender" keeps the outline sharp and well defined, but may let the inside look wonky
+    % => Methods to be ideally employed depends on the use-case
+    %
+    %Same Packge as for pdfLaTeX.
+    \usepackage[outline]{contour}%
+    \contourlength{\DenKrOutlineWidth}%
+    \contournumber{25}%
+    %
+    % An alternative for LuaLaTeX. Works differently, but compiles more efficient.
     \usepackage{pdfrender}%
     %USAGE Example:
     % - The logic is kind-of inverted here.

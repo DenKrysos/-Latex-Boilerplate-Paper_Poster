@@ -65,8 +65,12 @@
 %       (Additional added keys are included in Preamble, with the package)
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 \input{"\DenKrLayoutMainRootDir/3settings/4customization/glossaries_cmds".tex}%
+% - - - - - -
+\newcommand{\loadGlsIfExists}[1]{\IfFileExists{#1}{\loadglsentries{#1}}{}}%
 %
-\loadglsentries{\DenKrSupplyRootDir/glossaries.tex}%
+\loadGlsIfExists{\DenKrSupplyRootDir/glossaries.tex}%
+\loadGlsIfExists{\DenKrSupplyRootDir/glossaries2.tex}%
+% - - - - - -
 %\glsdisablehyper% Disables Hyperlinks
 \renewcommand{\glossarysection}[2][]{}%Completely removes the section heading (re-defines the internally used command to just do nothing)
 % }%
