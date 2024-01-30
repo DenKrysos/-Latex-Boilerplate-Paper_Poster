@@ -23,6 +23,9 @@
 	pdfencoding=auto,%
 	pdfborder={0 0 0},%
 	%bookmarks=false,%
+	%bookmarksdepth=subsubsection,%
+	%bookmarksopen=true,%
+	%bookmarksopenlevel=1,%
 ]{hyperref}%
 %
 \input{"\DenKrLayoutMainRootDir/2includes/packages/hyperref-2config".tex}%
@@ -31,7 +34,11 @@
 \usepackage{url}%
 % }%
 % Improves the bookmark handling and adds some features. Is worth having together with 'hyperref'
-\usepackage{bookmark}
+\usepackage[%
+	depth=subsubsection,%
+	open=true,%
+	openlevel=1,%
+]{bookmark}%
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 %                   --- End hyperref ---
 %------------------------------------------------------------------------

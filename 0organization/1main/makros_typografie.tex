@@ -732,6 +732,35 @@
 %------------- Customizable Rating -------------
 %vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 %____________________________________________________________________
+% Normalized Macros for the ones below (i.e. that don't take a maximum value as argument, but normalize to an intrinsic one)
+\def\rateTasteMax{10}%
+\newcommand{\rateTaste}[1]{%
+    \ifnumcomp{\rateTasteMax}{<}{#1}{%
+        \def\rateTasteVal{\rateTasteMax}%
+    }{%
+        \def\rateTasteVal{#1}%
+    }%
+    \rating{\rateTasteVal}{\rateTasteMax}%
+}%
+\def\rateTimeMax{6}%
+\newcommand{\rateTime}[1]{%
+    \ifnumcomp{\rateTimeMax}{<}{#1}{%
+        \def\rateTimeVal{\rateTimeMax}%
+    }{%
+        \def\rateTimeVal{#1}%
+    }%
+    \timerating{\rateTimeVal}{\rateTimeMax}%
+}%
+\def\rateHealthMax{5}%
+\newcommand{\rateHealth}[1]{%
+    \ifnumcomp{\rateHealthMax}{<}{#1}{%
+        \def\rateHealthVal{\rateHealthMax}%
+    }{%
+        \def\rateHealthVal{#1}%
+    }%
+    \quant{\rateHealthVal}{\rateHealthMax}%
+}%
+%------------------------------------------------
 \newcommand\rating[2]{%
     \definecolor{filledStarCol}{named}{yellow}%
     \definecolor{emptyStarCol}{RGB}{240,240,220}%
@@ -902,11 +931,11 @@
 %							Settings for my own Macros end
 %------------------------------------------------------------------------
 %________________________________________________________________________
-% 
-% 
-% 
-% 
-% 
+%
+%
+%
+%
+%
 %
 %####################################################################
 %====================================================================
@@ -944,11 +973,11 @@ m%
 %------------- Inclusions End -------------
 %====================================================================
 %####################################################################
-% 
-% 
-% 
-% 
-% 
+%
+%
+%
+%
+%
 %
 %####################################################################
 %====================================================================

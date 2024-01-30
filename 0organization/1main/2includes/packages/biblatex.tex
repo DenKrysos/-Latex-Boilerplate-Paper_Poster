@@ -53,9 +53,9 @@
         \xappto\cbx@citehook{%
         \noexpand\footnotetext[\thefield{labelnumber}]{%
             $^{*}$%
-            \citefield{\thefield{entrykey}}{title} | %
-            \citename{\thefield{entrykey}}{author} | %
-            \citefield{\thefield{entrykey}}{year}%
+            \citefield{\thefield{entrykey}}{title}%
+            \ifnameundef{author}{}{ | \citename{\thefield{entrykey}}{author}}%
+            \iffieldundef{year}{}{ | \citefield{\thefield{entrykey}}{year}}%
         }}%
     }%
 }%

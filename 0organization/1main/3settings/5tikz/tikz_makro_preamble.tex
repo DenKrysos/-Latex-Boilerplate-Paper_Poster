@@ -33,6 +33,17 @@
 %
 %
 %
+%========-------------------------------------------========
+%========		Measurements and Text					========
+%========-------------------------------------------========
+% Explanation:
+%    PGF/TikZ sets the "current font" inside a picture environment to \nullfont to ignore any text. Inside \node {..}; the font is then restored using \pgfinterruptpicture .. \endpgfinterruptpicture
+%    In order to make something like \settowidth work, one needs to add \pgfinterruptpicture .. \endpgfinterruptpicture around the content. E.g.:
+%       \settowidth{\somelength}{\pgfinterruptpicture <Text>\endpgfinterruptpicture}
+
+%
+%
+%
 %
 %
 %
@@ -67,7 +78,7 @@
         % % \draw (A) circle (\mylen pt); % pt is important here
         % \end{tikzpicture}
         % With calclength the length of AB is : \mylen
-        
+        %
         % \begin{tikzpicture}
         % %  Two alternatives: Create an "Pseudo-Coordinate" (\p3) as subtraction and us its elements, or directly us the actual points in calculation (\n2 & \n4).
         % \coordinate(A)at(1,2);%
