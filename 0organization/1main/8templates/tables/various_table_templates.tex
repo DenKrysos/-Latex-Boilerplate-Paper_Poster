@@ -85,6 +85,9 @@
     \colorlet{ratingColUsed}{DenKrColor_Highlight_Green}}}}%
     \textcolor{ratingColUsed}{\Large\raisebox{-0.2ex}{\bfseries\boldmath$#1$}}%
 }
+\colorlet{domainColor}{SlateBlue!40!white}
+\colorlet{rowEven}{AliceBlue}
+\colorlet{rowOdd}{white}
 \hyphenpenalty=10000%
 \exhyphenpenalty=10000%
 \setlength{\tabcolsep}{4pt} % Default value: 6pt
@@ -93,7 +96,7 @@
 \begin{table}[!htpb]%
 \arrayrulewidth=0.8pt
 \arrayrulecolor{SkyBlue!90!black}
-\rowcolors{2}{white}{AliceBlue}
+\rowcolors{2}{rowOdd}{rowEven}
 \setlength{\extrarowheight}{0ex}%
 \centering
 \footnotesize
@@ -122,14 +125,89 @@
     \dispLhead{Option-B}
     &\disprat{0}&\disprat{2}
 \\
-\\
 \hline\hline
-    \multicolumn{11}{r}{\textbf{Scale:} \num{0} - Doesn't provide at all. \num{5} - Best in compared solutions. \numrange{1}{4} - Gradation}
+    \rowcolor{white}
+    \multicolumn{3}{r}{\textbf{Legend:} Some Value explanation.}
 \\
 \end{tabular}
 \label{tab:featureClusterCompare}
 \end{table}
 \let\disprat\undefined
+\let\dispLhead\undefined
+\let\dispThead\undefined
+}
+%
+%
+%
+% Another one appaling, slightly variated, regarding the separating lines
+{%
+\providecommand{\dispLhead}{}
+\providecommand{\dispThead}{}
+\renewcommand{\dispLhead}[1]{\bfseries#1}
+\renewcommand{\dispThead}[1]{\color{white}\bfseries#1}
+\colorlet{domainColor}{SlateBlue!40!white}
+\colorlet{rowEven}{AliceBlue}
+\colorlet{rowOdd}{white}
+\hyphenpenalty=10000%
+\exhyphenpenalty=10000%
+\setlength{\tabcolsep}{4pt} % Default value: 6pt
+\renewcommand{\arraystretch}{1.5}% Default value: 1
+\renewcommand\theadfont{\bfseries}%
+\begin{table}[!htpb]%
+\arrayrulewidth=0.8pt
+\arrayrulecolor{SkyBlue!90!black}
+\rowcolors{2}{rowOdd}{rowEven}
+\setlength{\extrarowheight}{0ex}%
+\centering
+\footnotesize
+\caption{Derived Reference Profiles for \glsfmtshortpl{kpi}}
+\begin{tabular}[]{c||c|c|c|c|c|c|}
+\hhline{~|-|-|-|-|-|-|}\hhline{~}
+\rowcolor{SteelBlue!90!black}
+    \multicolumn{1}{c|}{\cellcolor{white}}
+    &
+    \dispThead{$L_t$}
+    &
+    \dispThead{$J_t$}
+    &
+    \dispThead{$I_t$}
+    &
+    \dispThead{$B_C$}
+    &
+    \dispThead{$S$}
+    &
+    \dispThead{$R_t$}
+\\
+\hhline{~|-|-|-|-|-|-|}\hhline{~}
+\noalign{\vskip\doublerulesep
+    %\vskip-\arrayrulewidth
+}
+\hhline{-||-|-|-|-|-|-|}\hhline{~}
+    \dispLhead{Rapid Communication}&
+    &&\qty{0.5}{\milli\second}&\qty{50}{\byte}&&
+\\
+\hhline{-||-|-|-|-|-|-|}\hhline{~}
+    \dispLhead{Cyclic Communication}&
+    \qty{50}{\milli\second}&\qty{5}{\milli\second}&\qty{25}{\milli\second}&\qty{100}{\byte}&&
+\\
+\hhline{-||-|-|-|-|-|-|}\hhline{~}
+    \dispLhead{Agile Application}&
+    \qty{20}{\milli\second}&&\qty{5}{\milli\second}&\qty{250}{\byte}&&
+\\
+\hhline{-||-|-|-|-|-|-|}\hhline{~}
+    \dispLhead{Scaling}&
+    \qty{10}{\milli\second}&\qty{1}{\milli\second}&&\qty{100}{\byte}&\num{1000}&
+\\
+\hhline{-||-|-|-|-|-|-|}\hhline{~}
+    \dispLhead{Reconfiguration}&
+    &&&&&\qty{200}{\milli\second}
+\\
+\hhline{-||-|-|-|-|-|-|}
+\noalign{\vskip\doublerulesep}
+\hline
+\end{tabular}
+\label{tab:KPI_profile}
+\end{table}
 \let\dispLhead\undefined
 \let\dispThead\undefined
 }
