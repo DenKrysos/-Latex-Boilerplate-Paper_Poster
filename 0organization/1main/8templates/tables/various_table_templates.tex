@@ -68,3 +68,68 @@
     \textbf{y}: Element to interact with.
 \makeatother
 \end{table}
+%
+%
+%
+%
+% Quite nicely formatted and visually appealing, I think
+{%
+\providecommand{\dispLhead}{}
+\providecommand{\dispThead}{}
+\renewcommand{\dispLhead}[1]{\bfseries#1}
+\renewcommand{\dispThead}[1]{\color{white}\bfseries#1}
+\newcommand{\disprat}[1]{
+    \ifnumcomp{\numexpr#1\relax}{<}{1}{\colorlet{ratingColUsed}{DenKrColor_Highlight_Gray}}{%
+    \ifnumcomp{\numexpr#1\relax}{<}{2}{\colorlet{ratingColUsed}{DenKrColor_Highlight_Red}}{%
+    \ifnumcomp{\numexpr#1\relax}{<}{4}{\colorlet{ratingColUsed}{DenKrColor_Highlight_Yellow!50!DenKrColor_Highlight_Orange}}{%
+    \colorlet{ratingColUsed}{DenKrColor_Highlight_Green}}}}%
+    \textcolor{ratingColUsed}{\Large\raisebox{-0.2ex}{\bfseries\boldmath$#1$}}%
+}
+\hyphenpenalty=10000%
+\exhyphenpenalty=10000%
+\setlength{\tabcolsep}{4pt} % Default value: 6pt
+\renewcommand{\arraystretch}{1.5}% Default value: 1
+\renewcommand\theadfont{\bfseries}%
+\begin{table}[!htpb]%
+\arrayrulewidth=0.8pt
+\arrayrulecolor{SkyBlue!90!black}
+\rowcolors{2}{white}{AliceBlue}
+\setlength{\extrarowheight}{0ex}%
+\centering
+\footnotesize
+\caption{Degree of serving Feature Clusters}
+\begin{tabular}[]{c||c|c|}
+% \hline
+% \cline{2-3}
+\hhline{|~|-|-|}
+\rowcolor{SteelBlue!90!black}
+    \multicolumn{1}{c|}{\cellcolor{white}}
+    &
+    \dispThead{Property-1}
+    &
+    \dispThead{Property-2}
+\\
+% \cline{2-3}
+\hhline{|~|-|-|}
+\noalign{\vskip\doublerulesep
+    %\vskip-\arrayrulewidth
+}
+\hline
+    \dispLhead{Option-A}
+    &\disprat{4}&\disprat{5}
+\\
+\hline
+    \dispLhead{Option-B}
+    &\disprat{0}&\disprat{2}
+\\
+\\
+\hline\hline
+    \multicolumn{11}{r}{\textbf{Scale:} \num{0} - Doesn't provide at all. \num{5} - Best in compared solutions. \numrange{1}{4} - Gradation}
+\\
+\end{tabular}
+\label{tab:featureClusterCompare}
+\end{table}
+\let\disprat\undefined
+\let\dispLhead\undefined
+\let\dispThead\undefined
+}
