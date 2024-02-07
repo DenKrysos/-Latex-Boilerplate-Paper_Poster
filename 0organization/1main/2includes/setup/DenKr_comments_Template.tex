@@ -11,81 +11,57 @@
 % -- USAGE - Extent by additional Macros
 % -- -- For adding more Persons beyond the current number
 % - Just duplicate one of these blocks below and adjust to your requirements (Name of the Cmd and Name-Tag (Abbreviation for Persons Name) inside.
+% - The "\newcommandsDisw{#1}{#2}{#3}" creates two Macros for use.
+%    - Arguments:
+%        1: Name for the created Macros
+%        2: Abbreviation of the Person's Name to display
+%         [Optional]: It has an optional Argument after the second (\newcommandsDisw{#1}{#2}[#Opt1]{#3})
+%                   -> If this is supplied, its content is printed in the Legend. Otherwise, #2 is put to the Legend.
+%        3: The Color to use
+%    - Created Macros:
+%        "Tagged Comment" -> \<Abbr>{}: Prints text, suffixed with "#<Abbr>: " (and colored)
+%        "Highlighting" -> \<Abbr>hl{}: Just prints the text in Color.
+%    -> E.g.: \newcommandsDisw{dekr}{DenKr}{<Color>} creates the two Macros
+%        \dekr{}
+%        \dekrhl{}
 % - Colors are defined up to "denkrComCol12"
 % - Above that, the only thing missing: Define a new Color. Just add a Color-Definition according to xcolor.sty, e.g.
 %        \definecolor{denkrComCol<Something>}{named}{blue}%
 %   above the duplicated Macro-Definition and then use that Color's name (what you've written as "denkrComCol<Something>")
-% - Suggested is to also adjust the "\TempDisplayPreparation" Definition at the bottom, which displays what Comment-Cmds are available.
+%
+% - You may, at some point in time, overwrite single commands (like for example shown below with the \dekr{} ones).
+%   - For example, during writing, you use a highlight Command to, ehem, highlight text in your color.
+%      Approaching release, you maybe don't want to just deactivate and thus remove this text, but simply remove the color-highlighting.
+%      Then you could redefine the \<abbr>hl{} cmd to a simply "pasting the argument".
 %----------------------------------------------------------------------------------
 %
 %= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-\newcommanddisw{\dekr}{denkrComColDenKr}{{\#}DenKr: #1}% Tagged Comment
-\newcommanddisw{\dekrhl}{denkrComColDenKr}{#1}% Highlight Text in Color
+\newcommandsDisw{dekr}{DenKr}[Dennis Krummacker]{denkrComColDenKr}%
 % \renewcommand{\dekr}[1]{}%% Disable comments [selectively this]
 % \renewcommand{\dekrhl}[1]{#1}%% Disable highlighting of text [selectively this]
 % \renewcommand{\dekrhl}[1]{}%% Completely disable this kind of text [selectively this]
-\newcommand{\dkc}[1]{\dekr{#1}}%
+\newcommand{\dkc}[1]{\dekr{#1}}
 %
-\newcommanddisw{\chfi}{denkrComCol1}{{\#}ChFi: #1}%
-\newcommanddisw{\chfihl}{denkrComCol1}{#1}%
-% \renewcommand{\chfi}[1]{}%% Disable comments [selectively this]
-% \renewcommand{\chfihl}[1]{#1}%% Disable highlighting of text [selectively this]
-% \renewcommand{\chfihl}[1]{}%% Completely disable this kind of text [selectively this]
+\newcommandsDisw{chfi}{ChFi}[Christoph Fischer]{denkrComCol1}%
 %
-\newcommanddisw{\mabe}{denkrComCol2}{{\#}MaBe: #1}%
-\newcommanddisw{\mabehl}{denkrComCol2}{#1}%
-% \renewcommand{\mabe}[1]{}%% Disable comments [selectively this]
-% \renewcommand{\mabehl}[1]{#1}%% Disable highlighting of text [selectively this]
-% \renewcommand{\mabehl}[1]{}%% Completely disable this kind of text [selectively this]
+\newcommandsDisw{beve}{BeVe}[Benedikt Veith]{denkrComCol2}%
 %
-\newcommanddisw{\jaze}{denkrComCol3}{{\#}JaZe: #1}%
-\newcommanddisw{\jazehl}{denkrComCol3}{#1}%
-% \renewcommand{\jaze}[1]{}%% Disable comments [selectively this]
-% \renewcommand{\jazehl}[1]{#1}%% Disable highlighting of text [selectively this]
-% \renewcommand{\jazehl}[1]{}%% Completely disable this kind of text [selectively this]
+\newcommandsDisw{frpo}{FrPo}[Franc Pouhela]{denkrComCol3}%
 %
-\newcommanddisw{\beve}{denkrComCol4}{{\#}BeVe: #1}%
-\newcommanddisw{\bevehl}{denkrComCol4}{#1}%
-% \renewcommand{\beve}[1]{}%% Disable comments [selectively this]
-% \renewcommand{\bevehl}[1]{#1}%% Disable highlighting of text [selectively this]
-% \renewcommand{\bevehl}[1]{}%% Completely disable this kind of text [selectively this]
+\newcommandsDisw{dali}{DaLi}[Daniel Lindenschmitt]{denkrComCol4}%
 %
-\newcommanddisw{\hedi}{denkrComCol5}{{\#}Hedi: #1}%
-\newcommanddisw{\hedihl}{denkrComCol5}{#1}%
-% \renewcommand{\hedi}[1]{}%% Disable comments [selectively this]
-% \renewcommand{\hedihl}[1]{#1}%% Disable highlighting of text [selectively this]
-% \renewcommand{\hedihl}[1]{}%% Completely disable this kind of text [selectively this]
+\newcommandsDisw{desa}{DeSa}[Dennis Salzmann]{denkrComCol5}%
 %
-\newcommanddisw{\frpo}{denkrComCol6}{{\#}FrPo: #1}%
-\newcommanddisw{\frpohl}{denkrComCol6}{#1}%
-% \renewcommand{\maar}[1]{}%% Disable comments [selectively this]
-% \renewcommand{\maarhl}[1]{#1}%% Disable highlighting of text [selectively this]
-% \renewcommand{\maarhl}[1]{}%% Completely disable this kind of text [selectively this]
+\newcommandsDisw{hedi}{Hedi}[Mohamed Romdhane]{denkrComCol6}%
 %
-\newcommanddisw{\dummyA}{denkrComCol7}{{\#}DummyA: #1}%
-\newcommanddisw{\dummyAhl}{denkrComCol7}{#1}%
-% \renewcommand{\dummyA}[1]{}%% Disable comments [selectively this]
-% \renewcommand{\dummyAhl}[1]{#1}%% Disable highlighting of text [selectively this]
-% \renewcommand{\dummyAhl}[1]{}%% Completely disable this kind of text [selectively this]
+\newcommandsDisw{dummyA}{DummyA}[Just-some-Dummy]{denkrComCol7}%
 %
-\newcommanddisw{\dummyB}{denkrComCol8}{{\#}DummyB: #1}%
-\newcommanddisw{\dummyBhl}{denkrComCol8}{#1}%
-% \renewcommand{\dummyB}[1]{}%% Disable comments [selectively this]
-% \renewcommand{\dummyBhl}[1]{#1}%% Disable highlighting of text [selectively this]
-% \renewcommand{\dummyBhl}[1]{}%% Completely disable this kind of text [selectively this]
+\newcommandsDisw{dummyB}{DummyB}[Just-some-Dummy]{denkrComCol8}%
 %
-\newcommanddisw{\dummyC}{denkrComCol9}{{\#}DummyC: #1}%
-\newcommanddisw{\dummyChl}{denkrComCol9}{#1}%
-% \renewcommand{\dummyC}[1]{}%% Disable comments [selectively this]
-% \renewcommand{\dummyChl}[1]{#1}%% Disable highlighting of text [selectively this]
-% \renewcommand{\dummyChl}[1]{}%% Completely disable this kind of text [selectively this]
+\newcommandsDisw{dummyC}{DummyC}[Just-some-Dummy]{denkrComCol9}%
 %
-\newcommanddisw{\dummyD}{denkrComCol10}{{\#}DummyD: #1}%
-\newcommanddisw{\dummyDhl}{denkrComCol10}{#1}%
-% \renewcommand{\dummyD}[1]{}%% Disable comments [selectively this]
-% \renewcommand{\dummyDhl}[1]{#1}%% Disable highlighting of text [selectively this]
-% \renewcommand{\dummyDhl}[1]{}%% Completely disable this kind of text [selectively this]
+\newcommandsDisw{dummyD}{DummyD}[Just-some-Dummy]{denkrComCol10}%
 %
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 %= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
@@ -95,26 +71,32 @@
 %
 %= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+% Historical Explanation:
+%  Either define such a "\TempDisplayPreparation" like here manually and paste this in the "postamble" (or anywhere, but suggested towards the document's end);
+%  Or do nothing by yourself but simply paste "\DisplayDenKrCommandsLegend" (which is the current set-up in my Boilerplate).
 %
-\newcommand{\TempDisplayPreparation}{\disablewr{%
-	{%
-	\section{Draft-State: Comment Color Code}{\noindent\raggedright%
-	\todo{Comments: ToDos: \mbox{$\Rightarrow$ \textbackslash todo\{ \}}}\nl%
-    \notice{Comment: A general Notice: \mbox{$\Rightarrow$ \textbackslash notice\{ \}}}\nl%
-	\dekr{Comments: Dennis Krummacker: \mbox{$\Rightarrow$ \textbackslash dekr\{ \}}}\nl%
-	\chfi{Comments: Christoph Fischer: \mbox{$\Rightarrow$ \textbackslash chfi\{ \}}}\nl%
-	\mabe{Comments: Maximilian Berndt: \mbox{$\Rightarrow$ \textbackslash mabe\{ \}}}\nl%
-	\jaze{Comments: Janis Zemitis: \mbox{$\Rightarrow$ \textbackslash jaze\{ \}}}\nl%
-	\beve{Comments: Benedikt Veith: \mbox{$\Rightarrow$ \textbackslash beve\{ \}}}\nl%
-	\hedi{Comments: Mohamed Romdhane: \mbox{$\Rightarrow$ \textbackslash hedi\{ \}}}\nl%
-	\frpo{Comments: Franc Pouhela: \mbox{$\Rightarrow$ \textbackslash frpo\{ \}}}\nl%
-	\dummyA{Comments: Just-some-Dummy: \mbox{$\Rightarrow$ \textbackslash dummyA\{ \}}}\nl%
-	\dummyB{Comments: Just-some-Dummy: \mbox{$\Rightarrow$ \textbackslash dummyB\{ \}}}\nl%
-	\dummyC{Comments: Just-some-Dummy: \mbox{$\Rightarrow$ \textbackslash dummyC\{ \}}}\nl%
-	\dummyD{Comments: Just-some-Dummy: \mbox{$\Rightarrow$ \textbackslash dummyD\{ \}}}\nl%
-	\textbf{$\Rightarrow$ You may add such a Comment-Macro for yourself in "\DenKrSupplyRootDir/DenKr\_comments.tex" if you wish $\Leftarrow$}%
-    }}%
-}}%
+% - I introduced the "automatic" Version (the \DisplayDenKrCommandsLegend) somewhen later (hence the "historical")
+% - And basically, as this auto-version exists, there shouldn't be any need anymore to prepare a manual Legend, as this is populated automatically by the Command-Definitions and then rolls the displaying automatically out.
+%
+%\newcommand{\TempDisplayPreparation}{\disablewr{%
+%	{%
+%	\section{Draft-State: Comment Color Code}{\noindent\raggedright%
+%	\todo{Comments: ToDos: \mbox{$\Rightarrow$ \textbackslash todo\{ \}}}\nl%
+%	\notice{Comment: A general Notice: \mbox{$\Rightarrow$ \textbackslash notice\{ \}}}\nl%
+%	\pasteColCodeLegend{dekr}{Dennis Krummacker}%
+%	\pasteColCodeLegend{chfi}{Christoph Fischer}%
+%	\pasteColCodeLegend{mabe}{Maximilian Berndt}%
+%	\pasteColCodeLegend{jaze}{Janis Zemitis}%
+%	\pasteColCodeLegend{beve}{Benedikt Veith}%
+%	\pasteColCodeLegend{hedi}{Mohamed Romdhane}%
+%	\pasteColCodeLegend{frpo}{Franc Pouhela}%
+%	\pasteColCodeLegend{dummyA}{Just-some-Dummy}%
+%	\pasteColCodeLegend{dummyB}{Just-some-Dummy}%
+%	\pasteColCodeLegend{dummyC}{Just-some-Dummy}%
+%	\pasteColCodeLegend{dummyD}{Just-some-Dummy}%
+%	\textbf{$\Rightarrow$ You may add such a Comment-Macro for yourself in "\DenKrSupplyRootDir/DenKr\_comments.tex" if you wish $\Leftarrow$}%
+%	}}%
+%}}%
 %----------------------------------------------------------------------------------
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 %==================================================================================
