@@ -104,8 +104,8 @@ m% Color
   \csuse{DenKrComDefinedCmdsNAME#1}%
 }%
 \newcommand\checkDenKrComDefinedCmd[2]{%
-  \ifcsempty{DenKrComDefinedCmds#1#2}
-}
+  \ifcsempty{DenKrComDefinedCmds#1#2}{}{}%
+}%
 \newcommand\loopDenKrComDefinedCmds{%
     \setcounter{loopi}{0}%
     \loop\ifnum\value{loopi}<\value{DenKrComDefinedCmds}%

@@ -1,21 +1,21 @@
 %
 \expandafter\ifstrequal\expandafter{\DenKrLayout}{IEEEtran}{%
-    \newcommand{\DenKrBiblatexStyle}{ieee}%
+	\newcommand{\DenKrBiblatexStyle}{ieee}%
 }{%
 \expandafter\ifstrequal\expandafter{\DenKrLayout}{MDPI}{%
-    \newcommand{\DenKrBiblatexStyle}{\DenKrLayoutRootDir/Definitions/mdpi}%
+	\newcommand{\DenKrBiblatexStyle}{\DenKrLayoutRootDir/Definitions/mdpi}%
 }{%
-    \newcommand{\DenKrBiblatexStyle}{ieee}% numeric-comp, apa, ieee
+	\newcommand{\DenKrBiblatexStyle}{ieee}% numeric-comp, apa, ieee
 }}%
 %
 \PassOptionsToPackage{%
-    style=\DenKrBiblatexStyle,%
+	style=\DenKrBiblatexStyle,%
 	dashed=true,%
-    %apabackref=true,%
+	%apabackref=true,%
 	isbn=false,%
-    minbibnames=3,%
-    maxbibnames=3,%
-    mincitenames=3,%
-    maxcitenames=3,%
+	minbibnames=3,%
+	maxbibnames=3,%
+	mincitenames=3,%
+	maxcitenames=3,%
 }{biblatex}%
 %

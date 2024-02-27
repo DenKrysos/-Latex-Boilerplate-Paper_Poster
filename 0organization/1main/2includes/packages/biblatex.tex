@@ -21,10 +21,17 @@
 %
 %
 %============================================================================
-%%========  Some Settings, especially for use with 'style=ieee'
+%%========  Some Settings  =========
 \renewcommand*{\bibfont}{\normalfont\footnotesize}%
-\DeclareFieldFormat{sentencecase}{\csname bbx@colon@search\endcsname#1}% Therewith capital letters stay capitals, when using 'style=ieee'
-%%======  One might also want to take a look at 'titlecase', when using 'style=ieee'
+%----------------------------------------------------------------------------
+%%--------  Style-dependent Settings, especially for use with 'style=ieee'
+%% - - - - - - -  Therewith capital letters stay capitals, when using 'style=ieee'
+%%                 (One might also want to take a look at 'titlecase', when using 'style=ieee')
+%%                 (As Reference: \DeclareFieldFormat[article]{titlecase}{\MakeSentenceCase*{#1}})
+%\DeclareFieldFormat{sentencecase}{\csname bbx@colon@search\endcsname#1}% Old one, now creates other issues
+\DeclareFieldFormat{sentencecase}{#1}%
+%
+%
 %
 %============================================================================
 %%========  More Configuration

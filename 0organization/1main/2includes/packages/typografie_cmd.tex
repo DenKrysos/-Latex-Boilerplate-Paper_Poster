@@ -91,6 +91,18 @@
 \newcommand{\formatquotnamref}[1]{%
     \formatquotrefFormat{\nameref{#1}}%
 }%
+% - - - - - - - - - - - - - - - -
+% For Referencing (additionally) deeper into a Chapter/Section
+%    (Like "See Chapter 1.2 (NameOfIt) and therein the unnumbered SubSubSection ›Something‹)
+%     -> e.g. \formatquotnamref{sec:someSec} (\furtherref{subsub:unnumberedSec})
+%         --> becomes:  Section 1.2 (Section-Name) (→ ›NameOfUnnumberedSection‹)
+\newcommand{\furtherrefFormat}[1]{{%
+	$\rightarrow$ \formatquotnamref{#1}%
+}}%
+\newcommand{\furtherref}[1]{{%
+	(\furtherrefFormat{#1})%
+}}%
+\newcommand{\deeperref}[1]{\furtherref{#1}}%
 %
 % - - - - - - - - - - - - - - - -
 % To create a Reference with Custom-Text
