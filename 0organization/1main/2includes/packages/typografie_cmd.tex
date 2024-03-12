@@ -60,10 +60,17 @@
 \newcommand{\typeref}[1]{\entityref{#1}}%
 % - - - - - - - - - - - - - - - -
 % Including the *Name/Title/Caption* of the Element
+\newcommand{\formatnamref}[1]{%
+	%(#1)%
+	%\langle$#1$\rangle$%
+	{\boldmath$\langle$}#1{\boldmath$\rangle$}%
+	%$\lceil$#1$\rfloor$%
+	%{\boldmath$$\lceil$}#1${\boldmath$\rfloor$}%
+}%
 \makeatletter%
 \newcommand{\numnamref}[1]{%
     %\cref@gettype{#1}{\currlabtype}%
-    \hyperref[#1]{\cref*{#1}} (\nameref{#1})%
+	\hyperref[#1]{\cref*{#1}} \formatnamref{\nameref{#1}}%
 }%
 \makeatother%
 \newcommand{\entitynumnamref}[1]{\numnamref{#1}}%
