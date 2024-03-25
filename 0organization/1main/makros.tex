@@ -466,6 +466,7 @@ cycle;%
 \DeclareDocumentCommand{\sidenote}{%
 m O{Sidenote} O{0pt}%
 }{%
+\vfuzz=3pt%
 \vspace{#3}%
 \begin{myleftbar}{\stdleftbarwidth}{0.5em}%
 \begin{InciRem}[#2]%
@@ -482,6 +483,7 @@ m O{Sidenote} O{0pt}%
 \DeclareDocumentCommand{\sidenoteSP}{%
 m O{Sidenote} O{0pt}%
 }{%
+\vfuzz=3pt%
 \vspace{#3}%
 \begin{samepage}%
 \begin{myleftbar}{\stdleftbarwidth}{0.25em}%

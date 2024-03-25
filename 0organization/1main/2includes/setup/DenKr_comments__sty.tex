@@ -18,10 +18,10 @@
 % ----  Some Stuff to help during working state
 %----------------------------------------------------------------------------------
 % Disable-Wrapper. Helps to disable everything with just one Step. Remember to use it ;oP
-\expandafter\ifstrequal\expandafter{\DenKrCommentsUsage}{0}{%
-    \newcommand{\disablewr}[1]{}%
-}{%
+\expandafter\ifstrequal\expandafter{\DenKrCommentsUsage}{1}{%
 	\newcommand{\disablewr}[1]{#1}%
+}{%
+	\newcommand{\disablewr}[1]{}%
 }%
 %
 \DeclareDocumentCommand{\newcommandsDisw}{%
@@ -142,8 +142,25 @@ m% Color
 %
 %
 %
+%
 %==================================================================================
 % ----  Template/Example for defining additional Comment-Cmds per Person
+%= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+%----------------------------------------------------------------------------------
+%
+%----------------------------------------------------------------------------------
+%  -> Simply paste this first line below (and adjust accordingly). Will automatically create Commands.
+% - - - - - - - - -
+% \newcommandsDisw{dekr}{DenKr}[Dennis Krummacker]{denkrComColDenKr}%
+%----------------------------------------------------------------------------------
+%  -> [Optionally], the created Cmds can be selectively overwritten afterwards, like e.g.:
+% - - - - - - - - -
+% \renewcommand{\dekr}[1]{}%% Disable comments [selectively this]
+% \renewcommand{\dekrhl}[1]{#1}%% Disable highlighting of text [selectively this]
+% \renewcommand{\dekrhl}[1]{}%% Completely disable this kind of text [selectively this]
+%
+%----------------------------------------------------------------------------------
+%  -> "Manually", i.e. without making full use of the Automation
 %----------------------------------------------------------------------------------
 % \definecolor{denkrComCol1}{named}{purple}%
 % \newcommanddisw{\dekrcom}{denkrComCol1}{{\#}DenKr: #1}%
