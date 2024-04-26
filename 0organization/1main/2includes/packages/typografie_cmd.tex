@@ -70,7 +70,7 @@
 \makeatletter%
 \newcommand{\numnamref}[1]{%
     %\cref@gettype{#1}{\currlabtype}%
-	\hyperref[#1]{\cref*{#1}} \formatnamref{\nameref{#1}}%
+	\hyperref[#1]{\cref*{#1} \formatnamref{\nameref*{#1}}}%
 }%
 \makeatother%
 \newcommand{\entitynumnamref}[1]{\numnamref{#1}}%
@@ -84,19 +84,19 @@
 \newcommand{\formatquotrefFormat}[1]{{\quotrefFormat{\formatrefFormat{#1}}}}%
 % - - The actual referenc cmds
 \newcommand{\formattednamref}[1]{{%
-    \formatrefFormat{\nameref{#1}}%
+	\hyperref[#1]{\formatrefFormat{\nameref*{#1}}}%
 }}%
 \newcommand{\entityformattednamref}[1]{\formattednamref{#1}}%
 \newcommand{\eleformattednamref}[1]{\formattednamref{#1}}%
 \newcommand{\typeformattednamref}[1]{\formattednamref{#1}}%
 %
 \newcommand{\quotednamref}[1]{{%
-    \quotrefFormat{\nameref{#1}}%
+	\hyperref[#1]{\quotrefFormat{\nameref*{#1}}}%
 }}%
 % - - - - - - - - - - - - - - - -
 % The formatted above + quotation
 \newcommand{\formatquotnamref}[1]{%
-    \formatquotrefFormat{\nameref{#1}}%
+	\hyperref[#1]{\formatquotrefFormat{\nameref*{#1}}}%
 }%
 % - - - - - - - - - - - - - - - -
 % For Referencing (additionally) deeper into a Chapter/Section
