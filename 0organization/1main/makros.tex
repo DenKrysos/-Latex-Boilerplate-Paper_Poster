@@ -567,6 +567,31 @@ m O{Sidenote} O{0pt}%
 %
 %
 %=================================
+% An environment for typesetting "Spoilers"
+%    Put something inside such an environment and it won't be shown in the digital Document.
+%    But it will have a clickable Button before it to reveal the Content
+% NOTE: Requires \usepackage{ocgx2}, which may be outcommented by default in this Boilerplate
+%      (requires 'ocgx' / 'ocgx2')
+%================================================
+%	Button at Start of Env
+\newcounter{spoiler}%
+\newenvironment{spoiler}%
+{\noindent\stepcounter{spoiler}%
+\begin{minipage}{\textwidth-1ex}%
+\switchocg{spoiler\arabic{spoiler}}{\raisebox{0.4ex}{\fbox{\tiny Spoiler!}}}%
+\begin{ocg}{Spoiler \arabic{spoiler}}{spoiler\arabic{spoiler}}{0}%
+%\footnotesize%
+}%
+%---------------------------------------------
+{\par\end{ocg}%
+\end{minipage}}%
+%---------------------------------------------
+%================================================
+%
+%
+%
+%
+%=================================
 % The romaji Spoiler-Environment
 %      requires package 'ocgx' / 'ocgx2'
 %================================================

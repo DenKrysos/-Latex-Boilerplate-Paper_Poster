@@ -36,6 +36,12 @@
 %				Settings
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 %  Asterisk (*) after \captionsetup suppresses the "Unused \captionsetup[⟨type⟩]" Warning
+\captionsetup{%
+    singlelinecheck=true,% If caption fits into 1-Line, always centered.
+    format=plain,% plain, hang
+    indention=1.25em,%
+    justification=RaggedRight,% justified, centering, centerlast, centerfirst, raggedright, RaggedRight, raggedleft
+}%
 \captionsetup*[figure]{%
     font=footnotesize,%
     labelfont=normalfont,%

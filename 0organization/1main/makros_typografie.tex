@@ -1017,9 +1017,42 @@ O{2} m m m%
 }%
 %====================================================================
 % define "struts", as suggested by Claudio Beccari in a piece in TeX and TUG News, Vol. 2, 1993.
-\newcommand\TstrutRatingSection{\rule{0pt}{4ex}}         % = `top' strut
-\newcommand\BstrutRatingSection{\rule[-2.6ex]{0pt}{0pt}}   % = `bottom' strut
+\newcommand\TstrutRatingSection{\rule{0pt}{4ex}}% = `top' strut
+\newcommand\BstrutRatingSection{\rule[-2.6ex]{0pt}{0pt}}% = `bottom' strut
 %^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %------------- Rating Section End -------------
+%====================================================================
+%####################################################################
+%
+%
+%
+%
+%
+%
+%####################################################################
+%====================================================================
+%------------- DIN-A Paper Format -------------
+%vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+%____________________________________________________________________
+% When you compile a Document occasionally on DIN-A4 and also DIN-A5 paper, normally included graphics would appear smaller on the DIN-A5, when including with a Factor to e.g. the line/text/column-width.
+% The following Macro sets you the variable "\InclGraphWidthDINA" to an optimized value for both scenarios.
+% USAGE Example: \setInclGraphWidthDINA{0.7}% Set the given value to the desired Factor of the \linewidth
+%   - When you operate on a DIN-A4 paper, it sets \InclGraphWidthDINA to 0.7 the \linewidth of this DIN-A4 paper
+%   - When a DIN-A5 paper is compiled, is increases the Factor accordingly, to keep a graphic the same visual size for the reader (and accordingly relatively bigger to the DIN-A5 paper width).
+%   -> While doing so, it assures that the Factor never goes beyond 1.0
+\newcommand{\setInclGraphWidthDINA}[1]{%
+\def\InclGraphWidthDINAFiveMult{1.4}% A5 Paper Format textwidth is decreased by Factor of sqrt(2)
+\edef\InclGraphWidthDINAFactorPic{#1}%
+\edef\InclGraphWidthDINAFactor{\InclGraphWidthDINAFactorPic}%
+\expandafter\ifstrequal\expandafter{\DenKrLayout}{scrbook_print}{%
+    \edef\InclGraphWidthDINAFactor{\fpeval{\InclGraphWidthDINAFiveMult*\InclGraphWidthDINAFactor}}%
+}{}%
+\ifthenelse{1=\fpeval{\InclGraphWidthDINAFactor>1.0}}{%
+    \edef\InclGraphWidthDINAFactor{1}%
+}{}%
+\edef\InclGraphWidthDINA{\InclGraphWidthDINAFactor\linewidth}%
+}%
+%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+%------------- DIN-A Paper END -------------
 %====================================================================
 %####################################################################
