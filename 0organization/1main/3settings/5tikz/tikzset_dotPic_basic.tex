@@ -65,11 +65,12 @@
   }%
 }%
 %
+% \definecolor{TikzCol_PadlockLine}{named}{black}
 \definecolor{TikzCol_PadlockLine}{RGB}{13,96,139}
 \newdimen\PadlockSize%
 \setlength{\PadlockSize}{4.5em}%
 \newdimen\PadlockLineWidth%
-\setlength{\PadlockLineWidth}{0.03\PadlockSize}%
+\setlength{\PadlockLineWidth}{0.06\PadlockSize}%
 % \def\PadlockSize{4.5em}%
 % \def\PadlockLineWidth{0.03*\PadlockSize}%
 %
@@ -489,7 +490,7 @@
     \coordinate(-RotorRBladeR3)at($(-RotorRBladeR2)+(0.04*\UnmannedAerialVehicleSize,-0.01*\UnmannedAerialVehicleSize)$);%
     \coordinate(-RotorRBladeR4)at($(-RotorRBladeR3)+(0.2*\UnmannedAerialVehicleSize,0.01*\UnmannedAerialVehicleSize)$);%
     %
-    % - - - - - - - 
+    % - - - - - - -
     % Corpus
     \path[UnmannedAerialVehicleLine]%
         (-CorpusLT)%
@@ -527,7 +528,7 @@
         --%
     cycle;%
     %
-    % - - - - - - - 
+    % - - - - - - -
     % Rotor Links - Motor
     \path[UnmannedAerialVehicleLine,line join=miter,line width=0.6*\UnmannedAerialVehicleLineWidth]%
         (-RotorLMotorLB)%
@@ -554,7 +555,7 @@
         --%
     cycle;%
     %
-    % - - - - - - - 
+    % - - - - - - -
     % Rotor Links - Left Blade
     \path[UnmannedAerialVehicleLine,line join=miter,line width=0.8*\UnmannedAerialVehicleLineWidth]%
         (-RotorLBladeL1)%
@@ -574,7 +575,7 @@
             ++(-0.1*\UnmannedAerialVehicleSize,0.007*\UnmannedAerialVehicleSize)%
         ..%
     cycle;%
-    % - - - - - - - 
+    % - - - - - - -
     % Rotor Links - Right Blade
     \path[UnmannedAerialVehicleLine,line join=miter,line width=0.8*\UnmannedAerialVehicleLineWidth]%
         (-RotorLBladeR1)%
@@ -595,7 +596,7 @@
         ..%
     cycle;%
     %
-    % - - - - - - - 
+    % - - - - - - -
     % Rotor Rechts - Motor
     \path[UnmannedAerialVehicleLine,line join=miter,line width=0.6*\UnmannedAerialVehicleLineWidth]%
         (-RotorRMotorLB)%
@@ -622,7 +623,7 @@
         --%
     cycle;%
     %
-    % - - - - - - - 
+    % - - - - - - -
     % Rotor Links - Left Blade
     \path[UnmannedAerialVehicleLine,line join=miter,line width=0.8*\UnmannedAerialVehicleLineWidth]%
         (-RotorRBladeL1)%
@@ -642,7 +643,7 @@
             ++(-0.1*\UnmannedAerialVehicleSize,0.007*\UnmannedAerialVehicleSize)%
         ..%
     cycle;%
-    % - - - - - - - 
+    % - - - - - - -
     % Rotor Links - Right Blade
     \path[UnmannedAerialVehicleLine,line join=miter,line width=0.8*\UnmannedAerialVehicleLineWidth]%
         (-RotorRBladeR1)%
@@ -663,7 +664,7 @@
         ..%
     cycle;%
     %
-    % - - - - - - - 
+    % - - - - - - -
     % Camera
     \path[UnmannedAerialVehicleLine]%
         (-CameraLT)%
@@ -679,7 +680,7 @@
     \draw[draw=none,fill=TikzCol_UnmannedAerialVehicleLine,line width=0pt](-CameraCenter)circle(0.019*\UnmannedAerialVehicleSize);%
     \draw[draw=none,fill=white,line width=0pt]($(-CameraCenter)+(135:0.01*\UnmannedAerialVehicleSize)$)circle(0.01*\UnmannedAerialVehicleSize);%
     %
-    % - - - - - - - 
+    % - - - - - - -
     % Leg Left
     \path[UnmannedAerialVehicleLine,line join=miter]%
         (-LegLeftT1L)%
@@ -704,7 +705,7 @@
         --%
     cycle;%
     %
-    % - - - - - - - 
+    % - - - - - - -
     % Leg Right
     \path[UnmannedAerialVehicleLine,line join=miter]%
         (-LegRightT1L)%
@@ -729,7 +730,7 @@
         --%
     cycle;%
     %
-    % - - - - - - - 
+    % - - - - - - -
     % Some Accents
     \path[UnmannedAerialVehicleLine,fill=none,line join=miter]%
         ($(-CorpusLT)!.8!(-CorpusLT1)$)%
@@ -841,7 +842,7 @@
     \coordinate(-RotorRBladeR3)at($(-RotorRBladeR2)+(0.04*\UnmannedAerialVehicleSize,-0.01*\UnmannedAerialVehicleSize)$);%
     \coordinate(-RotorRBladeR4)at($(-RotorRBladeR3)+(0.2*\UnmannedAerialVehicleSize,0.01*\UnmannedAerialVehicleSize)$);%
     %
-    % - - - - - - - 
+    % - - - - - - -
     % Corpus
     \path[UnmannedAerialVehicleLine]%
         (-CorpusLT)%
@@ -879,7 +880,7 @@
         --%
     cycle;%
     %
-    % - - - - - - - 
+    % - - - - - - -
     % Rotor Links - Motor
     \path[UnmannedAerialVehicleLine,line join=miter,line width=0.6*\UnmannedAerialVehicleLineWidth]%
         (-RotorLMotorLB)%
@@ -906,7 +907,7 @@
         --%
     cycle;%
     %
-    % - - - - - - - 
+    % - - - - - - -
     % Rotor Links - Left Blade
     \path[UnmannedAerialVehicleLine,line join=miter,line width=0.8*\UnmannedAerialVehicleLineWidth]%
         (-RotorLBladeL1)%
@@ -926,7 +927,7 @@
             ++(-0.1*\UnmannedAerialVehicleSize,0.007*\UnmannedAerialVehicleSize)%
         ..%
     cycle;%
-    % - - - - - - - 
+    % - - - - - - -
     % Rotor Links - Right Blade
     \path[UnmannedAerialVehicleLine,line join=miter,line width=0.8*\UnmannedAerialVehicleLineWidth]%
         (-RotorLBladeR1)%
@@ -947,7 +948,7 @@
         ..%
     cycle;%
     %
-    % - - - - - - - 
+    % - - - - - - -
     % Rotor Rechts - Motor
     \path[UnmannedAerialVehicleLine,line join=miter,line width=0.6*\UnmannedAerialVehicleLineWidth]%
         (-RotorRMotorLB)%
@@ -974,7 +975,7 @@
         --%
     cycle;%
     %
-    % - - - - - - - 
+    % - - - - - - -
     % Rotor Links - Left Blade
     \path[UnmannedAerialVehicleLine,line join=miter,line width=0.8*\UnmannedAerialVehicleLineWidth]%
         (-RotorRBladeL1)%
@@ -994,7 +995,7 @@
             ++(-0.1*\UnmannedAerialVehicleSize,0.007*\UnmannedAerialVehicleSize)%
         ..%
     cycle;%
-    % - - - - - - - 
+    % - - - - - - -
     % Rotor Links - Right Blade
     \path[UnmannedAerialVehicleLine,line join=miter,line width=0.8*\UnmannedAerialVehicleLineWidth]%
         (-RotorRBladeR1)%
@@ -1015,7 +1016,7 @@
         ..%
     cycle;%
     %
-    % - - - - - - - 
+    % - - - - - - -
     % Camera
     \path[UnmannedAerialVehicleLine]%
         (-CameraLT)%
@@ -1031,7 +1032,7 @@
     \draw[draw=none,fill=TikzCol_UnmannedAerialVehicleLine,line width=0pt](-CameraCenter)circle(0.019*\UnmannedAerialVehicleSize);%
     \draw[draw=none,fill=white,line width=0pt]($(-CameraCenter)+(135:0.01*\UnmannedAerialVehicleSize)$)circle(0.01*\UnmannedAerialVehicleSize);%
     %
-    % - - - - - - - 
+    % - - - - - - -
     % Leg Left
     \path[UnmannedAerialVehicleLine,line join=miter]%
         (-LegLeftT1L)%
@@ -1056,7 +1057,7 @@
         --%
     cycle;%
     %
-    % - - - - - - - 
+    % - - - - - - -
     % Leg Right
     \path[UnmannedAerialVehicleLine,line join=miter]%
         (-LegRightT1L)%
@@ -1081,7 +1082,7 @@
         --%
     cycle;%
     %
-    % - - - - - - - 
+    % - - - - - - -
     % Some Accents
     \path[UnmannedAerialVehicleLine,fill=none,line join=miter]%
         ($(-CorpusLT)!.8!(-CorpusLT1)$)%
@@ -1108,7 +1109,7 @@
             ++(-0.025*\UnmannedAerialVehicleSize,0.005*\UnmannedAerialVehicleSize)%
         ..%
         ($(-CorpusRB1)!.1!(-CorpusRB2)$);%
-    % - - - - - - - 
+    % - - - - - - -
     % Some Accents - Central
     \path[UnmannedAerialVehicleLine,fill=none,line width=0.5*\UnmannedAerialVehicleLineWidth]%
         (-CorpusLT2)%
@@ -1216,11 +1217,15 @@
     \path[name path=Layer Top](-L2-L2)--coordinate[pos=0.03](-SidePanelB)coordinate[pos=0.85](-SidePanelF)(-L2-B1)--(-L2-B2)--coordinate[pos=0.2](-CtrlPanelLT)coordinate[pos=0.93](-CtrlPanelRT)(-L2-R1)--(-L2-R2)--(-L2-T1)--(-L2-T2)--(-L2-L1)--cycle;%
     %
     % Side Panel Left (Drawn later below)
-    \path[save path=\SidePanelLeft,name path=SidePanel](-SidePanelB)--(-SidePanelF)--coordinate[pos=1](-SidePanelFT)++(-50:0.5*\AutomatedGuidedVehicleSidepanelHeight)--++(270:0.8*\AutomatedGuidedVehicleSidepanelHeight)--++(270-70:0.3*\AutomatedGuidedVehicleSidepanelHeight)--%
+    \path[save path=\SidePanelLeft,name path=SidePanel](-SidePanelB)--(-SidePanelF)--coordinate[pos=1](-SidePanelFT)++(-50:0.5*\AutomatedGuidedVehicleSidepanelHeight)--++(270:0.8*\AutomatedGuidedVehicleSidepanelHeight)--%
+        coordinate(-SidePanelLowest)%
+    ++(270-70:0.3*\AutomatedGuidedVehicleSidepanelHeight)--%
         coordinate[pos=0.6](-WheelBackR1)%
         coordinate[pos=0.56](-WheelBackR2)%
         coordinate[pos=0.8](-WheelBackL1)%
-    ++(180-3-\AutomatedGuidedVehicleAngleOne:0.95*\AutomatedGuidedVehicleLength)--++(90+20:0.27*\AutomatedGuidedVehicleSidepanelHeight)--++(90:0.6*\AutomatedGuidedVehicleSidepanelHeight)--cycle;%
+    ++(180-3-\AutomatedGuidedVehicleAngleOne:0.95*\AutomatedGuidedVehicleLength)--%
+        coordinate(-SidePanelLeftmost)%
+    ++(90+20:0.27*\AutomatedGuidedVehicleSidepanelHeight)--++(90:0.6*\AutomatedGuidedVehicleSidepanelHeight)--cycle;%
     %
     % \path[AutomatedGuidedVehicleLine](-CtrlPanelRT)--coordinate[pos=1](-CtrlPanelInnerR)++(270:0.5*\AutomatedGuidedVehicleSidepanelHeight)--(-L1-R2)--(-L1-R1)--(-L1-B2)
     %     % --(-L1-B1)
@@ -1389,6 +1394,11 @@
         to[out=90+20,in=90-20]($(\p4)+(90:0.03*\AutomatedGuidedVehicleSize)$)%
         --(\p4)%
     ;%
+    %
+    % Extend Bounding-Box to include the drawn line
+    \coordinate(-lowestY)at(-SidePanelLowest);
+    \coordinate(-leftmostX)at(-SidePanelLeftmost);
+    \path[line width=0pt](-lowestY-|-leftmostX)--++(-0.5*\AutomatedGuidedVehicleLineWidth,0.5*-\AutomatedGuidedVehicleLineWidth);
     %
     %
     \let\AutomatedGuidedVehicleLength\undefined%
