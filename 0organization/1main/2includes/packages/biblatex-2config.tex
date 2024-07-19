@@ -3,10 +3,19 @@
 % \DeclareLanguageMapping{english}{english-apa}%
 %-------------------------------------------------
 %
-%\addbibresource{\DenKrLiteratureDir/literature.bib}%
-\addbibresource{\DenKrLiteratureDir/literature_own.bib}%
-\addbibresource{\DenKrLiteratureDir/literature_misc.bib}%
-\addbibresource{\DenKrLiteratureDir/literature_thirdParty.bib}%
+% - - - - - -
+\newcommand{\addBibIfExists}[1]{\IfFileExists{#1}{\addbibresource{#1}}{}}%
+%
+\addBibIfExists{\DenKrLiteratureDir/literature.bib}%
+\addBibIfExists{\DenKrLiteratureDir/literature_full.bib}%
+\addBibIfExists{\DenKrLiteratureDir/literature_own.bib}%
+\addBibIfExists{\DenKrLiteratureDir/literature_misc.bib}%
+\addBibIfExists{\DenKrLiteratureDir/literature_thirdParty.bib}%
+% \addBibIfExists{\DenKrLiteratureDir/literature_secondary.bib}%
+% \addBibIfExists{\DenKrLiteratureDir/literature_figures.bib}%
+% \addBibIfExists{\DenKrLiteratureDir/literature_tables.bib}%
+% \addBibIfExists{\DenKrLiteratureDir/literature_querries.bib}%
+% - - - - - -
 %
 %
 %

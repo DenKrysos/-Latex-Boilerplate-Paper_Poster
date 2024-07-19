@@ -1,8 +1,10 @@
+% Author: Dennis Krummacker%
+\ifdefined\DenKr\documentclass[tikz,fontsize=11pt,class=scrbook]{standalone}\begin{document}\else%
 \input{"./2ProjectSetup".tex}%
 \input{"\DenKrLayoutMainRootDir/2includes/packages/preamble_pre".tex}%
 \documentclass[tikz,fontsize=11pt,class=scrbook]{standalone}% I.e. the content from \input{"\DenKrLayoutMainRootDir/2layout/tikz_standalone/preamble_1_class".tex}%
 \input{"\DenKrLayoutBaseRootDir/tikz_standalone/1TikzStandalonePicIncludeThis".tex}%
-\DenKrTikzStandalonePre%
+\DenKrTikzStandalonePre\fi%
 %
 %
 %
@@ -21,4 +23,4 @@
 \end{tikzpicture}%
 %
 %
-\DenKrTikzStandalonePost%
+\ifdefined\DenKr\end{document}\else\DenKrTikzStandalonePost\fi%

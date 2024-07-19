@@ -4,11 +4,13 @@
 % To create a Standalone Tikz-Picture do the following.
 % 1) Create a new blank .tex File.
 % 2) Paste the Following to the Beginning of the File
+%      % Author: Dennis Krummacker%
+%      \ifdefined\DenKr\documentclass[tikz,fontsize=11pt,class=scrbook]{standalone}\begin{document}\else%
 %      \input{"./2ProjectSetup".tex}%
 %      \input{"\DenKrLayoutMainRootDir/2includes/packages/preamble_pre".tex}%
-%      \documentclass[tikz,fontsize=11pt,class=scrbook]{standalone}% I.e. copy the content from \input{"\DenKrLayoutMainRootDir/2layout/tikz_standalone/preamble_1_class".tex}%
+%      \documentclass[tikz,fontsize=11pt,class=scrbook]{standalone}% I.e. the content from \input{"\DenKrLayoutMainRootDir/2layout/tikz_standalone/preamble_1_class".tex}%
 %      \input{"\DenKrLayoutBaseRootDir/tikz_standalone/1TikzStandalonePicIncludeThis".tex}%
-%      \DenKrTikzStandalonePre%
+%      \DenKrTikzStandalonePre\fi%
 % 3) If desired/required, perform "Pre-Tikzpicture-Operations". At this Position, you are inside \begin{Document} [] \end{Document}, but not inside a Tikz-Picture.
 %    Here, first, You may write things like tikzsets, length-definitions and such.
 % 4) Fill in your Picture. Start a Tikzpicture like
@@ -23,7 +25,7 @@
 %    <End the Picture like>
 %       \end{tikzpicture}%
 % 5) Paste the Following to the End of the File
-%      \DenKrTikzStandalonePost%
+%      \ifdefined\DenKr\end{document}\else\DenKrTikzStandalonePost\fi%
 %
 % To then use this picture, i.e. print it in the actual document, use the \tikzabb Command from the makros.tex.
 % Example
