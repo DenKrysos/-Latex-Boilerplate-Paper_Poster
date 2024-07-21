@@ -26,12 +26,25 @@
 %					Authors
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 %================================================
-\input{"\DenKrLayoutSupplyAuthorDir/article/authors".tex}%
+%\providecommand\TitlePageAuthorsManually{}\renewcommand\TitlePageAuthorsManually{%
+%	\expandafter\ifstrequal\expandafter{\DenKrBlindReview}{1}{}{%
+%		\input{"\DenKrLayoutSupplyAuthorDir/article/authors".tex}%
+%		%================================================
+%		%###########################
+%		%================================================
+%		\input{"\DenKrLayoutSupplyAuthorDir/article/affiliations".tex}%
+%	}%
+%}%
+\providecommand\TitlePageAuthorsDenKrAutomated{}\renewcommand\TitlePageAuthorsDenKrAutomated{%
+	\input{"\DenKrSupplyRootDir/author_affiliation".tex}%
+	%================================================
+	\expandafter\ifstrequal\expandafter{\DenKrBlindReview}{1}{\author{\ \vspace*{-2\baselineskip}}\affil{}}{%
+		\DenKrAuthorFormatArticle%
+	}%
+}%
 %================================================
-%###########################
-%================================================
-\input{"\DenKrLayoutSupplyAuthorDir/article/affiliations".tex}%
-%================================================
+%\TitlePageAuthorsManually%
+\TitlePageAuthorsDenKrAutomated%
 %
 %
 %

@@ -30,16 +30,26 @@
 %					Authors
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 % author names and affiliations
-% use a multiple column layout for up to three different
-% affiliations
 %############################
-\author{%
-\expandafter\ifstrequal\expandafter{\DenKrBlindReview}{1}{}{%
-%================================================
-\input{"\DenKrLayoutSupplyAuthorDir/IEEEtran/1FormatSwitch".tex}%
-%================================================
+%\providecommand\TitlePageAuthorsManually{}\renewcommand\TitlePageAuthorsManually{%
+%	\author{%
+%	%================================================
+%	\expandafter\ifstrequal\expandafter{\DenKrBlindReview}{1}{}{%
+%		\input{"\DenKrLayoutSupplyAuthorDir/IEEEtran/1FormatSwitch".tex}%
+%	}%
+%	%================================================
+%	}%
+%}%
+\providecommand\TitlePageAuthorsDenKrAutomated{}\renewcommand\TitlePageAuthorsDenKrAutomated{%
+	\input{"\DenKrSupplyRootDir/author_affiliation".tex}%
+	%================================================
+	\expandafter\ifstrequal\expandafter{\DenKrBlindReview}{1}{}{%
+		\DenKrAuthorFormatIEEEConfigSwitch%
+	}%
 }%
-}%
+%================================================
+%\TitlePageAuthorsManually%
+\TitlePageAuthorsDenKrAutomated%
 %
 %
 %
