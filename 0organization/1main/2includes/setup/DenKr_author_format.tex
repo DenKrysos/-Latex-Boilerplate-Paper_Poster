@@ -369,7 +369,7 @@
 				\edef\tmp{\DenKrAuthorTmpArrayBGetEnt{\theloopAuthi}}%
 				\expandafter\ifstrequal\expandafter{\tmp}{!}{\\}{%
 					{\small\expandafter\escapeus\expandafter{\tmp}}%
-					\ifnumcomp{\value{loopAuthj}}{>}{1}{{\small, }}{}%
+					\ifnumcomp{\value{loopAuthj}}{>}{1}{{\small\xspace| }}{}%
 				}%
 				\DenKrAuthorTmpArrayBDelEnt{\theloopAuthi}%
 				\stepcounter{loopAuthi}%
