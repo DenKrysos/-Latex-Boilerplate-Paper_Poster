@@ -4,22 +4,8 @@
 %  - Boilerplate creates an own Title-Page Layout that includes     %%%%%
 %    a Submission-Copyright-Notice (e.g. mandatory for IEEE Submission) %
 %vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-%\usepackage{graphicx}
-%% Font: Times
-%\usepackage[utf8]{inputenc}
 \usepackage{mathptmx}
-% \usepackage{ragged2e}
-%Watch below, Packe-Include of "subfig"
-%\usepackage[singlelinecheck=false]{caption}
-\PassOptionsToPackage{singlelinecheck=false}{caption}%
-%\usepackage[T1]{fontenc}
-%\usepackage[numbers]{natbib}%Instead, below, biblatex with natbib=true is used
-% \bibsep3bp
-% \renewcommand\bibsection{\section{Literatur}}
 %
-\def\figurename{Bild}%
-\def\tablename{Tabelle}%
-\RequirePackage[blocks]{authblk}%
 \pagestyle{empty}%
 \hoffset-1in%
 \voffset-1in%
@@ -69,7 +55,7 @@
   \fi%
   \@xsect{#5}}%
     %
-\renewcommand\LARGE{\@setfontsize\LARGE{16}{20}}%
+% \renewcommand\LARGE{\@setfontsize\LARGE{16}{20}}%
 \def\abstract#1{\def\@abstract{#1}}%
 \def\abstractEn#1{\def\@abstractEn{#1}}%
 \def\titleEn#1{\def\@titleEn{#1}}%
@@ -96,16 +82,9 @@
                                       {3.25ex \@plus1ex \@minus .2ex}%
                                       {-1em}%
                                       {\normalfont\normalsize\bfseries\RaggedRight}}%
-\affilsep0pt%
 \parindent\p@%
 \makeatother%
 \raggedbottom%
-% \AtEndPreamble{%
-% \DeclareCaptionLabelSeparator{enskip}{\enskip}%
-% \captionsetup{labelsep=enskip,justification=RaggedRight,labelfont=bf,skip=10pt}%
-% }%
-%
-%% More Settings are put at the bottom
 %
 %_____________________________________________________________________________
 %=============================================================================
