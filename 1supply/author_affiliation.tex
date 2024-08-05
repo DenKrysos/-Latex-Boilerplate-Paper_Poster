@@ -57,7 +57,11 @@
 % - collective
 %     Uses the Mail specification from \DenKrAffiliation
 % - individual
-%     Uses the Mail specifications from \DenKrAuthor
+%     Uses the Mail specifications from \DenKrAuthor *partly*.
+%     - This only takes the text before the @ and aggregates them with the domain from the affiliation.
+% - single   [TODO]
+%     Uses the Mail specifications from \DenKrAuthor *entirely*.
+%     This just directly takes the Email-Addresses from the Author.
 % - auto
 %     Makes it depending on the selected document format
 \renewcommand{\DenKrAuthorMailSelect}{auto}%

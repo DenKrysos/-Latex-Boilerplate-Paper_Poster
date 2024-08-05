@@ -9,37 +9,37 @@
 % Vertically aligning Text of different size
 %---------------------------------------------
 % USAGE Example:
-%    \npi
-%    {\LARGE SomeUng --\raiseC{\normalsize -- OtherdgM-- }\raiseT{\normalsize -- OtherdgM-- }\raiseT{\normalsize -- OtherdgM}}
-%    \npi
-%    SomeUng --\raiseC{\tiny -- OtherdgM-- }\raiseT{\tiny -- OtherdgM-- }\raiseT{\tiny -- OtherdgM}
+%	\npi
+%	{\LARGE SomeUng --\raiseC{\normalsize -- OtherdgM-- }\raiseT{\normalsize -- OtherdgM-- }\raiseT{\normalsize -- OtherdgM}}
+%	\npi
+%	SomeUng --\raiseC{\tiny -- OtherdgM-- }\raiseT{\tiny -- OtherdgM-- }\raiseT{\tiny -- OtherdgM}
 %---------------------------------------------
 \newsavebox{\verticalAlign}%
 \newlength{\verticalAlignHeight}%
 \newcommand{\textOccupyHeight}{%
-    %\ht\strutbox%
-    %\heightof{\strut}%
-    %\heightof{AMXgpqj}%
-    %\ht\vphantom{AMXgpqj}%
-    \heightof{\vphantom{AMXgpqj}}%
+	%\ht\strutbox%
+	%\heightof{\strut}%
+	%\heightof{AMXgpqj}%
+	%\ht\vphantom{AMXgpqj}%
+	\heightof{\vphantom{AMXgpqj}}%
 }%
 % \depthof{#1}
 \newcommand*{\raiseT}[1]{%
-    \setlength{\verticalAlignHeight}{\textOccupyHeight}%
-    \sbox{\verticalAlign}{#1}%
-    \raisebox{\verticalAlignHeight-\ht\verticalAlign}{\usebox{\verticalAlign}}%
+	\setlength{\verticalAlignHeight}{\textOccupyHeight}%
+	\sbox{\verticalAlign}{#1}%
+	\raisebox{\verticalAlignHeight-\ht\verticalAlign}{\usebox{\verticalAlign}}%
 }%
 \newcommand*{\raiseC}[1]{%
-    \setlength{\verticalAlignHeight}{\textOccupyHeight}%
-    \sbox{\verticalAlign}{#1}%
-    \raisebox{0.5\verticalAlignHeight-0.5\ht\verticalAlign}{\usebox{\verticalAlign}}%
+	\setlength{\verticalAlignHeight}{\textOccupyHeight}%
+	\sbox{\verticalAlign}{#1}%
+	\raisebox{0.5\verticalAlignHeight-0.5\ht\verticalAlign}{\usebox{\verticalAlign}}%
 }%
 %
 \newcommand*{\adjustT}[1]{%
-    \adjustbox{valign=t}{#1}%
+	\adjustbox{valign=t}{#1}%
 }%
 \newcommand*{\adjustC}[1]{%
-    \adjustbox{valign=c}{#1}%
+	\adjustbox{valign=c}{#1}%
 }%
 %
 %
@@ -72,10 +72,10 @@
 %
 % Another Variant for a Blank-Footnote
 \newcommand\blankfootnote[1]{%
-    \begingroup%
-    \renewcommand\thefootnote{}\footnote{#1}%
-    \addtocounter{footnote}{-1}%
-    \endgroup%
+	\begingroup%
+	\renewcommand\thefootnote{}\footnote{#1}%
+	\addtocounter{footnote}{-1}%
+	\endgroup%
 }%
 %
 % This places a footnote on the bottom of the page but does not leave a Mark where the footnote is defined.
@@ -84,8 +84,8 @@
 %  1 - A label for later referencing of this footnote, i.e. creating a mark
 %  2 - The actual footnote
 \newcommand{\footnoteplace}[2]{%
-    \addtocounter{footnote}{1}%
-    \footnotetext[\thefootnote]{\label{#1}#2}%
+	\addtocounter{footnote}{1}%
+	\footnotetext[\thefootnote]{\label{#1}#2}%
 }%
 % This creates a marker corresponding to a formerly "placed" footnote, using its declared label
 \newcommand{\footnoteref}[1]{\repeatfootnote{#1}}%
@@ -93,15 +93,15 @@
 % Auxiliary stuff. (Formats footnote-references nicely with comma, in case multiple are set in succession)
 \newcommand\nextToken\relax%
 \newcommand\tokenIsFootnoteRef{%
-    \ifx\footnoteref\nextToken%
-        \textsuperscript{,}%
-    \else\ifx\repeatfootnote\nextToken%
-        \textsuperscript{,}%
-    \else\ifx\savefootnote\nextToken%
-        \textsuperscript{,}%
-    \else\ifx\footnote\nextToken%
-        \textsuperscript{,}%
-    \fi\fi\fi\fi%
+	\ifx\footnoteref\nextToken%
+		\textsuperscript{,}%
+	\else\ifx\repeatfootnote\nextToken%
+		\textsuperscript{,}%
+	\else\ifx\savefootnote\nextToken%
+		\textsuperscript{,}%
+	\else\ifx\footnote\nextToken%
+		\textsuperscript{,}%
+	\fi\fi\fi\fi%
 }%
 \newcommand\ifMultipleFootnote{\futurelet\nextToken\tokenIsFootnoteRef}%
 %/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
@@ -162,12 +162,12 @@
 \def\tricurvedbHypo{1.2ex}%
 \def\tricurvedbH{1.2*\tricurvedbHypo}%
 \path[fill,draw=none,line join=miter,rounded corners=0](0,0)--++(\tricurvedbH,0.5*\tricurvedbHypo)--++(-\tricurvedbH,0.5*\tricurvedbHypo)%
-    ..controls%
-        (0.4*\tricurvedbH,0.5*\tricurvedbHypo)%
-        and%
-        (0.4*\tricurvedbH,0.5*\tricurvedbHypo)%
-    ..%
-%    to[out=-40,in=40]%
+	..controls%
+		(0.4*\tricurvedbH,0.5*\tricurvedbHypo)%
+		and%
+		(0.4*\tricurvedbH,0.5*\tricurvedbHypo)%
+	..%
+	%to[out=-40,in=40]%
 cycle;%
 }}%
 %
@@ -177,49 +177,49 @@ cycle;%
 \makeatletter%
 %ToDo: A filling of the path is still missing for the \blackpointright. Currently it's identical to \pointright
 \DeclareRobustCommand{\blackpointright}{%
-    \mathrel{\mathpalette\blackpoint@right\relax}%
+	\mathrel{\mathpalette\blackpoint@right\relax}%
 }%
 \newcommand{\blackpoint@right}[2]{%
-    \vcenter{\hbox{\blackpoint@@right{#1}}}%
+	\vcenter{\hbox{\blackpoint@@right{#1}}}%
 }%
 \newcommand{\blackpoint@@right}[1]{%
-    \sbox\z@{$\m@th#1\blacktriangleright$}%
-    \setlength{\unitlength}{\ht\z@}%
-    \setlength{\dimen@}{\wd\z@}%
-    \linethickness{%
-        \ifx#1\displaystyle 0.09\unitlength%
-        \else\ifx#1\textstyle 0.09\unitlength%
-        \else\ifx#1\scriptstyle 0.11\unitlength%
-        \else 0.13\unitlength\fi\fi\fi%
-    }%
-    \edef\blackpoint@wd{\fpeval{2*(\dimen@/\unitlength)}}%
-    \begin{picture}(\blackpoint@wd,1)%
-    \roundjoin%
-    \polyline(0,0.5)(0,0)(\blackpoint@wd,0.5)(0,1)(0,0.2)\closepath\fillpath%
-    \end{picture}%
+	\sbox\z@{$\m@th#1\blacktriangleright$}%
+	\setlength{\unitlength}{\ht\z@}%
+	\setlength{\dimen@}{\wd\z@}%
+	\linethickness{%
+		\ifx#1\displaystyle 0.09\unitlength%
+		\else\ifx#1\textstyle 0.09\unitlength%
+		\else\ifx#1\scriptstyle 0.11\unitlength%
+		\else 0.13\unitlength\fi\fi\fi%
+	}%
+	\edef\blackpoint@wd{\fpeval{2*(\dimen@/\unitlength)}}%
+	\begin{picture}(\blackpoint@wd,1)%
+	\roundjoin%
+	\polyline(0,0.5)(0,0)(\blackpoint@wd,0.5)(0,1)(0,0.2)\closepath\fillpath%
+	\end{picture}%
 }%
 %
 \DeclareRobustCommand{\pointright}{%
-    \mathrel{\mathpalette\point@right\relax}%
+	\mathrel{\mathpalette\point@right\relax}%
 }%
 \newcommand{\point@right}[2]{%
-    \vcenter{\hbox{\point@@right{#1}{\triangleright}}}%
+	\vcenter{\hbox{\point@@right{#1}{\triangleright}}}%
 }%
 \newcommand{\point@@right}[2]{%
-    \sbox\z@{$\m@th#1\triangleright$}%
-    \setlength{\unitlength}{\ht\z@}%
-    \setlength{\dimen@}{\wd\z@}%
-    \linethickness{%
-        \ifx#1\displaystyle 0.09\unitlength%
-        \else\ifx#1\textstyle 0.09\unitlength%
-        \else\ifx#1\scriptstyle 0.11\unitlength%
-        \else 0.13\unitlength\fi\fi\fi%
-    }%
-    \edef\point@wd{\fpeval{2*(\dimen@/\unitlength)}}%
-    \begin{picture}(\point@wd,1)%
-    \roundjoin%
-    \polyline(0,0.5)(0,0)(\point@wd,0.5)(0,1)(0,0.2)%
-    \end{picture}%
+	\sbox\z@{$\m@th#1\triangleright$}%
+	\setlength{\unitlength}{\ht\z@}%
+	\setlength{\dimen@}{\wd\z@}%
+	\linethickness{%
+		\ifx#1\displaystyle 0.09\unitlength%
+		\else\ifx#1\textstyle 0.09\unitlength%
+		\else\ifx#1\scriptstyle 0.11\unitlength%
+		\else 0.13\unitlength\fi\fi\fi%
+	}%
+	\edef\point@wd{\fpeval{2*(\dimen@/\unitlength)}}%
+	\begin{picture}(\point@wd,1)%
+	\roundjoin%
+	\polyline(0,0.5)(0,0)(\point@wd,0.5)(0,1)(0,0.2)%
+	\end{picture}%
 }%
 \makeatother%
 %USAGE:
@@ -387,30 +387,30 @@ cycle;%
 \theoremindent0.5em%
 %
 %That is not quite working well, hence, instead an own solution below
-%    \newtheorem{InciRem}{\protect\InciRemname}[section]%
-%    \newcommand{\InciRemname}{}%Initialization
-%    \addto\captionsenglish{%
-%      \renewcommand{\InciRemname}{Incidential Remark}%
-%    }%
-%    \addto\captionsngerman{%
-%      \renewcommand{\InciRemname}{Einschub}%
-%    }%
+%	\newtheorem{InciRem}{\protect\InciRemname}[section]%
+%	\newcommand{\InciRemname}{}%Initialization
+%	\addto\captionsenglish{%
+%		\renewcommand{\InciRemname}{Incidential Remark}%
+%	}%
+%	\addto\captionsngerman{%
+%		\renewcommand{\InciRemname}{Einschub}%
+%	}%
 \ifdef{\DenKrLayoutLanguage}{%
-    \expandafter\ifstrequal\expandafter{\DenKrLayoutLanguage}{english}{%
-        \newtheorem{InciRem}{Incidential Remark}[section]%
-    }{%
-    \expandafter\ifstrequal\expandafter{\DenKrLayoutLanguage}{ngerman}{%
-        \newtheorem{InciRem}{Einschub}[section]%
-    }{%
-    \expandafter\ifstrequal\expandafter{\DenKrLayoutLanguage}{german}{%
-        \newtheorem{InciRem}{Einschub}[section]%
-    }{%
-        \newtheorem{InciRem}{Incidential Remark}[section]%
-    }%
-    }%
-    }%
+	\expandafter\ifstrequal\expandafter{\DenKrLayoutLanguage}{english}{%
+		\newtheorem{InciRem}{Incidential Remark}[section]%
+	}{%
+	\expandafter\ifstrequal\expandafter{\DenKrLayoutLanguage}{ngerman}{%
+		\newtheorem{InciRem}{Einschub}[section]%
+	}{%
+	\expandafter\ifstrequal\expandafter{\DenKrLayoutLanguage}{german}{%
+		\newtheorem{InciRem}{Einschub}[section]%
+	}{%
+		\newtheorem{InciRem}{Incidential Remark}[section]%
+	}%
+	}%
+	}%
 }{%
-    \newtheorem{InciRem}{Incidential Remark}[section]%
+	\newtheorem{InciRem}{Incidential Remark}[section]%
 }%
 %
 %
@@ -425,11 +425,11 @@ cycle;%
 \setcounter{manualCounter}{0}%
 \newcommand{\manCountReset}{\setcounter{manualCounter}{0}}%
 \DeclareDocumentCommand{\manCount}{o}{% Only 1 possible Argument (optional), which is a label for referencing
-    \refstepcounter{manualCounter}%
-    \IfNoValueTF{#1}{}{%
-        \label{#1}%
-    }%
-    \arabic{manualCounter}%
+	\refstepcounter{manualCounter}%
+	\IfNoValueTF{#1}{}{%
+		\label{#1}%
+	}%
+	\arabic{manualCounter}%
 }%
 %------------------------------------------------------------------------
 %________________________________________________________________________
@@ -446,17 +446,17 @@ cycle;%
 % Einfach ums schöner zu machen
 \newenvironment{myleftbar}[2]%[1=0.5pt,2=5pt]%
 {%
-    % \setlength{\tempheight}{\topsep}%
-    % \setlength{\topsep}{0ex}%
-    \vspace*{-0.95\topsep}%
-    \def\FrameCommand{\hspace{#2} \vrule width #1 \hspace{0.0em}}%
-    \MakeFramed{\advance\hsize-\width\FrameRestore}%
-    \vspace*{0.5ex}%
+	% \setlength{\tempheight}{\topsep}%
+	% \setlength{\topsep}{0ex}%
+	\vspace*{-0.95\topsep}%
+	\def\FrameCommand{\hspace{#2} \vrule width #1 \hspace{0.0em}}%
+	\MakeFramed{\advance\hsize-\width\FrameRestore}%
+	\vspace*{0.5ex}%
 }%
 {%
-    \endMakeFramed%
-    \vspace*{-\topsep}%
-    % \setlength{\topsep}{\tempheight}% Doesn't work
+	\endMakeFramed%
+	\vspace*{-\topsep}%
+	% \setlength{\topsep}{\tempheight}% Doesn't work
 }%
 %
 %
@@ -493,6 +493,39 @@ m O{Sidenote} O{0pt}%
 \end{myleftbar}%
 \end{samepage}%
 \vspace{#3}%
+}%
+%
+%
+%<><><><><><><><><><><><><>
+% A Textbox - with Frame and Background - for highlighting Text
+% % % % % % % % % % % % % %
+\colorlet{DenKrColor_HighlightTextbox_Frame}{DenKrKomaColor_ChapterHeading!70!black}%
+\colorlet{DenKrColor_HighlightTextbox_BG}{DenKrKomaColor_ChapterHeading_2!25}%
+% 1: Text as Content
+% 2: Color of Frame/Border
+% 3: Color of Background
+\DeclareDocumentCommand{\highlightTextbox}{m O{DenKrColor_HighlightTextbox_Frame} O{DenKrColor_HighlightTextbox_BG}}{%
+	%\ifx&#3&
+	%	3:empty%
+	%\else NonEmpty
+	%\fi%
+	\begin{tcolorbox}[boxrule=0.7pt,colframe=#2,colback=#3% top/bottom/left/rightrule
+		,arc=7pt,outer arc=4pt,%arc is angular%
+		,left skip=2em,right skip=2em,before skip=1.0ex,after skip=1.7ex%
+		,left=0.2em,right=0.5em,top=0.5ex,bottom=0.5ex% \topskip
+		,shadow={1mm}{-1mm}{0mm}{fill=#2!50!black,opacity=0.2}%
+		% ,fuzzy shadow={1.5mm}{-1.5mm}{0mm}{0.1mm}{fill=#2!50!black,opacity=0.1}%
+	]%
+	#1%
+	\end{tcolorbox}%
+}%
+%
+% - Basically a poor, not recommended Version of the above
+% draw a frame around given text
+\DeclareDocumentCommand{\framedTextbox}{m O{DenKrColor_HighlightTextbox_Frame}}{%
+	\par\noindent\fbox{%
+		\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{#1}%
+	}%
 }%
 %
 %
@@ -536,16 +569,16 @@ m O{Sidenote} O{0pt}%
 % \texorpdfstring{\glstext{#2}}{\glsentrytext{#2}}
 \makeatletter%
 \newcommand{\glstextHead}[1]{%
-    \expandafter\texorpdfstring{\expandafter\glsentryshort{#1}}{\expandafter\glsentryshort{#1}}% glsentryshort, glsentrytext
+	\expandafter\texorpdfstring{\expandafter\glsentryshort{#1}}{\expandafter\glsentryshort{#1}}% glsentryshort, glsentrytext
 }%
 \newcommand{\glsdescHead}[1]{%
-    \expandafter\texorpdfstring{\expandafter\glsentrylong{#1}}{\expandafter\glsentrylong{#1}}% glsentrylong, glsentrydesc
+	\expandafter\texorpdfstring{\expandafter\glsentrylong{#1}}{\expandafter\glsentrylong{#1}}% glsentrylong, glsentrydesc
 }%
 \newcommand{\glstextplHead}[1]{%
-    \expandafter\texorpdfstring{\expandafter\glsentryshortpl{#1}}{\expandafter\glsentryshortpl{#1}}% glsentryshortpl, glsentryplural
+	\expandafter\texorpdfstring{\expandafter\glsentryshortpl{#1}}{\expandafter\glsentryshortpl{#1}}% glsentryshortpl, glsentryplural
 }%
 \newcommand{\glsdescplHead}[1]{%
-    \expandafter\texorpdfstring{\expandafter\glsentrylongpl{#1}}{\expandafter\glsentrylongpl{#1}}% glsentrylongpl, glsentrydescplural
+	\expandafter\texorpdfstring{\expandafter\glsentrylongpl{#1}}{\expandafter\glsentrylongpl{#1}}% glsentrylongpl, glsentrydescplural
 }%
 \makeatother%
 %
@@ -555,7 +588,7 @@ m O{Sidenote} O{0pt}%
 % Printing an "Indefinite Article" (Unbestimmter Artikel)
 %    For printing an Article before a \gls{} matching is expansion (c.f.: "a Software Definition"  vs.  "an SD")
 \newcommand{\glsInArticle}[1]{%
-    \ifglsused{#1}{an}{a}%
+	\ifglsused{#1}{an}{a}%
 }%
 \providecommand{\glsdescpl}{}%
 \renewcommand{\glsdescpl}[1]{\glslink{#1}{\glsentrylongpl{#1}}}%
@@ -734,12 +767,12 @@ m O{Sidenote} O{0pt}%
 \let\Marginpar\marginpar% \MarginPar ist jetzt dasselbe wie \marginpar
 \renewcommand*{\marginpar}[2][]{{% ein optionales und ein normales Argument
 \expandafter\renewcommand*{\glstextformat}[1]{\color{marginparcolor}##1}%
-  \ifstr{#1}{}{%
-  	\Marginpar{\footnotesize\raggedright \textcolor{marginparcolor}{#2}}%
-  }{%
-    \Marginpar[{\footnotesize\raggedright \textcolor{marginparcolor}{#1}}]%
-    	{\footnotesize\raggedright \textcolor{marginparcolor}{#2}}%
-  }%
+	\ifstr{#1}{}{%
+		\Marginpar{\footnotesize\raggedright \textcolor{marginparcolor}{#2}}%
+	}{%
+	\Marginpar[{\footnotesize\raggedright \textcolor{marginparcolor}{#1}}]%
+		{\footnotesize\raggedright \textcolor{marginparcolor}{#2}}%
+	}%
 }}% Double Braces to create a scope for the redefinition of glstextformat
 %
 %
@@ -900,21 +933,21 @@ O{\includestandalonedefaultmode} m O{\tikzFilesPath} m o m >{\SplitList{,}}O{1,1
 % \ifnodedefined{Node-name without brackets}{Wenn existent, dann das}{else}
 \makeatletter%
 \long\def\ifnodedefined#1#2#3{%
-  \@ifundefined{pgf@sh@ns@#1}{#3}{#2}}%
+	\@ifundefined{pgf@sh@ns@#1}{#3}{#2}}%
 %
 \newcommand\aeundefinenode[1]{%%
-  \expandafter\ifx\csname pgf@sh@ns@#1\endcsname\relax%
-  \else%
-    \typeout{===>Undefining node "#1"}%
-    \global\expandafter\let\csname pgf@sh@ns@#1\endcsname\relax%
-  \fi%
+	\expandafter\ifx\csname pgf@sh@ns@#1\endcsname\relax%
+	\else%
+		\typeout{===>Undefining node "#1"}%
+		\global\expandafter\let\csname pgf@sh@ns@#1\endcsname\relax%
+	\fi%
 }%
 %Another to undefine nodes, that they are gone in successive pics
 \newcommand\aeundefinethesenodes[1]{%
-  \foreach \myn  in {#1}%
-    {%
-      \expandafter\aeundefinenode\expandafter{\myn}%
-    }%
+	\foreach \myn  in {#1}%
+	{%
+		\expandafter\aeundefinenode\expandafter{\myn}%
+	}%
 }%
 \makeatother%
 %
