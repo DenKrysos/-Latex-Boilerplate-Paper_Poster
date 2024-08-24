@@ -1,3 +1,7 @@
+# Deprecated
+This is no longer maintained. Instead, rather refer to:
+> [https://github.com/DenKrysos/-Latex-Boilerplate-](https://github.com/DenKrysos/-Latex-Boilerplate- "DenKr Latex-Boilerplate Sophisticated, Book/Paper/Poster/etc. unified")
+
 # \-Latex-Boilerplate_Paper / Poster
 
 A quite nice Boilerplate/Template together with some Macros and ready-to-use set up surroundings for LaTeX. Document-Type "Article-Level", i.e. no "Book".<br />
